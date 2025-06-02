@@ -1,0 +1,1804 @@
+<!-- ========================================
+     PARTE 1: HEADER + INTRODUCCIÓN + MATH (INICIO)
+     Esta es la primera parte de la página mejorada
+     ======================================== -->
+
+<!-- HEADER PRINCIPAL CON ANIMACIÓN -->
+<div id="librerias-header" class="card" style="background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%); padding: 40px 30px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 5px, transparent 5px, transparent 10px); animation: subtleShiftLibs 40s linear infinite;"></div>
+  
+  <!-- ESTILOS CSS EMBEBIDOS MEJORADOS -->
+  <style> 
+    /* Animación del header */
+    @keyframes subtleShiftLibs { 0% { background-position: 0 0; } 100% { background-position: 200px 200px; } } 
+    
+    /* Estilos para bloques de código */
+    .code-block-lib {
+        background-color: #2d3748;
+        color: #e2e8f0;
+        padding: 15px 20px; 
+        border-radius: 8px; 
+        font-family: 'Courier New', Courier, monospace; 
+        font-size: 1.05em; 
+        line-height: 1.6; 
+        margin: 15px 0; 
+        overflow-x: auto; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        position: relative;
+        cursor: pointer;
+    }
+    
+    /* Botón copiar código */
+    .code-block-lib::after {
+        content: '📋 Click para copiar';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #4a5568;
+        color: #e2e8f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75em;
+        opacity: 0.7;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+    
+    .code-block-lib:hover::after {
+        opacity: 1;
+    }
+    
+    /* Colores de sintaxis */
+    .code-block-lib .token-keyword { color: #56ccf2; }
+    .code-block-lib .token-function { color: #6fcf97; }
+    .code-block-lib .token-string { color: #f2c94c; }
+    .code-block-lib .token-comment { color: #828282; }
+    .code-block-lib .token-number { color: #f2994a; }
+    
+    /* Estilos de secciones */
+    .section-lib h2 { display: flex; align-items: center; gap: 12px; font-size: 2em; margin-bottom: 20px; }
+    .section-lib h3 { font-size: 1.5em; margin-top: 25px; margin-bottom: 15px; border-bottom: 2px solid; padding-bottom: 8px; }
+    .section-lib h4 { font-size: 1.25em; margin-top: 20px; margin-bottom: 10px; color: inherit; }
+    
+    /* Cajas y notas */
+    .feature-card-lib { padding:20px; border-radius:8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); margin-bottom:15px; }
+    .feature-card-lib h4 { margin-top:0; margin-bottom:10px; font-size:1.2em; display:flex; align-items:center; gap:8px; }
+    .note-lib { margin-top:20px; padding: 15px 20px; border-radius: 8px; line-height:1.7; }
+    .note-lib p { margin:0; font-size:1em; }
+    .note-lib strong { font-weight: 600; }
+    
+    /* Caja de instalación */
+    .installation-box { background-color: #3c3c3c; color: #f0f0f0; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace; font-size: 1.1em; }
+    
+    /* Tablas responsivas */
+    .responsive-table-container { overflow-x: auto; margin: 15px 0; }
+    .styled-table { width: 100%; border-collapse: collapse; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .styled-table th, .styled-table td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    .styled-table th { background-color: #f2f2f2; font-weight: bold; color: #333; }
+    .styled-table tr:nth-child(even) { background-color: #f9f9f9; }
+    .styled-table code { background-color: rgba(0,0,0,0.06); padding: 0.2em 0.4em; border-radius: 3px; font-size:0.95em; }
+    
+    /* NUEVOS ESTILOS PARA EMULAR TABLAS PYTHON */
+    
+    /* Estilo Tabulate Fancy Grid */
+    .tabulate-fancy {
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 2px solid #333;
+      font-family: 'Courier New', monospace;
+      background-color: #fafafa;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .tabulate-fancy th {
+      background: linear-gradient(135deg, #333, #555);
+      color: white;
+      padding: 8px 12px;
+      border-right: 1px solid #666;
+      border-bottom: 2px solid #333;
+      font-weight: bold;
+    }
+    .tabulate-fancy td {
+      padding: 6px 12px;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+    }
+    .tabulate-fancy tr:nth-child(even) td { background-color: #f9f9f9; }
+    
+    /* Estilo Rich Table */
+    .rich-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      background: linear-gradient(135deg, #1e1e2e, #2a2a3e);
+      color: #f8f8f2;
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      margin: 15px 0;
+    }
+    .rich-table th {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      padding: 12px 16px;
+      border: none;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .rich-table td {
+      padding: 10px 16px;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .rich-table .rich-cyan { color: #8be9fd; }
+    .rich-table .rich-green { color: #50fa7b; }
+    .rich-table .rich-yellow { color: #f1fa8c; }
+    .rich-table .rich-pink { color: #ff79c6; }
+    
+    /* Estilo PrettyTable */
+    .prettytable-style {
+      border-collapse: collapse;
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      margin: 15px 0;
+      border: 1px solid #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .prettytable-style th {
+      background-color: #e6e6e6;
+      color: #333;
+      padding: 8px 12px;
+      border: 1px solid #333;
+      font-weight: bold;
+      text-align: center;
+    }
+    .prettytable-style td {
+      padding: 6px 12px;
+      border: 1px solid #333;
+      text-align: center;
+      background-color: white;
+    }
+    .prettytable-style tr:hover td { background-color: #f0f0f0; }
+    
+    /* Tabla de funciones matemáticas */
+    .math-table th { background: linear-gradient(135deg, #0066cc, #004499) !important; color: white !important; }
+    .math-table .categoria-constantes { background-color: #f0f8ff; color: #004499; font-weight: bold; }
+    .math-table .categoria-redondeo { background-color: #fff5ee; color: #cc6600; font-weight: bold; }
+    .math-table .categoria-potencias { background-color: #f5fff5; color: #006600; font-weight: bold; }
+    .math-table .categoria-trigonometria { background-color: #fff0f5; color: #990066; font-weight: bold; }
+    .math-table .categoria-logaritmos { background-color: #f0f0ff; color: #6600cc; font-weight: bold; }
+    .math-table .categoria-geometria { background-color: #f5f5dc; color: #996633; font-weight: bold; }
+    .math-table .categoria-combinatoria { background-color: #fff8dc; color: #cc9900; font-weight: bold; }
+    .math-table .categoria-verificacion { background-color: #f0fff0; color: #009900; font-weight: bold; }
+  </style>
+  
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 3em; margin-bottom: 15px; text-shadow: 1px 1px 4px rgba(0,0,0,0.4);">
+      <i class="fas fa-toolbox"></i> Explorando las Librerías Esenciales de Python 📚
+    </h1>
+    <p style="font-size: 1.3em; opacity: 0.95; line-height: 1.7; max-width: 700px; margin:auto;">
+      Descubre herramientas incorporadas y externas que potenciarán tus proyectos de matemáticas, ciencias y más.
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN 1: INTRODUCCIÓN A LAS LIBRERÍAS -->
+<div id="que-son-librerias" class="card section-lib" style="border-left: 6px solid #4a5568; background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #2d3748;"><i class="fas fa-puzzle-piece"></i> 1. ¿Qué son las Librerías Básicas? 🧰</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En Python, una <strong>librería</strong> (o módulo) es una colección de funciones, clases y variables preescritas que extienden la funcionalidad básica del lenguaje. Piensa en ellas como cajas de herramientas especializadas: si necesitas hacer cálculos matemáticos complejos, hay una "caja de herramientas matemáticas"; si necesitas trabajar con fechas, hay una para eso.
+  </p>
+  
+  <h3 style="color: #2d3748; border-color: #718096;">Ventajas de Usar Librerías:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-recycle" style="color:#4a5568; margin-right:5px;"></i><strong>Código Reutilizable:</strong> No tienes que reinventar la rueda. Alguien ya escribió y probó ese código por ti.</li>
+    <li><i class="fas fa-cogs" style="color:#4a5568; margin-right:5px;"></i><strong>Funciones Especializadas:</strong> Ofrecen herramientas optimizadas para tareas específicas.</li>
+    <li><i class="fas fa-users" style="color:#4a5568; margin-right:5px;"></i><strong>Desarrollo Eficiente:</strong> Aceleran tu trabajo al proporcionar soluciones listas para usar.</li>
+    <li><i class="fas fa-check-circle" style="color:#4a5568; margin-right:5px;"></i><strong>Comunidad y Mantenimiento:</strong> Muchas librerías son mantenidas por la comunidad, asegurando calidad y actualizaciones.</li>
+  </ul>
+  
+  <h3 style="color: #2d3748; border-color: #718096;">Importación de Librerías:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7;">Para usar una librería, primero debes "importarla" a tu script. Hay varias formas:</p>
+  
+  <div class="code-block-lib">
+<pre><code class="language-python"><span class="token-comment"># 1. Importar la librería completa</span>
+<span class="token-keyword">import</span> math
+print(math.pi) <span class="token-comment"># Necesitas usar el nombre de la librería para acceder a sus funciones/variables</span>
+
+<span class="token-comment"># 2. Importar funciones específicas de una librería</span>
+<span class="token-keyword">from</span> math <span class="token-keyword">import</span> sqrt, sin
+print(sqrt(<span class="token-number">16</span>))
+print(sin(<span class="token-number">0</span>))
+
+<span class="token-comment"># 3. Importar con un alias (un nombre más corto)</span>
+<span class="token-keyword">import</span> calendar <span class="token-keyword">as</span> cal
+print(cal.month(<span class="token-number">2025</span>, <span class="token-number">6</span>))</code></pre>
+  </div>
+  
+  <h4 style="color: #2d3748;">Librerías Estándar vs. Externas:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Python viene con una <strong>Librería Estándar</strong> robusta (como `math`, `calendar`, `datetime`) que está disponible automáticamente. Las <strong>librerías externas</strong> (como `tabulate`, `rich`, `prettytable`) son desarrolladas por terceros y necesitas instalarlas (usualmente con `pip`) antes de poder importarlas.
+  </p>
+</div>
+
+<!-- SECCIÓN 2: LIBRERÍA MATH (PARTE INICIAL) -->
+<div id="lib-math" class="card section-lib" style="border-left: 6px solid #0066cc; background: linear-gradient(135deg, #e0f0ff 0%, #c0dfff 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #004499;"><i class="fas fa-calculator"></i> 2. Librería <code>math</code>: Matemáticas Avanzadas 🔢</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    La librería <code>math</code> proporciona acceso a funciones matemáticas definidas por el estándar C. Es tu aliada para cálculos numéricos, trigonométricos, logarítmicos y más.
+  </p>
+  
+  <h3 style="color: #004499; border-color: #0066cc;">Constantes Matemáticas Importantes:</h3>
+  <div class="code-block-lib" style="background-color: #003366; color: #e0f0ff;">
+<pre><code class="language-python"><span class="token-keyword">import</span> math
+print(f<span class="token-string">"Valor de Pi (π): {math.pi}"</span>)      <span class="token-comment"># Aprox. 3.141592653589793</span>
+print(f<span class="token-string">"Valor de Euler (e): {math.e}"</span>)   <span class="token-comment"># Aprox. 2.718281828459045</span></code></pre>
+  </div>
+
+  <!-- COMENTARIO: AQUÍ CONTINÚA LA TABLA COMPLETA DE FUNCIONES MATH -->
+  <h3 style="color: #004499; border-color: #0066cc;">📋 Tabla Completa de Funciones Matemáticas</h3>
+  <p style="font-size: 1.05em; line-height: 1.7;">Aquí tienes una referencia completa de las funciones más útiles de la librería <code>math</code>:</p>
+
+  <div class="responsive-table-container">
+    <table class="styled-table math-table">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>Función</th>
+          <th>Descripción</th>
+          <th>Ejemplo</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Constantes -->
+        <tr>
+          <td rowspan="2" class="categoria-constantes">🔢 Constantes</td>
+          <td><code>math.pi</code></td>
+          <td>Valor de π (pi)</td>
+          <td><code>math.pi</code></td>
+          <td>3.14159...</td>
+        </tr>
+        <tr>
+          <td><code>math.e</code></td>
+          <td>Número de Euler</td>
+          <td><code>math.e</code></td>
+          <td>2.71828...</td>
+        </tr>
+        
+        <!-- Redondeo -->
+        <tr>
+          <td rowspan="4" class="categoria-redondeo">📐 Redondeo</td>
+          <td><code>round(x, n)</code></td>
+          <td>Redondea a n decimales</td>
+          <td><code>round(3.14159, 2)</code></td>
+          <td>3.14</td>
+        </tr>
+        <tr>
+          <td><code>math.ceil(x)</code></td>
+          <td>Redondea hacia arriba</td>
+          <td><code>math.ceil(3.2)</code></td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><code>math.floor(x)</code></td>
+          <td>Redondea hacia abajo</td>
+          <td><code>math.floor(3.8)</code></td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><code>math.trunc(x)</code></td>
+          <td>Trunca decimales</td>
+          <td><code>math.trunc(3.9)</code></td>
+          <td>3</td>
+        </tr>
+        
+        <!-- Potencias y raíces -->
+        <tr>
+          <td rowspan="3" class="categoria-potencias">⚡ Potencias</td>
+          <td><code>math.sqrt(x)</code></td>
+          <td>Raíz cuadrada</td>
+          <td><code>math.sqrt(16)</code></td>
+          <td>4.0</td>
+        </tr>
+        <tr>
+          <td><code>math.pow(x, y)</code></td>
+          <td>x elevado a y</td>
+          <td><code>math.pow(2, 3)</code></td>
+          <td>8.0</td>
+        </tr>
+        <tr>
+          <td><code>x ** y</code></td>
+          <td>Alternativa a pow()</td>
+          <td><code>2 ** 3</code></td>
+          <td>8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- NOTA SOBRE LA TABLA -->
+  <div class="note-lib" style="border-left: 5px solid #0052a3; background-color: #cce5ff;">
+    <p><i class="fas fa-info-circle" style="color:#004499;"></i> <strong>Nota:</strong> Esta tabla continuará con más categorías (Trigonometría, Logaritmos, Geometría, Combinatoria, Verificación) en la siguiente parte.</p>
+  </div>
+</div>
+
+
+<!-- SCRIPT PARA COPIAR CÓDIGO -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Funcionalidad para copiar código
+    const codeBlocks = document.querySelectorAll('.code-block-lib');
+    codeBlocks.forEach(block => {
+        block.addEventListener('click', function() {
+            const code = this.textContent.replace('📋 Click para copiar', '').trim();
+            navigator.clipboard.writeText(code).then(() => {
+                // Feedback visual
+                const originalBg = this.style.backgroundColor;
+                this.style.backgroundColor = '#27ae60';
+                this.style.transform = 'scale(1.02)';
+                
+                setTimeout(() => {
+                    this.style.backgroundColor = originalBg;
+                    this.style.transform = 'scale(1)';
+                }, 800);
+            }).catch(() => {
+                console.log('No se pudo copiar el código');
+            });
+        });
+    });
+});
+</script>
+
+
+<!-- ========================================
+     PARTE 2: COMPLETAR TABLA MATH + EJEMPLOS + COMPARACIÓN VISUAL
+     Esta parte continúa la sección Math y agrega ejemplos prácticos
+     ======================================== -->
+
+<!-- CONTINUACIÓN DE LA TABLA DE FUNCIONES MATH -->
+<div class="responsive-table-container">
+  <table class="styled-table math-table">
+    <thead>
+      <tr>
+        <th>Categoría</th>
+        <th>Función</th>
+        <th>Descripción</th>
+        <th>Ejemplo</th>
+        <th>Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Trigonometría -->
+      <tr>
+        <td rowspan="6" class="categoria-trigonometria">🌊 Trigonometría</td>
+        <td><code>math.sin(x)</code></td>
+        <td>Seno (x en radianes)</td>
+        <td><code>math.sin(math.pi/2)</code></td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td><code>math.cos(x)</code></td>
+        <td>Coseno (x en radianes)</td>
+        <td><code>math.cos(0)</code></td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td><code>math.tan(x)</code></td>
+        <td>Tangente (x en radianes)</td>
+        <td><code>math.tan(math.pi/4)</code></td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td><code>math.asin(x)</code></td>
+        <td>Arcoseno</td>
+        <td><code>math.asin(1)</code></td>
+        <td>1.5708 (π/2)</td>
+      </tr>
+      <tr>
+        <td><code>math.degrees(x)</code></td>
+        <td>Radianes a grados</td>
+        <td><code>math.degrees(math.pi)</code></td>
+        <td>180.0</td>
+      </tr>
+      <tr>
+        <td><code>math.radians(x)</code></td>
+        <td>Grados a radianes</td>
+        <td><code>math.radians(180)</code></td>
+        <td>3.14159 (π)</td>
+      </tr>
+      
+      <!-- Logaritmos -->
+      <tr>
+        <td rowspan="3" class="categoria-logaritmos">📈 Logaritmos</td>
+        <td><code>math.log(x)</code></td>
+        <td>Logaritmo natural (base e)</td>
+        <td><code>math.log(math.e)</code></td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td><code>math.log10(x)</code></td>
+        <td>Logaritmo base 10</td>
+        <td><code>math.log10(100)</code></td>
+        <td>2.0</td>
+      </tr>
+      <tr>
+        <td><code>math.log(x, base)</code></td>
+        <td>Logaritmo en base específica</td>
+        <td><code>math.log(32, 2)</code></td>
+        <td>5.0</td>
+      </tr>
+      
+      <!-- Geometría -->
+      <tr>
+        <td rowspan="2" class="categoria-geometria">📏 Geometría</td>
+        <td><code>math.dist(p1, p2)</code></td>
+        <td>Distancia euclidiana</td>
+        <td><code>math.dist([0,0], [3,4])</code></td>
+        <td>5.0</td>
+      </tr>
+      <tr>
+        <td><code>math.hypot(x, y)</code></td>
+        <td>Hipotenusa</td>
+        <td><code>math.hypot(3, 4)</code></td>
+        <td>5.0</td>
+      </tr>
+      
+      <!-- Combinatoria -->
+      <tr>
+        <td rowspan="3" class="categoria-combinatoria">🎲 Combinatoria</td>
+        <td><code>math.factorial(n)</code></td>
+        <td>Factorial de n</td>
+        <td><code>math.factorial(5)</code></td>
+        <td>120</td>
+      </tr>
+      <tr>
+        <td><code>math.comb(n, k)</code></td>
+        <td>Combinaciones</td>
+        <td><code>math.comb(5, 2)</code></td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td><code>math.perm(n, k)</code></td>
+        <td>Permutaciones</td>
+        <td><code>math.perm(5, 2)</code></td>
+        <td>20</td>
+      </tr>
+      
+      <!-- Verificación -->
+      <tr>
+        <td rowspan="4" class="categoria-verificacion">✅ Verificación</td>
+        <td><code>math.isclose(a, b)</code></td>
+        <td>Compara flotantes</td>
+        <td><code>math.isclose(0.1+0.2, 0.3)</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td><code>math.isfinite(x)</code></td>
+        <td>Es número finito</td>
+        <td><code>math.isfinite(100)</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td><code>math.isnan(x)</code></td>
+        <td>Es "Not a Number"</td>
+        <td><code>math.isnan(float('nan'))</code></td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td><code>math.gcd(a, b)</code></td>
+        <td>Máximo común divisor</td>
+        <td><code>math.gcd(48, 18)</code></td>
+        <td>6</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- EJEMPLOS DE CÓDIGO ORGANIZADOS POR DIFICULTAD -->
+<h3 style="color: #004499; border-color: #0066cc;">Funciones Organizadas por Importancia:</h3>
+
+<h4 style="color:#004c99;">🥇 Imprescindibles (Usar Siempre):</h4>
+<div class="code-block-lib" style="background-color: #003366; color: #e0f0ff;">
+<pre><code class="language-python"><span class="token-keyword">import</span> math
+
+<span class="token-comment"># === REDONDEO Y ABSOLUTO ===</span>
+print(f<span class="token-string">"round(3.14159, 2): {round(3.14159, 2)}"</span>)     <span class="token-comment"># 3.14</span>
+print(f<span class="token-string">"abs(-5): {abs(-5)}"</span>)                       <span class="token-comment"># 5</span>
+print(f<span class="token-string">"math.ceil(4.2): {math.ceil(4.2)}"</span>)         <span class="token-comment"># 5</span>
+print(f<span class="token-string">"math.floor(4.8): {math.floor(4.8)}"</span>)       <span class="token-comment"># 4</span>
+
+<span class="token-comment"># === POTENCIAS Y RAÍCES ===</span>
+print(f<span class="token-string">"math.sqrt(16): {math.sqrt(16)}"</span>)           <span class="token-comment"># 4.0</span>
+print(f<span class="token-string">"math.pow(3, 4): {math.pow(3, 4)}"</span>)         <span class="token-comment"># 81.0</span>
+print(f<span class="token-string">"3**4: {3**4}"</span>)                           <span class="token-comment"># 81 (alternativa más común)</span>
+
+<span class="token-comment"># === TRIGONOMETRÍA BÁSICA ===</span>
+angulo_45_grados = math.pi / <span class="token-number">4</span>  <span class="token-comment"># 45° en radianes</span>
+print(f<span class="token-string">"sin(45°): {math.sin(angulo_45_grados):.3f}"</span>)  <span class="token-comment"># 0.707</span>
+print(f<span class="token-string">"cos(45°): {math.cos(angulo_45_grados):.3f}"</span>)  <span class="token-comment"># 0.707</span>
+
+<span class="token-comment"># === CONVERSIONES ESENCIALES ===</span>
+print(f<span class="token-string">"90° en radianes: {math.radians(90):.3f}"</span>)    <span class="token-comment"># 1.571 (π/2)</span>
+print(f<span class="token-string">"π/2 en grados: {math.degrees(math.pi/2)}"</span>)   <span class="token-comment"># 90.0</span></code></pre>
+</div>
+
+<h4 style="color:#004c99;">🥈 Muy Útiles (Para Estudiantes Avanzados):</h4>
+<div class="code-block-lib" style="background-color: #003366; color: #e0f0ff;">
+<pre><code class="language-python"><span class="token-keyword">import</span> math
+<span class="token-keyword">import</span> statistics  <span class="token-comment"># Para estadísticas básicas</span>
+
+<span class="token-comment"># === DISTANCIAS Y GEOMETRÍA ===</span>
+punto_A = (<span class="token-number">1</span>, <span class="token-number">2</span>)
+punto_B = (<span class="token-number">4</span>, <span class="token-number">6</span>)
+distancia = math.dist(punto_A, punto_B)
+print(f<span class="token-string">"Distancia entre {punto_A} y {punto_B}: {distancia:.2f}"</span>)  <span class="token-comment"># 5.00</span>
+
+<span class="token-comment"># Teorema de Pitágoras (catetos 3 y 4)</span>
+hipotenusa = math.hypot(<span class="token-number">3</span>, <span class="token-number">4</span>)
+print(f<span class="token-string">"Hipotenusa de catetos 3 y 4: {hipotenusa}"</span>)     <span class="token-comment"># 5.0</span>
+
+<span class="token-comment"># === ESTADÍSTICAS BÁSICAS ===</span>
+calificaciones = [<span class="token-number">85</span>, <span class="token-number">92</span>, <span class="token-number">78</span>, <span class="token-number">96</span>, <span class="token-number">88</span>]
+promedio = statistics.mean(calificaciones)
+mediana = statistics.median(calificaciones)
+print(f<span class="token-string">"Promedio: {promedio:.1f}, Mediana: {mediana}"</span>)    <span class="token-comment"># 87.8, 88</span>
+
+<span class="token-comment"># === MATEMÁTICAS DISCRETAS ===</span>
+print(f<span class="token-string">"5! = {math.factorial(5)}"</span>)                    <span class="token-comment"># 120</span>
+print(f<span class="token-string">"MCD(48, 18) = {math.gcd(48, 18)}"</span>)             <span class="token-comment"># 6</span>
+
+<span class="token-comment"># === COMPARACIÓN SEGURA DE FLOTANTES ===</span>
+resultado = <span class="token-number">0.1</span> + <span class="token-number">0.2</span>
+es_igual_a_03 = math.isclose(resultado, <span class="token-number">0.3</span>)
+print(f<span class="token-string">"0.1 + 0.2 ≈ 0.3? {es_igual_a_03}"</span>)            <span class="token-comment"># True</span></code></pre>
+</div>
+
+<h4 style="color:#004c99;">🥉 Avanzadas (Para Proyectos Especiales):</h4>
+<div class="code-block-lib" style="background-color: #003366; color: #e0f0ff;">
+<pre><code class="language-python"><span class="token-keyword">import</span> math
+<span class="token-keyword">import</span> statistics
+
+<span class="token-comment"># === COMBINATORIA (Python 3.8+) ===</span>
+n_estudiantes = <span class="token-number">5</span>
+equipos_de_2 = math.comb(n_estudiantes, <span class="token-number">2</span>)
+print(f<span class="token-string">"Equipos de 2 personas con {n_estudiantes} estudiantes: {equipos_de_2}"</span>)  <span class="token-comment"># 10</span>
+
+ordenamientos_2 = math.perm(n_estudiantes, <span class="token-number">2</span>)
+print(f<span class="token-string">"Ordenamientos posibles de 2 personas: {ordenamientos_2}"</span>)  <span class="token-comment"># 20</span>
+
+<span class="token-comment"># === ESTADÍSTICA AVANZADA ===</span>
+datos_experimento = [<span class="token-number">23.1</span>, <span class="token-number">24.5</span>, <span class="token-number">22.8</span>, <span class="token-number">25.2</span>, <span class="token-number">23.9</span>]
+desviacion_std = statistics.stdev(datos_experimento)
+print(f<span class="token-string">"Desviación estándar: {desviacion_std:.2f}"</span>)      <span class="token-comment"># 0.94</span>
+
+<span class="token-comment"># === LOGARITMOS ===</span>
+print(f<span class="token-string">"ln(e) = {math.log(math.e):.1f}"</span>)               <span class="token-comment"># 1.0</span>
+print(f<span class="token-string">"log₁₀(1000) = {math.log10(1000)}"</span>)             <span class="token-comment"># 3.0</span>
+print(f<span class="token-string">"log₂(32) = {math.log(32, 2)}"</span>)                <span class="token-comment"># 5.0</span>
+
+<span class="token-comment"># === VERIFICACIONES ÚTILES ===</span>
+valores_test = [<span class="token-number">100</span>, float(<span class="token-string">'inf'</span>), float(<span class="token-string">'nan'</span>)]
+<span class="token-keyword">for</span> valor <span class="token-keyword">in</span> valores_test:
+    finito = math.isfinite(valor)
+    infinito = math.isinf(valor)
+    no_numero = math.isnan(valor)
+    print(f<span class="token-string">"{valor}: finito={finito}, infinito={infinito}, NaN={no_numero}"</span>)</code></pre>
+</div>
+
+<!-- COMPARACIÓN VISUAL DE ESTILOS DE TABLA -->
+<h3 style="color: #004499; border-color: #0066cc;">🎨 Comparación Visual: Cómo se Ven las Tablas de Python</h3>
+<p style="font-size: 1.05em; line-height: 1.7;">Estos son los mismos datos mostrados con diferentes librerías de Python:</p>
+
+<!-- Ejemplo estilo Tabulate Fancy Grid -->
+<h5 style="color: #333; margin-top: 20px; display: flex; align-items: center; gap: 8px;">
+  <i class="fas fa-table"></i> Estilo Tabulate (fancy_grid)
+</h5>
+<table class="tabulate-fancy">
+  <thead>
+    <tr>
+      <th>Función</th>
+      <th>Entrada</th>
+      <th>Salida</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>math.sqrt()</td>
+      <td>16</td>
+      <td>4.0</td>
+      <td>Potencias</td>
+    </tr>
+    <tr>
+      <td>math.sin()</td>
+      <td>π/2</td>
+      <td>1.0</td>
+      <td>Trigonometría</td>
+    </tr>
+    <tr>
+      <td>math.log10()</td>
+      <td>100</td>
+      <td>2.0</td>
+      <td>Logaritmos</td>
+    </tr>
+    <tr>
+      <td>math.factorial()</td>
+      <td>5</td>
+      <td>120</td>
+      <td>Combinatoria</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Ejemplo estilo Rich -->
+<h5 style="color: #7c3aed; margin-top: 20px; display: flex; align-items: center; gap: 8px;">
+  <i class="fas fa-palette"></i> Estilo Rich (colorido y moderno)
+</h5>
+<table class="rich-table">
+  <thead>
+    <tr>
+      <th>Función</th>
+      <th>Entrada</th>
+      <th>Salida</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="rich-cyan">math.sqrt()</td>
+      <td class="rich-yellow">16</td>
+      <td class="rich-green">4.0</td>
+      <td class="rich-pink">Potencias</td>
+    </tr>
+    <tr>
+      <td class="rich-cyan">math.sin()</td>
+      <td class="rich-yellow">π/2</td>
+      <td class="rich-green">1.0</td>
+      <td class="rich-pink">Trigonometría</td>
+    </tr>
+    <tr>
+      <td class="rich-cyan">math.log10()</td>
+      <td class="rich-yellow">100</td>
+      <td class="rich-green">2.0</td>
+      <td class="rich-pink">Logaritmos</td>
+    </tr>
+    <tr>
+      <td class="rich-cyan">math.factorial()</td>
+      <td class="rich-yellow">5</td>
+      <td class="rich-green">120</td>
+      <td class="rich-pink">Combinatoria</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Ejemplo estilo PrettyTable -->
+<h5 style="color: #db2777; margin-top: 20px; display: flex; align-items: center; gap: 8px;">
+  <i class="fas fa-border-all"></i> Estilo PrettyTable (ASCII clásico)
+</h5>
+<table class="prettytable-style">
+  <thead>
+    <tr>
+      <th>Función</th>
+      <th>Entrada</th>
+      <th>Salida</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>math.sqrt()</td>
+      <td>16</td>
+      <td>4.0</td>
+      <td>Potencias</td>
+    </tr>
+    <tr>
+      <td>math.sin()</td>
+      <td>π/2</td>
+      <td>1.0</td>
+      <td>Trigonometría</td>
+    </tr>
+    <tr>
+      <td>math.log10()</td>
+      <td>100</td>
+      <td>2.0</td>
+      <td>Logaritmos</td>
+    </tr>
+    <tr>
+      <td>math.factorial()</td>
+      <td>5</td>
+      <td>120</td>
+      <td>Combinatoria</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- CÓDIGO PYTHON QUE GENERA ESTAS TABLAS -->
+<h4 style="color: #004499;">💻 Código Python que Genera Estas Tablas</h4>
+<div class="code-block-lib" style="background-color: #003366; color: #e0f0ff;">
+<pre><code class="language-python"><span class="token-comment"># === CON TABULATE ===</span>
+<span class="token-keyword">from</span> tabulate <span class="token-keyword">import</span> tabulate
+
+datos = [
+    [<span class="token-string">"math.sqrt()"</span>, <span class="token-string">"16"</span>, <span class="token-string">"4.0"</span>, <span class="token-string">"Potencias"</span>],
+    [<span class="token-string">"math.sin()"</span>, <span class="token-string">"π/2"</span>, <span class="token-string">"1.0"</span>, <span class="token-string">"Trigonometría"</span>],
+    [<span class="token-string">"math.log10()"</span>, <span class="token-string">"100"</span>, <span class="token-string">"2.0"</span>, <span class="token-string">"Logaritmos"</span>],
+    [<span class="token-string">"math.factorial()"</span>, <span class="token-string">"5"</span>, <span class="token-string">"120"</span>, <span class="token-string">"Combinatoria"</span>]
+]
+headers = [<span class="token-string">"Función"</span>, <span class="token-string">"Entrada"</span>, <span class="token-string">"Salida"</span>, <span class="token-string">"Categoría"</span>]
+print(tabulate(datos, headers=headers, tablefmt=<span class="token-string">"fancy_grid"</span>))
+
+<span class="token-comment"># === CON RICH ===</span>
+<span class="token-keyword">from</span> rich.table <span class="token-keyword">import</span> Table
+<span class="token-keyword">from</span> rich.console <span class="token-keyword">import</span> Console
+
+tabla = Table(title=<span class="token-string">"Funciones Math"</span>, style=<span class="token-string">"bold blue"</span>)
+tabla.add_column(<span class="token-string">"Función"</span>, style=<span class="token-string">"cyan"</span>)
+tabla.add_column(<span class="token-string">"Entrada"</span>, style=<span class="token-string">"yellow"</span>)
+tabla.add_column(<span class="token-string">"Salida"</span>, style=<span class="token-string">"green"</span>)
+tabla.add_column(<span class="token-string">"Categoría"</span>, style=<span class="token-string">"magenta"</span>)
+
+<span class="token-keyword">for</span> fila <span class="token-keyword">in</span> datos:
+    tabla.add_row(*fila)
+
+Console().print(tabla)
+
+<span class="token-comment"># === CON PRETTYTABLE ===</span>
+<span class="token-keyword">from</span> prettytable <span class="token-keyword">import</span> PrettyTable
+
+pt = PrettyTable()
+pt.field_names = headers
+<span class="token-keyword">for</span> fila <span class="token-keyword">in</span> datos:
+    pt.add_row(fila)
+print(pt)</code></pre>
+</div>
+
+<!-- NOTA FINAL SOBRE MATH -->
+<div class="note-lib" style="border-left: 5px solid #0052a3; background-color: #cce5ff;">
+  <p><i class="fas fa-atom" style="color:#004499;"></i> <strong>Aplicaciones en Física y Matemáticas:</strong> La librería <code>math</code> es esencial para simular fenómenos físicos (trayectorias, ondas), resolver ecuaciones, trabajar con geometría, cálculo, estadística y mucho más. ¡Es una de las primeras herramientas que aprenderás a amar!</p>
+</div>
+
+<!-- CIERRE DE LA SECCIÓN MATH -->
+</div>
+
+
+<!-- ESTILOS CSS ESPECÍFICOS PARA ESTA PARTE -->
+<style>
+/* Categorías de la tabla math con colores específicos */
+.categoria-constantes { background-color: #f0f8ff !important; color: #004499 !important; font-weight: bold; }
+.categoria-redondeo { background-color: #fff5ee !important; color: #cc6600 !important; font-weight: bold; }
+.categoria-potencias { background-color: #f5fff5 !important; color: #006600 !important; font-weight: bold; }
+.categoria-trigonometria { background-color: #fff0f5 !important; color: #990066 !important; font-weight: bold; }
+.categoria-logaritmos { background-color: #f0f0ff !important; color: #6600cc !important; font-weight: bold; }
+.categoria-geometria { background-color: #f5f5dc !important; color: #996633 !important; font-weight: bold; }
+.categoria-combinatoria { background-color: #fff8dc !important; color: #cc9900 !important; font-weight: bold; }
+.categoria-verificacion { background-color: #f0fff0 !important; color: #009900 !important; font-weight: bold; }
+
+/* Efectos hover para las tablas de comparación */
+.tabulate-fancy tr:hover td { background-color: #f0f0f0 !important; }
+.rich-table tr:hover td { background-color: rgba(255,255,255,0.1) !important; }
+.prettytable-style tr:hover td { background-color: #e6e6e6 !important; }
+
+/* Animación sutil para los títulos de ejemplo */
+h5 i {
+  animation: subtle-bounce 2s ease-in-out infinite;
+}
+
+@keyframes subtle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+</style>
+
+<!-- SCRIPT ADICIONAL PARA INTERACTIVIDAD -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Resaltar filas de tablas al hacer hover
+    const tablas = document.querySelectorAll('.tabulate-fancy, .rich-table, .prettytable-style');
+    tablas.forEach(tabla => {
+        const filas = tabla.querySelectorAll('tbody tr');
+        filas.forEach(fila => {
+            fila.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            fila.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    });
+    
+    // Log para confirmar carga
+    console.log('📊 Parte 2: Tablas Math y comparación visual cargadas correctamente');
+});
+</script>
+
+
+
+
+
+
+<!-- ========================================
+     BLOQUE TABLAS EN PYTHON - PARTE 1
+     Header + Introducción + Instalación
+     ======================================== -->
+
+<!-- HEADER DEL BLOQUE DE TABLAS -->
+<div id="tablas-header" class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 30px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 10px, transparent 10px, transparent 20px); animation: diagonalShift 30s linear infinite;"></div>
+  
+  <!-- ESTILOS CSS PARA ESTE BLOQUE -->
+  <style>
+    /* Animación del header */
+    @keyframes diagonalShift { 
+      0% { background-position: 0 0; } 
+      100% { background-position: 100px 100px; } 
+    }
+    
+    /* Estilos para las tarjetas de librería */
+    .lib-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .lib-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .lib-card-tabulate { border-left-color: #e74c3c; }
+    .lib-card-rich { border-left-color: #9b59b6; }
+    .lib-card-pretty { border-left-color: #3498db; }
+    
+    /* Badges para características */
+    .feature-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.85em;
+      margin: 2px;
+      font-weight: 500;
+    }
+    
+    .badge-facil { background-color: #2ecc71; color: white; }
+    .badge-moderno { background-color: #e67e22; color: white; }
+    .badge-clasico { background-color: #34495e; color: white; }
+    .badge-colorido { background-color: #e74c3c; color: white; }
+    
+    /* Código con sintaxis mejorada */
+    .code-table {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      padding: 18px 20px;
+      border-radius: 8px;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin: 15px 0;
+      overflow-x: auto;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    /* Colores de sintaxis para tablas */
+    .code-table .keyword { color: #569cd6; font-weight: bold; }
+    .code-table .string { color: #ce9178; }
+    .code-table .function { color: #dcdcaa; }
+    .code-table .comment { color: #6a9955; font-style: italic; }
+    .code-table .number { color: #b5cea8; }
+    .code-table .module { color: #4ec9b0; }
+    
+    /* Tabla comparativa */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .comparison-table th {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .comparison-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .comparison-table tr:hover {
+      background-color: #f8f9fa;
+    }
+    
+    /* Iconos de ejemplo */
+    .example-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 1.5em;
+    }
+    
+    .icon-periodic { background: #ff6b6b; color: white; }
+    .icon-solar { background: #4ecdc4; color: white; }
+    .icon-physics { background: #45b7d1; color: white; }
+    .icon-music { background: #f9ca24; color: white; }
+    .icon-electric { background: #6c5ce7; color: white; }
+    .icon-thermo { background: #fd79a8; color: white; }
+  </style>
+  
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 3em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+      <i class="fas fa-table"></i> Creación de Tablas Elegantes en Python 📊
+    </h1>
+    <p style="font-size: 1.3em; opacity: 0.95; line-height: 1.7; max-width: 800px; margin:auto;">
+      Aprende a presentar datos de forma profesional con las mejores librerías de Python para crear tablas
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN 1: INTRODUCCIÓN A LAS TABLAS -->
+<div class="card section-lib" style="border-left: 6px solid #667eea; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #495057; display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-book-open"></i> 1. ¿Por Qué Usar Librerías de Tablas? 🤔
+  </h2>
+  
+  <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
+    Cuando trabajas con datos en Python, mostrarlos de forma clara y organizada es fundamental. Aunque puedes usar <code>print()</code> simple, las librerías especializadas te permiten:
+  </p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+    <div class="feature-card-lib" style="background: #e3f2fd; border-left: 4px solid #2196f3;">
+      <h4><i class="fas fa-eye"></i> Visualización Clara</h4>
+      <p>Datos organizados en filas y columnas con bordes y espaciado automático</p>
+    </div>
+    
+    <div class="feature-card-lib" style="background: #f3e5f5; border-left: 4px solid #9c27b0;">
+      <h4><i class="fas fa-palette"></i> Estilos Personalizables</h4>
+      <p>Múltiples formatos: ASCII, HTML, Markdown, LaTeX y más</p>
+    </div>
+    
+    <div class="feature-card-lib" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+      <h4><i class="fas fa-file-export"></i> Exportación Fácil</h4>
+      <p>Guarda tus tablas en diferentes formatos para reportes</p>
+    </div>
+  </div>
+  
+  <!-- COMPARACIÓN ANTES/DESPUÉS -->
+  <h3 style="color: #495057; border-bottom: 2px solid #667eea; padding-bottom: 8px;">
+    📊 Antes vs Después: El Poder de las Tablas
+  </h3>
+  
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+    <div>
+      <h4 style="color: #dc3545;"><i class="fas fa-times-circle"></i> Sin Librerías (difícil de leer)</h4>
+      <div class="code-table">
+<pre><code><span class="comment"># Datos desordenados con print()</span>
+<span class="keyword">print</span>(<span class="string">"Elemento Símbolo Número"</span>)
+<span class="keyword">print</span>(<span class="string">"Hidrógeno H 1"</span>)
+<span class="keyword">print</span>(<span class="string">"Helio He 2"</span>)
+<span class="keyword">print</span>(<span class="string">"Litio Li 3"</span>)</code></pre>
+      </div>
+    </div>
+    
+    <div>
+      <h4 style="color: #28a745;"><i class="fas fa-check-circle"></i> Con Librerías (profesional)</h4>
+      <div class="code-table">
+<pre><code><span class="comment"># Tabla elegante y organizada</span>
+┌───────────┬─────────┬────────┐
+│ Elemento  │ Símbolo │ Número │
+├───────────┼─────────┼────────┤
+│ Hidrógeno │ H       │ 1      │
+│ Helio     │ He      │ 2      │
+│ Litio     │ Li      │ 3      │
+└───────────┴─────────┴────────┘</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 2: INSTALACIÓN -->
+<div class="card section-lib" style="border-left: 6px solid #28a745; background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #155724; display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-download"></i> 2. Instalación de las Librerías 📥
+  </h2>
+  
+  <p style="font-size: 1.05em; line-height: 1.7; color: #155724;">
+    Antes de usar estas poderosas herramientas, necesitas instalarlas. Todas se instalan fácilmente con <code>pip</code>:
+  </p>
+  
+  <!-- TARJETAS DE INSTALACIÓN -->
+  <div class="lib-card lib-card-tabulate">
+    <h3 style="color: #e74c3c; margin-top: 0;">
+      <i class="fas fa-table"></i> Tabulate
+      <span class="feature-badge badge-facil">Fácil</span>
+      <span class="feature-badge badge-clasico">Clásico</span>
+    </h3>
+    <p>La más simple y directa. Perfecta para principiantes.</p>
+    <div class="installation-box" style="background: #2c3e50; color: #ecf0f1;">
+      <i class="fas fa-terminal"></i> pip install tabulate
+    </div>
+  </div>
+  
+  <div class="lib-card lib-card-rich">
+    <h3 style="color: #9b59b6; margin-top: 0;">
+      <i class="fas fa-palette"></i> Rich
+      <span class="feature-badge badge-moderno">Moderno</span>
+      <span class="feature-badge badge-colorido">Colorido</span>
+    </h3>
+    <p>La más moderna y colorida. Ideal para aplicaciones interactivas.</p>
+    <div class="installation-box" style="background: #2c3e50; color: #ecf0f1;">
+      <i class="fas fa-terminal"></i> pip install rich
+    </div>
+  </div>
+  
+  <div class="lib-card lib-card-pretty">
+    <h3 style="color: #3498db; margin-top: 0;">
+      <i class="fas fa-border-all"></i> PrettyTable
+      <span class="feature-badge badge-clasico">Clásico</span>
+      <span class="feature-badge badge-facil">Flexible</span>
+    </h3>
+    <p>Veterana y confiable. Gran control sobre el formato.</p>
+    <div class="installation-box" style="background: #2c3e50; color: #ecf0f1;">
+      <i class="fas fa-terminal"></i> pip install prettytable
+    </div>
+  </div>
+  
+  <!-- VERIFICACIÓN DE INSTALACIÓN -->
+  <div class="note-lib" style="border-left: 5px solid #ffc107; background-color: #fff3cd; margin-top: 20px;">
+    <p><i class="fas fa-lightbulb" style="color: #856404;"></i> <strong>Tip:</strong> Para verificar que se instalaron correctamente, prueba importarlas:</p>
+    <div class="code-table" style="margin-top: 10px;">
+<pre><code><span class="keyword">import</span> <span class="module">tabulate</span>
+<span class="keyword">import</span> <span class="module">rich</span>
+<span class="keyword">import</span> <span class="module">prettytable</span>
+<span class="keyword">print</span>(<span class="string">"✅ ¡Todas las librerías instaladas!"</span>)</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================
+     PARTE 2: SINTAXIS BÁSICA Y CREACIÓN DESDE LISTAS
+     ======================================== -->
+
+<!-- SECCIÓN 3: SINTAXIS BÁSICA -->
+<div class="card section-lib" style="border-left: 6px solid #ff6b6b; background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c92a2a; display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-code"></i> 3. Sintaxis Básica: Creando Tu Primera Tabla 🚀
+  </h2>
+  
+  <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
+    Todas las librerías siguen un patrón similar: <strong>datos + encabezados = tabla</strong>. Veamos cómo funciona cada una:
+  </p>
+  
+  <!-- EJEMPLO BÁSICO CON TABULATE -->
+  <div class="lib-card lib-card-tabulate">
+    <h3 style="color: #e74c3c;"><i class="fas fa-table"></i> Tabulate: Simple y Directa</h3>
+    
+    <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">tabulate</span> <span class="keyword">import</span> <span class="function">tabulate</span>
+
+<span class="comment"># Paso 1: Preparar los datos (lista de listas)</span>
+datos = [
+    [<span class="string">"Mercurio"</span>, <span class="number">4879</span>, <span class="number">57.9</span>],
+    [<span class="string">"Venus"</span>, <span class="number">12104</span>, <span class="number">108.2</span>],
+    [<span class="string">"Tierra"</span>, <span class="number">12756</span>, <span class="number">149.6</span>]
+]
+
+<span class="comment"># Paso 2: Definir los encabezados</span>
+encabezados = [<span class="string">"Planeta"</span>, <span class="string">"Diámetro (km)"</span>, <span class="string">"Distancia al Sol (millones km)"</span>]
+
+<span class="comment"># Paso 3: Crear la tabla</span>
+tabla = <span class="function">tabulate</span>(datos, headers=encabezados, tablefmt=<span class="string">"grid"</span>)
+<span class="keyword">print</span>(tabla)</code></pre>
+    </div>
+    
+    <h4 style="color: #e74c3c;">📋 Resultado:</h4>
+    <pre style="background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto;">
++----------+---------------+--------------------------------+
+| Planeta  | Diámetro (km) | Distancia al Sol (millones km) |
++==========+===============+================================+
+| Mercurio | 4879          | 57.9                           |
++----------+---------------+--------------------------------+
+| Venus    | 12104         | 108.2                          |
++----------+---------------+--------------------------------+
+| Tierra   | 12756         | 149.6                          |
++----------+---------------+--------------------------------+
+    </pre>
+  </div>
+  
+  <!-- EJEMPLO BÁSICO CON RICH -->
+  <div class="lib-card lib-card-rich">
+    <h3 style="color: #9b59b6;"><i class="fas fa-palette"></i> Rich: Colorida y Moderna</h3>
+    
+    <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">rich.table</span> <span class="keyword">import</span> <span class="function">Table</span>
+<span class="keyword">from</span> <span class="module">rich.console</span> <span class="keyword">import</span> <span class="function">Console</span>
+
+<span class="comment"># Paso 1: Crear objeto tabla</span>
+tabla = <span class="function">Table</span>(title=<span class="string">"🌍 Planetas del Sistema Solar"</span>)
+
+<span class="comment"># Paso 2: Añadir columnas con estilos</span>
+tabla.add_column(<span class="string">"Planeta"</span>, style=<span class="string">"cyan"</span>, no_wrap=<span class="keyword">True</span>)
+tabla.add_column(<span class="string">"Diámetro (km)"</span>, style=<span class="string">"magenta"</span>)
+tabla.add_column(<span class="string">"Distancia al Sol"</span>, style=<span class="string">"green"</span>)
+
+<span class="comment"># Paso 3: Añadir filas</span>
+tabla.add_row(<span class="string">"Mercurio"</span>, <span class="string">"4,879"</span>, <span class="string">"57.9 millones km"</span>)
+tabla.add_row(<span class="string">"Venus"</span>, <span class="string">"12,104"</span>, <span class="string">"108.2 millones km"</span>)
+tabla.add_row(<span class="string">"Tierra"</span>, <span class="string">"12,756"</span>, <span class="string">"149.6 millones km"</span>)
+
+<span class="comment"># Paso 4: Mostrar la tabla</span>
+console = <span class="function">Console</span>()
+console.print(tabla)</code></pre>
+    </div>
+    
+    <h4 style="color: #9b59b6;">✨ Características Especiales:</h4>
+    <ul style="color: #495057;">
+      <li>Colores personalizables por columna</li>
+      <li>Soporte para emojis y Unicode</li>
+      <li>Bordes redondeados y estilos modernos</li>
+      <li>Exportación a HTML</li>
+    </ul>
+  </div>
+  
+  <!-- EJEMPLO BÁSICO CON PRETTYTABLE -->
+  <div class="lib-card lib-card-pretty">
+    <h3 style="color: #3498db;"><i class="fas fa-border-all"></i> PrettyTable: Control Total</h3>
+    
+    <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">prettytable</span> <span class="keyword">import</span> <span class="function">PrettyTable</span>
+
+<span class="comment"># Paso 1: Crear objeto tabla</span>
+tabla = <span class="function">PrettyTable</span>()
+
+<span class="comment"># Paso 2: Definir columnas</span>
+tabla.field_names = [<span class="string">"Planeta"</span>, <span class="string">"Diámetro (km)"</span>, <span class="string">"Distancia al Sol"</span>]
+
+<span class="comment"># Paso 3: Añadir filas una por una</span>
+tabla.add_row([<span class="string">"Mercurio"</span>, <span class="number">4879</span>, <span class="string">"57.9 millones km"</span>])
+tabla.add_row([<span class="string">"Venus"</span>, <span class="number">12104</span>, <span class="string">"108.2 millones km"</span>])
+tabla.add_row([<span class="string">"Tierra"</span>, <span class="number">12756</span>, <span class="string">"149.6 millones km"</span>])
+
+<span class="comment"># Paso 4: Personalizar apariencia</span>
+tabla.align[<span class="string">"Planeta"</span>] = <span class="string">"l"</span>  <span class="comment"># Alinear a la izquierda</span>
+tabla.align[<span class="string">"Diámetro (km)"</span>] = <span class="string">"r"</span>  <span class="comment"># Alinear a la derecha</span>
+
+<span class="keyword">print</span>(tabla)</code></pre>
+    </div>
+    
+    <h4 style="color: #3498db;">🎯 Ventajas:</h4>
+    <ul style="color: #495057;">
+      <li>Control fino sobre alineación y formato</li>
+      <li>Ordenamiento de datos integrado</li>
+      <li>Múltiples estilos de borde</li>
+      <li>Compatible con versiones antiguas de Python</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECCIÓN 4: CREACIÓN DESDE DIFERENTES ESTRUCTURAS -->
+<div class="card section-lib" style="border-left: 6px solid #20c997; background: linear-gradient(135deg, #e6fcf5 0%, #c3fae8 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #087f5b; display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-database"></i> 4. Creando Tablas desde Diferentes Estructuras 📦
+  </h2>
+  
+  <!-- DESDE LISTAS -->
+  <h3 style="color: #087f5b; border-bottom: 2px solid #20c997; padding-bottom: 8px;">
+    📋 Desde Listas de Listas
+  </h3>
+  
+  <div class="code-table">
+<pre><code><span class="comment"># Ejemplo: Tabla Periódica (primeros elementos)</span>
+<span class="keyword">from</span> <span class="module">tabulate</span> <span class="keyword">import</span> <span class="function">tabulate</span>
+
+<span class="comment"># Datos como lista de listas</span>
+elementos = [
+    [<span class="string">"H"</span>, <span class="string">"Hidrógeno"</span>, <span class="number">1</span>, <span class="number">1.008</span>],
+    [<span class="string">"He"</span>, <span class="string">"Helio"</span>, <span class="number">2</span>, <span class="number">4.003</span>],
+    [<span class="string">"Li"</span>, <span class="string">"Litio"</span>, <span class="number">3</span>, <span class="number">6.941</span>],
+    [<span class="string">"Be"</span>, <span class="string">"Berilio"</span>, <span class="number">4</span>, <span class="number">9.012</span>],
+    [<span class="string">"B"</span>, <span class="string">"Boro"</span>, <span class="number">5</span>, <span class="number">10.81</span>]
+]
+
+<span class="keyword">print</span>(<span class="function">tabulate</span>(
+    elementos,
+    headers=[<span class="string">"Símbolo"</span>, <span class="string">"Nombre"</span>, <span class="string">"Número Atómico"</span>, <span class="string">"Masa Atómica"</span>],
+    tablefmt=<span class="string">"fancy_grid"</span>,
+    floatfmt=<span class="string">".3f"</span>  <span class="comment"># Formato para decimales</span>
+))</code></pre>
+  </div>
+  
+  <!-- DESDE DICCIONARIOS -->
+  <h3 style="color: #087f5b; border-bottom: 2px solid #20c997; padding-bottom: 8px; margin-top: 30px;">
+    📚 Desde Diccionarios
+  </h3>
+  
+  <div class="code-table">
+<pre><code><span class="comment"># Ejemplo: Propiedades Físicas de Materiales</span>
+<span class="keyword">from</span> <span class="module">rich.table</span> <span class="keyword">import</span> <span class="function">Table</span>
+<span class="keyword">from</span> <span class="module">rich.console</span> <span class="keyword">import</span> <span class="function">Console</span>
+
+<span class="comment"># Datos como diccionario</span>
+materiales = {
+    <span class="string">"Diamante"</span>: {<span class="string">"dureza"</span>: <span class="number">10</span>, <span class="string">"densidad"</span>: <span class="number">3.52</span>, <span class="string">"conductividad"</span>: <span class="string">"Excelente"</span>},
+    <span class="string">"Cuarzo"</span>: {<span class="string">"dureza"</span>: <span class="number">7</span>, <span class="string">"densidad"</span>: <span class="number">2.65</span>, <span class="string">"conductividad"</span>: <span class="string">"Baja"</span>},
+    <span class="string">"Oro"</span>: {<span class="string">"dureza"</span>: <span class="number">2.5</span>, <span class="string">"densidad"</span>: <span class="number">19.3</span>, <span class="string">"conductividad"</span>: <span class="string">"Excelente"</span>},
+    <span class="string">"Grafito"</span>: {<span class="string">"dureza"</span>: <span class="number">1.5</span>, <span class="string">"densidad"</span>: <span class="number">2.26</span>, <span class="string">"conductividad"</span>: <span class="string">"Buena"</span>}
+}
+
+<span class="comment"># Crear tabla Rich</span>
+tabla = <span class="function">Table</span>(title=<span class="string">"💎 Propiedades de Materiales"</span>)
+tabla.add_column(<span class="string">"Material"</span>, style=<span class="string">"bold cyan"</span>)
+tabla.add_column(<span class="string">"Dureza (Mohs)"</span>, justify=<span class="string">"center"</span>)
+tabla.add_column(<span class="string">"Densidad (g/cm³)"</span>, justify=<span class="string">"center"</span>)
+tabla.add_column(<span class="string">"Conductividad"</span>, justify=<span class="string">"center"</span>)
+
+<span class="comment"># Añadir datos del diccionario</span>
+<span class="keyword">for</span> material, props <span class="keyword">in</span> materiales.items():
+    tabla.add_row(
+        material,
+        <span class="function">str</span>(props[<span class="string">"dureza"</span>]),
+        f<span class="string">"{props['densidad']:.2f}"</span>,
+        props[<span class="string">"conductividad"</span>]
+    )
+
+Console().print(tabla)</code></pre>
+  </div>
+  
+  <!-- DESDE LISTAS DE DICCIONARIOS -->
+  <h3 style="color: #087f5b; border-bottom: 2px solid #20c997; padding-bottom: 8px; margin-top: 30px;">
+    🗂️ Desde Lista de Diccionarios (Más Común)
+  </h3>
+  
+  <div class="code-table">
+<pre><code><span class="comment"># Ejemplo: Notas Musicales y Frecuencias</span>
+<span class="keyword">from</span> <span class="module">prettytable</span> <span class="keyword">import</span> <span class="function">PrettyTable</span>
+
+<span class="comment"># Datos como lista de diccionarios (muy común en APIs y JSON)</span>
+notas_musicales = [
+    {<span class="string">"nota"</span>: <span class="string">"Do"</span>, <span class="string">"frecuencia"</span>: <span class="number">261.63</span>, <span class="string">"octava"</span>: <span class="number">4</span>, <span class="string">"tecla"</span>: <span class="string">"Blanca"</span>},
+    {<span class="string">"nota"</span>: <span class="string">"Re"</span>, <span class="string">"frecuencia"</span>: <span class="number">293.66</span>, <span class="string">"octava"</span>: <span class="number">4</span>, <span class="string">"tecla"</span>: <span class="string">"Blanca"</span>},
+    {<span class="string">"nota"</span>: <span class="string">"Mi"</span>, <span class="string">"frecuencia"</span>: <span class="number">329.63</span>, <span class="string">"octava"</span>: <span class="number">4</span>, <span class="string">"tecla"</span>: <span class="string">"Blanca"</span>},
+    {<span class="string">"nota"</span>: <span class="string">"Fa"</span>, <span class="string">"frecuencia"</span>: <span class="number">349.23</span>, <span class="string">"octava"</span>: <span class="number">4</span>, <span class="string">"tecla"</span>: <span class="string">"Blanca"</span>},
+    {<span class="string">"nota"</span>: <span class="string">"Sol"</span>, <span class="string">"frecuencia"</span>: <span class="number">392.00</span>, <span class="string">"octava"</span>: <span class="number">4</span>, <span class="string">"tecla"</span>: <span class="string">"Blanca"</span>}
+]
+
+<span class="comment"># Crear tabla desde los diccionarios</span>
+tabla = <span class="function">PrettyTable</span>()
+
+<span class="comment"># Extraer automáticamente las columnas de las claves</span>
+tabla.field_names = <span class="function">list</span>(notas_musicales[<span class="number">0</span>].keys())
+
+<span class="comment"># Añadir todas las filas</span>
+<span class="keyword">for</span> nota <span class="keyword">in</span> notas_musicales:
+    tabla.add_row([nota[key] <span class="keyword">for</span> key <span class="keyword">in</span> tabla.field_names])
+
+<span class="comment"># Personalización</span>
+tabla.align[<span class="string">"frecuencia"</span>] = <span class="string">"r"</span>
+tabla.float_format = <span class="string">".2"</span>
+
+<span class="keyword">print</span>(tabla)</code></pre>
+  </div>
+  
+  <!-- CONSEJO SOBRE ESTRUCTURAS -->
+  <div class="note-lib" style="border-left: 5px solid #20c997; background-color: #e6fcf5; margin-top: 25px;">
+    <p><i class="fas fa-lightbulb" style="color: #087f5b;"></i> <strong>Consejo Pro:</strong> La estructura más versátil es la <strong>lista de diccionarios</strong>. Es fácil de mantener, clara de leer, y es el formato que devuelven la mayoría de APIs y bases de datos.</p>
+  </div>
+</div>
+
+
+
+<!-- ========================================
+     PARTE 3: 6 EJEMPLOS TEMÁTICOS DIDÁCTICOS
+     Ejemplos aplicados a diferentes áreas del conocimiento
+     ======================================== -->
+
+<!-- SECCIÓN 5: EJEMPLOS TEMÁTICOS -->
+<div class="card section-lib" style="border-left: 6px solid #fd7e14; background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #d63501; display: flex; align-items: center; gap: 12px;">
+    <i class="fas fa-flask"></i> 5. Ejemplos Temáticos: Ciencia en Tablas 🔬
+  </h2>
+  
+  <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
+    Exploremos 6 ejemplos prácticos que muestran cómo las tablas pueden hacer brillar tus datos científicos y educativos.
+  </p>
+</div>
+
+<!-- EJEMPLO 1: TABLA PERIÓDICA -->
+<div class="card" style="border-left: 6px solid #ff6b6b; padding: 25px; margin-bottom: 30px; background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);">
+  <h3 style="color: #c92a2a; display: flex; align-items: center; gap: 10px;">
+    <span class="example-icon icon-periodic">⚛️</span>
+    Ejemplo 1: Tabla Periódica de los Elementos
+  </h3>
+  
+  <p style="font-size: 1.05em; color: #495057; margin-bottom: 20px;">
+    Creemos una tabla con información detallada de los primeros 10 elementos químicos.
+  </p>
+  
+  <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">tabulate</span> <span class="keyword">import</span> <span class="function">tabulate</span>
+<span class="keyword">from</span> <span class="module">rich.table</span> <span class="keyword">import</span> <span class="function">Table</span>
+<span class="keyword">from</span> <span class="module">rich.console</span> <span class="keyword">import</span> <span class="function">Console</span>
+
+<span class="comment"># Datos de los elementos químicos</span>
+elementos_quimicos = [
+    {<span class="string">"simbolo"</span>: <span class="string">"H"</span>, <span class="string">"nombre"</span>: <span class="string">"Hidrógeno"</span>, <span class="string">"numero"</span>: <span class="number">1</span>, <span class="string">"masa"</span>: <span class="number">1.008</span>, <span class="string">"grupo"</span>: <span class="string">"No metal"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"He"</span>, <span class="string">"nombre"</span>: <span class="string">"Helio"</span>, <span class="string">"numero"</span>: <span class="number">2</span>, <span class="string">"masa"</span>: <span class="number">4.003</span>, <span class="string">"grupo"</span>: <span class="string">"Gas noble"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"Li"</span>, <span class="string">"nombre"</span>: <span class="string">"Litio"</span>, <span class="string">"numero"</span>: <span class="number">3</span>, <span class="string">"masa"</span>: <span class="number">6.941</span>, <span class="string">"grupo"</span>: <span class="string">"Metal alcalino"</span>, <span class="string">"estado"</span>: <span class="string">"Sólido"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"Be"</span>, <span class="string">"nombre"</span>: <span class="string">"Berilio"</span>, <span class="string">"numero"</span>: <span class="number">4</span>, <span class="string">"masa"</span>: <span class="number">9.012</span>, <span class="string">"grupo"</span>: <span class="string">"Metal alcalinotérreo"</span>, <span class="string">"estado"</span>: <span class="string">"Sólido"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"B"</span>, <span class="string">"nombre"</span>: <span class="string">"Boro"</span>, <span class="string">"numero"</span>: <span class="number">5</span>, <span class="string">"masa"</span>: <span class="number">10.81</span>, <span class="string">"grupo"</span>: <span class="string">"Metaloide"</span>, <span class="string">"estado"</span>: <span class="string">"Sólido"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"C"</span>, <span class="string">"nombre"</span>: <span class="string">"Carbono"</span>, <span class="string">"numero"</span>: <span class="number">6</span>, <span class="string">"masa"</span>: <span class="number">12.01</span>, <span class="string">"grupo"</span>: <span class="string">"No metal"</span>, <span class="string">"estado"</span>: <span class="string">"Sólido"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"N"</span>, <span class="string">"nombre"</span>: <span class="string">"Nitrógeno"</span>, <span class="string">"numero"</span>: <span class="number">7</span>, <span class="string">"masa"</span>: <span class="number">14.01</span>, <span class="string">"grupo"</span>: <span class="string">"No metal"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"O"</span>, <span class="string">"nombre"</span>: <span class="string">"Oxígeno"</span>, <span class="string">"numero"</span>: <span class="number">8</span>, <span class="string">"masa"</span>: <span class="number">16.00</span>, <span class="string">"grupo"</span>: <span class="string">"No metal"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"F"</span>, <span class="string">"nombre"</span>: <span class="string">"Flúor"</span>, <span class="string">"numero"</span>: <span class="number">9</span>, <span class="string">"masa"</span>: <span class="number">19.00</span>, <span class="string">"grupo"</span>: <span class="string">"Halógeno"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>},
+    {<span class="string">"simbolo"</span>: <span class="string">"Ne"</span>, <span class="string">"nombre"</span>: <span class="string">"Neón"</span>, <span class="string">"numero"</span>: <span class="number">10</span>, <span class="string">"masa"</span>: <span class="number">20.18</span>, <span class="string">"grupo"</span>: <span class="string">"Gas noble"</span>, <span class="string">"estado"</span>: <span class="string">"Gas"</span>}
+]
+
+<span class="comment"># === VERSIÓN CON TABULATE ===</span>
+<span class="keyword">print</span>(<span class="string">"\n🧪 TABLA PERIÓDICA CON TABULATE:"</span>)
+<span class="comment"># Preparar datos para tabulate</span>
+datos_tabla = [[e[<span class="string">"simbolo"</span>], e[<span class="string">"nombre"</span>], e[<span class="string">"numero"</span>], f<span class="string">"{e['masa']:.3f}"</span>, e[<span class="string">"grupo"</span>], e[<span class="string">"estado"</span>]] 
+               <span class="keyword">for</span> e <span class="keyword">in</span> elementos_quimicos]
+
+<span class="keyword">print</span>(<span class="function">tabulate</span>(
+    datos_tabla,
+    headers=[<span class="string">"Símbolo"</span>, <span class="string">"Elemento"</span>, <span class="string">"Nº Atómico"</span>, <span class="string">"Masa Atómica"</span>, <span class="string">"Grupo"</span>, <span class="string">"Estado"</span>],
+    tablefmt=<span class="string">"fancy_grid"</span>,
+    numalign=<span class="string">"center"</span>,
+    stralign=<span class="string">"left"</span>
+))
+
+<span class="comment"># === VERSIÓN CON RICH (más colorida) ===</span>
+<span class="keyword">print</span>(<span class="string">"\n✨ TABLA PERIÓDICA CON RICH:"</span>)
+tabla_rich = <span class="function">Table</span>(title=<span class="string">"⚛️ Primeros 10 Elementos de la Tabla Periódica"</span>, title_style=<span class="string">"bold red"</span>)
+
+<span class="comment"># Definir columnas con colores según el tipo de dato</span>
+tabla_rich.add_column(<span class="string">"Símbolo"</span>, style=<span class="string">"bold yellow"</span>, justify=<span class="string">"center"</span>)
+tabla_rich.add_column(<span class="string">"Elemento"</span>, style=<span class="string">"cyan"</span>)
+tabla_rich.add_column(<span class="string">"Nº Atómico"</span>, style=<span class="string">"magenta"</span>, justify=<span class="string">"center"</span>)
+tabla_rich.add_column(<span class="string">"Masa Atómica"</span>, style=<span class="string">"green"</span>, justify=<span class="string">"right"</span>)
+tabla_rich.add_column(<span class="string">"Grupo"</span>, style=<span class="string">"blue"</span>)
+tabla_rich.add_column(<span class="string">"Estado"</span>, style=<span class="string">"red"</span>, justify=<span class="string">"center"</span>)
+
+<span class="comment"># Añadir filas con formato condicional</span>
+<span class="keyword">for</span> elem <span class="keyword">in</span> elementos_quimicos:
+    <span class="comment"># Color especial para gases</span>
+    estado_style = <span class="string">"bold red on white"</span> <span class="keyword">if</span> elem[<span class="string">"estado"</span>] == <span class="string">"Gas"</span> <span class="keyword">else</span> <span class="string">"blue"</span>
+    
+    tabla_rich.add_row(
+        elem[<span class="string">"simbolo"</span>],
+        elem[<span class="string">"nombre"</span>],
+        <span class="function">str</span>(elem[<span class="string">"numero"</span>]),
+        f<span class="string">"{elem['masa']:.3f}"</span>,
+        elem[<span class="string">"grupo"</span>],
+        f<span class="string">"[{estado_style}]{elem['estado']}[/{estado_style}]"</span>
+    )
+
+<span class="function">Console</span>().print(tabla_rich)</code></pre>
+  </div>
+  
+  <div class="note-lib" style="border-left: 5px solid #ff6b6b; background-color: #ffe0e0;">
+    <p><i class="fas fa-atom"></i> <strong>Aplicación:</strong> Esta tabla es perfecta para aplicaciones educativas de química. Puedes expandirla con configuración electrónica, electronegatividad, radio atómico, etc.</p>
+  </div>
+</div>
+
+<!-- EJEMPLO 2: SISTEMA SOLAR -->
+<div class="card" style="border-left: 6px solid #4ecdc4; padding: 25px; margin-bottom: 30px; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+  <h3 style="color: #0288d1; display: flex; align-items: center; gap: 10px;">
+    <span class="example-icon icon-solar">🌍</span>
+    Ejemplo 2: Sistema Solar - Datos Planetarios
+  </h3>
+  
+  <p style="font-size: 1.05em; color: #495057; margin-bottom: 20px;">
+    Exploremos nuestro sistema solar con datos fascinantes sobre cada planeta.
+  </p>
+  
+  <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">prettytable</span> <span class="keyword">import</span> <span class="function">PrettyTable</span>
+<span class="keyword">import</span> <span class="module">math</span>
+
+<span class="comment"># Datos completos del Sistema Solar</span>
+planetas = [
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Mercurio"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">4879</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">57.9</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">88</span>,
+        <span class="string">"lunas"</span>: <span class="number">0</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"167°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Rocoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Venus"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">12104</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">108.2</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">225</span>,
+        <span class="string">"lunas"</span>: <span class="number">0</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"464°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Rocoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Tierra"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">12756</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">149.6</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">365</span>,
+        <span class="string">"lunas"</span>: <span class="number">1</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"15°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Rocoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Marte"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">6792</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">227.9</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">687</span>,
+        <span class="string">"lunas"</span>: <span class="number">2</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"-65°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Rocoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Júpiter"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">142984</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">778.5</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">4333</span>,
+        <span class="string">"lunas"</span>: <span class="number">95</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"-110°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Gigante gaseoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Saturno"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">120536</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">1432.0</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">10747</span>,
+        <span class="string">"lunas"</span>: <span class="number">146</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"-140°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Gigante gaseoso"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Urano"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">51118</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">2867.0</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">30589</span>,
+        <span class="string">"lunas"</span>: <span class="number">27</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"-195°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Gigante helado"</span>
+    },
+    {
+        <span class="string">"nombre"</span>: <span class="string">"Neptuno"</span>,
+        <span class="string">"diametro_km"</span>: <span class="number">49528</span>,
+        <span class="string">"distancia_sol_mkm"</span>: <span class="number">4515.0</span>,
+        <span class="string">"periodo_orbital_dias"</span>: <span class="number">59800</span>,
+        <span class="string">"lunas"</span>: <span class="number">16</span>,
+        <span class="string">"temperatura_c"</span>: <span class="string">"-200°C"</span>,
+        <span class="string">"tipo"</span>: <span class="string">"Gigante helado"</span>
+    }
+]
+
+<span class="comment"># Crear tabla con PrettyTable</span>
+tabla = <span class="function">PrettyTable</span>()
+tabla.title = <span class="string">"🌌 DATOS DEL SISTEMA SOLAR 🚀"</span>
+
+<span class="comment"># Definir columnas</span>
+tabla.field_names = [
+    <span class="string">"🪐 Planeta"</span>, 
+    <span class="string">"📏 Diámetro (km)"</span>, 
+    <span class="string">"☀️ Distancia (mill. km)"</span>,
+    <span class="string">"🔄 Órbita (días)"</span>,
+    <span class="string">"🌙 Lunas"</span>,
+    <span class="string">"🌡️ Temp. Media"</span>,
+    <span class="string">"🌍 Tipo"</span>
+]
+
+<span class="comment"># Añadir datos con formato</span>
+<span class="keyword">for</span> planeta <span class="keyword">in</span> planetas:
+    <span class="comment"># Calcular años terrestres para la órbita</span>
+    años_orbitales = planeta[<span class="string">"periodo_orbital_dias"</span>] / <span class="number">365.25</span>
+    
+    tabla.add_row([
+        planeta[<span class="string">"nombre"</span>],
+        f<span class="string">"{planeta['diametro_km']:,}"</span>,  <span class="comment"># Formato con comas</span>
+        planeta[<span class="string">"distancia_sol_mkm"</span>],
+        f<span class="string">"{planeta['periodo_orbital_dias']:,} ({años_orbitales:.1f} años)"</span>,
+        planeta[<span class="string">"lunas"</span>],
+        planeta[<span class="string">"temperatura_c"</span>],
+        planeta[<span class="string">"tipo"</span>]
+    ])
+
+<span class="comment"># Personalizar apariencia</span>
+tabla.align[<span class="string">"🪐 Planeta"</span>] = <span class="string">"l"</span>
+tabla.align[<span class="string">"📏 Diámetro (km)"</span>] = <span class="string">"r"</span>
+tabla.align[<span class="string">"🌙 Lunas"</span>] = <span class="string">"c"</span>
+tabla.align[<span class="string">"🌍 Tipo"</span>] = <span class="string">"c"</span>
+
+<span class="comment"># Añadir una fila de resumen</span>
+tabla.add_row([<span class="string">"-"</span>*<span class="number">10</span>] * <span class="number">7</span>)  <span class="comment"># Línea separadora</span>
+total_lunas = <span class="function">sum</span>(p[<span class="string">"lunas"</span>] <span class="keyword">for</span> p <span class="keyword">in</span> planetas)
+tabla.add_row([
+    <span class="string">"TOTAL"</span>,
+    <span class="string">"-"</span>,
+    <span class="string">"-"</span>,
+    <span class="string">"-"</span>,
+    f<span class="string">"🌙 {total_lunas}"</span>,
+    <span class="string">"-"</span>,
+    <span class="string">"8 planetas"</span>
+])
+
+<span class="keyword">print</span>(tabla)</code></pre>
+  </div>
+  
+  <div class="note-lib" style="border-left: 5px solid #4ecdc4; background-color: #e0f4ff;">
+    <p><i class="fas fa-rocket"></i> <strong>Dato Curioso:</strong> ¡Júpiter y Saturno tienen más de 240 lunas entre los dos! Las tablas nos ayudan a visualizar estas impresionantes cifras astronómicas.</p>
+  </div>
+</div>
+
+<!-- EJEMPLO 3: PROPIEDADES FÍSICAS -->
+<div class="card" style="border-left: 6px solid #45b7d1; padding: 25px; margin-bottom: 30px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+  <h3 style="color: #2e7d32; display: flex; align-items: center; gap: 10px;">
+    <span class="example-icon icon-physics">💎</span>
+    Ejemplo 3: Propiedades Físicas de Materiales
+  </h3>
+  
+  <p style="font-size: 1.05em; color: #495057; margin-bottom: 20px;">
+    Comparemos las propiedades físicas de diferentes materiales usando múltiples estilos de tabla.
+  </p>
+  
+  <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">tabulate</span> <span class="keyword">import</span> <span class="function">tabulate</span>
+
+<span class="comment"># Base de datos de materiales con propiedades físicas</span>
+materiales = [
+    [<span class="string">"Diamante"</span>, <span class="number">10.0</span>, <span class="number">3.52</span>, <span class="number">2000</span>, <span class="string">"Excelente"</span>, <span class="string">"Transparente"</span>, <span class="string">"3567°C"</span>],
+    [<span class="string">"Grafito"</span>, <span class="number">1.5</span>, <span class="number">2.26</span>, <span class="number">5000</span>, <span class="string">"Excelente"</span>, <span class="string">"Opaco"</span>, <span class="string">"3642°C"</span>],
+    [<span class="string">"Cuarzo"</span>, <span class="number">7.0</span>, <span class="number">2.65</span>, <span class="number">0.013</span>, <span class="string">"Muy baja"</span>, <span class="string">"Transparente"</span>, <span class="string">"1670°C"</span>],
+    [<span class="string">"Oro"</span>, <span class="number">2.5</span>, <span class="number">19.30</span>, <span class="number">318</span>, <span class="string">"Excelente"</span>, <span class="string">"Opaco/Brillante"</span>, <span class="string">"1064°C"</span>],
+    [<span class="string">"Plata"</span>, <span class="number">2.5</span>, <span class="number">10.49</span>, <span class="number">429</span>, <span class="string">"Excelente"</span>, <span class="string">"Opaco/Brillante"</span>, <span class="string">"962°C"</span>],
+    [<span class="string">"Cobre"</span>, <span class="number">3.0</span>, <span class="number">8.96</span>, <span class="number">401</span>, <span class="string">"Excelente"</span>, <span class="string">"Opaco/Rojizo"</span>, <span class="string">"1085°C"</span>],
+    [<span class="string">"Hierro"</span>, <span class="number">4.0</span>, <span class="number">7.87</span>, <span class="number">80</span>, <span class="string">"Buena"</span>, <span class="string">"Opaco/Gris"</span>, <span class="string">"1538°C"</span>],
+    [<span class="string">"Aluminio"</span>, <span class="number">2.5</span>, <span class="number">2.70</span>, <span class="number">237</span>, <span class="string">"Excelente"</span>, <span class="string">"Opaco/Plateado"</span>, <span class="string">"660°C"</span>],
+    [<span class="string">"Vidrio"</span>, <span class="number">5.5</span>, <span class="number">2.50</span>, <span class="number">1.0</span>, <span class="string">"Muy baja"</span>, <span class="string">"Transparente"</span>, <span class="string">"1700°C"</span>],
+    [<span class="string">"Madera"</span>, <span class="number">2.0</span>, <span class="number">0.70</span>, <span class="number">0.17</span>, <span class="string">"Muy baja"</span>, <span class="string">"Opaco"</span>, <span class="string">"300°C"</span>]
+]
+
+headers = [
+    <span class="string">"Material"</span>, 
+    <span class="string">"Dureza\n(Mohs)"</span>, 
+    <span class="string">"Densidad\n(g/cm³)"</span>, 
+    <span class="string">"Conductividad\nTérmica (W/m·K)"</span>,
+    <span class="string">"Conductividad\nEléctrica"</span>,
+    <span class="string">"Apariencia"</span>,
+    <span class="string">"Punto de\nFusión"</span>
+]
+
+<span class="comment"># Mostrar con diferentes estilos de tabulate</span>
+<span class="keyword">print</span>(<span class="string">"\n💎 PROPIEDADES FÍSICAS - Estilo: grid"</span>)
+<span class="keyword">print</span>(<span class="function">tabulate</span>(materiales, headers=headers, tablefmt=<span class="string">"grid"</span>, floatfmt=<span class="string">".2f"</span>))
+
+<span class="keyword">print</span>(<span class="string">"\n💎 PROPIEDADES FÍSICAS - Estilo: pipe (Markdown)"</span>)
+<span class="keyword">print</span>(<span class="function">tabulate</span>(materiales, headers=headers, tablefmt=<span class="string">"pipe"</span>, floatfmt=<span class="string">".2f"</span>))
+
+<span class="keyword">print</span>(<span class="string">"\n💎 PROPIEDADES FÍSICAS - Estilo: orgtbl (Org-mode)"</span>)
+<span class="keyword">print</span>(<span class="function">tabulate</span>(materiales, headers=headers, tablefmt=<span class="string">"orgtbl"</span>, floatfmt=<span class="string">".2f"</span>))
+
+<span class="comment"># Análisis adicional: encontrar extremos</span>
+<span class="keyword">print</span>(<span class="string">"\n📊 ANÁLISIS DE EXTREMOS:"</span>)
+mas_duro = <span class="function">max</span>(materiales, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])
+mas_denso = <span class="function">max</span>(materiales, key=<span class="keyword">lambda</span> x: x[<span class="number">2</span>])
+mejor_conductor_termico = <span class="function">max</span>(materiales, key=<span class="keyword">lambda</span> x: x[<span class="number">3</span>])
+
+<span class="keyword">print</span>(f<span class="string">"🏆 Más duro: {mas_duro[0]} (Dureza: {mas_duro[1]})"</span>)
+<span class="keyword">print</span>(f<span class="string">"🏆 Más denso: {mas_denso[0]} (Densidad: {mas_denso[2]} g/cm³)"</span>)
+<span class="keyword">print</span>(f<span class="string">"🏆 Mejor conductor térmico: {mejor_conductor_termico[0]} ({mejor_conductor_termico[3]} W/m·K)"</span>)</code></pre>
+  </div>
+  
+  <div class="note-lib" style="border-left: 5px solid #45b7d1; background-color: #e0f5ff;">
+    <p><i class="fas fa-info-circle"></i> <strong>Aplicación Práctica:</strong> Esta tabla es útil para ingenieros y científicos de materiales al seleccionar el material adecuado para cada aplicación.</p>
+  </div>
+</div>
+
+<!-- EJEMPLO 4: MÚSICA -->
+<div class="card" style="border-left: 6px solid #f9ca24; padding: 25px; margin-bottom: 30px; background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);">
+  <h3 style="color: #f57c00; display: flex; align-items: center; gap: 10px;">
+    <span class="example-icon icon-music">🎵</span>
+    Ejemplo 4: Notas Musicales y Frecuencias
+  </h3>
+  
+  <p style="font-size: 1.05em; color: #495057; margin-bottom: 20px;">
+    Exploremos la relación matemática entre las notas musicales y sus frecuencias.
+  </p>
+  
+  <div class="code-table">
+<pre><code><span class="keyword">from</span> <span class="module">rich.table</span> <span class="keyword">import</span> <span class="function">Table</span>
+<span class="keyword">from</span> <span class="module">rich.console</span> <span class="keyword">import</span> <span class="function">Console</span>
+<span class="keyword">from</span> <span class="module">rich.text</span> <span class="keyword">import</span> <span class="function">Text</span>
+
+<span class="comment"># Datos musicales: notas, frecuencias y características</span>
+notas_musicales = [
+    {
+        <span class="string">"nota"</span>: <span class="string">"Do (C)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">261.63</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"Tónica"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Rojo"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">1.31</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Do# (C#)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">277.18</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Negra"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"2ª menor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Rojo oscuro"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">1.24</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Re (D)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">293.66</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"2ª mayor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Naranja"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">1.17</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Re# (D#)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">311.13</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Negra"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"3ª menor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Naranja oscuro"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">1.10</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Mi (E)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">329.63</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"3ª mayor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Amarillo"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">1.04</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Fa (F)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">349.23</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"4ª justa"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Verde"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.98</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Fa# (F#)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">369.99</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Negra"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"5ª disminuida"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Verde azulado"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.93</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Sol (G)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">392.00</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"5ª justa"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Azul"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.88</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Sol# (G#)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">415.30</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Negra"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"6ª menor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Azul oscuro"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.83</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"La (A)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">440.00</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"6ª mayor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Índigo"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.78</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"La# (A#)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">466.16</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Negra"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"7ª menor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Púrpura"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.74</span>
+    },
+    {
+        <span class="string">"nota"</span>: <span class="string">"Si (B)"</span>, 
+        <span class="string">"frecuencia_hz"</span>: <span class="number">493.88</span>, 
+        <span class="string">"octava"</span>: <span class="number">4</span>, 
+        <span class="string">"tipo_tecla"</span>: <span class="string">"Blanca"</span>,
+        <span class="string">"intervalo"</span>: <span class="string">"7ª mayor"</span>,
+        <span class="string">"color_sinestesia"</span>: <span class="string">"Violeta"</span>,
+        <span class="string">"longitud_onda_m"</span>: <span class="number">0.70</span>
+    }
+]
+
+<span class="comment"># Crear tabla Rich con estilo musical</span>
+console = <span class="function">Console</span>()
+tabla = <span class="function">Table</span>(
+    title=<span class="string">"🎹 Escala Cromática - Octava 4 🎼"</span>, 
+    title_style=<span class="string">"bold magenta"</span>,
+    caption=<span class="string">"La frecuencia de referencia A4 = 440 Hz (afinación estándar)"</span>,
+    caption_style=<span class="string">"italic"</span>
+)
+
+<span class="comment"># Columnas con colores temáticos</span>
+tabla.add_column(<span class="string">"🎵 Nota"</span>, style=<span class="string">"bold cyan"</span>, no_wrap=<span class="keyword">True</span>)
+tabla.add_column(<span class="string">"📊 Frecuencia (Hz)"</span>, style=<span class="string">"yellow"</span>, justify=<span class="string">"right"</span>)
+tabla.add_column(<span class="string">"🎹 Tecla"</span>, justify=<span class="string">"center"</span>)
+tabla.add_column(<span class="string">"🎶 Intervalo"</span>, style=<span class="string">"green"</span>)
+tabla.add_column(<span class="string">"🎨 Color"</span>, justify=<span class="string">"center"</span>)
+tabla.add_column(<span class="string">"🌊 λ (m)"</span>, style=<span class="string">"blue"</span>, justify=<span class="string">"right"</span>)
+
+<span class="comment"># Añadir filas con formato condicional</span>
+<span class="keyword">for</span> nota <span class="keyword">in</span> notas_musicales:
+    <span class="comment"># Estilo especial para teclas negras</span>
+    tecla_style = <span class="string">"white on black"</span> <span class="keyword">if</span> nota[<span class="string">"tipo_tecla"</span>] == <span class="string">"Negra"</span> <span class="keyword">else</span> <span class="string">"black on white"</span>
+    
+    <span class="comment"># Color de sinestesia con el color real</span>
+    color_map = {
+        <span class="string">"Rojo"</span>: <span class="string">"red"</span>, <span class="string">"Rojo oscuro"</span>: <span class="string">"dark_red"</span>,
+        <span class="string">"Naranja"</span>: <span class="string">"orange3"</span>, <span class="string">"Naranja oscuro"</span>: <span class="string">"dark_orange"</span>,
+        <span class="string">"Amarillo"</span>: <span class="string">"yellow"</span>, <span class="string">"Verde"</span>: <span class="string">"green"</span>,
+        <span class="string">"Verde azulado"</span>: <span class="string">"cyan"</span>, <span class="string">"Azul"</span>: <span class="string">"blue"</span>,
+        <span class="string">"Azul oscuro"</span>: <span class="string">"dark_blue"</span>, <span class="string">"Índigo"</span>: <span class="string">"blue_violet"</span>,
+        <span class="string">"Púrpura"</span>: <span class="string">"purple"</span>, <span class="string">"Violeta"</span>: <span class="string">"violet"</span>
+    }
+    
+    color_style = color_map.get(nota[<span class="string">"color_sinestesia"</span>], <span class="string">"white"</span>)
+    
+    tabla.add_row(
+        nota[<span class="string">"nota"</span>],
+        f<span class="string">"{nota['frecuencia_hz']:.2f}"</span>,
+        f<span class="string">"[{tecla_style}]{nota['tipo_tecla']}[/{tecla_style}]"</span>,
+        nota[<span class="string">"intervalo"</span>],
+        f<span class="string">"[{color_style}]⬤ {nota['color_sinestesia']}[/{color_style}]"</span>,
+        f<span class="string">"{nota['longitud_onda_m']:.2f}"</span>
+    )
+
+console.print(tabla)
+
+<span class="comment"># Cálculos adicionales interesantes</span>
+<span class="keyword">print</span>(<span class="string">"\n🔬 FÍSICA DE LA MÚSICA:"</span>)
+<span class="keyword">print</span>(f<span class="string">"📐 Razón de frecuencias entre octavas: 2:1"</span>)
+<span class="keyword">print</span>(f<span class="string">"📐 Razón de quinta justa (Do-Sol): {392.00/261.63:.3f}:1 ≈ 3:2"</span>)
+<span class="keyword">print</span>(f<span class="string">"📐 Velocidad del sonido usada: 343 m/s (a 20°C)"</span>)</code></pre>
+  </div>
+  
+  <div class="note-lib" style="border-left: 5px solid #f9ca24; background-color: #fff9c4;">
+    <p><i class="fas fa-music"></i> <strong>Física Musical:</strong> La relación matemática entre las notas es fascinante. Cada octava duplica la frecuencia, y los intervalos musicales corresponden a razones matemáticas simples.</p>
+  </div>
+</div>
+
+<!-- COMENTARIO FINAL DE LA PARTE 3 -->
+<div style="text-align: center; padding: 20px; background-color: #f0f8ff; border-radius: 8px; margin: 20px 0; border: 2px dashed #667eea;">
+  <p style="font-size: 1.1em; color: #667eea;"><strong>📝 FIN DE LA PARTE 3</strong></p>
+  <p style="font-size: 0.95em; color: #666;">4 de 6 ejemplos temáticos completados</p>
+  <p style="font-size: 0.9em; color: #666;"><em>Continúa con Parte 4: Circuitos Eléctricos + Termodinámica + Comparación final</em></p>
+</div>
+
+

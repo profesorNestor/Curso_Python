@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Guía de Funciones en Python – Canvas</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <!-- =========================== STYLES BASE =========================== -->
+  <style>
+      *{box-sizing:border-box;margin:0;padding:0;}
+      body{font-family:'Segoe UI','Helvetica Neue',sans-serif;line-height:1.6;background:#f3f4f6;color:#1f2937;padding:30px;}
+      h1,h2,h3,h4{font-weight:600;line-height:1.25;}
+      code{font-family:"Courier New",monospace;background:#0002;padding:2px 6px;border-radius:4px;}
+      pre code{background:none;padding:0;}
+      a{color:#2563eb;text-decoration:none;}a:hover{text-decoration:underline;}
+      /* ---------- Componentes reutilizables ---------- */
+      .card{box-shadow:0 3px 15px rgba(0,0,0,.12);border-radius:12px;overflow:hidden;margin-bottom:40px;}
+      .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+      .feature-card{border-radius:8px;padding:18px;box-shadow:0 2px 6px rgba(0,0,0,.08);background:#fafafa;}
+      .code-block-func{position:relative;border-radius:10px;padding:20px;font-family:"Courier New",Courier,monospace;font-size:1em;overflow-x:auto;}
+      .copy-code-button{position:absolute;top:12px;right:12px;background:#f3f4f6;border:none;border-radius:6px;padding:6px 12px;font-size:.8em;cursor:pointer;opacity:.7;transition:opacity .3s;}
+      .code-block-func:hover .copy-code-button{opacity:1;}
+      .code-caption{font-size:.85em;color:#6b7280;margin-bottom:6px;display:block;}
+      .note-func{border-left:5px solid;padding:15px;border-radius:8px;margin-top:18px;}
+      @keyframes subtleShiftFunc{0%{background-position:0 0;}100%{background-position:140px 140px;}}
+      .section-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:2em;color:#1d4ed8;margin-bottom:20px;}
+      .section-title .number{font-weight:700;}
+      .section-title .keyword{padding:0 6px;background:#bfdbfe;border-radius:4px;font-family:"Courier New",monospace;}
+      .sub-section{margin-top:22px;}
+      .sub-section h4{font-size:1.15em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+      .bullet{margin-left:22px;line-height:1.7;}
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================-->
+  <!--   PARTE 0 ◇ Portada                                 -->
+  <!-- ===================================================-->
+  <div class="card" style="background:linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%);padding:30px 25px;text-align:center;color:#fff;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 7px,transparent 7px 14px);animation:subtleShiftFunc 30s linear infinite;"></div>
+      <div style="position:relative;z-index:1;">
+          <h1 style="font-size:2.8em;margin-bottom:10px;text-shadow:1px 1px 3px #0003;"><i class="fas fa-cogs"></i> Funciones en Python 🪄✨</h1>
+          <p style="font-size:1.25em;max-width:640px;margin:0 auto;opacity:.95;">Aprende a organizar tu código, reutilizar lógica y construir programas más complejos y elegantes definiendo tus propias funciones.</p>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 1 ◇ Introducción                            -->
+  <!-- ===================================================-->
+  <section id="intro" class="card" style="border-left:6px solid #d946ef;background:linear-gradient(135deg,#fdf4ff 0%,#fce7f3 100%);padding:25px;">
+      <h2 class="section-title" style="color:#a21caf;"><i class="fas fa-question-circle"></i> <span class="number">1.</span> ¿Qué son las Funciones y por qué son tus mejores amigas?</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Imagina que construyes un robot complejo 🤖; en vez de forjar cada tornillo desde cero, diseñas piezas reutilizables. Las <strong>funciones</strong> son exactamente eso en programación: componentes auto‑contenidos que realizan una tarea específica y que puedes invocar una y otra vez.</p>
+
+      <h3 style="color:#86198f;font-size:1.35em;margin:25px 0 12px;">🚀 Ventajas de usar Funciones:</h3>
+      <div class="feature-grid">
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="margin:0 0 8px;color:#86198f;font-size:1.05em;"><i class="fas fa-recycle"></i> Reutilización</h4><p>Escribe una vez y úsalo mil.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="margin:0 0 8px;color:#86198f;font-size:1.05em;"><i class="fas fa-sitemap"></i> Modularidad</h4><p>Divide y vencerás.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="margin:0 0 8px;color:#86198f;font-size:1.05em;"><i class="fas fa-glasses"></i> Legibilidad</h4><p>Más fácil de depurar 👓.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="margin:0 0 8px;color:#86198f;font-size:1.05em;"><i class="fas fa-puzzle-piece"></i> Abstracción</h4><p>Usa la función sin conocer sus componentes internos.</p></div>
+      </div>
+
+      <div class="note-func" style="border-left-color:#a855f7;background:#f5f3ff;">
+          <p style="margin:0;"><i class="fas fa-lightbulb" style="color:#7c3aed;"></i> <strong>Analogía:</strong> la fórmula de energía cinética <code>E_k = ½·m·v²</code> se convierte en <code>energia_cinetica(m,v)</code>.</p>
+      </div>
+  </section>
+
+  <!-- ===================================================-->
+  <!--   PARTE 2 ◇ Sintaxis Básica                        -->
+  <!-- ===================================================-->
+  <section id="sintaxis" class="card" style="border-left:6px solid #4ecdc4;background:linear-gradient(135deg,#e6fffa 0%,#cffafe 100%);padding:25px;">
+      <h2 class="section-title" style="color:#0e7490;"><i class="fas fa-code"></i> <span class="number">2.</span> Sintaxis Básica: <span class="keyword">def</span> iniendo tu Primera Función</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Para definir una función usa <code>def</code> + nombre + paréntesis y dos puntos. Todo el cuerpo va indentado cuatro espacios.</p>
+
+      <span class="code-caption">Código 2.1 — Función sin parámetros</span>
+      <div class="code-block-func" style="background:#1f2937;color:#d1d5db;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#818cf8;">def</span> <span style="color:#a78bfa;">saludo_laboratorio</span>():
+    print(<span style="color:#fde047;">"🔬 ¡Bienvenido al laboratorio virtual!"</span>)
+    print(<span style="color:#fde047;">"Por favor, sigue los protocolos de seguridad."</span>)
+
+saludo_laboratorio()
+print(<span style="color:#fde047;">"--- Iniciando experimento 1 ---"</span>)
+saludo_laboratorio()</code></pre>
+      </div>
+  </section>
+
+  <!-- ===================================================-->
+  <!--   PARTE 3 ◇ Parámetros & Argumentos                -->
+  <!-- ===================================================-->
+  <section id="param-args" class="card" style="border-left:6px solid #34d399;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);padding:25px;">
+      <h2 class="section-title" style="color:#059669;"><i class="fas fa-exchange-alt"></i> <span class="number">3.</span> Parámetros &amp; Argumentos</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Los <strong>parámetros</strong> son los nombres declarados en la definición de la función; los <strong>argumentos</strong> son los valores reales que envías al invocarla.</p>
+
+      <table style="width:100%;margin:26px 0;font-size:.93em;background:#ffffffee;border-collapse:collapse;">
+        <thead><tr style="background:#34d39922;">
+          <th style="padding:8px 10px;border:1px solid #10b981;">Aspecto</th>
+          <th style="padding:8px 10px;border:1px solid #10b981;">Parámetro</th>
+          <th style="padding:8px 10px;border:1px solid #10b981;">Argumento</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border:1px solid #a7f3d0;">Contexto</td><td style="padding:8px 10px;border:1px solid #a7f3d0;">Definición (<code>def</code>)</td><td style="padding:8px 10px;border:1px solid #a7f3d0;">Llamada</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid #a7f3d0;">Naturaleza</td><td style="padding:8px 10px;border:1px solid #a7f3d0;">Nombre</td><td style="padding:8px 10px;border:1px solid #a7f3d0;">Valor concreto</td></tr>
+        </tbody>
+      </table>
+
+      <span class="code-caption">Código 3.1 — Parámetros vs. argumentos</span>
+      <div class="code-block-func" style="background:#1f2937;color:#d1d5db;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#818cf8;">def</span> <span style="color:#a78bfa;">calcular_area_rectangulo</span>(base, altura):
+    <span style="color:#818cf8;">return</span> base * altura
+
+print(calcular_area_rectangulo(<span style="color:#c4b5fd;">10</span>, <span style="color:#c4b5fd;">5</span>))
+print(calcular_area_rectangulo(altura=<span style="color:#c4b5fd;">3</span>, base=<span style="color:#c4b5fd;">7</span>))</code></pre>
+      </div>
+
+      <div class="note-func" style="border-left-color:#10b981;background:#f0fdf4;">
+          <p style="margin:0;"><i class="fas fa-lightbulb" style="color:#059669;"></i> <strong>Cuidado:</strong> los parámetros viven sólo dentro de la función. Cambiarlos no modifica la variable original (salvo que sean mutables y compartidos).</p>
+      </div>
+  </section>
+
+  <!-- ===================================================-->
+  <!--   PARTE 4 ◇ La palabra clave return                -->
+  <!-- ===================================================-->
+  <section id="return" class="card" style="border-left:6px solid #60a5fa;background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);padding:28px 26px 34px;">
+      <h2 class="section-title" style="color:#2563eb;"><i class="fas fa-undo-alt"></i> <span class="number">4.</span> La palabra clave <code>return</code></h2>
+      <p style="font-size:1.12em;max-width:860px;"><code>return</code> detiene la ejecución de la función y envía un resultado al punto de llamada. Si se omite, Python devuelve <code>None</code>.</p>
+
+      <div class="feature-grid" style="margin:24px 0;">
+          <div class="note-func" style="border-left-color:#3b82f6;background:#e0f2fe;">
+              <h4 style="margin-bottom:6px;color:#1d4ed8;font-size:1.05em;"><i class="fas fa-door-closed"></i> Cierre inmediato</h4>
+              <p>Todo lo que esté después de <code>return</code> no se ejecuta.</p>
+          </div>
+          <div class="note-func" style="border-left-color:#3b82f6;background:#e0f2fe;">
+              <h4 style="margin-bottom:6px;color:#1d4ed8;font-size:1.05em;"><i class="fas fa-gift"></i> Valor enviado</h4>
+              <p>Puedes devolver uno o varios valores (en forma de tupla implícita).</p>
+          </div>
+      </div>
+  </section>
+
+   <!-- ===================================================-->
+  <!--   PARTE 5 ◇ Sección 5 – Argumentos variables *args  -->
+  <!-- ===================================================-->
+  <section id="args" class="card"
+           style="border-left:6px solid #f59e0b;
+                  background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);
+                  padding:28px 26px 34px;
+                  border-radius:12px;
+                  margin-bottom:46px;">
+
+      <!-- ◇ TÍTULO PRINCIPAL DE SECCIÓN -->
+      <h2 class="section-title" style="color:#b45309;">
+         <i class="fas fa-random"></i>
+         <span class="number">5.</span> Argumentos variables <span class="keyword" style="background:#fde68a;">*args</span>
+      </h2>
+
+      <!-- ───────────────────  5-A   INTRODUCCIÓN GENERAL  -->
+      <p style="font-size:1.12em;max-width:880px;margin-bottom:18px;">
+        <strong>*args</strong> (de <em>variable <u>a</u>rgument<span style="visibility:hidden">s</span></em>) permite a una función
+        recibir un número arbitrario de <u>argumentos posicionales</u>.  
+        Internamente, todo lo que sobrepase los parámetros fijos se almacena
+        en una <code>tuple</code>. Gracias a ello, tu función puede ser tan
+        flexible como un <em>plot twist</em> en una serie 📺.
+      </p>
+
+      <!-- ───────────────────  5-B   DESGLOSE DE SINTAXIS  -->
+      <h3 style="font-size:1.35em;color:#b45309;margin:24px 0 12px;">
+          <i class="fas fa-code"></i> Anatomía de <code>*args</code>
+      </h3>
+
+      <table style="width:100%;margin-bottom:28px;font-size:.95em;
+                    background:#ffffffee;border-collapse:collapse;">
+        <thead>
+            <tr style="background:#fde68a88;">
+               <th style="padding:8px 10px;border:1px solid #f59e0b;width:30%;">Elemento</th>
+               <th style="padding:8px 10px;border:1px solid #f59e0b;">Significado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;"><code>*</code></td>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;">
+                  Operador de <em>unpacking</em>; atrapa el “resto” de los argumentos.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;"><code>args</code></td>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;">
+                  Convención de nombre – pero podrías usar <code>*nums</code>, <code>*files</code>, etc.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;">Tipo resultante</td>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;"><code>tuple</code> inmutable.</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;">Posición en la firma</td>
+              <td style="padding:8px 10px;border:1px solid #fef3c7;">
+                  Después de los parámetros posicionales “normales” y antes de <code>**kwargs</code>.
+              </td>
+            </tr>
+        </tbody>
+      </table>
+
+      <!-- ───────────────────  5-C   DEMOSTRACIÓN BÁSICA  -->
+      <span class="code-caption">Código 5.1 — Sumar cualquier cantidad de números</span>
+      <div class="code-block-func" data-code="5.1"
+           style="background:#78350f;color:#fef3c7;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fbbf24;">def</span> <span style="color:#fcd34d;">sumar</span>(*numeros):
+    <span style="color:#d97706;">"""Devuelve la suma de todos los argumentos."""</span>
+    <span style="color:#fbbf24;">return</span> sum(numeros)
+
+print(sumar(<span style="color:#eab308;">2</span>, <span style="color:#eab308;">4</span>, <span style="color:#eab308;">6</span>))                <span style="color:#9ca3af;"># → 12</span>
+print(sumar(<span style="color:#eab308;">1</span>, <span style="color:#eab308;">2</span>, <span style="color:#eab308;">3</span>, <span style="color:#eab308;">4</span>, <span style="color:#eab308;">5</span>))    <span style="color:#9ca3af;"># → 15</span></code></pre>
+      </div>
+
+      <!-- ───────────────────  5-D   COMBINAR PARAM + *args -->
+      <span class="code-caption">Código 5.2 — Encabezado fijo + datos variables</span>
+      <div class="code-block-func" data-code="5.2"
+           style="background:#78350f;color:#fef3c7;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fbbf24;">def</span> <span style="color:#fcd34d;">registrar_evento</span>(etiqueta, *detalles):
+    texto = f<span style="color:#fef08a;">"[{etiqueta}]"</span> + <span style="color:#fef08a;">": "</span> + <span style="color:#fef08a;">", "</span>.join(map(str, detalles))
+    print(texto)
+
+registrar_evento(<span style="color:#fef08a;">"LOGIN"</span>, <span style="color:#eab308;">42</span>, <span style="color:#fef08a;">"usuario"</span>, <span style="color:#fef08a;">"OK"</span>)
+<span style="color:#9ca3af;"># [LOGIN]: 42, usuario, OK</span></code></pre>
+      </div>
+
+      <!-- ───────────────────  5-E   *args COMO PROXY  -->
+      <span class="code-caption">Código 5.3 — Re-empacar argumentos para otra función</span>
+      <div class="code-block-func" data-code="5.3"
+           style="background:#78350f;color:#fef3c7;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fbbf24;">def</span> <span style="color:#fcd34d;">promedio</span>(*vals):
+    <span style="color:#fbbf24;">return</span> sum(vals) / len(vals) <span style="color:#9ca3af;">if vals else 0</span>
+
+<span style="color:#fbbf24;">def</span> <span style="color:#fcd34d;">promedio_redondeado</span>(*datos):
+    <span style="color:#fbbf24;">return</span> round(promedio(*datos), <span style="color:#eab308;">2</span>)
+
+print(promedio_redondeado(<span style="color:#eab308;">7.5</span>, <span style="color:#eab308;">8.1</span>, <span style="color:#eab308;">9.3</span>))</code></pre>
+      </div>
+
+      <!-- ───────────────────  5-F   USOS AVANZADOS & TIPS  -->
+      <h3 style="font-size:1.35em;color:#b45309;margin:30px 0 12px;">
+          <i class="fas fa-lightbulb"></i> Buenas prácticas &amp; trampas frecuentes
+      </h3>
+
+      <div class="feature-grid">
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f59e0b;">
+              <h4 style="color:#c2410c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-signature"></i> Nombres expressivos
+              </h4>
+              <p style="font-size:.9em;">Usa <code>*nombres</code>, <code>*puntos</code>, etc.,
+              cuando el contexto mejore la legibilidad.</p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f59e0b;">
+              <h4 style="color:#c2410c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-stream"></i> Orden correcto
+              </h4>
+              <p style="font-size:.9em;">
+                  <code>def f(a, b=0, *args, **kwargs)</code>.  
+                  Nada puede ir después de <code>*args</code> salvo <code>**kwargs</code>.
+              </p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f59e0b;">
+              <h4 style="color:#c2410c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-filter"></i> Validación temprana
+              </h4>
+              <p style="font-size:.9em;">
+                  Comprueba tipos o cantidad mínima:  
+                  <code>if len(args) &lt; 2: raise ValueError</code>.
+              </p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f59e0b;">
+              <h4 style="color:#c2410c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-balance-scale"></i> No abuses
+              </h4>
+              <p style="font-size:.9em;">
+                  Si tu función <em>siempre</em> espera 3 valores, declara 3 parámetros.
+                  <code>*args</code> es para casos realmente variables.
+              </p>
+          </div>
+      </div>
+
+      <!-- ───────────────────  5-G   CIERRE MOTIVADOR  -->
+      <div class="note-func"
+           style="border-left-color:#f59e0b;background:#fffbeb;margin-top:32px;">
+          <p style="margin:0;font-size:1.05em;">
+             <i class="fas fa-lightbulb" style="color:#d97706;"></i>
+             Dominar <strong>*args</strong> multiplica la versatilidad de tus APIs y
+             facilita la creación de <em>wrapper-functions</em> y <em>logging</em> detallado.
+          </p>
+      </div>
+
+  </section>
+
+
+
+  <!-- ===================================================-->
+  <!--   PARTE 6 ◇ Sección 6 – Argumentos clave **kwargs   -->
+  <!-- ===================================================-->
+  <section id="kwargs" class="card"
+           style="border-left:6px solid #f97316;
+                  background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%);
+                  padding:28px 26px 34px;
+                  border-radius:12px;
+                  margin-bottom:46px;">
+
+      <!-- ◇ TÍTULO PRINCIPAL DE SECCIÓN -->
+      <h2 class="section-title" style="color:#c2410c;">
+         <i class="fas fa-tags"></i>
+         <span class="number">6.</span> Argumentos de palabra clave <span class="keyword" style="background:#fed7aa;">**kwargs</span>
+      </h2>
+
+      <!-- ───────────────────  6-A   INTRODUCCIÓN GENERAL -->
+      <p style="font-size:1.12em;max-width:880px;margin-bottom:18px;">
+        Si <code>*args</code> captura “todos los sobrantes posicionales”,  
+        <strong>**kwargs</strong> (de <em>“keyword arguments”</em>) hace lo propio con los
+        <u>argumentos nombrados</u>. El operador <code>**</code> empaqueta cada par
+        <code>clave=valor</code> adicional en un <code>dict</code>, ideal para funciones con
+        configuraciones opcionales, objetos heterogéneos o parámetros
+        evolutivos.
+      </p>
+
+      <!-- ───────────────────  6-B   DESGLOSE DE SINTAXIS -->
+      <h3 style="font-size:1.35em;color:#c2410c;margin:24px 0 12px;">
+          <i class="fas fa-code"></i> Anatomía de <code>**kwargs</code>
+      </h3>
+
+      <table style="width:100%;margin-bottom:28px;font-size:.95em;
+                    background:#ffffffee;border-collapse:collapse;">
+        <thead>
+            <tr style="background:#fed7aa88;">
+               <th style="padding:8px 10px;border:1px solid #f97316;width:30%;">Elemento</th>
+               <th style="padding:8px 10px;border:1px solid #f97316;">Significado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;"><code>**</code></td>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;">
+                  Operador de <em>double-unpacking</em>; captura pares <code>nombre=valor</code>.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;"><code>kwargs</code></td>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;">
+                  Convención de nombre (&ldquo;<em>kw</em>&rdquo; = keyword).  
+                  Puedes usar <code>**opciones</code>, <code>**params</code>, etc.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;">Tipo resultante</td>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;"><code>dict</code> mutable.</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;">Posición en la firma</td>
+              <td style="padding:8px 10px;border:1px solid #ffedd5;">
+                  Siempre el <u>último</u> parámetro de la lista.
+              </td>
+            </tr>
+        </tbody>
+      </table>
+
+      <!-- ───────────────────  6-C   DEMOSTRACIÓN BÁSICA -->
+      <span class="code-caption">Código 6.1 — Crear un perfil de usuario flexible</span>
+      <div class="code-block-func" data-code="6.1"
+           style="background:#7c2d12;color:#ffedd5;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fb923c;">def</span> <span style="color:#fdba74;">crear_perfil</span>(nombre, **extra):
+    perfil = {<span style="color:#fed7aa;">"nombre"</span>: nombre}
+    perfil.update(extra)
+    <span style="color:#fb923c;">return</span> perfil
+
+print(crear_perfil(<span style="color:#fed7aa;">"Ana"</span>,
+                   edad=<span style="color:#fdba74;">17</span>,
+                   ciudad=<span style="color:#fed7aa;">"Bogotá"</span>,
+                   pasatiempos=[<span style="color:#fed7aa;">"ajedrez"</span>, <span style="color:#fed7aa;">"música"</span>]))</code></pre>
+      </div>
+
+      <!-- ───────────────────  6-D   MEZCLAR PARAM + *args + **kwargs -->
+      <span class="code-caption">Código 6.2 — Función “todo-en-uno” con verificación</span>
+      <div class="code-block-func" data-code="6.2"
+           style="background:#7c2d12;color:#ffedd5;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fb923c;">def</span> <span style="color:#fdba74;">procesar_datos</span>(accion, *datos, **config):
+    modo = config.get(<span style="color:#fed7aa;">"modo"</span>, <span style="color:#fed7aa;">"debug"</span>)
+    <span style="color:#fb923c;">if</span> accion == <span style="color:#fed7aa;">"suma"</span>:
+        res = sum(datos)
+    <span style="color:#fb923c;">elif</span> accion == <span style="color:#fed7aa;">"promedio"</span>:
+        res = sum(datos)/len(datos) <span style="color:#9ca3af;">if datos else 0</span>
+    <span style="color:#fb923c;">else</span>:
+        <span style="color:#fb923c;">raise</span> ValueError(<span style="color:#fed7aa;">"Acción no soportada"</span>)
+    <span style="color:#fb923c;">return</span> round(res, config.get(<span style="color:#fed7aa;">"decimales"</span>, <span style="color:#fdba74;">2</span>)) <span style="color:#9ca3af;">if modo=="prod" else res</span>
+
+print(procesar_datos(<span style="color:#fed7aa;">"suma"</span>, <span style="color:#fdba74;">2</span>, <span style="color:#fdba74;">4</span>, <span style="color:#fdba74;">8</span>, decimales=<span style="color:#fdba74;">0</span>, modo=<span style="color:#fed7aa;">"prod"</span>))</code></pre>
+      </div>
+
+      <!-- ───────────────────  6-E   RE-DIRIGIR **kwargs -->
+      <span class="code-caption">Código 6.3 — Redirigir configuraciones a otra función</span>
+      <div class="code-block-func" data-code="6.3"
+           style="background:#7c2d12;color:#ffedd5;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fb923c;">def</span> <span style="color:#fdba74;">imprimir_tabla</span>(datos, **op):
+    ancho = op.get(<span style="color:#fed7aa;">"ancho"</span>, <span style="color:#fdba74;">10</span>)
+    <span style="color:#fb923c;">for</span> fila <span style="color:#fb923c;">in</span> datos:
+        print(<span style="color:#fed7aa;">"|"</span>.join(str(c).ljust(ancho) <span style="color:#fb923c;">for</span> c <span style="color:#fb923c;">in</span> fila))
+
+<span style="color:#fb923c;">def</span> <span style="color:#fdba74;">mostrar_personas</span>(*filas, **estilo):
+    imprimir_tabla(filas, **estilo)   <span style="color:#9ca3af;"># forward</span>
+
+mostrar_personas(
+    (<span style="color:#fed7aa;">"ID"</span>, <span style="color:#fed7aa;">"Nombre"</span>),
+    (<span style="color:#fdba74;">1</span>, <span style="color:#fed7aa;">"Luisa"</span>),
+    (<span style="color:#fdba74;">2</span>, <span style="color:#fed7aa;">"Carlos"</span>),
+    ancho=<span style="color:#fdba74;">12</span>)</code></pre>
+      </div>
+
+      <!-- ───────────────────  6-F   BUENAS PRÁCTICAS -->
+      <h3 style="font-size:1.35em;color:#c2410c;margin:30px 0 12px;">
+          <i class="fas fa-lightbulb"></i> Buenas prácticas &amp; peligros comunes
+      </h3>
+
+      <div class="feature-grid">
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f97316;">
+              <h4 style="color:#ea580c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-spell-check"></i> Documenta lo esperado
+              </h4>
+              <p style="font-size:.9em;">Lista las claves aceptadas en el <em>docstring</em> o lanza
+                 <code>TypeError</code> si llega algo inesperado.</p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f97316;">
+              <h4 style="color:#ea580c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-filter"></i> Sanitiza valores
+              </h4>
+              <p style="font-size:.9em;">Convierte tipos (ej. <code>int()</code>) o establece
+                 límites antes de usar las opciones.</p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f97316;">
+              <h4 style="color:#ea580c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-stream"></i> Descompón si crece
+              </h4>
+              <p style="font-size:.9em;">
+                 Si <code>**kwargs</code> se vuelve gigantesco, crea sub-diccionarios
+                 (<code>db_opts</code>, <code>ui_opts</code>…) y pásalos explícitamente.
+              </p>
+          </div>
+          <div class="feature-card" style="background:#fff7ed;border-top:4px solid #f97316;">
+              <h4 style="color:#ea580c;margin:0 0 6px;font-size:1.05em;">
+                  <i class="fas fa-balance-scale"></i> Evita opacidad
+              </h4>
+              <p style="font-size:.9em;">
+                 El poder de <code>**kwargs</code> trae consigo la tentación de
+                 esconder demasiada lógica. Mantén transparencia ⚖️.
+              </p>
+          </div>
+      </div>
+
+      <!-- ───────────────────  6-G   CIERRE MOTIVADOR -->
+      <div class="note-func"
+           style="border-left-color:#f97316;background:#fff7ed;margin-top:32px;">
+          <p style="margin:0;font-size:1.05em;">
+             <i class="fas fa-lightbulb" style="color:#ea580c;"></i>
+             Controlar <strong>**kwargs</strong> te brinda APIs evolutivas sin romper
+             compatibilidad. Úsalo estratégicamente y tus funciones
+             crecerán con las necesidades de tu proyecto.
+          </p>
+      </div>
+
+  </section>
+
+
+  <!-- ===================================================-->
+  <!--   PARTE 7 ◇ Parámetros con valor por defecto        -->
+  <!-- ===================================================-->
+  <section id="defaults" class="card"
+           style="border-left:6px solid #14b8a6;
+                  background:linear-gradient(135deg,#ecfdf5 0%,#ccfbf1 100%);
+                  padding:28px 26px 34px;
+                  border-radius:12px;
+                  margin-bottom:46px;">
+
+      <!-- ◇ Título principal -->
+      <h2 class="section-title" style="color:#0f766e;">
+          <i class="fas fa-sliders-h"></i>
+          <span class="number">7.</span>
+          Parámetros opcionales con <em>valor por defecto</em>
+      </h2>
+
+      <!-- ────────────  7-A  Introducción general -->
+      <p style="font-size:1.12em;max-width:880px;margin-bottom:18px;">
+        Un <strong>parámetro con valor por defecto</strong> le dice a Python:
+        &ldquo;si el llamador no envía nada, usa este <em>plan B</em>&rdquo;.
+        Esto simplifica firmas, evita sobrecarga de <code>None</code>-checks y
+        crea API más amistosas.
+      </p>
+
+      <!-- ────────────  7-B  Regla de la pirámide -->
+      <div class="note-func"
+           style="border-left-color:#14b8a6;background:#d1fae5;margin-bottom:26px;">
+          <p style="margin:0;font-size:1.0em;">
+             📏 <strong>Orden canónico:</strong>
+             <code>posicionales / obligatorios → opcionales → *args → **kwargs</code>.
+             Alterarlo provoca <code>SyntaxError</code>.
+          </p>
+      </div>
+
+      <!-- ────────────  7-C  Ejemplo básico -->
+      <span class="code-caption">Código 7.1 — Saludo con parámetro opcional</span>
+      <div class="code-block-func" data-code="7.1"
+           style="background:#064e3b;color:#d1fae5;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#10b981;">def</span> <span style="color:#6ee7b7;">saludar</span>(nombre, saludo=<span style="color:#bbf7d0;">"Hola"</span>):
+    print(f<span style="color:#bbf7d0;">"{saludo}, {nombre}!"</span>)
+
+saludar(<span style="color:#bbf7d0;">"María"</span>)                 <span style="color:#4ade80;"># Hola, María!</span>
+saludar(<span style="color:#bbf7d0;">"Luis"</span>, saludo=<span style="color:#bbf7d0;">"Buenos días"</span>)  <span style="color:#4ade80;"># Buenos días, Luis!</span></code></pre>
+      </div>
+
+      <!-- ────────────  7-D  Peligro: valores mutables -->
+      <h3 style="font-size:1.35em;color:#0f766e;margin:24px 0 12px;">
+          <i class="fas fa-bug"></i> El clásico error del <em>mutable default</em>
+      </h3>
+
+      <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-bottom:26px;">
+          <!-- Lado izquierdo: problema -->
+          <div class="feature-card" style="background:#ecfdf5;border-top:4px solid #14b8a6;">
+              <h4 style="color:#047857;margin:0 0 6px;font-size:1.05em;">
+                  😱 Problema
+              </h4>
+              <p style="font-size:.9em;">
+                 Los objetos mutables (listas, diccionarios, conjuntos) se evalúan
+                 <em>una sola vez</em>, en tiempo de definición de la función.
+                 Todos los llamadores compartirán la misma instancia.
+              </p>
+          </div>
+
+          <!-- Lado derecho: solución -->
+          <div class="feature-card" style="background:#ecfdf5;border-top:4px solid #14b8a6;">
+              <h4 style="color:#047857;margin:0 0 6px;font-size:1.05em;">
+                  ✅ Solución
+              </h4>
+              <p style="font-size:.9em;">
+                 Usa <code>None</code> como centinela y crea un nuevo objeto dentro.
+                 Patrón conocido como <em>&ldquo;None factory&rdquo;</em>.
+              </p>
+          </div>
+      </div>
+
+      <span class="code-caption">Código 7.2 — Efecto colateral vs. patrón seguro</span>
+      <div class="code-block-func" data-code="7.2"
+           style="background:#064e3b;color:#d1fae5;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#10b981;">def</span> <span style="color:#6ee7b7;">agregar_item_peligroso</span>(item, lista=[]):  <span style="color:#64748b;"># 👎 NO HAGAS ESTO</span>
+    lista.append(item)
+    <span style="color:#10b981;">return</span> lista
+
+print(agregar_item_peligroso(<span style="color:#bbf7d0;">1</span>))  <span style="color:#4ade80;"># [1]</span>
+print(agregar_item_peligroso(<span style="color:#bbf7d0;">2</span>))  <span style="color:#f87171;"># [1, 2]  ¡Sorpresa!</span>
+
+<span style="color:#10b981;">def</span> <span style="color:#6ee7b7;">agregar_item_seguro</span>(item, lista=<span style="color:#bbf7d0;">None</span>):
+    <span style="color:#10b981;">if</span> lista <span style="color:#10b981;">is</span> <span style="color:#bbf7d0;">None</span>:
+        lista = []
+    lista.append(item)
+    <span style="color:#10b981;">return</span> lista
+
+print(agregar_item_seguro(<span style="color:#bbf7d0;">1</span>))  <span style="color:#4ade80;"># [1]</span>
+print(agregar_item_seguro(<span style="color:#bbf7d0;">2</span>))  <span style="color:#4ade80;"># [2]</span></code></pre>
+      </div>
+
+      <!-- ────────────  7-E  Consejos de estilo -->
+      <h3 style="font-size:1.35em;color:#0f766e;margin:30px 0 12px;">
+          <i class="fas fa-lightbulb"></i> Estrategias &amp; buenas costumbres
+      </h3>
+
+      <ul class="bullet" style="font-size:1.0em;margin-bottom:14px;">
+          <li><strong>Se explícito</strong> — Elige valores por defecto que expresen intención (<code>verbose=False</code> en vez de <code>0</code>).</li>
+          <li><strong>Nombres auto-descriptivos</strong> — Un parámetro <code>timeout=30</code> habla por sí mismo.</li>
+          <li><strong>Evita valores “mágicos”</strong> — Prefiere constantes (ej. <code>DEFAULT_PORT</code>) o enumeraciones.</li>
+          <li><strong>Ordena la firma</strong> — Agrupa los parámetros relacionados para que los opcionales no queden dispersos.</li>
+      </ul>
+
+      <!-- ────────────  7-F  Cierre motivador -->
+      <div class="note-func"
+           style="border-left-color:#14b8a6;background:#ccfbf1;margin-top:30px;">
+          <p style="margin:0;font-size:1.05em;">
+             <i class="fas fa-check-circle" style="color:#0f766e;"></i>
+             Dominar los valores por defecto te permite diseñar APIs limpias y
+             evolutivas sin sobrecargar al usuario con parámetros obligatorios.
+             ¡Dale a tu código esa dosis de ergonomía!
+          </p>
+      </div>
+
+  </section>
+
+
+  <!-- ===================================================-->
+  <!--   PARTE 8 ◇ Expresiones lambda (funciones anónimas) -->
+  <!-- ===================================================-->
+  <section id="lambda" class="card"
+           style="border-left:6px solid #a855f7;
+                  background:linear-gradient(135deg,#faf5ff 0%,#f3e8ff 100%);
+                  padding:28px 26px 34px;
+                  border-radius:12px;
+                  margin-bottom:46px;">
+
+      <!-- ◇ Título principal -->
+      <h2 class="section-title" style="color:#86198f;">
+          <i class="fas fa-bolt"></i>
+          <span class="number">8.</span>
+          Funciones anónimas <span class="keyword" style="background:#e9d5ff;">lambda</span>
+      </h2>
+
+      <!-- ────────────  8-A  Introducción -->
+      <p style="font-size:1.12em;max-width:880px;margin-bottom:18px;">
+        Una <strong>expresión <code>lambda</code></strong> define una función
+        <em>pequeña, sin nombre y de una sola línea</em>.  
+        Se usa donde escribir <code>def</code> completo sería excesivo
+        (callbacks, ordenamientos, mapeos rápidos, etc.).
+      </p>
+
+      <!-- ────────────  8-B  Gramática mínima -->
+      <h3 style="font-size:1.35em;color:#86198f;margin:22px 0 12px;">
+          <i class="fas fa-code"></i> Sintaxis esencial
+      </h3>
+
+      <table style="width:100%;margin-bottom:28px;font-size:.95em;background:#ffffffee;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#e9d5ff;">
+             <th style="padding:8px 10px;border:1px solid #a855f7;width:32%;">Componente</th>
+             <th style="padding:8px 10px;border:1px solid #a855f7;">Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border:1px solid #faf5ff;"><code>lambda</code></td>
+              <td style="padding:8px 10px;border:1px solid #faf5ff;">Palabra clave que inicia la expresión.</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid #faf5ff;">parámetros</td>
+              <td style="padding:8px 10px;border:1px solid #faf5ff;">Cero o más, separados por comas (pueden usar <code>*args</code>/<code>**kwargs</code>).</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid #faf5ff;"><code>:</code></td>
+              <td style="padding:8px 10px;border:1px solid #faf5ff;">Separador entre parámetros y <em>cuerpo</em>.</td></tr>
+          <tr><td style="padding:8px 10px;border:1px solid #faf5ff;">expresión</td>
+              <td style="padding:8px 10px;border:1px solid #faf5ff;">Debe ser una única expresión (no <code>return</code>).</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ────────────  8-C  Ejemplo 8.1 -->
+      <span class="code-caption">Código 8.1 — Ordenar una lista por la longitud de sus elementos</span>
+      <div class="code-block-func" data-code="8.1"
+           style="background:#581c87;color:#f3e8ff;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">palabras = ["árbol", "sol", "enciclopedia", "luz"]
+palabras.sort(key=<span style="color:#c084fc;">lambda</span> w: len(w))
+print(palabras)         <span style="color:#a78bfa;"># ['sol', 'luz', 'árbol', 'enciclopedia']</span></code></pre>
+      </div>
+
+      <!-- ────────────  8-D  Ejemplo 8.2 -->
+      <span class="code-caption">Código 8.2 — Función de primer orden para <em>map</em></span>
+      <div class="code-block-func" data-code="8.2"
+           style="background:#581c87;color:#f3e8ff;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">numeros = [1, 2, 3, 4]
+cuadrados = list(map(<span style="color:#c084fc;">lambda</span> x: x**2, numeros))
+print(cuadrados)        <span style="color:#a78bfa;"># [1, 4, 9, 16]</span></code></pre>
+      </div>
+
+      <!-- ────────────  8-E  Ventajas y límites -->
+      <h3 style="font-size:1.35em;color:#86198f;margin:24px 0 12px;">
+          <i class="fas fa-balance-scale"></i> Pros / Contras de <code>lambda</code>
+      </h3>
+
+      <div class="feature-grid">
+          <div class="feature-card" style="background:#faf5ff;border-top:4px solid #a855f7;">
+              <h4 style="color:#86198f;margin:0 0 6px;font-size:1.05em;">
+                  ⚡ Brevedad
+              </h4>
+              <p style="font-size:.9em;">Ideal para funciones de paso rápido — evita un <code>def</code> innecesario.</p>
+          </div>
+          <div class="feature-card" style="background:#faf5ff;border-top:4px solid #a855f7;">
+              <h4 style="color:#86198f;margin:0 0 6px;font-size:1.05em;">
+                  🔍 Legibilidad
+              </h4>
+              <p style="font-size:.9em;">Úsalas con moderación; expresiones largas o lógicas complejas merecen un <code>def</code>.</p>
+          </div>
+          <div class="feature-card" style="background:#faf5ff;border-top:4px solid #a855f7;">
+              <h4 style="color:#86198f;margin:0 0 6px;font-size:1.05em;">
+                  🚫 Sin docstring
+              </h4>
+              <p style="font-size:.9em;">No puedes documentarlas directamente; para APIs públicas prefiere funciones nombradas.</p>
+          </div>
+          <div class="feature-card" style="background:#faf5ff;border-top:4px solid #a855f7;">
+              <h4 style="color:#86198f;margin:0 0 6px;font-size:1.05em;">
+                  🐞 Difícil de depurar
+              </h4>
+              <p style="font-size:.9em;">Las lambdas anidadas crean <em>tracebacks</em> menos claros; nómbralas si algo puede fallar.</p>
+          </div>
+      </div>
+
+      <!-- ────────────  8-F  Cierre motivador -->
+      <div class="note-func"
+           style="border-left-color:#a855f7;background:#faf5ff;margin-top:32px;">
+          <p style="margin:0;font-size:1.05em;">
+             <i class="fas fa-lightbulb" style="color:#86198f;"></i>
+             Dominar <strong>lambda</strong> te permitirá escribir código conciso en
+             operaciones de alto orden (<em>map</em>, <em>filter</em>, GUI callbacks,
+             ordenamientos complejos).  Úsalas como condimento, no como plato principal.
+          </p>
+      </div>
+
+  </section>
+
+
+  <!-- ===================================================-->
+  <!--   PARTE 9 ◇ Lambdas aplicadas + try / except        -->
+  <!-- ===================================================-->
+  <section id="lambda-plus" class="card"
+           style="border-left:6px solid #06b6d4;
+                  background:linear-gradient(135deg,#ecfeff 0%,#cffafe 100%);
+                  padding:28px 26px 34px;
+                  border-radius:12px;
+                  margin-bottom:46px;">
+
+      <!-- ◇ Título principal -->
+      <h2 class="section-title" style="color:#0e7490;">
+          <i class="fas fa-rocket"></i>
+          <span class="number">9.</span>
+          Lambdas al servicio de la <em>ciencia</em> & error-handling elegante
+      </h2>
+
+      <!-- ────────────  9-A  Introducción -->
+      <p style="font-size:1.12em;max-width:880px;margin-bottom:18px;">
+        Las expresiones <code>lambda</code> brillan cuando encapsulan fórmulas
+        cortas y repetitivas.  Combinadas con bloques <code>try / except</code>
+        logras prototipos robustos en una sola pasada 🏎️.
+      </p>
+
+      <!-- ────────────  9-B  Ejemplo 9.1 — Matemáticas -->
+      <span class="code-caption">Código 9.1 — Área y circunferencia de un círculo</span>
+      <div class="code-block-func" data-code="9.1"
+           style="background:#0f172a;color:#cffafe;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">import math
+area_circ = <span style="color:#67e8f9;">lambda</span> r: math.pi * r**2          <span style="color:#64748b;"># A = π·r²</span>
+perim_circ = <span style="color:#67e8f9;">lambda</span> r: 2 * math.pi * r        <span style="color:#64748b;"># P = 2πr</span>
+
+radio = 3
+print(<span style="color:#bae6fd;">f"Área: {area_circ(radio):.2f}"</span>)
+print(<span style="color:#bae6fd;">f"Perímetro: {perim_circ(radio):.2f}"</span>)</code></pre>
+      </div>
+
+      <!-- ────────────  9-C  Ejemplo 9.2 — Física -->
+      <span class="code-caption">Código 9.2 — Energía potencial gravitatoria (m·g·h)</span>
+      <div class="code-block-func" data-code="9.2"
+           style="background:#0f172a;color:#cffafe;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">E_p = <span style="color:#67e8f9;">lambda</span> m, h, g=<span style="color:#bae6fd;">9.81</span>: m * g * h
+datos = [(1.5, 2), (0.8, 5), (10, 0.3)]   <span style="color:#64748b;"># (kg, m)</span>
+energias = list(map(<span style="color:#67e8f9;">lambda</span> p: round(E_p(*p), 2), datos))
+print(energias)  <span style="color:#a5f3fc;"># [29.43, 39.24, 29.43]</span></code></pre>
+      </div>
+
+      <!-- ────────────  9-D  Ejemplo 9.3 — Manejo de errores -->
+      <span class="code-caption">Código 9.3 — Pendiente de recta con protección ÷0</span>
+      <div class="code-block-func" data-code="9.3"
+           style="background:#0f172a;color:#cffafe;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">m = <span style="color:#67e8f9;">lambda</span> x1, y1, x2, y2: (y2 - y1) / (x2 - x1)
+
+<span style="color:#67e8f9;">def</span> pendiente_segura(p1, p2):
+    <span style="color:#67e8f9;">try</span>:
+        <span style="color:#67e8f9;">return</span> m(*p1, *p2)
+    <span style="color:#67e8f9;">except</span> ZeroDivisionError:
+        <span style="color:#67e8f9;">return</span> math.inf   <span style="color:#64748b;"># Recta vertical</span>
+
+print(pendiente_segura((0, 0), (2, 4)))   <span style="color:#a5f3fc;"># 2.0</span>
+print(pendiente_segura((3, 1), (3, 10)))  <span style="color:#a5f3fc;"># inf</span></code></pre>
+      </div>
+
+      <!-- ────────────  9-E  Ejemplo 9.4 — Electrónica -->
+      <span class="code-caption">Código 9.4 — Ley de Ohm con captura de división por cero</span>
+      <div class="code-block-func" data-code="9.4"
+           style="background:#0f172a;color:#cffafe;margin-bottom:26px;">
+          <button class="copy-code-button"
+                  onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);
+                           alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python">R = <span style="color:#67e8f9;">lambda</span> V, I: V / I
+
+<span style="color:#67e8f9;">def</span> resistencia_segura(volts, amps):
+    <span style="color:#67e8f9;">try</span>:
+        <span style="color:#67e8f9;">return</span> round(R(volts, amps), 2)
+    <span style="color:#67e8f9;">except</span> ZeroDivisionError:
+        <span style="color:#67e8f9;">return</span> <span style="color:#bae6fd;">"∞ (aislamiento)"</span>
+
+print(resistencia_segura(<span style="color:#bae6fd;">12</span>, <span style="color:#bae6fd;">0.5</span>), "Ω")   <span style="color:#a5f3fc;"># 24.0 Ω</span>
+print(resistencia_segura(<span style="color:#bae6fd;">5</span>, <span style="color:#bae6fd;">0</span>), "Ω")      <span style="color:#a5f3fc;"># ∞ (aislamiento) Ω</span></code></pre>
+      </div>
+
+      <!-- ────────────  9-F  Tips rápidos -->
+      <h3 style="font-size:1.35em;color:#0e7490;margin:24px 0 12px;">
+          <i class="fas fa-lightbulb"></i> Micro-tips para lambdas científicas
+      </h3>
+
+      <ul class="bullet" style="font-size:1em;margin-bottom:14px;">
+          <li>Guarda lambdas en variables con nombres 👉 <code>dist_euclid</code>,
+              <code>filtro_par</code> — ganarás trazabilidad.</li>
+          <li>Usa <code>try / except</code> <em>dentro</em> de funciones wrapper,
+              no en la lambda, para mantenerla limpia.</li>
+          <li>Para fórmulas largas, divide: <code>(lambda a,b: (a+b)/2)</code> ✅,
+              <code>(lambda a,b: (a+b)/(c+d)-e*f**g)</code> ❌ (mejor <code>def</code>).</li>
+      </ul>
+
+      <!-- ────────────  9-G  Cierre motivador -->
+      <div class="note-func"
+           style="border-left-color:#06b6d4;background:#ecfeff;margin-top:32px;">
+          <p style="margin:0;font-size:1.05em;">
+             <i class="fas fa-check-circle" style="color:#0e7490;"></i>
+             Mezclar <strong>lambdas</strong> minimalistas con un sólido
+             <code>try / except</code> te permite pasar de la idea al experimento
+             en segundos, sin sacrificar estabilidad. ¡Aplícalo y acelera tu
+             próximo proyecto científico!
+          </p>
+      </div>
+
+  </section>
+
+
+</body>
+</html>
+

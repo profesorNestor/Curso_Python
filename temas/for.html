@@ -1,0 +1,439 @@
+<div id="ciclo-for-header" class="card" style="background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 5px, transparent 5px, transparent 10px); animation: subtleShiftForLoop 30s linear infinite;"></div>
+  <style> @keyframes subtleShiftForLoop { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } } </style>
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+      <i class="fas fa-sync-alt"></i> El Ciclo <code>for</code> en Python: Recorriendo el Camino 🚶‍♀️🚶‍♂️
+    </h1>
+    <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+      Domina la iteración sobre secuencias y colecciones de datos para automatizar tareas y realizar análisis complejos.
+    </p>
+  </div>
+</div>
+
+<div id="intro-ciclos" class="card section-for-intro" style="border-left: 6px solid #14b8a6; background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-history"></i> 1. El Poder de Repetir: Introducción a los Ciclos</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En muchos problemas de programación y análisis científico, necesitamos realizar la misma tarea (o una muy similar) múltiples veces. Imagina calcular la posición de un proyectil en 100 instantes de tiempo diferentes, o analizar cada gen en una larga secuencia de ADN, o simplemente saludar a cada estudiante en una lista. Hacer esto manualmente sería tedioso ¡y propenso a errores!
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Aquí es donde entran en juego las <strong>estructuras de repetición</strong>, también conocidas como <strong>ciclos</strong> o <strong>bucles</strong> (loops). Estas estructuras nos permiten ejecutar un bloque de código repetidamente hasta que se cumpla una cierta condición o se hayan recorrido todos los elementos de una colección[cite: 35264]. Son fundamentales para la automatización y para procesar grandes cantidades de datos.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Python ofrece principalmente dos tipos de ciclos para manejar la repetición[cite: 35265]:
+    <ul style="margin-left: 20px; font-size: 1.05em; line-height: 1.7;">
+        <li><i class="fas fa-shoe-prints" style="color: #14b8a6;"></i> El ciclo <strong><code>for</code></strong>: Se utiliza para iterar sobre los elementos de una secuencia (como una lista, una tupla, una cadena de texto) o cualquier objeto iterable, ejecutando un bloque de código una vez por cada elemento[cite: 35266].</li>
+        <li><i class="fas fa-hourglass-half" style="color: #14b8a6;"></i> El ciclo <strong><code>while</code></strong>: Ejecuta un bloque de código repetidamente mientras una condición específica sea verdadera[cite: 35267]. (Este ciclo lo exploraremos en detalle en otra lección).</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    En esta lección, nos sumergiremos en el versátil y poderoso ciclo <strong><code>for</code></strong>.
+  </p>
+  <div class="note-for" style="border-left-color: #14b8a6; background-color: #e6fffa; margin-top:20px; padding: 15px; border-radius: 8px;">
+    <p style="margin:0; font-size:1em;"><i class="fas fa-lightbulb" style="color: #0f766e;"></i> <strong>Analogía:</strong> Piensa en un ciclo `for` como seguir una receta paso a paso para cada ingrediente en una lista, o como un cartero que entrega una carta a cada casa en una calle específica.</p>
+  </div>
+</div>
+
+<div id="for-loop-syntax" class="card section-for-syntax" style="border-left: 6px solid #3b82f6; background: linear-gradient(135deg, #eaf5ff 0%, #d4eaff 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-route"></i> 2. El Ciclo <code>for</code>: Explorando Elemento por Elemento</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    El ciclo <code>for</code> en Python es tu herramienta principal cuando necesitas realizar una acción para cada uno de los ítems en una colección o secuencia. No necesitas saber de antemano cuántos elementos hay; el ciclo <code>for</code> se encargará de recorrerlos todos, uno por uno[cite: 35266].
+  </p>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Básica:</h3>
+  <div class="code-block-for" style="background-color: #2c3e50; color: #ecf0f1; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 1.05em; line-height: 1.5; margin: 15px 0; overflow-x: auto; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); position: relative;">
+  <pre><code class="language-python"><span style="color: #e74c3c;">for</span> variable_de_iteracion <span style="color: #e74c3c;">in</span> objeto_iterable:
+    <span style="color: #95a5a6;"># Bloque de código a ejecutar para cada elemento</span>
+    <span style="color: #95a5a6;"># Este bloque debe estar indentado (4 espacios)</span>
+    print(f<span style="color: #f1c40f;">"Procesando: {variable_de_iteracion}"</span>)
+    <span style="color: #95a5a6;"># ... más acciones con variable_de_iteracion ...</span>
+
+print(<span style="color: #f1c40f;">"¡Ciclo completado!"</span>) <span style="color: #95a5a6;"># Se ejecuta después de recorrer todos los elementos</span></code></pre>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:15px;">
+    <strong>Componentes:</strong>
+    <ul style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li><code>for</code>: Palabra clave que inicia el ciclo.</li>
+        <li><code>variable_de_iteracion</code>: Es una variable que tomará el valor de cada elemento del <code>objeto_iterable</code> en cada pasada (iteración) del ciclo. Tú eliges el nombre de esta variable (ej. <code>numero</code>, <code>nombre_estudiante</code>, <code>letra</code>, <code>i</code>).</li>
+        <li><code>in</code>: Palabra clave que separa la variable de iteración del objeto iterable.</li>
+        <li><code>objeto_iterable</code>: Es la colección o secuencia sobre la cual se va a iterar. Puede ser una lista, una tupla, una cadena de texto, un objeto <code>range</code>, un diccionario (iterando sobre sus claves por defecto), un conjunto, o cualquier otro objeto que pueda entregar sus elementos uno a uno.</li>
+        <li><code>:</code> (dos puntos): Indican el inicio del bloque de código que se repetirá.</li>
+        <li><strong>Bloque de código indentado:</strong> Las instrucciones que se ejecutarán para cada elemento. ¡La indentación es crucial en Python! [cite: 35272]</li>
+    </ul>
+  </p>
+
+  <div style="text-align:center; margin: 30px 10px; padding:25px; background: linear-gradient(135deg, #52a8ff 0%, #3875d7 100%); border: none; border-radius:15px; box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);">
+    <h4 style="color: white; font-size: 1.4em; margin-top:0; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><i class="fas fa-project-diagram"></i> Flujo Visual del Ciclo <code>for</code></h4>
+    <img src="assets/images/for.png" alt="Diagrama de flujo del ciclo for" style="max-width: 500px; width: 100%; border: 3px solid white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background-color: white; padding: 8px;">
+    <p style="font-style:italic; color: rgba(255,255,255,0.95); font-size:1em; margin-top:15px; margin-bottom:0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Visualización de cómo el ciclo <code>for</code> recorre los elementos de un iterable, ejecutando un bloque de código para cada uno.</p>
+  </div>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-stream"></i> Iterables Comunes con <code>for</code>:</h3>
+
+  <h4 style="color: #1e3a8a; font-size: 1.3em; margin-top:15px; margin-bottom:5px;">A. Recorriendo Listas y Tuplas:</h4>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Lista de elementos químicos (Química)
+elementos_alcalinos = ["Litio (Li)", "Sodio (Na)", "Potasio (K)"]
+print("Metales Alcalinos:")
+for elemento in elementos_alcalinos:
+    print(f"- {elemento}")
+
+# Tupla de constantes físicas (Física)
+CONSTANTES_FISICAS = (3.14159, 9.81, 299792458) # (Pi, g, c)
+print("\nValores de Constantes Físicas:")
+for valor_constante in CONSTANTES_FISICAS:
+    print(f"Valor: {valor_constante}")</code></pre>
+
+  <h4 style="color: #1e3a8a; font-size: 1.3em; margin-top:20px; margin-bottom:5px;">B. Recorriendo Cadenas de Texto (Strings):</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+      Cuando iteras sobre una cadena, la variable de iteración toma cada carácter de la cadena.
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Biología: Analizar una secuencia corta de ADN
+secuencia_adn_corta = "GATTACA"
+print(f"\nNucleótidos en la secuencia '{secuencia_adn_corta}':")
+for nucleotido in secuencia_adn_corta:
+    print(nucleotido, end=" - ") # Usamos end para imprimir en la misma línea
+print("FIN")</code></pre>
+
+  <h4 style="color: #1e3a8a; font-size: 1.3em; margin-top:20px; margin-bottom:5px;">C. La Función <code>range()</code>: Tu Generador de Secuencias Numéricas</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+      La función <code>range()</code> es extremadamente útil con los ciclos <code>for</code> cuando necesitas repetir una acción un número específico de veces o generar secuencias de números. No crea una lista completa en memoria, sino que genera los números sobre la marcha, haciéndola eficiente[cite: 35117].
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.7; margin-left:20px;">
+      <li><code>range(fin)</code>: Genera números desde 0 hasta <code>fin-1</code>[cite: 35118].</li>
+      <li><code>range(inicio, fin)</code>: Genera números desde <code>inicio</code> hasta <code>fin-1</code>[cite: 35119].</li>
+      <li><code>range(inicio, fin, paso)</code>: Genera números desde <code>inicio</code> hasta <code>fin-1</code>, incrementando/decrementando en <code>paso</code>[cite: 35120].</li>
+  </ul>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>print("\nContando del 0 al 4 (usando range(5)):")
+for i in range(5): # Genera 0, 1, 2, 3, 4
+    print(i, end=" ") 
+
+print("\n\nNúmeros pares del 2 al 10 (usando range(2, 11, 2)):")
+# Matemáticas: Generar números pares
+for num_par in range(2, 11, 2): # Genera 2, 4, 6, 8, 10
+    print(num_par, end=" ") 
+
+print("\n\nCuenta regresiva (Física: simulación de lanzamiento):")
+for segundo in range(5, 0, -1): # Genera 5, 4, 3, 2, 1
+    print(f"T-{segundo} segundos...")
+print("¡Despegue! 🚀")</code></pre>
+  <div class="note-for" style="border-left-color: #3b82f6; background-color: #e0f2fe; margin-top:20px; padding: 15px; border-radius: 8px;">
+      <p style="margin:0; font-size:1em;"><i class="fas fa-lightbulb" style="color: #1e40af;"></i> En Google Colab, puedes ver fácilmente los resultados de cada <code>print()</code> debajo de la celda de código. ¡Experimenta con diferentes parámetros de <code>range()</code>!</p>
+  </div>
+</div>
+
+<div id="for-con-condicionales" class="card section-for-examples" style="border-left: 6px solid #eab308; background: linear-gradient(135deg, #fefce8 0%, #fff7d0 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #ca8a04; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-vial"></i> 3. Ciclo <code>for</code> con Superpoderes: ¡Añadiendo Condicionales!</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    La verdadera magia del ciclo <code>for</code> se revela cuando lo combinas con estructuras condicionales (<code>if</code>, <code>elif</code>, <code>else</code>). Esto te permite tomar decisiones y realizar acciones diferentes para cada elemento mientras iteras.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-filter"></i> A. Filtrar Mediciones de Voltaje (Física)</h3>
+      <p>Mostrar solo voltajes superiores a un umbral y contar cuántos son.</p>
+      <pre><code>mediciones_voltaje_V = [1.2, 0.8, 2.5, 1.1, 3.0, 0.5, 2.8]
+umbral_V = 2.0
+voltajes_altos = []
+print(f"Analizando mediciones de voltaje (umbral > {umbral_V}V):")
+for voltaje in mediciones_voltaje_V:
+    if voltaje > umbral_V:
+        print(f"- {voltaje} V (¡Alto!)")
+        voltajes_altos.append(voltaje)
+print(f"Se encontraron {len(voltajes_altos)} mediciones altas.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-dna"></i> B. Identificar Codones de Inicio/Parada (Biología)</h3>
+      <p>En una secuencia de ARN (lista de codones), identificar los especiales.</p>
+      <pre><code>secuencia_codones_arn = ["AUG", "GGU", "UCA", "AUG", "UAA", "CGC", "UAG"]
+CODON_INICIO = "AUG"
+CODONES_PARADA = ["UAA", "UAG", "UGA"]
+
+print("Análisis de secuencia de codones:")
+for i, codon in enumerate(secuencia_codones_arn):
+    if codon == CODON_INICIO:
+        print(f"Posición {i}: Codón de INICIO ({codon}) encontrado.")
+    elif codon in CODONES_PARADA:
+        print(f"Posición {i}: Codón de PARADA ({codon}) encontrado.")
+    else:
+        print(f"Posición {i}: Codón {codon} (aminoácido).")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-rocket"></i> C. Simular Altura de Proyectil con Impacto (Física)</h3>
+      <p>Calcular altura y detenerse si impacta o alcanza altura máxima teórica simple.</p>
+      <pre><code>import math
+v0 = 30  # m/s
+angulo_grados = 60
+g = 9.81 # m/s^2
+angulo_rad = math.radians(angulo_grados)
+v0y = v0 * math.sin(angulo_rad)
+altura_max_teorica = (v0y**2) / (2*g)
+
+print(f"Simulación de trayectoria (v0={v0}m/s, ángulo={angulo_grados}°):")
+print(f"Altura máxima teórica: {altura_max_teorica:.2f} m")
+
+for t_segundo in range(1, 7): # Simular por 6 segundos
+    altura_y = (v0y * t_segundo) - (0.5 * g * t_segundo**2)
+    if altura_y < 0:
+        print(f"Tiempo {t_segundo}s: ¡Impacto! (altura calculada: {altura_y:.2f} m)")
+        break 
+    print(f"Tiempo {t_segundo}s: Altura = {altura_y:.2f} m")
+    if abs(altura_y - altura_max_teorica) < 0.5 and t_segundo > 0: # Aproximación a la altura máxima
+        print(f"   -> ¡Cerca de la altura máxima!")
+</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-divide"></i> D. Encontrar Números Primos hasta N (Matemáticas)</h3>
+      <p>Usar un bucle anidado y `break` para identificar números primos.</p>
+      <pre><code>n_limite = int(input("Encontrar primos hasta (ej: 30): "))
+primos_encontrados = []
+if n_limite >= 2:
+    primos_encontrados.append(2) # El 2 es el único primo par
+
+for numero in range(3, n_limite + 1, 2): # Solo impares a partir de 3
+    es_primo = True
+    for divisor in range(2, int(math.sqrt(numero)) + 1):
+        if numero % divisor == 0:
+            es_primo = False
+            break # No es primo, salir del bucle interno
+    if es_primo:
+        primos_encontrados.append(numero)
+print(f"Números primos hasta {n_limite}: {primos_encontrados}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-chart-pie"></i> E. Clasificar Datos de Encuesta (C. Sociales)</h3>
+      <p>Contar respuestas en diferentes categorías (ej. "Sí", "No", "Quizás").</p>
+      <pre><code>respuestas_encuesta = ["Sí", "No", "Sí", "Quizás", "No", "Sí", "No", "Sí", "Sí", "Quizás"]
+conteo_si = 0
+conteo_no = 0
+conteo_quizas = 0
+conteo_otros = 0
+
+for respuesta in respuestas_encuesta:
+    if respuesta.lower() == "sí": # Hacemos la comparación insensible a mayúsculas
+        conteo_si += 1
+    elif respuesta.lower() == "no":
+        conteo_no += 1
+    elif respuesta.lower() == "quizás":
+        conteo_quizas += 1
+    else:
+        conteo_otros += 1
+
+print(f"Resultados de la Encuesta:")
+print(f"- Sí: {conteo_si}")
+print(f"- No: {conteo_no}")
+print(f"- Quizás: {conteo_quizas}")
+if conteo_otros > 0:
+    print(f"- Otros/Inválidos: {conteo_otros}")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-music"></i> F. Analizar Secuencia de Notas Musicales (Música)</h3>
+      <p>Identificar notas agudas o graves en una secuencia.</p>
+      <pre><code># Notas con su octava (simplificado)
+secuencia_notas = ["Do4", "Sol4", "Mi5", "La3", "Fa4", "Si5", "Do3"]
+OCTAVA_AGUDA_UMBRAL = 5 # Consideramos notas en octava 5 o más como agudas
+OCTAVA_GRAVE_UMBRAL = 3  # Consideramos notas en octava 3 o menos como graves
+
+print("Análisis de la secuencia musical:")
+for nota_completa in secuencia_notas:
+    # Extraer la octava (el último carácter)
+    try:
+        octava_str = nota_completa[-1]
+        octava = int(octava_str) # Intentar convertir a entero
+        nombre_nota = nota_completa[:-1]
+
+        if octava >= OCTAVA_AGUDA_UMBRAL:
+            print(f"- {nombre_nota} (Octava {octava}): ¡Nota Aguda! 🎶")
+        elif octava <= OCTAVA_GRAVE_UMBRAL:
+            print(f"- {nombre_nota} (Octava {octava}): Nota Grave.  basse")
+        else:
+            print(f"- {nombre_nota} (Octava {octava}): Nota Media.")
+    except ValueError:
+        print(f"- '{nota_completa}' no tiene un formato de octava reconocible.")
+    except IndexError:
+        print(f"- '{nota_completa}' es demasiado corta para analizar.")
+</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-thermometer-three-quarters"></i> G. Simulación de Cambio de Estado (Física/Química)</h3>
+      <p>Iterar sobre un rango de temperaturas y determinar el estado del agua.</p>
+      <pre><code>print("\nCambio de estado del agua (a 1 atm):")
+for temp_C in range(-10, 115, 10): # De -10°C a 110°C, en pasos de 10°C
+    estado = ""
+    if temp_C <= 0:
+        estado = "Sólido (Hielo) 🧊"
+    elif temp_C < 100:
+        estado = "Líquido 💧"
+    else: # temp_C >= 100
+        estado = "Gaseoso (Vapor) 💨"
+    print(f"A {temp_C}°C, el agua está en estado: {estado}")</code></pre>
+    </div>
+
+  </div>
+  <style> 
+    .card-style-info { padding: 18px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .card-style-info h3 { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 1.2em; }
+    .card-style-info h3 i { min-width: 20px; text-align: center; }
+    .card-style-info p { margin-bottom: 12px; font-size: 0.95em; line-height: 1.55; flex-grow: 1; }
+    .card-style-info pre { background-color: #4a5568; color: #e2e8f0; padding: 10px; border-radius: 6px; font-size: 0.9em; overflow-x: auto; margin-top: auto; }
+  </style>
+</div>
+
+<div id="for-control-flujo" class="card section-for-control" style="border-left: 6px solid #db2777; background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #be185d; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-random"></i> 4. Controlando el Flujo Dentro del Ciclo <code>for</code></h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    A veces necesitas más control sobre cómo se ejecuta un ciclo. Python te ofrece dos sentencias clave para esto: <code>break</code> y <code>continue</code>[cite: 35285, 35286, 35289].
+  </p>
+
+  <h3 style="color: #9d174d; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-stop-circle"></i> A. <code>break</code>: ¡Detener el Ciclo Inmediatamente!</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    La sentencia <code>break</code> termina el ciclo <code>for</code> actual de forma prematura. Tan pronto como Python encuentra un <code>break</code>, sale del ciclo más interno en el que se encuentra y continúa con la siguiente instrucción después del ciclo[cite: 35287].
+  </p>
+  <pre style="background-color: #581c87; color: #f3e8ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Física: Encontrar la primera temperatura por encima de un umbral crítico
+temperaturas_reactor_C = [85.2, 88.0, 90.1, 95.5, 93.2, 101.0, 105.3]
+UMBRAL_CRITICO_C = 100.0
+temperatura_alcanzada = None
+
+for temp in temperaturas_reactor_C:
+    print(f"Analizando temperatura: {temp}°C")
+    if temp >= UMBRAL_CRITICO_C:
+        print(f"¡ALERTA! Temperatura crítica ({temp}°C) alcanzada. Deteniendo análisis.")
+        temperatura_alcanzada = temp
+        break # Salimos del ciclo
+# El código después del 'for' se ejecuta
+if temperatura_alcanzada is not None:
+    print(f"Proceso detenido debido a temperatura crítica: {temperatura_alcanzada}°C.")
+else:
+    print("Todas las temperaturas estuvieron dentro del rango seguro.")</code></pre>
+
+  <h3 style="color: #9d174d; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-forward"></i> B. <code>continue</code>: ¡Saltar a la Siguiente Iteración!</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    La sentencia <code>continue</code> termina la iteración actual del ciclo y salta inmediatamente al inicio de la siguiente iteración, con el siguiente elemento del iterable[cite: 35290]. No sale del ciclo por completo, solo omite el resto del código del bloque para la iteración actual.
+  </p>
+  <pre style="background-color: #581c87; color: #f3e8ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Matemáticas: Calcular la suma de los cuadrados solo de números impares
+numeros_serie = [1, 2, 3, 4, 5, 6, 7, 8]
+suma_cuadrados_impares = 0
+print(f"Serie original: {numeros_serie}")
+for numero in numeros_serie:
+    if numero % 2 == 0: # Si el número es par...
+        print(f"El número {numero} es par, se omite para la suma de cuadrados impares.")
+        continue # ...saltamos al siguiente número de la serie
+    
+    # Este código solo se ejecuta si el número es impar (no se ejecutó el continue)
+    cuadrado_impar = numero ** 2
+    suma_cuadrados_impares += cuadrado_impar
+    print(f"El número {numero} es impar, su cuadrado es {cuadrado_impar}. Suma parcial: {suma_cuadrados_impares}")
+
+print(f"\nSuma total de los cuadrados de los números impares: {suma_cuadrados_impares}")</code></pre>
+  <div class="note-for" style="border-left-color: #db2777; background-color: #fdf2f8; margin-top:20px; padding: 15px; border-radius: 8px;">
+    <p style="margin:0; font-size:1em;"><i class="fas fa-lightbulb" style="color: #be185d;"></i> Usar <code>break</code> y <code>continue</code> puede hacer tus ciclos más eficientes al evitar procesamiento innecesario, ¡pero úsalos con cuidado para no hacer el código difícil de seguir!</p>
+  </div>
+</div>
+
+<div id="for-buenas-practicas" class="card section-for-tips" style="background-color: #f3f4f6; border-left: 6px solid #6b7280; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #374151;"><i class="fas fa-check-double"></i> 5. Consejos y Buenas Prácticas con Ciclos <code>for</code></h2>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-tag" style="color: #4b5563;"></i> <strong>Nombres de Variables Descriptivos:</strong> Usa nombres claros para tu variable de iteración (ej. <code>medicion</code>, <code>alumno</code>, <code>planeta</code> en lugar de solo <code>i</code> o <code>x</code>, a menos que sea un simple contador genérico con <code>range()</code>).</li>
+    <li><i class="fas fa-indent" style="color: #4b5563;"></i> <strong>Indentación Consistente:</strong> Asegúrate de que el bloque de código dentro del <code>for</code> esté correctamente indentado con 4 espacios. Es fundamental para Python.</li>
+    <li><i class="fas fa-list-ol" style="color: #4b5563;"></i> <strong><code>for</code> para Iterables Finitos:</strong> Es ideal cuando sabes sobre qué colección finita vas a iterar (una lista, una cadena, un rango, etc.).</li>
+    <li><i class="fas fa-copy" style="color: #4b5563;"></i> <strong>Cuidado al Modificar la Secuencia que Itera:</strong> Modificar una lista (añadir o quitar elementos) *mientras* estás iterando sobre ella directamente puede llevar a comportamientos inesperados o errores. Si necesitas hacerlo, a menudo es más seguro iterar sobre una copia (ej. <code>for item in mi_lista.copy():</code>) o construir una nueva lista.</li>
+    <li><i class="fas fa-puzzle-piece" style="color: #4b5563;"></i> <strong>Funciones para Lógica Compleja:</strong> Si el cuerpo de tu ciclo <code>for</code> se vuelve muy largo y complicado, considera extraer esa lógica a una función separada y llamar a la función dentro del ciclo. Esto mejora la legibilidad y la reutilización del código.</li>
+    <li><i class="fas fa-magic" style="color: #4b5563;"></i> <strong>Considera List Comprehensions:</strong> Para crear listas basadas en iteraciones simples y condicionales, las listas por comprensión (que vimos brevemente) suelen ser más concisas y eficientes.</li>
+  </ul>
+</div>
+
+<div id="conclusion-for-loop" class="card section-for-conclusion" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #3730a3; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-award"></i> Conclusión: El Poder de la Iteración Controlada</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Felicidades! Has aprendido a usar el ciclo <code>for</code> en Python, una de las herramientas más fundamentales y poderosas para la programación. Ahora puedes automatizar tareas repetitivas, procesar colecciones de datos elemento por elemento, y combinarlo con condicionales para crear lógica compleja.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Desde sumar números y analizar textos hasta simular fenómenos físicos y procesar datos biológicos, el ciclo <code>for</code> será tu compañero constante en el desarrollo de soluciones ingeniosas y eficientes.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>¿Qué Sigue?</strong> La otra gran estructura de repetición es el ciclo <code>while</code>, que te permite repetir código mientras una condición sea verdadera. ¡Lo exploraremos en la próxima lección!
+      <br><br>
+      🧪 <strong>Desafío de Práctica Final para el Ciclo <code>for</code>:</strong>
+      <br>
+      En Google Colab, escribe un programa que:
+      <ol style="margin-left:20px; margin-top:5px; line-height:1.6;">
+          <li>Cree una lista con varios valores de energía cinética (Joules) de diferentes partículas en un experimento.</li>
+          <li>Use un ciclo <code>for</code> para iterar sobre estas energías.</li>
+          <li>Dentro del ciclo, si una energía es superior a un umbral (ej. 1000 J), imprima "¡Partícula de alta energía detectada!".</li>
+          <li>Si una energía es exactamente 0 J, imprima "Partícula en reposo (o error de medición)".</li>
+          <li>Para cualquier otra energía, simplemente imprima su valor.</li>
+          <li>Además, calcula y muestra el promedio de todas las energías de la lista.</li>
+      </ol>
+      ¡Esto combinará iteración, condicionales y cálculos básicos!
+    </p>
+  </div>
+</div>
+
+<style> /* Estilos generales para las "sub-tarjetas" de ejemplos y métodos, si no están ya en tu style.css principal */
+  .section-for-intro .note-for,
+  .section-for-syntax .note-for,
+  .section-for-control .note-for,
+  .section-for-tips .note-for,
+  .section-for-conclusion .note-for {
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 1em;
+  }
+  .section-for-intro .note-for { border-left: 5px solid #14b8a6; background-color: #e6fffa; }
+  .section-for-syntax .note-for { border-left-color: #3b82f6; background-color: #e0f2fe; }
+  .section-for-control .note-for { border-left-color: #db2777; background-color: #fdf2f8;}
+  
+  .code-block-for { /* Estilo para el bloque de sintaxis principal del for */
+      background-color: #2c3e50; color: #ecf0f1; 
+      padding: 20px; border-radius: 10px; 
+      font-family: 'Courier New', monospace; font-size: 1.05em; 
+      line-height: 1.5; margin: 15px 0; 
+      overflow-x: auto; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); 
+      position: relative;
+  }
+
+  .card-style-info { /* Estilo para las tarjetas internas en la sección de ejemplos y métodos */
+    padding: 18px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    display: flex; 
+    flex-direction: column; 
+  }
+  .card-style-info h3 { 
+    margin-bottom: 10px; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 1.2em; 
+  }
+  .card-style-info h3 i { 
+    min-width: 20px; 
+    text-align: center; 
+  }
+  .card-style-info p { 
+    margin-bottom: 12px; 
+    font-size: 0.95em; 
+    line-height: 1.55; 
+    flex-grow: 1; 
+  }
+  .card-style-info pre { 
+    background-color: #4a5568; /* Un color base oscuro para pre */
+    color: #e2e8f0; /* Texto claro para el pre */
+    padding: 10px; 
+    border-radius: 6px; 
+    font-size: 0.9em; 
+    overflow-x: auto; 
+    margin-top: auto; /* Empuja el pre al final si la tarjeta tiene espacio extra */
+  }
+  /* Puedes añadir colores específicos para los <pre> de cada tarjeta de ejemplo aquí si lo deseas, 
+     como lo hicimos para la página de Estilos de Nomenclatura, 
+     o mantener este color base #4a5568 para todos los pre de ejemplos. */
+</style>

@@ -43,12 +43,15 @@
 # Esta línea se ejecuta siempre, después del bloque if (si la condición fue True) o directamente (si fue False)
 print("Fin de la evaluación del if.")</code></pre>
   <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+
     Recuerda: la <code>condicion_a_evaluar</code> debe ser una expresión que resulte en <code>True</code> o <code>False</code>. Los dos puntos <code>:</code> al final de la línea del <code>if</code> son obligatorios, y el bloque de código que depende del <code>if</code> debe estar <strong>indentado</strong> (generalmente con 4 espacios)[cite: 395, 396].
   </p>
 
-  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#e6fffa; border-radius:8px;">
-    <p style="font-style:italic; color: #0f766e;">--( Espacio para Diagrama de Flujo: Condicional `if` )-- <br> (Como la Figura 1.2 de tu PDF, mostrando cómo si la condición es 'True' se ejecutan las instrucciones, y si es 'False' se salta ese bloque).</p>
-    </div>
+<div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+  <h4 style="color: #9a3412; font-size: 1.2em; margin-bottom: 10px;">Diagrama de Flujo: Condicional </h4>
+  <img src="assets/images/estructura_condicional.png" alt="Diagrama de flujo del condicional" style="max-width: 500px; width: 100%; border: 1px solid #fde68a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <p style="font-style:italic; color: #c2410c; font-size:0.9em; margin-top:8px;">Visualización del flujo de decisión para una estructura condicional.</p>
+</div>
 
   <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
   <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - ¿Es positivo?
@@ -77,6 +80,7 @@ if ph_muestra < 7.0:
   <h2 style="color: #c2410c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
     <i class="fas fa-balance-scale"></i> 3. La Sentencia <code>if-else</code>: Dos Caminos
   </h2>
+
   <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
     A menudo, no solo queremos hacer algo si una condición es verdadera, sino también hacer algo diferente si es falsa. Para esto, usamos la estructura <code>if-else</code>[cite: 401, 402].
   </p>
@@ -93,9 +97,17 @@ print("Evaluación if-else completada.")</code></pre>
     La palabra clave <code>else</code> y su bloque de código indentado solo se ejecutan si la condición del <code>if</code> inicial es <code>False</code>.
   </p>
 
-  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff1e6; border-radius:8px;">
-    <p style="font-style:italic; color: #c2410c;">--( Espacio para Diagrama de Flujo: Condicional <code>if-else</code> )-- <br> (Como la Figura 1.3 de tu PDF, mostrando los dos caminos posibles).</p>
-  </div>
+
+<div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+
+  <h4 style="color: #9a3412; font-size: 1.2em; margin-bottom: 10px;">Diagrama de Flujo: Condicional <code>if-else</code></h4>
+
+  <img src="assets/images/estructura_if_else.png" alt="Diagrama de flujo del condicional if-else" style="max-width: 500px; width: 100%; border: 1px solid #fde68a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+  <p style="font-style:italic; color: #c2410c; font-size:0.9em; margin-top:8px;">Visualización del flujo de decisión para una estructura if-else.</p>
+
+</div> 
+
 
   <h3 style="color: #9a3412; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
   <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - ¿Par o Impar?
@@ -145,9 +157,13 @@ else:
     print("Ninguna de las condiciones anteriores se cumplió.")
 print("Evaluación if-elif-else completada.")</code></pre>
 
-  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fffbeb; border-radius:8px;">
-    <p style="font-style:italic; color: #b45309;">--( Espacio para Diagrama de Flujo: Condicional <code>if-elif-else</code> )-- <br> (Como la Figura 1.5 de tu PDF, mostrando la secuencia de decisiones).</p>
-  </div>
+
+<div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+  <h4 style="color: #9a3412; font-size: 1.2em; margin-bottom: 10px;">Diagrama de Flujo: Condicionales consecutivos </h4>
+  <img src="assets/images/if-elif-else.png" alt="Condicionales consecutivos" style="max-width: 500px; width: 100%; border: 1px solid #fde68a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <p style="font-style:italic; color: #c2410c; font-size:0.9em; margin-top:8px;">Visualización del flujo de decisión para condicionales consecutivos.</p>
+</div>
+
 
   <h3 style="color: #a16207; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
   <pre style="background-color: #713f12; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - Clasificar un número
@@ -200,9 +216,15 @@ else: # ph_valor > 7
 else:
     # Código si condicion_exterior es False
     print("Condición exterior no cumplida.")</code></pre>
-  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#cffafe; border-radius:8px;">
-    <p style="font-style:italic; color: #0891b2;">--( Espacio para Diagrama de Flujo: Condicional Anidado )-- <br> (Como la Figura 1.4 de tu PDF, mostrando la jerarquía de decisiones).</p>
-  </div>
+
+
+<div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+  <h4 style="color: #9a3412; font-size: 1.2em; margin-bottom: 10px;">Diagrama de Flujo: Condicional Anidado </h4>
+  <img src="assets/images/condicionales_anidados.png" alt="Diagrama de condicionales anidados" style="max-width: 500px; width: 100%; border: 1px solid #fde68a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <p style="font-style:italic; color: #c2410c; font-size:0.9em; margin-top:8px;">Visualización del flujo de condicionales anidados.</p>
+</div>
+
+
   <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplo Aplicado: Física - Clasificación de Partícula</h3>
   <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Simulación simplificada para clasificar una partícula
 masa_kg = float(input("Masa de la partícula (kg, ej: 9.11e-31 para electrón): "))
@@ -251,9 +273,15 @@ else: # masa_kg es cercana a cero o cero
         print("Coincide con Patrón 3 o 4")
     case _: # Caso comodín (wildcard) - Opcional, se ejecuta si ningún caso anterior coincide
         print("No coincide con ningún patrón específico.")</code></pre>
-  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
-    <p style="font-style:italic; color: #c2410c;">--( Espacio para Diagrama de Flujo: <code>match-case</code> )-- <br> (Como la Figura 1.6 de tu PDF).</p>
-  </div>
+
+
+<div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+  <h4 style="color: #9a3412; font-size: 1.2em; margin-bottom: 10px;">Diagrama de Flujo: match-Case </h4>
+  <img src="assets/images/match-case.png" alt="Diagrama de flujo de la estructura match-case" style="max-width: 500px; width: 100%; border: 1px solid #fde68a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <p style="font-style:italic; color: #c2410c; font-size:0.9em; margin-top:8px;">Visualización del flujo de decisión para una estructura match-case.</p>
+</div>
+
+
   <h3 style="color: #92400e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplo: Matemáticas - Tipo de Ángulo (Grados) [cite: 457, 459]</h3>
   <pre style="background-color: #78350f; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>angulo_grados = float(input("Ingrese el ángulo en grados (0-360): "))
 

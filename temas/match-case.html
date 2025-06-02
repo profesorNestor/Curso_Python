@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Match-Case en Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilos generales para mejorar la presentación que podrías mover a un CSS externo */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            padding: 25px;
+            overflow: hidden; /* Para que los bordes redondeados afecten a los hijos */
+        }
+        .section h2 {
+            margin-top: 0;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .section h4 {
+            font-size: 1.3em;
+            margin-top:15px;
+            margin-bottom:10px;
+        }
+        .section p {
+            margin-bottom: 15px;
+        }
+        .section ul {
+            margin-bottom: 15px;
+            padding-left: 25px; /* Ajuste para mejor alineación con íconos */
+        }
+        .section ul li {
+            margin-bottom: 8px;
+        }
+        .code-block {
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
+            overflow-x: auto; /* Para scroll horizontal si el código es muy largo */
+            font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace; /* Fuentes monoespaciadas comunes */
+        }
+        .code-block pre {
+            margin: 0;
+            font-size: 1.1em; /* AUMENTADO EL TAMAÑO DE FUENTE DEL CÓDIGO */
+            line-height: 1.5; /* Mejor espaciado entre líneas de código */
+        }
+        .note {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #e9ecef; /* Color de fondo base para notas */
+        }
+        .note p {
+            margin:0;
+        }
+        .note i {
+            margin-right: 8px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .feature-card {
+            background-color: rgba(255,255,255,0.5);
+            padding: 20px;
+            border-radius: 8px;
+            border-top-width: 5px;
+            border-top-style: solid;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .feature-card h4 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        .feature-card ul {
+            padding-left: 20px;
+            font-size: 0.95em;
+        }
+        .feature-card li {
+            margin-bottom: 6px;
+        }
+        .feature-card i {
+            margin-right: 8px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: rgba(0,0,0,0.05);
+            font-weight: bold;
+        }
+        .comparison-table td strong {
+            font-weight: 600;
+        }
+        .comparison-table tr:nth-child(even) {
+           background-color: rgba(0,0,0,0.02);
+        }
+        code { /* Estilo para `code` inline */
+            background-color: rgba(0,0,0,0.06);
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 0.9em;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+<main>
+
+<div id="match-case-header" class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 5px, transparent 5px, transparent 10px); animation: subtleShift 30s linear infinite;"></div>
+  <style> @keyframes subtleShift { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } } </style>
+
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+      <i class="fas fa-sitemap"></i> La Estructura <code>match-case</code> en Python 🎯
+    </h1>
+    <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+      Descubre el poder de la coincidencia de patrones estructurales para un código más limpio y expresivo (Python 3.10+).
+    </p>
+  </div>
+</div>
+
+<div id="intro-match-case" class="card section intro" style="border-left: 6px solid #ff6b6b; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+  <h2 style="color: #c94a38;"><i class="fas fa-rocket"></i> 1. ¿Qué es <code>match-case</code> y por qué es emocionante?</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Introducida en <strong>Python 3.10</strong>, la estructura <code>match-case</code> es una forma elegante y poderosa de realizar <strong>coincidencia de patrones estructurales</strong>. Piensa en ella como una versión supercargada de la sentencia <code>switch</code> que quizás conozcas de otros lenguajes de programación, ¡pero con muchas más capacidades!
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    En lugar de solo comparar un valor con varias opciones simples, <code>match-case</code> te permite comparar un "sujeto" (una variable o valor) con una serie de "patrones". Estos patrones pueden ser desde valores literales simples hasta estructuras de datos más complejas como listas, tuplas o diccionarios, e incluso objetos.
+  </p>
+
+  <div class="feature-grid" style="margin-top:25px;">
+    <div class="feature-card" style="border-top-color: #e74c3c;">
+      <h4 style="color:#c0392b;"><i class="fas fa-eye"></i> Código Más Legible</h4>
+      <p>A menudo resulta en un código más claro y fácil de seguir que anidaciones largas de <code>if-elif-else</code>, especialmente cuando tienes muchas condiciones basadas en la estructura de tus datos.</p>
+    </div>
+    <div class="feature-card" style="border-top-color: #e74c3c;">
+      <h4 style="color:#c0392b;"><i class="fas fa-puzzle-piece"></i> Coincidencia Estructural</h4>
+      <p>Puede "desempaquetar" valores de secuencias y mapeos directamente en los patrones, asignándolos a variables locales dentro del bloque <code>case</code>.</p>
+    </div>
+    <div class="feature-card" style="border-top-color: #e74c3c;">
+      <h4 style="color:#c0392b;"><i class="fas fa-shield-alt"></i> Guardias (Condiciones Adicionales)</h4>
+      <p>Permite añadir condiciones <code>if</code> a los patrones <code>case</code> para una lógica de coincidencia aún más fina.</p>
+    </div>
+  </div>
+
+  <div class="note" style="background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%); color: white; margin-top: 25px; border-left: none; padding: 20px;">
+    <p style="font-size: 1.05em;"><i class="fas fa-info-circle"></i> <strong>Requisito de Versión:</strong> Para usar <code>match-case</code>, necesitas tener instalado Python 3.10 o una versión posterior. ¡La buena noticia es que Google Colab generalmente utiliza versiones recientes de Python, así que puedes experimentar allí sin problemas! 🎉</p>
+  </div>
+</div>
+
+<div id="sintaxis-match-case" class="card section syntax" style="border-left: 6px solid #4ecdc4; background: linear-gradient(135deg, #e0f7fa 0%, #d1eaf0 100%);">
+  <h2 style="color: #2c7a7b;"><i class="fas fa-code"></i> 2. Sintaxis Fundamental de <code>match-case</code></h2>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    La estructura general de una sentencia <code>match-case</code> es la siguiente (¡ahora más legible!):
+  </p>
+  <div class="code-block" style="background-color: #2c3e50; color: #ecf0f1; padding: 20px; border-radius: 8px;">
+    <pre><code><span style="color: #e74c3c;">match</span> valor_a_comparar:
+    <span style="color: #e74c3c;">case</span> patron_literal:
+        <span style="color: #95a5a6;"># Código si 'valor_a_comparar' es igual a patron_literal</span>
+        print("Coincide con un valor exacto.")
+    
+    <span style="color: #e74c3c;">case</span> variable_captura <span style="color: #e74c3c;">if</span> condicion:
+        <span style="color: #95a5a6;"># Código si el patrón captura el valor Y la 'condicion' es cierta</span>
+        print(f"Capturó {variable_captura} y cumple la condición.")
+        
+    <span style="color: #e74c3c;">case</span> [primero, segundo]:
+        <span style="color: #95a5a6;"># Código si 'valor_a_comparar' es una lista/tupla de dos elementos</span>
+        print(f"Es una pareja: {primero} y {segundo}.")
+        
+    <span style="color: #e74c3c;">case</span> {"clave": valor_extraido}:
+        <span style="color: #95a5a6;"># Código si es un diccionario con "clave"</span>
+        print(f"Extraído de diccionario: {valor_extraido}.")
+
+    <span style="color: #e74c3c;">case</span> _:
+        <span style="color: #95a5a6;"># Código para cualquier otro caso (opcional)</span>
+        print("No coincidió con patrones anteriores.")</code></pre>
+  </div>
+
+
+
+<div style="text-align:center; margin: 30px 10px; padding:25px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: none; border-radius:15px; box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);">
+  <h4 style="color: white; font-size: 1.4em; margin-top:0; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><i class="fas fa-project-diagram"></i> Flujo Visual de <code>match-case</code></h4>
+  <img src="assets/images/match-case.png" alt="Diagrama de flujo de la estructura match-case" style="max-width: 500px; width: 100%; border: 3px solid white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background-color: white; padding: 8px;">
+  <p style="font-style:italic; color: rgba(255,255,255,0.95); font-size:1em; margin-top:15px; margin-bottom:0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Visualización del flujo de decisión para una estructura <code>match-case</code>.</p>
+</div>
+
+
+  <h3 style="color: #16a085; font-size: 1.5em; margin-top: 30px; margin-bottom: 15px;"><i class="fas fa-key"></i> Componentes Esenciales:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; list-style-type: none; padding-left: 0;">
+    <li style="margin-bottom:12px;"><i class="fas fa-angle-right" style="color: #16a085; margin-right: 8px;"></i><code>match sujeto_a_evaluar:</code>: Inicia la estructura. El <code>sujeto_a_evaluar</code> es el valor o variable que se comparará con los patrones.</li>
+    <li style="margin-bottom:12px;"><i class="fas fa-angle-right" style="color: #16a085; margin-right: 8px;"></i><code>case patron:</code>: Define un patrón específico. Python evaluará los patrones <code>case</code> en orden, de arriba hacia abajo. Se ejecutará el bloque de código del <em>primer</em> patrón que coincida.</li>
+    <li style="margin-bottom:12px;"><i class="fas fa-angle-right" style="color: #16a085; margin-right: 8px;"></i><strong>Patrones:</strong> Pueden ser valores exactos (<code>10</code>, <code>"hola"</code>), variables que capturan valores (<code>x</code>), estructuras como listas (<code>[a, b]</code>) o diccionarios (<code>{"id": num}</code>).</li>
+    <li style="margin-bottom:12px;"><i class="fas fa-angle-right" style="color: #16a085; margin-right: 8px;"></i><strong>Guardias (<code>if condicion_extra</code>):</strong> Una condición <code>if</code> opcional que se añade a un <code>case</code> para refinar la coincidencia.</li>
+    <li style="margin-bottom:12px;"><i class="fas fa-angle-right" style="color: #16a085; margin-right: 8px;"></i><strong>Caso Comodín (<code>case _:</code>):</strong> El guion bajo <code>_</code> actúa como un comodín que siempre coincide. Es útil como el último caso para manejar situaciones no cubiertas.</li>
+  </ul>
+  <div class="note" style="border-left: 5px solid #4ecdc4; margin-top:25px; background-color: #e0f2f1;">
+    <p><i class="fas fa-lightbulb" style="color: #16a085;"></i> <strong>Importante:</strong> Solo se ejecuta el bloque de código del <strong>primer</strong> patrón <code>case</code> que coincida. No hay "caída" (fall-through) automática a los siguientes casos como en algunos <code>switch</code> de otros lenguajes.</p>
+  </div>
+</div>
+
+<div id="ejemplos-match-case" class="card section examples" style="border-left: 6px solid #9b59b6; background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);">
+  <h2 style="color: #8e44ad;"><i class="fas fa-flask"></i> 3. Ejemplos Didácticos (Secundaria)</h2>
+
+  <h3 style="color: #7d3c98; font-size: 1.6em; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-calculator"></i> Matemáticas Simplificadas</h3>
+  
+  <h4 style="color: #7d3c98; font-size: 1.3em; margin-top:15px; margin-bottom:5px;">A. Clasificar Números (Positivo, Negativo o Cero):</h4>
+  <div class="code-block" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code>def clasificar_numero(numero):
+    match numero:
+        case n if n > 0:
+            return f"El número {n} es Positivo 👍"
+        case n if n < 0:
+            return f"El número {n} es Negativo 👎"
+        case 0:
+            return "El número es Cero 👌"
+        case _:
+            return "Eso no parece ser un número entero. 🤔"
+
+print(clasificar_numero(5))
+print(clasificar_numero(-3))
+print(clasificar_numero(0))
+# Salida esperada:
+# El número 5 es Positivo 👍
+# El número -3 es Negativo 👎
+# El número es Cero 👌</code></pre>
+  </div>
+
+  <h4 style="color: #7d3c98; font-size: 1.3em; margin-top:20px; margin-bottom:5px;">B. Ubicar un Punto Simple en el Plano Cartesiano:</h4>
+  <p style="font-size: 1.05em; line-height: 1.6; margin-bottom:10px;">
+      Usamos tuplas como <code>(x, y)</code> para representar puntos.
+  </p>
+  <div class="code-block" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code>def ubicar_punto_simple(punto):
+    match punto:
+        case (0, 0):
+            return "El punto está en el origen (0,0) 🎯"
+        case (x, 0):
+            return f"El punto ({x},0) está sobre el eje X ↔️"
+        case (0, y):
+            return f"El punto (0,{y}) está sobre el eje Y ↕️"
+        case (x, y):
+            return f"Es el punto ({x},{y}) en otra parte del plano."
+
+print(ubicar_punto_simple((2, 0)))
+print(ubicar_punto_simple((0, -3)))
+print(ubicar_punto_simple((0, 0)))
+print(ubicar_punto_simple((2, 5)))
+# Salida esperada:
+# El punto (2,0) está sobre el eje X ↔️
+# El punto (0,-3) está sobre el eje Y ↕️
+# El punto está en el origen (0,0) 🎯
+# Es el punto (2,5) en otra parte del plano.</code></pre>
+  </div>
+
+  <h3 style="color: #7d3c98; font-size: 1.6em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-atom"></i> Física Conceptual</h3>
+
+  <h4 style="color: #7d3c98; font-size: 1.3em; margin-top:15px; margin-bottom:5px;">A. Describir el Movimiento Básico:</h4>
+  <p style="font-size: 1.05em; line-height: 1.6; margin-bottom:10px;">
+      Basado en si hay velocidad y/o aceleración.
+  </p>
+  <div class="code-block" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code>def tipo_movimiento_basico(velocidad, aceleracion):
+    match (velocidad, aceleracion):
+        case (0, 0):
+            return "Está quieto (en reposo) 🧍"
+        case (v, 0) if v != 0:
+            return "Se mueve a velocidad constante (MRU) 🚶💨"
+        case (_, a) if a != 0: # Si hay aceleración, no importa la velocidad inicial para esta simple clasificación
+            return "Su velocidad está cambiando (movimiento variado) 🏃💨"
+        case _:
+            return "Situación de movimiento no clasificada."
+
+print(tipo_movimiento_basico(0, 0))
+print(tipo_movimiento_basico(10, 0))
+print(tipo_movimiento_basico(5, 2))
+# Salida esperada:
+# Está quieto (en reposo) 🧍
+# Se mueve a velocidad constante (MRU) 🚶💨
+# Su velocidad está cambiando (movimiento variado) 🏃💨</code></pre>
+  </div>
+
+  <h4 style="color: #7d3c98; font-size: 1.3em; margin-top:20px; margin-bottom:5px;">B. Identificar Tipo de Lente Simple:</h4>
+  <p style="font-size: 1.05em; line-height: 1.6; margin-bottom:10px;">
+      Usando un diccionario simple para las propiedades de una lente.
+  </p>
+  <div class="code-block" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code>def que_hace_la_lente(lente): # lente es un diccionario
+    match lente:
+        case {"tipo": "convergente"}:
+            return "Esta lente junta los rayos de luz (ej: lupa) <i class='fas fa-search-plus'></i>"
+        case {"tipo": "divergente"}:
+            return "Esta lente separa los rayos de luz (ej: para miopía) <i class='fas fa-search-minus'></i>"
+        case {"tipo": "plana"}:
+            return "Es un vidrio plano, no desvía mucho la luz. <i class='fas fa-window-minimize'></i>"
+        case _:
+            return "Tipo de lente desconocida. 🤔"
+
+lupa = {"tipo": "convergente"}
+gafas_miopia = {"tipo": "divergente"}
+vidrio_ventana = {"tipo": "plana"}
+print(que_hace_la_lente(lupa))
+print(que_hace_la_lente(gafas_miopia))
+print(que_hace_la_lente(vidrio_ventana))
+# Salida esperada:
+# Esta lente junta los rayos de luz (ej: lupa) <i class='fas fa-search-plus'></i>
+# Esta lente separa los rayos de luz (ej: para miopía) <i class='fas fa-search-minus'></i>
+# Es un vidrio plano, no desvía mucho la luz. <i class='fas fa-window-minimize'></i></code></pre>
+  </div>
+    <div class="note" style="border-left: 5px solid #9b59b6; margin-top:20px; background-color: #f3e5f5;">
+    <p><i class="fas fa-lightbulb" style="color: #8e44ad;"></i> Estos ejemplos simplificados muestran cómo <code>match-case</code> puede usarse con números, tuplas (para coordenadas) y diccionarios (para propiedades) de forma clara y concisa, ¡ideal para aprender!</p>
+  </div>
+</div>
+
+
+<div id="comparacion-match-if" class="card section comparison" style="border-left: 6px solid #2980b9; background: linear-gradient(135deg, #eaf5ff 0%, #d4eaff 100%);">
+  <h2 style="color: #1b4f72;"><i class="fas fa-balance-scale"></i> 4. <code>match-case</code> vs. <code>if-elif-else</code>: ¿Cuál Elegir?</h2>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:20px;">
+    Si bien <code>match-case</code> es potente, no reemplaza a <code>if-elif-else</code> en todas las situaciones. Ambas tienen su lugar.
+  </p>
+
+  <table class="comparison-table" style="background:rgba(255,255,255,0.9);">
+    <thead>
+      <tr>
+        <th>Aspecto</th>
+        <th><code>match-case</code> (Python 3.10+)</th>
+        <th><code>if-elif-else</code> (Todas las versiones)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ideal para</strong></td>
+        <td>Coincidencia de patrones estructurales (listas, tuplas, diccionarios, objetos), múltiples valores literales, desempaquetado dentro de la condición.</td>
+        <td>Condiciones booleanas generales, rangos numéricos complejos, lógica más variada y flexible donde los patrones estructurales no son el foco.</td>
+      </tr>
+      <tr>
+        <td><strong>Legibilidad</strong></td>
+        <td>✅ Puede ser mucho más claro para múltiples comparaciones contra patrones específicos o valores.</td>
+        <td>⚠️ Puede volverse largo y difícil de leer con muchos <code>elif</code> anidados.</td>
+      </tr>
+      <tr>
+        <td><strong>Flexibilidad de Condición</strong></td>
+        <td>Los patrones son el foco; las "guardias" (<code>if</code>) añaden flexibilidad booleana.</td>
+        <td>✅ Cualquier expresión que evalúe a <code>True</code> o <code>False</code> puede ser una condición.</td>
+      </tr>
+      <tr>
+        <td><strong>Desempaquetado</strong></td>
+        <td>✅ Permite desempaquetar valores directamente en variables dentro de los patrones <code>case</code>.</td>
+        <td>❌ Requiere asignaciones separadas si se necesita desempaquetar.</td>
+      </tr>
+        <tr>
+        <td><strong>Caso "Default"</strong></td>
+        <td><code>case _:</code> (comodín)</td>
+        <td><code>else:</code></td>
+      </tr>
+      <tr>
+        <td><strong>Versión de Python</strong></td>
+        <td>⚠️ Python 3.10 o superior.</td>
+        <td>✅ Disponible en todas las versiones de Python.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note" style="background-color: #d1e7ff; border-left: 5px solid #2980b9; margin-top:20px;">
+      <p><i class="fas fa-info-circle" style="color: #1b4f72;"></i> <strong>Recomendación General:</strong></p>
+      <ul style="margin-left:20px; margin-top:10px; list-style-type: none; padding-left:0;">
+          <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #2980b9; margin-right: 5px;"></i>Usa <code>match-case</code> cuando quieras comparar un valor contra varios patrones literales o estructurales, y cuando el desempaquetado dentro de los casos haga tu código más limpio. Es genial para manejar diferentes "tipos" de datos o comandos.</li>
+          <li><i class="fas fa-check-circle" style="color: #2980b9; margin-right: 5px;"></i>Sigue usando <code>if-elif-else</code> para lógica condicional más general, comprobaciones de rangos numéricos, o cuando trabajas con versiones de Python anteriores a la 3.10.</li>
+      </ul>
+      <p style="margin-top:10px;">¡A menudo, la elección dependerá de cuál estructura hace tu código más claro y mantenible para el problema específico!</p>
+  </div>
+</div>
+
+<div id="conclusion-match-case" class="card section" style="background-color: #f5f3ff; border-left: 6px solid #6d28d9;">
+  <h2 style="color: #5b21b6;"><i class="fas fa-award"></i> 5. Conclusión: El Arte de la Coincidencia de Patrones</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    La estructura <code>match-case</code> es una adición valiosa y poderosa al lenguaje Python. Aunque no reemplaza por completo a las sentencias <code>if-elif-else</code>, ofrece una alternativa más legible, expresiva y, en ciertos casos, más eficiente para manejar múltiples condiciones basadas en la estructura y el valor de tus datos.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Has aprendido a:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px; list-style-type: none; padding-left:0;">
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Entender la sintaxis básica de <code>match</code> y <code>case</code>.</li>
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Usar patrones literales, de captura, de secuencia y de mapeo.</li>
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Aplicar guardias (<code>if</code>) para refinar las coincidencias.</li>
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Utilizar el caso comodín (<code>_</code>) para manejar situaciones por defecto.</li>
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Comparar su uso con las tradicionales sentencias <code>if-elif-else</code>.</li>
+        <li style="margin-bottom:5px;"><i class="fas fa-check" style="color: #6d28d9; margin-right: 8px;"></i>Ver ejemplos aplicados en contextos matemáticos y físicos.</li>
+    </ul>
+  </p>
+  <div style="margin-top: 20px; padding: 20px; background-color: #ede9fe; border-left: 5px solid #7c3aed; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1.05em; line-height: 1.7;">
+      🚀 <strong>¡Experimenta en Google Colab!</strong> La mejor forma de dominar <code>match-case</code> es probando. Intenta reescribir algunas de tus antiguas cadenas <code>if-elif-else</code> usando <code>match-case</code> para ver si el código se vuelve más claro. Crea tus propios ejemplos basados en problemas de tus clases de ciencias.
+      <br><br>
+      A medida que desarrolles programas más complejos, especialmente aquellos que manejan datos con estructuras variadas (como comandos de usuario, mensajes de red, o nodos de un árbol de sintaxis), encontrarás que <code>match-case</code> puede ser una herramienta increíblemente elegante.
+    </p>
+  </div>
+</div>
+
+
+<div id="consejos-practicas" class="card section" style="border-left: 6px solid #1abc9c; background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);">
+    <h2 style="color: #117a65;"><i class="fas fa-star"></i> 6. Consejos y Mejores Prácticas</h2>
+
+    <div class="feature-grid">
+        <div class="feature-card" style="border-top-color: #1abc9c; background-color: #ffffffcc;">
+            <h4 style="color:#117a65;"><i class="fas fa-check-circle"></i> ✅ Qué Hacer</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fas fa-plus-square" style="color: #117a65; margin-right: 5px;"></i>Usa <code>match-case</code> para múltiples comparaciones específicas.</li>
+                <li><i class="fas fa-plus-square" style="color: #117a65; margin-right: 5px;"></i>Aprovecha las guardias (<code>if</code>) para condiciones adicionales.</li>
+                <li><i class="fas fa-plus-square" style="color: #117a65; margin-right: 5px;"></i>Ordena casos de más específico a más general.</li>
+                <li><i class="fas fa-plus-square" style="color: #117a65; margin-right: 5px;"></i>Incluye siempre un caso comodín (<code>_</code>) cuando sea apropiado.</li>
+                <li><i class="fas fa-plus-square" style="color: #117a65; margin-right: 5px;"></i>Mantén los casos simples y legibles.</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card" style="border-top-color: #e74c3c; background-color: #ffffffcc;"> <h4 style="color:#c0392b;"><i class="fas fa-times-circle"></i> ❌ Qué Evitar</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fas fa-minus-square" style="color: #c0392b; margin-right: 5px;"></i>No uses <code>match-case</code> para pocas condiciones simples.</li>
+                <li><i class="fas fa-minus-square" style="color: #c0392b; margin-right: 5px;"></i>Evita lógica muy compleja dentro de los casos.</li>
+                <li><i class="fas fa-minus-square" style="color: #c0392b; margin-right: 5px;"></i>No olvides manejar casos inesperados si no usas <code>_</code>.</li>
+                <li><i class="fas fa-minus-square" style="color: #c0392b; margin-right: 5px;"></i>No abuses de las guardias; a veces <code>if-elif</code> es mejor.</li>
+                <li><i class="fas fa-minus-square" style="color: #c0392b; margin-right: 5px;"></i>No uses <code>match-case</code> si necesitas Python &lt; 3.10.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="note" style="border-left: 5px solid #1abc9c; background-color: #d6f5f0;">
+        <p><i class="fas fa-edit" style="color: #117a65;"></i> <strong>Recuerda:</strong> La legibilidad es más importante que la "novedad". Usa <code>match-case</code> cuando realmente haga tu código más claro y fácil de entender.</p>
+    </div>
+</div>
+
+<div id="recursos-aprendizaje" class="card section" style="border-left: 6px solid #f39c12; background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);">
+    <h2 style="color: #b9770e;"><i class="fas fa-book-open"></i> 7. Recursos para Seguir Aprendiendo</h2>
+
+    <div class="feature-grid">
+        <div class="feature-card" style="border-top-color: #f39c12; background-color: #ffffffcc;">
+            <h4 style="color:#b9770e;"><i class="fas fa-globe"></i> Enlaces Útiles</h4>
+             <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fas fa-link" style="color: #b9770e; margin-right: 5px;"></i><a href="https://docs.python.org/3/tutorial/controlflow.html#match-statements" target="_blank">Documentación oficial de Python</a></li>
+                <li><i class="fas fa-link" style="color: #b9770e; margin-right: 5px;"></i><a href="https://peps.python.org/pep-0634/" target="_blank">PEP 634 - Especificación completa</a></li>
+                <li><i class="fas fa-link" style="color: #b9770e; margin-right: 5px;"></i><a href="https://realpython.com/python310-new-features/" target="_blank">Real Python - Características de Python 3.10</a></li>
+            </ul>
+        </div>
+        
+        <div class="feature-card" style="border-top-color: #f39c12; background-color: #ffffffcc;">
+            <h4 style="color:#b9770e;"><i class="fas fa-tools"></i> Herramientas para Practicar</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fab fa-google" style="color: #b9770e; margin-right: 5px;"></i>Google Colab (¡gratis y en línea!)</li>
+                <li><i class="fas fa-terminal" style="color: #b9770e; margin-right: 5px;"></i>Replit (editor online)</li>
+                <li><i class="fas fa-code" style="color: #b9770e; margin-right: 5px;"></i>PyCharm Community (IDE gratuito)</li>
+                <li><i class="fas fa-laptop-code" style="color: #b9770e; margin-right: 5px;"></i>VS Code con extensión Python</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card" style="border-top-color: #f39c12; background-color: #ffffffcc;">
+            <h4 style="color:#b9770e;"><i class="fas fa-lightbulb"></i> Ideas de Proyectos</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fas fa-calculator" style="color: #b9770e; margin-right: 5px;"></i>Calculadora científica con múltiples operaciones</li>
+                <li><i class="fas fa-draw-polygon" style="color: #b9770e; margin-right: 5px;"></i>Clasificador de triángulos (por lados y ángulos)</li>
+                <li><i class="fas fa-exchange-alt" style="color: #b9770e; margin-right: 5px;"></i>Conversor de unidades (longitud, peso, tiempo)</li>
+                <li><i class="fas fa-graduation-cap" style="color: #b9770e; margin-right: 5px;"></i>Analizador de calificaciones escolares</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card" style="border-top-color: #f39c12; background-color: #ffffffcc;">
+            <h4 style="color:#b9770e;"><i class="fas fa-rocket"></i> Próximos Pasos</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><i class="fas fa-cogs" style="color: #b9770e; margin-right: 5px;"></i>Combina <code>match-case</code> con funciones</li>
+                <li><i class="fas fa-project-diagram" style="color: #b9770e; margin-right: 5px;"></i>Usa patrones en programas más grandes</li>
+                <li><i class="fas fa-cubes" style="color: #b9770e; margin-right: 5px;"></i>Explora patrones con clases y objetos</li>
+                <li><i class="fas fa-keyboard" style="color: #b9770e; margin-right: 5px;"></i>Practica con problemas de programación</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="felicitaciones-finales" class="card section" style="border-left: 6px solid #e74c3c; background: linear-gradient(135deg, #fdf2e9 0%, #fae5d3 100%); text-align:center;">
+    <h2 style="color: #cb4335; font-size: 2.2em;"><i class="fas fa-trophy"></i> ¡Felicidades! 🎉</h2>
+    <p style="font-size: 1.2em; line-height: 1.8; color: #555;">
+        Has llegado al final de esta guía sobre la estructura <strong><code>match-case</code></strong> de Python. ¡Ahora posees una herramienta poderosa para escribir código más legible, eficiente y expresivo!
+    </p>
+    
+    <div class="feature-grid" style="text-align:left; margin-top:30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="congratulations-box" style="background-color: #fff0f0; border-left: 5px solid #e74c3c; border-radius: 8px; padding: 20px; margin-bottom: 15px;">
+            <p style="font-size: 1.1em; margin-bottom: 15px; color:#c0392b; font-weight:bold;"><i class="fas fa-graduation-cap"></i> Lo que has aprendido:</p>
+            <ul style="list-style-type: none; padding-left: 0; font-size: 1em;">
+                <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 8px;"></i>🔧 Sintaxis completa de <code>match-case</code> y sus componentes</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 8px;"></i>📊 Aplicaciones prácticas en matemáticas y física</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 8px;"></i>⚖️ Cuándo usar <code>match-case</code> vs <code>if-elif-else</code></li>
+                <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 8px;"></i>🎨 Patrones útiles con listas, tuplas y diccionarios</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 8px;"></i>✨ Mejores prácticas para código limpio y mantenible</li>
+            </ul>
+        </div>
+
+        <div class="congratulations-box" style="background-color: #e6fff7; border-left: 5px solid #1abc9c; border-radius: 8px; padding: 20px; margin-bottom: 15px;">
+            <p style="font-size: 1.1em; margin-bottom: 15px; color:#117a65; font-weight:bold;"><i class="fas fa-cogs"></i> Ahora puedes:</p>
+            <ul style="list-style-type: none; padding-left: 0; font-size: 1em;">
+                <li style="margin-bottom:8px;"><i class="fas fa-star" style="color: #f39c12; margin-right: 8px;"></i>🎯 Crear coincidencias de patrones elegantes y eficientes</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-star" style="color: #f39c12; margin-right: 8px;"></i>🔬 Aplicar <code>match-case</code> en problemas escolares y universitarios</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-star" style="color: #f39c12; margin-right: 8px;"></i>📈 Escribir código más limpio que muchos otros</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-star" style="color: #f39c12; margin-right: 8px;"></i>💡 Resolver problemas de clasificación de manera elegante</li>
+                <li style="margin-bottom:8px;"><i class="fas fa-star" style="color: #f39c12; margin-right: 8px;"></i>📚 Manejar datos estructurados de forma profesional</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="final-message" style="margin-top: 30px; padding: 20px; background-color: rgba(255,255,255,0.7); border-radius:8px;">
+        <p style="font-size: 1.4em; font-weight: bold; margin-bottom: 15px; color: #333;">
+            🐍 ¡Sigue explorando Python y creando código increíble! 🌟
+        </p>
+        <p style="font-size: 1.1em; opacity: 0.9; color: #444;">
+            Recuerda: la programación es como las matemáticas y la física,
+            <br>¡mientras más practiques, mejor te vuelves! 💪
+        </p>
+        <p style="font-size: 1em; margin-top: 20px; opacity: 0.8; color: #555;">
+            💡 <strong>Consejo final:</strong> Experimenta con estos ejemplos en Google Colab,
+            modifícalos, combínalos con tus conocimientos de matemáticas y física.
+            ¡El mejor aprendizaje viene de la práctica! 🧪
+        </p>
+    </div>
+</div>
+
+</main>
+</div>
+
+</body>
+</html>

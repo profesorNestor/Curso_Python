@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Guía de Funciones en Python – Canvas</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <!-- =========================== STYLES BASE =========================== -->
+  <style>
+      *{box-sizing:border-box;margin:0;padding:0;}
+      body{font-family:'Segoe UI','Helvetica Neue',sans-serif;line-height:1.6;background:#f3f4f6;color:#1f2937;padding:30px;}
+      h1,h2,h3,h4{font-weight:600;line-height:1.25;}
+      code{font-family:"Courier New",monospace;background:#00000022;padding:2px 6px;border-radius:4px;}
+      pre code{background:none;padding:0;}
+      a{color:#2563eb;text-decoration:none;}a:hover{text-decoration:underline;}
+      .card{box-shadow:0 3px 15px rgba(0,0,0,.12);border-radius:12px;overflow:hidden;}
+      .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+      .feature-card{border-radius:8px;padding:18px;box-shadow:0 2px 6px rgba(0,0,0,.08);} 
+      .code-block-func{position:relative;border-radius:10px;padding:20px;font-family:"Courier New",Courier,monospace;font-size:1em;overflow-x:auto;}
+      .copy-code-button{position:absolute;top:12px;right:12px;background:#f3f4f6;border:none;border-radius:6px;padding:6px 12px;font-size:.8em;cursor:pointer;opacity:.7;transition:opacity .3s;}
+      .code-block-func:hover .copy-code-button{opacity:1;}
+      .note-func{border-left:5px solid;padding:15px;border-radius:8px;margin-top:18px;}
+      @keyframes subtleShiftFunc{0%{background-position:0 0;}100%{background-position:140px 140px;}}
+      .section-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:2em;color:#1d4ed8;margin-bottom:20px;}
+      .section-title .number{font-weight:700;}
+      .section-title .keyword{padding:0 6px;background:#bfdbfe;border-radius:4px;font-family:"Courier New",monospace;}
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================-->
+  <!--   PARTE 1 ◇ Portada                                -->
+  <!-- ===================================================-->
+  <div class="card" style="background:linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%);padding:30px 25px;text-align:center;color:#fff;margin-bottom:40px;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03),rgba(255,255,255,.03) 7px,transparent 7px,transparent 14px);animation:subtleShiftFunc 30s linear infinite;"></div>
+      <div style="position:relative;z-index:1;">
+          <h1 style="font-size:2.8em;margin-bottom:10px;text-shadow:1px 1px 3px rgba(0,0,0,.3);"><i class="fas fa-cogs"></i> Funciones en Python 🪄✨</h1>
+          <p style="font-size:1.25em;max-width:640px;margin:0 auto;opacity:.95;">Aprende a organizar tu código, reutilizar lógica y construir programas más complejos y elegantes definiendo tus propias funciones.</p>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 2 ◇ 1. Introducción                        -->
+  <!-- ===================================================-->
+  <div class="card" style="border-left:6px solid #d946ef;background:linear-gradient(135deg,#fdf4ff 0%,#fce7f3 100%);padding:25px;border-radius:12px;margin-bottom:40px;" id="intro-funciones">
+      <h2 class="section-title" style="color:#a21caf;"><i class="fas fa-question-circle"></i> <span class="number">1.</span> ¿Qué son las Funciones y por qué son tus mejores amigas?</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Imagina que construyes un robot complejo 🤖; en vez de forjar cada tornillo desde cero, diseñas piezas reutilizables. Las <strong>funciones</strong> son exactamente eso en programación: componentes auto‑contenidos que realizan una tarea específica y que puedes invocar una y otra vez.</p>
+      <!-- Ventajas -->
+      <h3 style="color:#86198f;font-size:1.4em;margin:25px 0 12px;">🚀 Ventajas de usar Funciones:</h3>
+      <div class="feature-grid">
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="color:#86198f;margin:0 0 8px;font-size:1.1em;"><i class="fas fa-recycle"></i> Reutilización</h4><p style="font-size:.95em;">Escribe una vez y usa mil.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="color:#86198f;margin:0 0 8px;font-size:1.1em;"><i class="fas fa-sitemap"></i> Modularidad</h4><p style="font-size:.95em;">Divide y vencerás.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="color:#86198f;margin:0 0 8px;font-size:1.1em;"><i class="fas fa-glasses"></i> Legibilidad</h4><p style="font-size:.95em;">Más fácil de depurar 👓.</p></div>
+          <div class="feature-card" style="border-top:4px solid #c026d3;background:#faf5ff;"><h4 style="color:#86198f;margin:0 0 8px;font-size:1.1em;"><i class="fas fa-puzzle-piece"></i> Abstracción</h4><p style="font-size:.95em;">Usa la función sin conocer sus tripas.</p></div>
+      </div>
+      <div class="note-func" style="border-left-color:#a855f7;background:#f5f3ff;">
+          <p><i class="fas fa-lightbulb" style="color:#7c3aed;"></i> <strong>Analogía:</strong> la fórmula de energía cinética <code>E_k = ½·m·v²</code> se convierte en una cómoda función <code>energia_cinetica(m,v)</code>.</p>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 3 ◇ 2. Sintaxis Básica                     -->
+  <!-- ===================================================-->
+  <div class="card" style="border-left:6px solid #4ecdc4;background:linear-gradient(135deg,#e6fffa 0%,#cffafe 100%);padding:25px;border-radius:12px;margin-bottom:40px;" id="sintaxis-basica">
+      <h2 class="section-title" style="color:#0e7490;"><i class="fas fa-code"></i> <span class="number">2.</span> Sintaxis Básica: <span class="keyword">def</span> iniendo tu Primera Función</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Para definir una función usa <code>def</code> + nombre + paréntesis y dos puntos. Todo el cuerpo va indentado cuatro espacios.</p>
+      <div class="code-block-func" style="background:#1f2937;color:#d1d5db;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#818cf8;">def</span> <span style="color:#a78bfa;">saludo_laboratorio</span>():
+    print(<span style="color:#fde047;">"🔬 ¡Bienvenido al laboratorio virtual!"</span>)
+    print(<span style="color:#fde047;">"Por favor, sigue los protocolos de seguridad."</span>)
+
+saludo_laboratorio()
+print(<span style="color:#fde047;">"--- Iniciando experimento 1 ---"</span>)
+saludo_laboratorio()
+</code></pre>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 4 ◇ 3. Parámetros y Argumentos             -->
+  <!-- ===================================================-->
+  <div class="card" style="border-left:6px solid #34d399;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);padding:25px;border-radius:12px;margin-bottom:40px;" id="parametros-argumentos">
+      <h2 class="section-title" style="color:#059669;"><i class="fas fa-exchange-alt"></i> <span class="number">3.</span> Parámetros &amp; Argumentos</h2>
+      <p style="font-size:1.1em;line-height:1.7;">Los <strong>parámetros</strong> actúan como variables locales que esperan un valor; los valores que envías se llaman <strong>argumentos</strong>.</p>
+      <div class="feature-grid" style="margin-bottom:18px;">
+          <div class="feature-card" style="background:#ecfdf5;border-top:4px solid #10b981;"><h4 style="color:#047857;margin:0 0 6px;font-size:1.05em;"><i class="fas fa-code-branch"></i> Parámetros</h4><p style="font-size:.9em;">Declarados en la cabecera.</p></div>
+          <div class="feature-card" style="background:#ecfdf5;border-top:4px solid #10b981;"><h4 style="color:#047857;margin:0 0 6px;font-size:1.05em;"><i class="fas fa-paper-plane"></i> Argumentos</h4><p style="font-size:.9em;">Valores enviados en la llamada.</p></div>
+      </div>
+      <div class="code-block-func" style="background:#1f2937;color:#d1d5db;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#818cf8;">def</span> <span style="color:#a78bfa;">saludar_estudiante</span>(nombre, edad):
+    print(f<span style="color:#fde047;">"Hola {nombre}, tienes {edad} años."</span>)
+
+saludar_estudiante(<span style="color:#fde047;">"Ana"</span>, <span style="color:#c4b5fd;">25</span>)
+</code></pre>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 5 ◇ 4. La palabra clave return             -->
+  <!-- ===================================================-->
+  <div class="card" style="border-left:6px solid #60a5fa;background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);padding:25px;border-radius:12px;margin-bottom:40px;" id="palabra-return">
+      <h2 class="section-title" style="color:#2563eb;"><i class="fas fa-undo-alt"></i> <span class="number">4.</span> La palabra clave <span class="keyword">return</span></h2>
+      <p style="font-size:1.1em;line-height:1.7;"><code>return</code> finaliza la función y entrega un valor.</p>
+      <div class="code-block-func" style="background:#1e3a8a;color:#e0e7ff;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#a5b4fc;">def</span> <span style="color:#c7d2fe;">calcular_area</span>(base, altura):
+    <span style="color:#a5b4fc;">return</span> base * altura
+
+print(calcular_area(<span style="color:#c4b5fd;">10</span>,<span style="color:#c4b5fd;">5</span>))  # 50
+</code></pre>
+      </div>
+  </div>
+
+  <!-- ===================================================-->
+  <!--   PARTE 6 ◇ 5. Argumentos Variables *args          -->
+  <!-- ===================================================-->
+  <div class="card" style="border-left:6px solid #f59e0b;background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);padding:25px;border-radius:12px;margin-bottom:40px;" id="args-variables">
+      <h2 class="section-title" style="color:#b45309;"><i class="fas fa-random"></i> <span class="number">5.</span> Argumentos Variables: <span class="keyword">*args</span></h2>
+      <p style="font-size:1.1em;line-height:1.7;">Cuando no sabes cuántos argumentos posicionales recibirás, usa <code>*args</code>. Dentro de la función los recibirás como una tupla.</p>
+      <div class="code-block-func" style="background:#78350f;color:#fef3c7;">
+          <button class="copy-code-button" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText);alert('Código copiado!');"><i class="fas fa-copy"></i></button>
+<pre><code class="language-python"><span style="color:#fbbf24;">def</span> <span style="color:#fcd34d;">sumar_todo</span>(*numeros):
+    total = <span style="color:#eab308;">0</span>
+    <span style="color:#fbbf24;">for</span> n <span style="color:#fbbf24;">in</span> numeros:
+        total += n
+    <span style="color:#fbbf24;">return</span> total
+
+print(sumar_todo(<span style="color:#eab308;">1</span>,<span style="color:#eab308;">2</span>,<span style="color:#eab308;">3</span>))
+</code></pre>
+      </div>
+  </div>
+
+</body>
+</html>

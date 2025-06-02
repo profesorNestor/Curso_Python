@@ -1,0 +1,401 @@
+<div id="ciclo-while-header" class="card" style="background: linear-gradient(135deg, #8b5cf6 0%, #c026d3 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 5px, transparent 5px, transparent 10px); animation: subtleShiftWhileLoop 30s linear infinite;"></div>
+  <style> @keyframes subtleShiftWhileLoop { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } } </style>
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+      <i class="fas fa-hourglass-half"></i> El Ciclo <code>while</code> en Python: Repetición Condicionada ⏳
+    </h1>
+    <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+      Aprende a ejecutar bloques de código repetidamente mientras se cumpla una condición, ideal para tareas de duración indeterminada.
+    </p>
+  </div>
+</div>
+
+<div id="intro-while" class="card section-while-intro" style="border-left: 6px solid #7c3aed; background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-question-circle"></i> 1. ¿Cuándo Repetir sin Saber Cuántas Veces? El Ciclo <code>while</code></h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Ya conoces el ciclo <code>for</code>, perfecto para iterar sobre una secuencia de elementos conocidos (como una lista o un rango). Pero, ¿qué sucede cuando necesitas repetir un bloque de código mientras una cierta condición sea verdadera, y no sabes de antemano cuántas veces se repetirá? Aquí es donde brilla el ciclo <strong><code>while</code></strong> (mientras).
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Un ciclo <code>while</code> ejecuta un conjunto de instrucciones repetidamente <strong>mientras</strong> una condición booleana especificada se evalúe como <code>True</code>. Tan pronto como la condición se vuelve <code>False</code>, el ciclo termina y el programa continúa con la siguiente instrucción después del bloque del ciclo.
+  </p>
+  <h3 style="color: #581c87; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Casos de Uso Típicos del Ciclo <code>while</code>:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-user-edit" style="color: #7c3aed;"></i> <strong>Validación de Entrada del Usuario:</strong> Seguir pidiendo al usuario que ingrese un dato hasta que sea válido.</li>
+    <li><i class="fas fa-gamepad" style="color: #7c3aed;"></i> <strong>Bucles de Juego:</strong> Mantener un juego en ejecución hasta que el jugador decida salir o se cumpla una condición de fin de juego.</li>
+    <li><i class="fas fa-chart-line" style="color: #7c3aed;"></i> <strong>Simulaciones y Modelos:</strong> Ejecutar pasos de una simulación (física, biológica) hasta que se alcance un estado deseado o un tiempo límite.</li>
+    <li><i class="fas fa-cogs" style="color: #7c3aed;"></i> <strong>Procesamiento de Datos de Longitud Indeterminada:</strong> Leer datos de un sensor o un archivo hasta que se encuentre una señal de fin o se cumpla una condición.</li>
+    <li><i class="fas fa-search" style="color: #7c3aed;"></i> <strong>Algoritmos Iterativos:</strong> Como el método de Newton-Raphson en matemáticas, donde repites un cálculo hasta que la aproximación sea lo suficientemente buena.</li>
+  </ul>
+  <div class="note-while" style="border-left-color: #8b5cf6; background-color: #f5f3ff; margin-top:20px; padding: 15px; border-radius: 8px;">
+    <p style="margin:0; font-size:1em;"><i class="fas fa-lightbulb" style="color: #6b21a8;"></i> <strong>Analogía:</strong> Piensa en un ciclo <code>while</code> como intentar encender un auto: "Mientras la llave esté girada Y el motor no arranque, sigue intentando girar la llave". O como un científico que repite un experimento "mientras no obtenga un resultado consistente".</p>
+  </div>
+</div>
+
+<div id="while-loop-syntax" class="card section-while-syntax" style="border-left: 6px solid #c026d3; background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #a21caf; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-file-code"></i> 2. Anatomía del Ciclo <code>while</code></h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    La estructura de un ciclo <code>while</code> es bastante sencilla:
+  </p>
+
+  <h3 style="color: #86198f; font-size: 1.5em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Básica:</h3>
+  <div class="code-block-while" style="background-color: #581c87; color: #e9d5ff;">
+  <pre><code class="language-python"><span style="color: #95a5a6;"># (Opcional: Inicializar variables que se usarán en la condición)</span>
+variable_control = valor_inicial
+
+<span style="color: #e74c3c;">while</span> condicion_booleana: <span style="color: #95a5a6;"># La condición DEBE poder cambiar para evitar bucles infinitos</span>
+    <span style="color: #95a5a6;"># Bloque de código a ejecutar mientras la condición sea True</span>
+    <span style="color: #95a5a6;"># Este bloque debe estar indentado (4 espacios)</span>
+    print(<span style="color: #f1c40f;">"La condición es verdadera, ejecutando el ciclo..."</span>)
+    
+    <span style="color: #95a5a6;"># ¡MUY IMPORTANTE! Dentro del ciclo, debes hacer algo</span>
+    <span style="color: #95a5a6;"># que eventualmente haga que la 'condicion_booleana' se vuelva False.</span>
+    <span style="color: #95a5a6;"># Por ejemplo, modificar 'variable_control'.</span>
+    variable_control = nuevo_valor 
+
+print(<span style="color: #f1c40f;">"La condición se volvió falsa. Fin del ciclo while."</span>)</code></pre>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:15px;">
+    <strong>Componentes Clave:</strong>
+    <ul style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li><code>while</code>: Palabra clave que inicia el ciclo.</li>
+        <li><code>condicion_booleana</code>: Una expresión que se evalúa como <code>True</code> o <code>False</code>. El ciclo continúa ejecutándose mientras esta condición sea <code>True</code>.</li>
+        <li><code>:</code> (dos puntos): Indican el inicio del bloque de código del ciclo.</li>
+        <li><strong>Bloque de código indentado:</strong> Las instrucciones que se repetirán.</li>
+        <li><strong>Actualización de la Condición:</strong> Es crucial que dentro del bloque del ciclo haya alguna lógica que, eventualmente, haga que la <code>condicion_booleana</code> se vuelva <code>False</code>. Si esto no ocurre, ¡tendrás un <strong>bucle infinito</strong> 😱!</li>
+    </ul>
+  </p>
+
+  <div style="text-align:center; margin: 30px 10px; padding:25px; background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); border: none; border-radius:15px; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);">
+    <h4 style="color: white; font-size: 1.4em; margin-top:0; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><i class="fas fa-project-diagram"></i> Flujo Visual del Ciclo <code>while</code></h4>
+    <img src="assets/images/while.png" alt="Diagrama de flujo del ciclo while" style="max-width: 450px; width: 100%; border: 3px solid white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); background-color: white; padding: 8px;">
+    <p style="font-style:italic; color: rgba(255,255,255,0.95); font-size:1em; margin-top:15px; margin-bottom:0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Visualización de cómo el ciclo <code>while</code> evalúa una condición y repite un bloque de código.</p>
+  </div>
+  
+  <div class="note-while warning-while" style="border-left-color: #ef4444; background-color: #fee2e2;">
+    <p><i class="fas fa-exclamation-triangle" style="color: #dc2626;"></i> <strong>¡Peligro de Bucles Infinitos!</strong> Si la condición de un ciclo <code>while</code> nunca se vuelve <code>False</code>, el ciclo se ejecutará para siempre (o hasta que detengas el programa manualmente o se agoten los recursos). Siempre asegúrate de que algo dentro del ciclo pueda cambiar la condición. En Google Colab, puedes detener una celda en ejecución con el botón de "Stop" (cuadrado) o "Interrumpir ejecución" en el menú "Entorno de ejecución".</p>
+  </div>
+  <style>
+    .code-block-while { background-color: #581c87; color: #e9d5ff; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 1.05em; line-height: 1.5; margin: 15px 0; overflow-x: auto; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); position: relative;}
+    .note-while { padding: 15px; border-radius: 8px; margin-top:20px; font-size:1em;}
+    .warning-while { border-left: 5px solid #ef4444; background-color: #fee2e2;}
+    .warning-while p i { color: #dc2626;}
+  </style>
+</div>
+
+<div id="while-con-condicionales" class="card section-while-examples" style="border-left: 6px solid #16a34a; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #047857;"><i class="fas fa-flask"></i> 3. El Ciclo <code>while</code> en Acción: Ejemplos Didácticos</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Veamos cómo el ciclo <code>while</code> nos ayuda a resolver problemas donde el número de repeticiones no es fijo de antemano.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-user-check"></i> A. Validación de Entrada (Matemáticas)</h3>
+      <p>Pedir al usuario que ingrese una edad válida (ej. entre 0 y 120 años) y no parar hasta que lo haga.</p>
+      <pre><code>edad_valida = False
+edad = 0
+while not edad_valida:
+    try:
+        edad_str = input("Ingresa tu edad (0-120): ")
+        edad = int(edad_str)
+        if 0 <= edad <= 120:
+            edad_valida = True # Condición para salir del bucle
+            print(f"Edad registrada: {edad} años. ¡Gracias!")
+        else:
+            print("Edad fuera de rango. Intenta de nuevo.")
+    except ValueError:
+        print("Entrada inválida. Por favor, ingresa un número.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-rocket"></i> B. Simulación de Lanzamiento de Cohete (Física)</h3>
+      <p>Cuenta regresiva simple hasta el despegue.</p>
+      <pre><code>segundos_para_lanzamiento = 10
+print("Iniciando cuenta regresiva para el lanzamiento... 🚀")
+while segundos_para_lanzamiento >= 0:
+    print(f"T - {segundos_para_lanzamiento} segundos...")
+    if segundos_para_lanzamiento == 0:
+        print("¡IGNICIÓN! 🔥")
+    # time.sleep(1) # Para una pausa real, necesitarías importar 'time'
+    segundos_para_lanzamiento -= 1 # Actualizar la condición
+print("¡DESPEGUE! 🛰️")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-square-root-alt"></i> C. Encontrar la Potencia Entera (Matemáticas)</h3>
+      <p>Encontrar la menor potencia entera de un número base que exceda un límite.</p>
+      <pre><code>base = 2
+limite = 1000
+potencia = 0
+resultado = 1 # base^0
+
+print(f"Buscando la menor potencia de {base} que exceda {limite}:")
+while resultado <= limite:
+    resultado = base ** potencia
+    print(f"{base}^{potencia} = {resultado}")
+    if resultado > limite:
+        print(f"¡Encontrado! {base}^{potencia} ({resultado}) excede {limite}.")
+        break # Salimos del bucle una vez encontrada
+    potencia += 1</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-atom"></i> D. Decaimiento Radiactivo Simplificado (Física)</h3>
+      <p>Simular cuántos átomos quedan hasta que la cantidad sea menor a un umbral.</p>
+      <pre><code># Cada "paso de tiempo" representa una vida media conceptual
+atomos_iniciales = 10000.0
+atomos_actuales = atomos_iniciales
+umbral_seguro = 100.0
+pasos_tiempo = 0
+
+print(f"Simulando decaimiento desde {atomos_iniciales} átomos hasta < {umbral_seguro} átomos:")
+while atomos_actuales >= umbral_seguro:
+    print(f"Paso {pasos_tiempo}: {atomos_actuales:.2f} átomos restantes.")
+    atomos_actuales /= 2 # Se reduce a la mitad
+    pasos_tiempo += 1
+print(f"Paso {pasos_tiempo}: {atom_actuales:.2f} átomos. ¡Debajo del umbral seguro!")
+print(f"Se necesitaron {pasos_tiempo} vidas medias conceptuales.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-flask"></i> E. Dilución Serial (Química/Biología)</h3>
+      <p>Simular la concentración de una solución tras varias diluciones 1:10 hasta alcanzar una concentración objetivo.</p>
+      <pre><code>concentracion_inicial_M = 1.0 # Molar
+concentracion_objetivo_M = 0.00001 # 1e-5 M
+concentracion_actual_M = concentracion_inicial_M
+num_diluciones = 0
+
+print(f"Diluyendo desde {concentracion_inicial_M} M hasta < {concentracion_objetivo_M} M (dilución 1:10)")
+while concentracion_actual_M >= concentracion_objetivo_M:
+    print(f"Dilución #{num_diluciones}: Concentración = {concentracion_actual_M:.1e} M")
+    concentracion_actual_M /= 10 # Dilución 1:10
+    num_diluciones += 1
+print(f"Dilución #{num_diluciones}: Concentración = {concentracion_actual_M:.1e} M")
+print(f"Se necesitaron {num_diluciones} diluciones 1:10.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #059669;"><i class="fas fa-coins"></i> F. Acumular Interés Compuesto (Mat. Financiera)</h3>
+      <p>Calcular cuántos años toma duplicar una inversión con interés compuesto anual, si la tasa es fija.</p>
+      <pre><code>capital_inicial = 1000  # Unidades monetarias
+tasa_interes_anual = 0.07 # 7%
+capital_actual = capital_inicial
+objetivo_duplicar = capital_inicial * 2
+anios = 0
+
+print(f"Calculando años para duplicar ${capital_inicial} con tasa del {tasa_interes_anual*100}%...")
+while capital_actual < objetivo_duplicar:
+    capital_actual += capital_actual * tasa_interes_anual # Interés compuesto
+    # Alternativamente: capital_actual *= (1 + tasa_interes_anual)
+    anios += 1
+    print(f"Año {anios}: Capital = ${capital_actual:.2f}")
+
+print(f"\nSe necesitaron {anios} años para duplicar la inversión.")</code></pre>
+    </div>
+  </div>
+  <style> 
+    .card-style-info { padding: 18px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .card-style-info h3 { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 1.2em; }
+    .card-style-info h3 i { min-width: 20px; text-align: center; }
+    .card-style-info p { margin-bottom: 12px; font-size: 0.95em; line-height: 1.55; flex-grow: 1; }
+    .card-style-info pre { background-color: #134e4a; color: #ccfbf1; padding: 10px; border-radius: 6px; font-size: 0.9em; overflow-x: auto; margin-top: auto; }
+  </style>
+</div>
+
+<div id="while-control-flujo" class="card section-while-control" style="border-left: 6px solid #ef4444; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b91c1c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-traffic-light"></i> 4. Controlando el Flujo del Ciclo <code>while</code></h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Al igual que con el ciclo <code>for</code>, puedes usar <code>break</code> y <code>continue</code> para tener un control más fino sobre la ejecución de tus ciclos <code>while</code>.
+  </p>
+
+  <h3 style="color: #991b1b; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-stop-circle"></i> A. <code>break</code>: Salida de Emergencia del Ciclo</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    La sentencia <code>break</code> termina el ciclo <code>while</code> inmediatamente, sin importar si la condición del <code>while</code> sigue siendo verdadera. Es útil para salir de un bucle cuando se cumple una condición especial interna.
+  </p>
+  <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Juego: Adivina el número secreto (simplificado)
+numero_secreto = 7
+intentos_maximos = 3
+intentos_hechos = 0
+
+print("¡Adivina el número secreto entre 1 y 10!")
+while intentos_hechos < intentos_maximos:
+    try:
+        suposicion_str = input(f"Intento #{intentos_hechos + 1} (te quedan {intentos_maximos - intentos_hechos}): ")
+        suposicion = int(suposicion_str)
+        intentos_hechos += 1
+
+        if suposicion == numero_secreto:
+            print(f"¡Felicidades! Adivinaste el número {numero_secreto} en {intentos_hechos} intentos. 🎉")
+            break # Salimos del ciclo porque ya adivinó
+        elif suposicion < numero_secreto:
+            print("El número secreto es MAYOR. Intenta de nuevo.")
+        else:
+            print("El número secreto es MENOR. Intenta de nuevo.")
+        
+        if intentos_hechos == intentos_maximos:
+            print(f"¡Agotaste tus {intentos_maximos} intentos! El número era {numero_secreto}. 😥")
+            # El ciclo terminará naturalmente aquí también
+            
+    except ValueError:
+        print("Por favor, ingresa un número entero válido.")
+        # No incrementamos intentos_hechos aquí para darle otra oportunidad con el mismo número de intento.
+print("--- Fin del Juego ---")</code></pre>
+
+  <h3 style="color: #991b1b; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-forward"></i> B. <code>continue</code>: Omitir la Iteración Actual</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    La sentencia <code>continue</code> detiene la ejecución de la iteración actual del ciclo <code>while</code> y salta directamente a la evaluación de la condición del <code>while</code> para la siguiente posible iteración.
+  </p>
+  <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Procesar solo mediciones de temperatura positivas de un sensor
+# hasta que se ingrese un valor negativo para detener
+temperaturas_validas = []
+print("Ingresa temperaturas (°C). Escribe un número negativo para finalizar.")
+while True: # Bucle potencialmente infinito, necesitamos un break
+    entrada_usuario = input("Temperatura: ")
+    try:
+        temp = float(entrada_usuario)
+        if temp < 0:
+            print("Entrada negativa detectada. Finalizando la toma de datos.")
+            break # Salida del bucle while True
+        
+        if temp > 50.0: # Umbral de temperatura no realista para este ejemplo
+            print(f"Temperatura {temp}°C es muy alta, se descarta y se pide la siguiente.")
+            continue # Volver al inicio del while para la próxima entrada
+
+        temperaturas_validas.append(temp)
+        print(f"Temperatura {temp}°C registrada. (Datos válidos: {temperaturas_validas})")
+
+    except ValueError:
+        if entrada_usuario.lower() == 'fin': # Otra forma de salir
+             print("Finalizando por comando 'fin'.")
+             break
+        print("Entrada no numérica. Intenta de nuevo o escribe 'fin' para salir.")
+        
+print(f"\nTemperaturas válidas procesadas: {temperaturas_validas}")</code></pre>
+</div>
+
+<div id="while-else" class="card section-while-else" style="border-left: 6px solid #2563eb; background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e3a8a;"><i class="fas fa-question-circle"></i> 5. ¿Un <code>else</code> Después del <code>while</code>? ¡Sí, en Python!</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python tiene una característica un poco inusual pero útil: puedes añadir una cláusula <code>else</code> al final de un ciclo <code>while</code> (y también de un ciclo <code>for</code>). El bloque de código dentro del <code>else</code> se ejecuta <strong>solo si el ciclo <code>while</code> termina de forma natural</strong> (es decir, cuando su condición se vuelve <code>False</code>), pero <strong>NO se ejecuta si el ciclo se interrumpe con una sentencia <code>break</code></strong>.
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo: Búsqueda de un número en un rango (Matemáticas)
+numero_a_buscar = 7
+contador = 1
+limite_busqueda = 10
+
+print(f"Buscando el número {numero_a_buscar} en el rango de 1 a {limite_busqueda}...")
+while contador <= limite_busqueda:
+    print(f"Probando con: {contador}")
+    if contador == numero_a_buscar:
+        print(f"¡Número {numero_a_buscar} encontrado en la posición {contador}! 🎉")
+        break # Salimos del ciclo porque lo encontramos
+    contador += 1
+else:
+    # Este bloque SOLO se ejecuta si el 'while' terminó porque contador > limite_busqueda
+    # (es decir, si el 'break' NUNCA se ejecutó)
+    print(f"El número {numero_a_buscar} NO se encontró en el rango especificado. 😔")
+
+print("--- Fin de la búsqueda ---")
+
+# Prueba de nuevo buscando un número que no está para ver el 'else'
+numero_a_buscar_2 = 15
+contador_2 = 1
+print(f"\nBuscando el número {numero_a_buscar_2}...")
+while contador_2 <= limite_busqueda:
+    if contador_2 == numero_a_buscar_2:
+        print(f"¡Número {numero_a_buscar_2} encontrado!")
+        break
+    contador_2 += 1
+else:
+    print(f"El número {numero_a_buscar_2} NO se encontró. (Bloque 'else' ejecutado)")</code></pre>
+  <div class="note-while" style="border-left-color: #3b82f6; background-color: #e0f2fe; margin-top:20px;">
+    <p><i class="fas fa-lightbulb" style="color: #1e40af;"></i> El bloque <code>else</code> con <code>while</code> es útil para ejecutar código que debe ocurrir solo si el ciclo completó todas sus iteraciones sin una interrupción forzada por <code>break</code>. Es una forma de distinguir entre una finalización "normal" y una finalización "prematura" del ciclo.</p>
+  </div>
+</div>
+
+<div id="for-vs-while" class="card section-while-comparison" style="border-left: 6px solid #f97316; background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c2410c;"><i class="fas fa-balance-scale-left"></i> 6. Duelo de Titanes: <code>for</code> vs. <code>while</code> - ¿Cuándo Usar Cuál?</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Tanto <code>for</code> como <code>while</code> son ciclos, pero tienen fortalezas diferentes. Saber cuándo usar cada uno hará tu código más eficiente y legible.
+  </p>
+  <table class="styled-table-orange" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Ciclo <code>for</code></th>
+          <th>Ciclo <code>while</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Uso Principal</strong></td>
+          <td>Iterar sobre una secuencia de elementos conocidos (listas, tuplas, cadenas, <code>range()</code>). Cuando sabes cuántas veces (o sobre qué ítems) quieres iterar.</td>
+          <td>Repetir un bloque de código mientras una condición sea verdadera. Ideal cuando el número de iteraciones no se conoce de antemano.</td>
+        </tr>
+        <tr>
+          <td><strong>Variable de Control</strong></td>
+          <td>La variable de iteración se actualiza automáticamente con cada elemento del iterable.</td>
+          <td>Necesitas inicializar y actualizar manualmente una variable de control dentro del ciclo para que la condición eventualmente cambie.</td>
+        </tr>
+        <tr>
+          <td><strong>Riesgo de Bucle Infinito</strong></td>
+          <td>Menor (generalmente imposible si se itera sobre un iterable finito).</td>
+          <td>Mayor si la condición nunca se vuelve falsa o si olvidas actualizar las variables que afectan la condición.</td>
+        </tr>
+        <tr>
+          <td><strong>Ejemplo Clásico</strong></td>
+          <td><code>for fruta in ["manzana", "banana", "cereza"]:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(fruta)</code><br><br><code>for i in range(5):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</code></td>
+          <td><code>contador = 0<br>while contador < 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(contador)<br>&nbsp;&nbsp;&nbsp;&nbsp;contador += 1</code><br><br><code>respuesta = ""<br>while respuesta.lower() != "salir":<br>&nbsp;&nbsp;&nbsp;&nbsp;respuesta = input("Escribe 'salir' para terminar: ")</code></td>
+        </tr>
+      </tbody>
+  </table>
+  <style>
+    .styled-table-orange { border-collapse: collapse; font-size: 0.9em; line-height:1.4;}
+    .styled-table-orange th, .styled-table-orange td { border: 1px solid #fdba74; padding: 10px 12px; text-align: left; }
+    .styled-table-orange thead { background-color: #ffedd5; }
+    .styled-table-orange tbody tr:nth-child(odd) { background-color: #fff7ed; }
+    .styled-table-orange code { background-color: #fed7aa; color: #7c2d12; padding: 2px 5px; border-radius: 4px; font-size: 0.95em;}
+  </style>
+  <div class="note-while" style="border-left-color: #f97316; background-color: #fff1e6; margin-top:20px;">
+    <p><i class="fas fa-lightbulb" style="color: #c2410c;"></i> <strong>En resumen:</strong> ¿Sabes cuántas veces necesitas repetir o tienes una colección para recorrer? ¡Usa <code>for</code>! ¿Necesitas repetir hasta que algo cambie o se cumpla una condición externa? ¡<code>while</code> es tu amigo!</p>
+  </div>
+</div>
+
+<div id="conclusion-while-loop" class="card section-while-conclusion" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #3730a3; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-award"></i> Conclusión: Repitiendo con Propósito y Control</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Excelente! Has aprendido sobre el ciclo <code>while</code>, una estructura de control fundamental en Python que te permite ejecutar código repetidamente mientras una condición se mantenga verdadera.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Ahora sabes:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li>Cuándo y por qué usar un ciclo <code>while</code>.</li>
+        <li>La sintaxis y los componentes de un ciclo <code>while</code>.</li>
+        <li>La importancia crucial de asegurar que la condición del ciclo eventualmente se vuelva falsa para evitar bucles infinitos.</li>
+        <li>Cómo usar <code>break</code> para salir de un ciclo y <code>continue</code> para saltar a la siguiente iteración.</li>
+        <li>El uso (opcional) de la cláusula <code>else</code> con ciclos <code>while</code>.</li>
+        <li>Las diferencias clave entre <code>for</code> y <code>while</code> para elegir la herramienta adecuada.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    El ciclo <code>while</code> es especialmente útil para tareas donde el número de repeticiones es indeterminado, como en la validación de entradas, simulaciones que continúan hasta un cierto estado, o menús interactivos.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Desafío en Google Colab:</strong>
+      <br>
+      Crea un programa que simule la carga de una batería.
+      <ol style="margin-left:20px; margin-top:5px; line-height:1.6;">
+          <li>Comienza con un nivel de batería de 0%.</li>
+          <li>En cada "paso de tiempo" (cada iteración del ciclo <code>while</code>), incrementa el nivel de batería en un 10%.</li>
+          <li>Imprime el nivel de batería después de cada incremento.</li>
+          <li>El ciclo debe continuar mientras el nivel de batería sea menor o igual al 100%.</li>
+          <li>Cuando la batería llegue al 100% (o lo supere), imprime "¡Batería Cargada Completamente! 🔋".</li>
+          <li>(Opcional avanzado): Usa <code>time.sleep(0.5)</code> dentro del ciclo para ver la carga en "tiempo real" (necesitarás <code>import time</code>).</li>
+      </ol>
+      ¡Este ejercicio te ayudará a consolidar el uso de <code>while</code> y la actualización de variables de control!
+    </p>
+  </div>
+</div>

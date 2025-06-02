@@ -1,0 +1,336 @@
+<div id="excepciones-header" class="card" style="background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%); padding: 30px 25px; text-align: center; color: #ffffff; margin-bottom: 30px; border-radius: 12px; position: relative; overflow: hidden;">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 5px, transparent 5px, transparent 10px); animation: subtleShiftException 30s linear infinite;"></div>
+  <style> @keyframes subtleShiftException { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } } </style>
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
+      <i class="fas fa-shield-alt"></i> Manejo de Excepciones en Python: ¡Prepárate para lo Inesperado! 🛡️
+    </h1>
+    <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+      Aprende a construir programas robustos que pueden anticipar y gestionar errores elegantemente con <code>try-except</code>.
+    </p>
+  </div>
+</div>
+
+<div id="intro-excepciones" class="card section-ex-intro" style="border-left: 6px solid #e74c3c; background: linear-gradient(135deg, #fff0f0 0%, #ffe5e5 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c0392b; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-exclamation-triangle"></i> 1. Cuando las Cosas No Salen Según lo Planeado: ¿Qué son las Excepciones?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Mientras programas, incluso con mucho cuidado, a veces ocurren errores. Estos errores, detectados por Python <em>durante la ejecución</em> del programa, se llaman <strong>excepciones</strong>. Una excepción es un evento que interrumpe el flujo normal de las instrucciones de tu código.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Si una excepción ocurre y no la "manejas" (o "capturas"), tu programa se detendrá abruptamente y mostrará un mensaje de error (traceback), lo cual no es una buena experiencia para el usuario ni para ti como desarrollador.
+  </p>
+  <h3 style="color: #c0392b; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">¿Por qué es crucial manejar excepciones?</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-ambulance" style="color: #e74c3c;"></i> <strong>Evitar Caídas del Programa:</strong> Permite que tu programa continúe funcionando (o termine de forma controlada) incluso si ocurre un error.</li>
+    <li><i class="fas fa-user-shield" style="color: #e74c3c;"></i> <strong>Mejorar la Experiencia del Usuario:</strong> Puedes mostrar mensajes de error amigables en lugar de trazas de error crípticas.</li>
+    <li><i class="fas fa-bug" style="color: #e74c3c;"></i> <strong>Manejo de Errores Específicos:</strong> Puedes tomar acciones diferentes según el tipo de error que ocurra.</li>
+    <li><i class="fas fa-tools" style="color: #e74c3c;"></i> <strong>Robustez del Código:</strong> Hace tus programas más confiables y resistentes a situaciones inesperadas (entradas incorrectas, problemas con archivos, etc.).</li>
+  </ul>
+  <div class="note-ex" style="border-left: 5px solid #e74c3c; background-color: #fee2e2; margin-top:20px; padding: 15px; border-radius: 8px;">
+    <p style="margin:0; font-size:1em;"><i class="fas fa-lightbulb" style="color: #c0392b;"></i> <strong>Piensa en esto:</strong> En un experimento de física, si un sensor falla y devuelve un dato no numérico, ¿preferirías que tu programa de análisis se cierre de golpe o que te avise del problema y continúe con los datos válidos (o pida una nueva entrada)? ¡El manejo de excepciones te permite lo segundo!
+    </p>
+  </div>
+</div>
+
+<div id="try-except-basico" class="card section-ex-syntax" style="border-left: 6px solid #3498db; background: linear-gradient(135deg, #eaf5ff 0%, #d4eaff 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #2980b9;"><i class="fas fa-hammer"></i> 2. El Bloque <code>try</code> y <code>except</code>: ¡Intentar y Capturar!</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    La forma fundamental de manejar excepciones en Python es con un bloque <code>try-except</code>. La idea es: "Intenta (<code>try</code>) ejecutar este código. Si ocurre un error específico (una excepción), en lugar de detenerte, ejecuta este otro código (<code>except</code>)". [cite: 34895]
+  </p>
+  <h3 style="color: #1f618d; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Básica:</h3>
+  <div class="code-block-ex" style="background-color: #2c3e50; color: #ecf0f1; padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 1.05em; line-height: 1.5; margin: 15px 0; overflow-x: auto; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); position: relative;">
+  <pre><code class="language-python"><span style="color: #e74c3c;">try</span>:
+    <span style="color: #95a5a6;"># Código que podría generar una excepción</span>
+    <span style="color: #95a5a6;"># Por ejemplo, una división por cero, una conversión de tipo inválida, etc.</span>
+    resultado = <span style="color: #f39c12;">10</span> / <span style="color: #f39c12;">0</span> 
+    print(f<span style="color: #f1c40f;">"El resultado es: {resultado}"</span>) <span style="color: #95a5a6;"># Esta línea no se ejecutará si hay error arriba</span>
+
+<span style="color: #e74c3c;">except</span> ZeroDivisionError: <span style="color: #95a5a6;"># Se especifica el tipo de error que queremos capturar</span>
+    <span style="color: #95a5a6;"># Código que se ejecuta SI ocurre una ZeroDivisionError en el bloque try</span>
+    print(<span style="color: #f1c40f;">"Error: ¡No puedes dividir por cero! 🚫"</span>)
+
+<span style="color: #95a5a6;"># El programa continúa aquí después de manejar la excepción (o si no hubo excepción)</span>
+print(<span style="color: #f1c40f;">"Fin del programa."</span>)</code></pre>
+  </div>
+  
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#d1e7ff; border-radius:8px;">
+      <p style="font-style:italic; color: #1f618d; font-size:0.95em;">La estructura <code>try-except</code> actúa como una red de seguridad: el bloque <code>try</code> es donde realizas la acción que podría fallar, y el bloque <code>except</code> es lo que haces si falla, evitando que el programa entero se rompa.</p>
+  </div>
+
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    <strong>Cómo funciona:</strong>
+    <ol style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li>Python primero intenta ejecutar todo el código dentro del bloque <code>try</code>.</li>
+        <li>Si <strong>no</strong> ocurre ninguna excepción, el bloque <code>except</code> se omite y la ejecución continúa después de toda la estructura.</li>
+        <li>Si ocurre una excepción <strong>dentro</strong> del bloque <code>try</code> que coincide con el tipo especificado en <code>except</code> (ej. <code>ZeroDivisionError</code>), Python salta el resto del código en <code>try</code> y ejecuta el código dentro de <code>except</code>.</li>
+        <li>Después de <code>except</code> (o si no hubo error en <code>try</code>), el programa sigue con el código posterior.</li>
+    </ol>
+  </p>
+</div>
+
+<div id="excepciones-especificas" class="card section-ex-specific" style="border-left: 6px solid #27ae60; background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #117a65;"><i class="fas fa-bullseye"></i> 3. Ser Específico: Capturando Tipos de Excepciones</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Aunque podrías usar un <code>except:</code> genérico para atrapar cualquier error, ¡no es una buena práctica! Es mucho mejor ser específico sobre los tipos de excepciones que esperas y manejas. Esto hace tu código más predecible y fácil de depurar.
+  </p>
+  <p style="font-size:1.05em; line-height: 1.7; margin-bottom:10px;">
+      Python tiene muchos tipos de excepciones incorporadas. Algunas comunes que podrías encontrar en contextos científicos y matemáticos son:
+      <ul style="margin-left:20px; font-size:1.05em; line-height:1.7;">
+          <li><code>ValueError</code>: Se produce cuando una función recibe un argumento con un valor apropiado en tipo, pero incorrecto en contenido (ej. <code>int("hola")</code>, <code>math.sqrt(-1)</code>). [cite: 34915]</li>
+          <li><code>TypeError</code>: Ocurre cuando una operación o función se aplica a un objeto de un tipo inapropiado (ej. <code>"2" + 3</code>). [cite: 34914]</li>
+          <li><code>ZeroDivisionError</code>: Al intentar dividir entre cero. [cite: 34913]</li>
+          <li><code>IndexError</code>: Al intentar acceder a un índice de secuencia (lista, tupla) que está fuera de rango. [cite: 34916]</li>
+          <li><code>KeyError</code>: Al intentar acceder a una clave en un diccionario que no existe. [cite: 34917]</li>
+          <li><code>FileNotFoundError</code>: Cuando intentas abrir un archivo que no se encuentra. [cite: 34918]</li>
+          <li><code>OverflowError</code>: Cuando el resultado de una operación aritmética es demasiado grande para ser representado.</li>
+      </ul>
+  </p>
+  <h3 style="color: #117a65; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis para Múltiples Tipos:</h3>
+  <div class="code-block-ex" style="background-color: #1f2937; color: #ecf0f1;">
+  <pre><code class="language-python"><span style="color: #e74c3c;">try</span>:
+    <span style="color: #95a5a6;"># Código propenso a errores</span>
+    valor_str = input(<span style="color: #f1c40f;">"Ingresa un número para calcular su inverso: "</span>)
+    numero = float(valor_str)
+    inverso = <span style="color: #f39c12;">1</span> / numero
+    print(f<span style="color: #f1c40f;">"El inverso de {numero} es {inverso:.4f}"</span>)
+
+<span style="color: #e74c3c;">except</span> ValueError:
+    print(<span style="color: #f1c40f;">"Error: Debes ingresar un valor numérico válido. 🔢"</span>)
+<span style="color: #e74c3c;">except</span> ZeroDivisionError:
+    print(<span style="color: #f1c40f;">"Error: No se puede calcular el inverso de cero. ♾️"</span>)
+<span style="color: #e74c3c;">except</span> Exception <span style="color: #e67e22;">as</span> e: <span style="color: #95a5a6;"># Un capturador más genérico al final (opcional)</span>
+    print(f<span style="color: #f1c40f;">"Ocurrió un error inesperado: {e}"</span>)</code></pre>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    También puedes capturar múltiples excepciones en una sola cláusula <code>except</code> usando una tupla:
+  </p>
+  <div class="code-block-ex" style="background-color: #1f2937; color: #ecf0f1;">
+  <pre><code class="language-python"><span style="color: #e74c3c;">try</span>:
+    x = int(input(<span style="color: #f1c40f;">"Dame un número: "</span>))
+    resultado = <span style="color: #f39c12;">100</span> / x
+<span style="color: #e74c3c;">except</span> (ValueError, ZeroDivisionError) <span style="color: #e67e22;">as</span> error_comun:
+    print(f<span style="color: #f1c40f;">"¡Ups! Algo salió mal con el número: {error_comun}"</span>)</code></pre>
+  </div>
+  <div class="note-ex" style="border-left-color: #27ae60; background-color: #e8f8f5; margin-top:20px;">
+    <p><i class="fas fa-lightbulb" style="color: #117a65;"></i> <strong>Orden Importa:</strong> Si usas múltiples bloques <code>except</code>, Python los prueba en orden. Coloca los más específicos primero y los más genéricos (como <code>except Exception:</code>) al final. Si un <code>except</code> más genérico está antes, podría capturar un error que querías manejar de forma más específica.</p>
+  </div>
+</div>
+
+<div id="else-finally" class="card section-ex-else-finally" style="border-left: 6px solid #8e44ad; background: linear-gradient(135deg, #f9f6ff 0%, #f3e5f5 100%);">
+  <h2 style="color: #7d3c98;"><i class="fas fa-puzzle-piece"></i> 4. Las Cláusulas Opcionales: <code>else</code> y <code>finally</code></h2>
+  
+  <h3 style="color: #6a1b9a; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-check-double"></i> La Cláusula <code>else</code>: Código si Todo Va Bien</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Puedes añadir una cláusula <code>else</code> después de todos los <code>except</code>. El bloque de código dentro de <code>else</code> se ejecuta <strong>solo si el bloque <code>try</code> se completó sin generar ninguna excepción</strong>.
+  </p>
+  <div class="code-block-ex" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code class="language-python">numerador = float(input(<span style="color: #f1c40f;">"Numerador: "</span>))
+denominador = float(input(<span style="color: #f1c40f;">"Denominador: "</span>))
+<span style="color: #e74c3c;">try</span>:
+    resultado_division = numerador / denominador
+<span style="color: #e74c3c;">except</span> ZeroDivisionError:
+    print(<span style="color: #f1c40f;">"Error: El denominador no puede ser cero. 🚫"</span>)
+<span style="color: #e74c3c;">else</span>:
+    <span style="color: #95a5a6;"># Esto solo se ejecuta si no hubo ZeroDivisionError</span>
+    print(f<span style="color: #f1c40f;">"La división es {resultado_division:.3f} ✅"</span>)
+print(<span style="color: #f1c40f;">"Cálculo terminado."</span>)</code></pre>
+  </div>
+  <p style="font-size:1.05em; line-height:1.7; margin-top:10px;">Es útil para separar el código que podría fallar (en <code>try</code>) del código que solo debe ejecutarse si el primero tuvo éxito (en <code>else</code>).</p>
+
+  <h3 style="color: #6a1b9a; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-hands-wash"></i> La Cláusula <code>finally</code>: Limpieza Garantizada</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El bloque <code>finally</code> es especial: su código se ejecuta <strong>siempre</strong>, sin importar si ocurrió una excepción en el bloque <code>try</code> o no, e incluso si un <code>except</code> o <code>else</code> se ejecutó, o si hay un <code>return</code>, <code>break</code> o <code>continue</code> dentro del <code>try</code>.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7;">Es ideal para tareas de "limpieza" que deben realizarse sí o sí, como cerrar un archivo, liberar una conexión de red, o apagar un dispositivo en un experimento físico.</p>
+  <div class="code-block-ex" style="background-color: #4a235a; color: #f4ecf7;">
+  <pre><code class="language-python"><span style="color: #95a5a6;"># Simulando la apertura y cierre de un archivo de datos de experimento</span>
+archivo_datos = <span style="color: #f1c40f;">"datos_temp.txt"</span> 
+<span style="color: #e74c3c;">try</span>:
+    print(f<span style="color: #f1c40f;">"Intentando abrir el archivo '{archivo_datos}'... 📂"</span>)
+    # Simular lectura o escritura (podría fallar si el archivo no existe o no hay permisos)
+    # f = open(archivo_datos, "r") 
+    # contenido = f.read()
+    # print(f"Contenido: {contenido[:30]}...") # Solo primeros 30 chars
+    # raise IOError("Error simulado durante la lectura del archivo!") # Para probar el except
+    print(<span style="color: #f1c40f;">"Procesamiento del archivo completado exitosamente. ✅"</span>)
+
+<span style="color: #e74c3c;">except</span> FileNotFoundError:
+    print(f<span style="color: #f1c40f;">"Error: El archivo '{archivo_datos}' no fue encontrado. 😥"</span>)
+<span style="color: #e74c3c;">except</span> IOError <span style="color: #e67e22;">as</span> e:
+    print(f<span style="color: #f1c40f;">"Error de E/S al trabajar con el archivo: {e} 💔"</span>)
+<span style="color: #e74c3c;">else</span>:
+    print(<span style="color: #f1c40f;">"No ocurrieron errores durante el manejo del archivo. 👍"</span>)
+<span style="color: #e74c3c;">finally</span>:
+    <span style="color: #95a5a6;"># Este bloque se ejecuta siempre, ideal para cerrar el archivo</span>
+    # if 'f' in locals() and not f.closed: # Verificar si f existe y no está cerrado
+    #     f.close()
+    print(<span style="color: #f1c40f;">"Bloque 'finally': Operaciones de limpieza completadas (ej. archivo cerrado). 🧹"</span>)</code></pre>
+  </div>
+</div>
+
+<div id="info-y-raise-excepciones" class="card section-ex-advanced" style="border-left: 6px solid #d35400; background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);">
+  <h2 style="color: #a04000;"><i class="fas fa-broadcast-tower"></i> 5. Información de la Excepción y Cómo Lanzar las Tuyas</h2>
+
+  <h3 style="color: #ba4a00; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Accediendo al Mensaje de Error (<code>as e</code>)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Cuando capturas una excepción, a menudo quieres saber más sobre qué salió mal. Puedes asignar el objeto de la excepción a una variable usando <code>as nombre_variable</code> en la cláusula <code>except</code>.
+  </p>
+  <div class="code-block-ex" style="background-color: #4a2c05; color: #fde8d0;">
+  <pre><code class="language-python"><span style="color: #e74c3c;">try</span>:
+    resultado = <span style="color: #f39c12;">10</span> / int(<span style="color: #f1c40f;">"cero"</span>)
+<span style="color: #e74c3c;">except</span> ValueError <span style="color: #e67e22;">as</span> error_conversion:
+    print(f<span style="color: #f1c40f;">"¡Ocurrió un error de conversión! Detalles: {error_conversion}"</span>)
+    <span style="color: #95a5a6;"># error_conversion contendrá algo como: invalid literal for int() with base 10: 'cero'</span>
+<span style="color: #e74c3c;">except</span> Exception <span style="color: #e67e22;">as</span> error_general: <span style="color: #95a5a6;"># Captura cualquier otra excepción</span>
+    print(f<span style="color: #f1c40f;">"Error general: {error_general}"</span>)</code></pre>
+  </div>
+
+  <h3 style="color: #ba4a00; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-angle-double-up"></i> Lanzando Excepciones Intencionalmente (<code>raise</code>)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    A veces, quieres que tu propio código genere (o "lance") una excepción si detecta una condición de error que no puede manejar o que indica un uso incorrecto de una función. Para esto se usa la palabra clave <code>raise</code>. [cite: 34921]
+  </p>
+  <div class="code-block-ex" style="background-color: #4a2c05; color: #fde8d0;">
+  <pre><code class="language-python"><span style="color: #95a5a6;"># Función para calcular la velocidad angular (Física)</span>
+<span style="color: #e74c3c;">import</span> math
+
+<span style="color: #e74c3c;">def</span> <span style="color: #2980b9;">calcular_velocidad_angular</span>(frecuencia_hz):
+    <span style="color: #e74c3c;">if not</span> isinstance(frecuencia_hz, (int, float)):
+        <span style="color: #e74c3c;">raise</span> TypeError(<span style="color: #f1c40f;">"La frecuencia debe ser un número (Hz)."</span>)
+    <span style="color: #e74c3c;">if</span> frecuencia_hz < <span style="color: #f39c12;">0</span>:
+        <span style="color: #e74c3c;">raise</span> ValueError(<span style="color: #f1c40f;">"La frecuencia no puede ser negativa."</span>)
+    <span style="color: #e67e22;">return</span> <span style="color: #f39c12;">2</span> * math.pi * frecuencia_hz
+
+<span style="color: #e74c3c;">try</span>:
+    omega1 = calcular_velocidad_angular(<span style="color: #f39c12;">50</span>) <span style="color: #95a5a6;"># Hz</span>
+    print(f<span style="color: #f1c40f;">"Velocidad angular para 50 Hz: {omega1:.2f} rad/s"</span>)
+    
+    omega2 = calcular_velocidad_angular(<span style="color: #f1c40f;">-10</span>) <span style="color: #95a5a6;"># Esto lanzará ValueError</span>
+    print(omega2) <span style="color: #95a5a6;"># No se ejecutará</span>
+<span style="color: #e74c3c;">except</span> (ValueError, TypeError) <span style="color: #e67e22;">as</span> e:
+    print(f<span style="color: #f1c40f;">"Error al calcular velocidad angular: {e} 🛑"</span>)</code></pre>
+  </div>
+  <div class="note-ex" style="border-left-color: #d35400; background-color: #fff5e6; margin-top:20px;">
+    <p><i class="fas fa-lightbulb" style="color: #a04000;"></i> Usar <code>raise</code> es útil para validaciones de entrada en tus funciones y para señalar condiciones de error específicas de tu lógica de programa.</p>
+  </div>
+</div>
+
+<div id="ejemplos-adicionales-excepciones" class="card section-ex-examples" style="border-left: 6px solid #16a085; background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);">
+  <h2 style="color: #117a65;"><i class="fas fa-vials"></i> 6. Más Ejemplos Prácticos con Manejo de Excepciones</h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Veamos cómo aplicar <code>try-except</code> en escenarios más concretos de matemáticas y física.
+  </p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #dcfce7; border-left: 5px solid #22c55e;">
+      <h3 style="color: #15803d;"><i class="fas fa-square-root-alt"></i> A. Raíz Cuadrada Segura (Matemáticas)</h3>
+      <p>Evitar errores al calcular la raíz cuadrada de números negativos.</p>
+      <pre><code>import math
+def raiz_cuadrada_segura(numero_str):
+    try:
+        numero = float(numero_str)
+        if numero < 0:
+            raise ValueError("No se puede calcular la raíz de un número negativo con math.sqrt.")
+        resultado = math.sqrt(numero)
+        return f"La raíz cuadrada de {numero} es {resultado:.4f}"
+    except ValueError as e:
+        return f"Error: {e}"
+
+print(raiz_cuadrada_segura("25"))
+print(raiz_cuadrada_segura("-9"))
+print(raiz_cuadrada_segura("texto"))</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #dbeafe; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-ruler-combined"></i> B. Cálculo de Distancia entre Dos Puntos (Matemáticas)</h3>
+      <p>Manejar entradas incorrectas al pedir coordenadas.</p>
+      <pre><code>import math
+def calcular_distancia_puntos():
+    try:
+        x1 = float(input("Ingrese x1: "))
+        y1 = float(input("Ingrese y1: "))
+        x2 = float(input("Ingrese x2: "))
+        y2 = float(input("Ingrese y2: "))
+        distancia = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        return f"La distancia entre ({x1},{y1}) y ({x2},{y2}) es {distancia:.2f}"
+    except ValueError:
+        return "Error: Todas las coordenadas deben ser números."
+    except Exception as e:
+        return f"Ocurrió un error inesperado: {e}"
+
+# print(calcular_distancia_puntos()) # Descomenta para probar</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #eef2ff; border-left: 5px solid #4f46e5;">
+      <h3 style="color: #3730a3;"><i class="fas fa-tachometer-alt"></i> C. Cálculo de Velocidad (Física - MRU)</h3>
+      <p>Evitar división por cero si el tiempo es cero.</p>
+      <pre><code>def calcular_velocidad_mru():
+    try:
+        distancia_m = float(input("Distancia recorrida (metros): "))
+        tiempo_s = float(input("Tiempo transcurrido (segundos): "))
+        if tiempo_s == 0:
+            raise ZeroDivisionError("El tiempo no puede ser cero para calcular velocidad.")
+        velocidad = distancia_m / tiempo_s
+        return f"Velocidad: {velocidad:.2f} m/s"
+    except ValueError:
+        return "Error: Distancia y tiempo deben ser números."
+    except ZeroDivisionError as e:
+        return f"Error de cálculo: {e}"
+    finally:
+        print("--- Cálculo de velocidad finalizado ---")
+
+# print(calcular_velocidad_mru()) # Descomenta para probar</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #dc2626;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-file-invoice-dollar"></i> D. Conversión de Temperaturas Robusta</h3>
+      <p>Manejar la entrada del usuario para la unidad y el valor.</p>
+      <pre><code>def convertir_temperatura():
+    try:
+        temp_str = input("Ingrese la temperatura (ej: 25C, 77F): ")
+        valor = float(temp_str[:-1]) # Toma todos menos el último caracter
+        unidad = temp_str[-1:].upper() # Toma el último caracter y lo pone en mayúscula
+
+        if unidad == 'C':
+            convertida = (valor * 9/5) + 32
+            return f"{valor}°C son {convertida:.1f}°F"
+        elif unidad == 'F':
+            convertida = (valor - 32) * 5/9
+            return f"{valor}°F son {convertida:.1f}°C"
+        else:
+            raise ValueError("Unidad no reconocida. Use 'C' o 'F'.")
+    except ValueError as e:
+        return f"Error de entrada: {e}"
+    except IndexError:
+        return "Error: Formato de entrada incorrecto (ej: 25C)."
+
+# print(convertir_temperatura()) # Descomenta para probar</code></pre>
+    </div>
+  </div>
+</div>
+
+
+<div id="conclusion-excepciones" class="card section-ex-conclusion" style="border-left: 6px solid #166534; background: linear-gradient(135deg, #dcfce7 0%, #a7f3d0 100%);">
+  <h2 style="color: #064e3b;"><i class="fas fa-shield-check"></i> 7. Conclusión: Programando con Resiliencia</h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Excelente trabajo! Has aprendido a manejar las excepciones en Python, una habilidad esencial para cualquier programador. Ahora puedes escribir código que no solo funciona cuando todo va bien, sino que también puede anticipar, gestionar y recuperarse de errores de manera elegante.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Recuerda los bloques clave:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li><code>try</code>: Para el código que podría fallar.</li>
+        <li><code>except TipoDeError (as e)</code>: Para manejar errores específicos y opcionalmente obtener información sobre ellos.</li>
+        <li><code>else</code>: Para código que se ejecuta solo si no hubo errores en el <code>try</code>.</li>
+        <li><code>finally</code>: Para código de limpieza que se ejecuta siempre.</li>
+        <li><code>raise</code>: Para lanzar tus propias excepciones cuando sea necesario.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Aplicar un buen manejo de excepciones hará tus programas más robustos, fáciles de usar y mucho más profesionales, especialmente en el ámbito científico donde la integridad de los datos y la estabilidad de los cálculos son cruciales.
+  </p>
+  <div class="note-ex" style="border-left-color: #16a34a; background-color: #f0fdf4; margin-top:20px;">
+    <p><i class="fas fa-rocket" style="color: #059669;"></i> <strong>¡Sigue Practicando!</strong> Experimenta en Google Colab. Intenta provocar diferentes tipos de errores en tus propios programas (división por cero, conversión de tipos incorrecta, acceso a archivos inexistentes) y luego implementa bloques <code>try-except</code> para manejarlos. ¡La práctica te hará un experto en la construcción de software a prueba de fallos!</p>
+  </div>
+</div>
