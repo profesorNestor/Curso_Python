@@ -1,0 +1,251 @@
+<div id="diccionarios-header" class="card" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-book-open"></i> Diccionarios en Python: Mapas de Información Clave-Valor 🔑🗺️
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Organiza, busca y gestiona datos de forma eficiente con la estructura de mapeo más potente de Python.
+  </p>
+</div>
+
+<div id="intro-diccionarios" class="card" style="background-color: #fffbeb; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-atlas"></i> 1. ¿Qué Son los Diccionarios y Por Qué Son Tan Útiles?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina un diccionario real: buscas una palabra (la "clave") y encuentras su definición (el "valor"). ¡Los diccionarios en Python funcionan con una idea muy similar! Son colecciones que almacenan datos en pares de <strong>clave-valor</strong>. [cite: 15] En lugar de acceder a los elementos por una posición numérica (como en las listas o tuplas), accedes a un valor usando su clave única. [cite: 15]
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Los diccionarios (tipo <code>dict</code>) son increíblemente flexibles y eficientes para muchas tareas, como contar la frecuencia de palabras en un texto, almacenar las propiedades de un objeto científico, o gestionar las configuraciones de un programa.
+  </p>
+  
+  <h3 style="color: #92400e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Características Clave de los Diccionarios:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-key" style="color: #f59e0b;"></i> <strong>Pares Clave-Valor:</strong> Cada elemento es una asociación entre una clave y un valor.</li>
+    <li><i class="fas fa-fingerprint" style="color: #f59e0b;"></i> <strong>Claves Únicas e Inmutables:</strong> Las claves dentro de un diccionario deben ser únicas. [cite: 18] Además, deben ser de un tipo de dato inmutable (como cadenas, números o tuplas que solo contengan elementos inmutables). [cite: 18, 65] ¡No puedes usar una lista como clave!</li>
+    <li><i class="fas fa-boxes" style="color: #f59e0b;"></i> <strong>Valores de Cualquier Tipo:</strong> Los valores pueden ser de cualquier tipo de dato (números, cadenas, listas, otros diccionarios, etc.). [cite: 19]</li>
+    <li><i class="fas fa-edit" style="color: #f59e0b;"></i> <strong>Mutables:</strong> Puedes añadir, eliminar y modificar los pares clave-valor después de crear el diccionario. [cite: 20]</li>
+    <li><i class="fas fa-sort-amount-down" style="color: #f59e0b;"></i> <strong>Ordenados (desde Python 3.7+):</strong> En versiones modernas de Python (3.7 en adelante), los diccionarios recuerdan y mantienen el orden en que se insertaron los elementos. [cite: 22, 97] En versiones anteriores (Python 3.6 y previas), no se garantizaba este orden. [cite: 22]</li>
+    <li><i class="fas fa-tachometer-alt" style="color: #f59e0b;"></i> <strong>Acceso Rápido por Clave:</strong> La búsqueda, inserción y eliminación de elementos usando su clave es, en promedio, muy rápida (tiempo constante, $O(1)$)[cite: 17, 32, 35], gracias a su implementación interna mediante tablas hash. [cite: 12] Esto los hace más eficientes que las listas para búsquedas cuando tienes un identificador único.</li>
+  </ul>
+
+  <div style="margin-top: 20px; padding: 15px; background-color: #fff7ed; border-left: 5px solid #fb923c; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🧠 <strong>Analogía Científica: La Tabla Periódica</strong>
+      <br>Puedes imaginar la Tabla Periódica de los Elementos como un diccionario.
+      <ul style="margin-left:20px; margin-top:5px;">
+        <li><strong>Clave:</strong> El símbolo del elemento (ej. "H", "O", "Fe").</li>
+        <li><strong>Valor:</strong> Podría ser otro diccionario con las propiedades de ese elemento (nombre, número atómico, masa atómica, etc.).</li>
+      </ul>
+      <code>tabla_periodica = {"H": {"nombre": "Hidrógeno", "numero_atomico": 1}, "O": {"nombre": "Oxígeno", ...}}</code>
+      <br>Accederías a la información del Hidrógeno usando <code>tabla_periodica["H"]</code>.
+    </p>
+  </div>
+</div>
+
+<div id="creacion-diccionarios" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-plus-square"></i> 2. Creando Diccionarios en Python
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python ofrece varias formas de crear diccionarios:
+  </p>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">2.1. Con Llaves <code>{ }</code>:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Es la forma más común y directa. Los pares clave-valor se separan por dos puntos (<code>:</code>), y los pares entre sí por comas.</p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Diccionario para constantes físicas importantes
+constantes_fisicas = {
+    "velocidad_luz_m_s": 299792458,       # c
+    "constante_planck_Js": 6.62607015e-34, # h
+    "gravedad_tierra_mps2": 9.80665,     # g
+    "numero_avogadro_mol-1": 6.02214076e23 # NA
+}
+print(constantes_fisicas)
+
+# Diccionario vacío (usando llaves)
+diccionario_vacio_llaves = {}
+print(f"Diccionario vacío con {{}}: {diccionario_vacio_llaves}, Tipo: {type(diccionario_vacio_llaves)}")</code></pre>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">2.2. Con la Función <code>dict()</code>:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">El constructor <code>dict()</code> es versátil:</p>
+  <ul style="font-size: 1.05em; line-height: 1.7; margin-left:20px;">
+    <li><strong>Sin argumentos:</strong> Crea un diccionario vacío: <code>diccionario_vacio = dict()</code>. [cite: 178]</li>
+    <li><strong>Con argumentos de palabra clave (keywords):</strong> Útil si las claves son cadenas válidas como nombres de variables. [cite: 72]</li>
+    <li><strong>Con un iterable de pares clave-valor:</strong> Como una lista de tuplas. [cite: 73, 155]</li>
+  </ul>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Con argumentos de palabra clave
+datos_planeta_marte = dict(
+    nombre="Marte", 
+    tipo="Rocoso", 
+    numero_lunas=2, 
+    distancia_media_sol_UA=1.524
+)
+print(f"Datos de Marte: {datos_planeta_marte}")
+
+# Desde una lista de tuplas (útil para datos dinámicos)
+puntos_cardinales_grados = [("Norte", 0), ("Este", 90), ("Sur", 180), ("Oeste", 270)]
+mapa_grados = dict(puntos_cardinales_grados)
+print(f"Mapa de grados: {mapa_grados}")
+
+# Diccionario vacío con dict()
+otro_vacio = dict()
+print(f"Otro vacío con dict(): {otro_vacio}")</code></pre>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">2.3. Con el Método <code>fromkeys(iterable, valor_opcional)</code>:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Crea un nuevo diccionario donde las claves se toman de un <code>iterable</code> y todas las claves apuntan inicialmente al mismo <code>valor_opcional</code> (que por defecto es <code>None</code>). [cite: 110, 124, 196]
+  </p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Para inicializar contadores de notas musicales en una composición
+notas_musicales = ["Do", "Re", "Mi", "Fa", "Sol"]
+conteo_notas = dict.fromkeys(notas_musicales, 0) # Todas las notas inician con conteo 0
+print(f"Conteo inicial de notas: {conteo_notas}")
+
+# Para registrar la presencia de ciertas proteínas (valor inicial False)
+proteinas_a_buscar = ("Insulina", "Hemoglobina", "Colágeno")
+presencia_proteinas = dict.fromkeys(proteinas_a_buscar, False)
+print(f"Registro de presencia: {presencia_proteinas}")</code></pre>
+</div>
+
+<div id="acceso-modificacion-diccionarios" class="card" style="background-color: #f0f9ff; border-left: 6px solid #0ea5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-edit"></i> 3. Accediendo y Modificando Elementos
+  </h2>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">3.1. Acceso Directo con Corchetes <code>[clave]</code>:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    La forma más común de acceder al valor asociado a una clave es usando corchetes <code>[]</code>. [cite: 75, 181]
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>propiedades_agua = {
+    "formula": "H₂O",
+    "punto_fusion_C": 0,
+    "punto_ebullicion_C": 100,
+    "densidad_g_cm3": 1.0
+}
+
+formula_del_agua = propiedades_agua["formula"]
+print(f"La fórmula del agua es: {formula_del_agua}")
+
+# ¡CUIDADO! Si la clave no existe, Python generará un error KeyError.
+# print(propiedades_agua["peso_molecular"]) # Esto daría un KeyError</code></pre>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">3.2. Acceso Seguro con <code>get(clave, valor_por_defecto)</code>:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Para evitar errores <code>KeyError</code>, puedes usar el método <code>get()</code>. Si la clave existe, devuelve su valor. Si no existe, devuelve <code>None</code> (por defecto) o el <code>valor_por_defecto</code> que tú especifiques. [cite: 76, 110, 117, 128, 188]
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Usando el diccionario propiedades_agua de arriba
+densidad = propiedades_agua.get("densidad_g_cm3")
+print(f"Densidad: {densidad}") # Salida: 1.0
+
+# Clave que no existe, con valor por defecto
+calor_especifico = propiedades_agua.get("calor_especifico_J_gC", "Dato no disponible")
+print(f"Calor específico: {calor_especifico}") # Salida: Dato no disponible
+
+# Clave que no existe, sin valor por defecto (devuelve None)
+viscosidad = propiedades_agua.get("viscosidad_Pa_s")
+print(f"Viscosidad: {viscosidad}") # Salida: None</code></pre>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">3.3. Añadir o Modificar Elementos:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Puedes añadir un nuevo par clave-valor o modificar el valor de una clave existente simplemente asignando un valor a la clave usando corchetes. [cite: 81, 182]
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Datos de un péndulo simple (Física)
+pendulo_datos = {
+    "longitud_m": 1.5,
+    "masa_kg": 0.5
+}
+print(f"Original: {pendulo_datos}")
+
+# Modificar un valor existente
+pendulo_datos["longitud_m"] = 1.6 # Se actualiza la longitud
+print(f"Modificado: {pendulo_datos}")
+
+# Añadir un nuevo par clave-valor
+pendulo_datos["periodo_s_calculado"] = 2.53 
+print(f"Con nuevo dato: {pendulo_datos}")</code></pre>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">3.4. Eliminar Elementos:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Hay varias formas de eliminar pares clave-valor:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.7; margin-left:20px;">
+    <li><strong><code>del diccionario[clave]</code>:</strong> Elimina el par. Genera <code>KeyError</code> si la clave no existe. [cite: 81, 184]</li>
+    <li><strong><code>diccionario.pop(clave, valor_por_defecto)</code>:</strong> Elimina la clave y devuelve su valor. Si la clave no existe, devuelve <code>valor_por_defecto</code> (o genera <code>KeyError</code> si no se da valor por defecto). [cite: 81, 110, 119, 189]</li>
+    <li><strong><code>diccionario.popitem()</code>:</strong> Elimina y devuelve un par clave-valor (en Python 3.7+ es el último insertado; antes era arbitrario). Genera <code>KeyError</code> si el diccionario está vacío. [cite: 110, 127, 190]</li>
+    <li><strong><code>diccionario.clear()</code>:</strong> Elimina todos los elementos del diccionario. [cite: 81, 110, 143, 191]</li>
+  </ul>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Inventario de reactivos de un laboratorio de Química
+reactivos_lab = {
+    "HCl": "Ácido Clorhídrico",
+    "NaOH": "Hidróxido de Sodio",
+    "H2SO4": "Ácido Sulfúrico",
+    "NaCl": "Cloruro de Sodio"
+}
+print(f"Inventario inicial: {reactivos_lab}")
+
+# Eliminar con del
+del reactivos_lab["H2SO4"]
+print(f"Después de 'del H2SO4': {reactivos_lab}")
+
+# Eliminar con pop() y obtener el valor
+nombre_naoh = reactivos_lab.pop("NaOH")
+print(f"Se eliminó {nombre_naoh}. Inventario: {reactivos_lab}")
+
+# Eliminar el último insertado (en Python 3.7+) con popitem()
+# (Si el orden no está garantizado, será un item arbitrario)
+if reactivos_lab: # Asegurarse que no esté vacío
+    ultimo_eliminado_par = reactivos_lab.popitem()
+    print(f"Par eliminado con popitem(): {ultimo_eliminado_par}. Inventario: {reactivos_lab}")
+
+# Vaciar todo el inventario
+reactivos_lab.clear()
+print(f"Inventario final: {reactivos_lab}")</code></pre>
+</div>
+
+
+<div id="metodos-info-diccionarios" class="card" style="background-color: #fef3c7; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-search-plus"></i> 4. Obtener Información del Diccionario: Vistas Dinámicas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Los diccionarios ofrecen métodos para obtener sus claves, valores o todos los pares clave-valor. Estos métodos devuelven objetos especiales llamados "vistas de diccionario". Una vista es dinámica: si el diccionario cambia, la vista refleja esos cambios. [cite: 79]
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><strong><code>diccionario.keys()</code> <i class="fas fa-key"></i>:</strong> Devuelve una vista de todas las claves. [cite: 78, 110, 135, 150, 185]</li>
+    <li><strong><code>diccionario.values()</code> <i class="fas fa-tag"></i>:</strong> Devuelve una vista de todos los valores. [cite: 78, 110, 137, 152, 186]</li>
+    <li><strong><code>diccionario.items()</code> <i class="fas fa-tags"></i>:</strong> Devuelve una vista de todos los pares clave-valor (como tuplas de 2 elementos). [cite: 78, 110, 138, 155, 187]</li>
+  </ul>
+  <pre style="background-color: #78350f; color: #fefce8; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo: Datos de un estudio musical
+cancion_analizada = {
+    "titulo": "Bohemian Rhapsody",
+    "artista": "Queen",
+    "album": "A Night at the Opera",
+    "duracion_s": 354,
+    "genero": "Rock Progresivo"
+}
+
+print("--- Claves del Diccionario ---")
+claves_cancion = cancion_analizada.keys()
+print(claves_cancion) # Muestra un objeto dict_keys
+for clave in claves_cancion:
+    print(f"- {clave}")
+
+print("\n--- Valores del Diccionario ---")
+valores_cancion = cancion_analizada.values()
+print(valores_cancion) # Muestra un objeto dict_values
+for valor in valores_cancion:
+    print(f"- {valor}")
+
+print("\n--- Pares Clave-Valor (Items) ---")
+items_cancion = cancion_analizada.items()
+print(items_cancion) # Muestra un objeto dict_items
+for clave, valor in items_cancion: # Desempaquetado de tuplas
+    print(f"- {clave.replace('_', ' ').capitalize()}: {valor}")
+
+# Si necesitas una lista estática (que no cambie si el diccionario cambia después):
+lista_de_claves = list(cancion_analizada.keys())
+print(f"\nLista de claves: {lista_de_claves}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fff7ed; border-left: 5px solid #fb923c; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🔄 <strong>Iterando con Vistas:</strong> Las vistas son iterables, lo que significa que puedes usarlas directamente en bucles <code>for</code> para procesar las claves, los valores o los ítems de un diccionario de forma eficiente.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,2013 @@
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX PARA GOOGLE COLAB       -->
+<!-- Enfocado en Matemáticas y Física de Bachillerato -->
+<!-- Archivo: temas/latex.html - PARTE 1        -->
+<!-- INTRODUCCIÓN Y CÓMO ESCRIBIR MATEMÁTICAS  -->
+<!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- SECCIÓN: INTRODUCCIÓN A LATEX              -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-subscript" style="color:#2b6cb0;"></i> Introducción: ¿Qué es LaTeX y para qué sirve?</h3>
+
+  <p>
+    <strong>LaTeX</strong> (pronunciado "la-tek") es un sistema de composición tipográfica diseñado para la creación de documentos con alto contenido matemático y científico. Se utiliza ampliamente en el ámbito académico, especialmente en matemáticas, física, ingeniería, informática y estadística.
+  </p>
+
+  <p>
+    En <strong>Google Colab</strong>, puedes escribir expresiones matemáticas usando sintaxis LaTeX dentro de las celdas de texto (Markdown), lo cual te permite representar ecuaciones de forma profesional, clara y legible. Esto es ideal para crear explicaciones detalladas de problemas, informes de laboratorio, clases interactivas y mucho más.
+  </p>
+
+  <!-- Subtítulo motivacional -->
+  <h4 style="color:#2b6cb0; margin-top:1.5em;">🎯 ¿Por qué deberías aprender LaTeX?</h4>
+  <ul>
+    <li>📚 Es el <strong>estándar universal</strong> en publicaciones científicas, tesis y trabajos académicos.</li>
+    <li>✨ Produce fórmulas y estructuras matemáticas con <strong>calidad profesional</strong>.</li>
+    <li>🚀 Una vez aprendes la sintaxis básica, escribir fórmulas es <strong>más rápido</strong> que usar un editor de ecuaciones.</li>
+    <li>💾 Las fórmulas son <strong>texto plano</strong>: fáciles de copiar, guardar y reutilizar.</li>
+    <li>🌐 Es compatible con muchas plataformas: <strong>Google Colab, Jupyter, Overleaf, Notion, GitHub</strong>, entre otras.</li>
+  </ul>
+
+  <!-- Subtítulo sobre el propósito del tutorial -->
+  <h4 style="color:#2b6cb0; margin-top:1.5em;">📘 ¿Qué aprenderás en este tutorial paso a paso?</h4>
+  <ul>
+    <li>🧠 Cómo escribir fórmulas en línea y centradas (modo display)</li>
+    <li>📐 Ecuaciones cuadráticas, sistemas de ecuaciones y representaciones matriciales</li>
+    <li>📊 Funciones trigonométricas, exponenciales, logaritmos, límites e integrales</li>
+    <li>⚡ Fórmulas comunes de física (cinemática, dinámica, energía, ondas)</li>
+    <li>🧮 Símbolos avanzados: conjuntos, lógica, sumatorias, productos</li>
+    <li>📈 Cómo insertar gráficos matemáticos en LaTeX con TikZ o PGFPlots (introductorio)</li>
+    <li>🛠️ Buenas prácticas, errores comunes y trucos para escribir más rápido</li>
+  </ul>
+
+  <!-- Cierre motivacional -->
+  <div style="background-color: #e0f2fe; border-left: 4px solid #38bdf8; padding: 15px; margin-top: 20px; border-radius: 6px;">
+    <strong>✅ Nota:</strong> No necesitas instalar nada. Puedes comenzar a usar LaTeX directamente desde <strong>Google Colab</strong> escribiendo dentro de las celdas tipo Markdown. ¡Verás que es mucho más fácil de lo que parece!
+  </div>
+</div>
+
+<!-- Comentario técnico -->
+<!-- Esta sección establece el contexto para todo el tutorial. Próxima sección: cómo escribir fórmulas (inline y display). -->
+
+
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX - PARTE 2               -->
+<!-- CÓMO ESCRIBIR MATEMÁTICAS EN GOOGLE COLAB -->
+<!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- SECCIÓN: SINTAXIS PARA ECUACIONES EN COLAB -->
+<!-- ========================================== -->
+<div class="card" style="background-color: #f0f9ff; border-left: 4px solid #3182ce;">
+  <h3><i class="fas fa-keyboard" style="color:#3182ce;"></i> ✍️ Cómo escribir matemáticas en Google Colab</h3>
+
+  <p style="font-size: 1.1em; margin-bottom: 20px;">
+    En Google Colab puedes escribir fórmulas matemáticas utilizando el sistema <strong>LaTeX</strong> de dos formas principales:
+  </p>
+
+  <!-- ============================================ -->
+  <!-- FORMA 1: FÓRMULAS EN LÍNEA                  -->
+  <!-- ============================================ -->
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #2563eb;">🔢 Fórmulas en línea (modo inline)</h4>
+
+    <p>Este formato se usa cuando deseas incluir la fórmula como parte de un párrafo de texto.</p>
+
+    <ul style="margin: 15px 0;">
+      <li><strong>Símbolo:</strong> Usa <strong>UN</strong> símbolo de dólar <code>$</code> al inicio y al final.</li>
+      <li><strong>Sintaxis:</strong> <code>$\text{fórmula}$</code></li>
+      <li><strong>Ubicación:</strong> Aparece en la misma línea del texto</li>
+      <li><strong>Tamaño:</strong> Compacto y acorde con el texto</li>
+      <li><strong>Uso:</strong> Variables, expresiones simples, fórmulas breves o referencia a ecuaciones</li>
+    </ul>
+
+    <!-- EJEMPLOS -->
+    <div style="background: #f9fafb; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <p><strong>✨ Ejemplos de código:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code>La ecuación cuadrática $ax^2 + bx + c = 0$ tiene soluciones $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
+
+El teorema de Pitágoras dice que $a^2 + b^2 = c^2$.
+
+La derivada de $f(x) = x^n$ es $f'(x) = nx^{n-1}$.
+
+La suma de los primeros $n$ naturales: $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.</code></pre>
+
+      <p style="margin-top: 15px;"><strong>🔮 Resultado renderizado:</strong></p>
+      <div style="background: #e0e7ff; padding: 15px; border-radius: 4px; line-height: 1.8;">
+        <p>La ecuación cuadrática $ax^2 + bx + c = 0$ tiene soluciones $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.</p>
+        <p>El teorema de Pitágoras dice que $a^2 + b^2 = c^2$.</p>
+        <p>La derivada de $f(x) = x^n$ es $f'(x) = nx^{n-1}$.</p>
+        <p>La suma de los primeros $n$ naturales: $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- COMENTARIO FINAL DE SECCIÓN               -->
+<!-- ============================================ -->
+<!--
+  Esta sección explica el uso de LaTeX en modo inline dentro de Google Colab.
+  Asegúrate de evitar errores comunes como:
+  - usar símbolos Unicode como √ en lugar de \sqrt{}
+  - usar más de un símbolo de dólar
+  - colocar espacios dentro de los signos de dólar
+-->
+
+ <!-- ============================================ -->
+<!-- FORMA 2: FÓRMULAS CENTRADAS (DISPLAY MODE) -->
+<!-- ============================================ -->
+<div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <h4 style="color: #2563eb;">
+    2️⃣ Fórmulas centradas (modo display)
+  </h4>
+
+  <p style="font-size: 1.05em;">
+    Las fórmulas centradas se escriben utilizando <strong>dos símbolos de dólar</strong> <code>$$</code> al inicio y al final del bloque de fórmula. Estas expresiones aparecen en una línea aparte, con alineación centrada y tamaño destacado. Este estilo se utiliza cuando se desea resaltar expresiones matemáticas importantes o presentar resultados finales.
+  </p>
+
+  <ul style="margin: 15px 0;">
+    <li><strong>Cómo escribirla:</strong> Usa <strong>DOS</strong> símbolos de dólar <code>$$</code> al inicio y al final.</li>
+    <li><strong>Formato:</strong> <code style="font-size: 1.1em;">\[ \text{tu fórmula} \]</code></li>
+    <li><strong>Dónde aparece:</strong> En una línea separada, centrada y sin interrumpir el párrafo.</li>
+    <li><strong>Tamaño:</strong> Grande y visualmente destacado.</li>
+    <li><strong>Uso recomendado:</strong> Para ecuaciones cuadráticas, integrales, desarrollos algebraicos extensos, sistemas de ecuaciones, funciones definidas por partes, etc.</li>
+  </ul>
+
+  <!-- Ejemplos prácticos -->
+  <div style="background: #f9fafb; padding: 15px; border-radius: 6px; margin-top: 15px;">
+    <p><strong>Ejemplo de código (lo que se escribe en Google Colab):</strong></p>
+    <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code># Fórmula cuadrática general
+\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+
+# Integral definida
+\[\int_a^b f(x)\,dx = F(b) - F(a)\]
+
+# Serie de Taylor para e^x
+\[e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\]</code></pre>
+
+    <p style="margin-top: 15px;"><strong>Así se verá renderizado:</strong></p>
+    <div style="background: #e0e7ff; padding: 20px; border-radius: 4px; font-size: 1.3em; text-align: center;">
+      <p><strong>Fórmula cuadrática:</strong></p>
+      \[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+
+      <p><strong>Integral definida:</strong></p>
+      \[\int_a^b f(x)\,dx = F(b) - F(a)\]
+
+      <p><strong>Serie de Taylor para \(e^x\):</strong></p>
+      \[e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\]
+    </div>
+  </div>
+
+  <!-- Comentario pedagógico -->
+  <div style="margin-top: 15px; padding: 12px; background: #fef9c3; border-left: 4px solid #facc15; border-radius: 6px;">
+    <strong>🎯 Consejo pedagógico:</strong> Siempre que necesites destacar un resultado importante o explicar paso a paso una operación matemática, el modo display es la mejor opción. Es ideal para presentaciones, informes o clases virtuales con Google Colab o Jupyter Notebook.
+  </div>
+</div>
+<!-- FIN DE LA SECCIÓN DE FÓRMULAS CENTRADAS -->
+
+
+  <!-- ============================================ -->
+  <!-- COMPARACIÓN VISUAL MEJORADA                 -->
+  <!-- ============================================ -->
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #92400e;">🎯 Comparación visual detallada</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background: #fef9c3;">
+          <th style="padding: 12px; text-align: left; border: 2px solid #fbbf24; width: 15%;">Tipo</th>
+          <th style="padding: 12px; text-align: left; border: 2px solid #fbbf24; width: 35%;">Código LaTeX</th>
+          <th style="padding: 12px; text-align: left; border: 2px solid #fbbf24; width: 50%;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Ejemplo 1: Fracción simple -->
+        <tr>
+          <td style="padding: 12px; border: 1px solid #fbbf24;" rowspan="2"><strong>Fracción</strong></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>La fracción $\frac{a}{b}$ es...</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;">La fracción $\frac{a}{b}$ es...</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>$$\frac{a}{b}$$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24; text-align: center;">$$\frac{a}{b}$$</td>
+        </tr>
+        
+        <!-- Ejemplo 2: Integral -->
+        <tr>
+          <td style="padding: 12px; border: 1px solid #fbbf24;" rowspan="2"><strong>Integral</strong></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>El área $\int_0^1 x^2 dx = \frac{1}{3}$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;">El área $\int_0^1 x^2 dx = \frac{1}{3}$</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>$$\int_0^1 x^2 dx = \frac{1}{3}$$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24; text-align: center;">$$\int_0^1 x^2 dx = \frac{1}{3}$$</td>
+        </tr>
+        
+        <!-- Ejemplo 3: Sumatoria -->
+        <tr>
+          <td style="padding: 12px; border: 1px solid #fbbf24;" rowspan="2"><strong>Sumatoria</strong></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>La suma $\sum_{i=1}^n i = \frac{n(n+1)}{2}$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;">La suma $\sum_{i=1}^n i = \frac{n(n+1)}{2}$</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>$$\sum_{i=1}^n i = \frac{n(n+1)}{2}$$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24; text-align: center;">$$\sum_{i=1}^n i = \frac{n(n+1)}{2}$$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CUÁNDO USAR CADA FORMATO                    -->
+  <!-- ============================================ -->
+  <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #166534;">💡 Guía de uso: ¿Cuándo usar cada formato?</h4>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+      <!-- Columna izquierda: Fórmulas en línea -->
+      <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #86efac;">
+        <h5 style="color: #166534; margin-top: 0;">Usa <code>$...$</code> (en línea) para:</h5>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li><strong>Variables y constantes:</strong> "Sea $x$ una variable real"</li>
+          <li><strong>Expresiones simples:</strong> "Si $a > 0$ entonces..."</li>
+          <li><strong>Referencias:</strong> "Como vimos en la ecuación $E = mc^2$"</li>
+          <li><strong>Operaciones básicas:</strong> "La suma $a + b$"</li>
+          <li><strong>Funciones simples:</strong> "La función $f(x) = x^2$"</li>
+        </ul>
+        
+        <div style="background: #f0fdf4; padding: 10px; border-radius: 4px; margin-top: 10px;">
+          <p style="margin: 0; font-size: 0.9em;"><strong>Tip:</strong> Si la fórmula no interrumpe la lectura, úsala en línea.</p>
+        </div>
+      </div>
+      
+      <!-- Columna derecha: Fórmulas centradas -->
+      <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #86efac;">
+        <h5 style="color: #166534; margin-top: 0;">Usa <code>$$...$$</code> (centrado) para:</h5>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li><strong>Ecuaciones numeradas:</strong> Teoremas principales</li>
+          <li><strong>Demostraciones:</strong> Pasos de desarrollo matemático</li>
+          <li><strong>Resultados importantes:</strong> Conclusiones finales</li>
+          <li><strong>Fórmulas complejas:</strong> Con fracciones grandes o matrices</li>
+          <li><strong>Definiciones formales:</strong> Conceptos clave del tema</li>
+        </ul>
+        
+        <div style="background: #f0fdf4; padding: 10px; border-radius: 4px; margin-top: 10px;">
+          <p style="margin: 0; font-size: 0.9em;"><strong>Tip:</strong> Si quieres que destaque, úsala centrada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- EJEMPLO COMPLETO INTEGRADO                  -->
+  <!-- ============================================ -->
+  <div style="background: #f3f4ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #4338ca;">📌 Ejemplo completo: Resolviendo una ecuación cuadrática</h4>
+    
+    <pre style="background: #1f2937; color: white; padding: 20px; border-radius: 6px; margin-top: 15px; overflow-x: auto;"><code>## Resolución de ecuación cuadrática
+
+Vamos a resolver la ecuación $2x^2 + 5x - 3 = 0$ usando la fórmula cuadrática.
+
+Identificamos los coeficientes: $a = 2$, $b = 5$, $c = -3$.
+
+Aplicamos la fórmula general:
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+Sustituimos los valores:
+$$x = \frac{-5 \pm \sqrt{5^2 - 4(2)(-3)}}{2(2)} = \frac{-5 \pm \sqrt{25 + 24}}{4}$$
+
+Simplificamos:
+$$x = \frac{-5 \pm \sqrt{49}}{4} = \frac{-5 \pm 7}{4}$$
+
+Por lo tanto, las soluciones son:
+$$x_1 = \frac{-5 + 7}{4} = \frac{2}{4} = \frac{1}{2}$$
+$$x_2 = \frac{-5 - 7}{4} = \frac{-12}{4} = -3$$
+
+**Respuesta:** Las soluciones son $x_1 = \frac{1}{2}$ y $x_2 = -3$.</code></pre>
+    
+    <div style="background: white; padding: 20px; border-radius: 6px; margin-top: 15px;">
+      <h5 style="margin-top: 0;">Resultado renderizado:</h5>
+      
+      <h4>Resolución de ecuación cuadrática</h4>
+      
+      <p>Vamos a resolver la ecuación $2x^2 + 5x - 3 = 0$ usando la fórmula cuadrática.</p>
+      
+      <p>Identificamos los coeficientes: $a = 2$, $b = 5$, $c = -3$.</p>
+      
+      <p>Aplicamos la fórmula general:</p>
+      $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+      
+      <p>Sustituimos los valores:</p>
+      $$x = \frac{-5 \pm \sqrt{5^2 - 4(2)(-3)}}{2(2)} = \frac{-5 \pm \sqrt{25 + 24}}{4}$$
+      
+      <p>Simplificamos:</p>
+      $$x = \frac{-5 \pm \sqrt{49}}{4} = \frac{-5 \pm 7}{4}$$
+      
+      <p>Por lo tanto, las soluciones son:</p>
+      $$x_1 = \frac{-5 + 7}{4} = \frac{2}{4} = \frac{1}{2}$$
+      $$x_2 = \frac{-5 - 7}{4} = \frac{-12}{4} = -3$$
+      
+      <p><strong>Respuesta:</strong> Las soluciones son $x_1 = \frac{1}{2}$ y $x_2 = -3$.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ERRORES COMUNES Y SOLUCIONES                -->
+  <!-- ============================================ -->
+  <div style="background: #fee2e2; padding: 20px; border-radius: 8px;">
+    <h4 style="color: #991b1b;">⚠️ Errores comunes y cómo evitarlos</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background: #fecaca;">
+          <th style="padding: 12px; text-align: left; border: 2px solid #fca5a5;">❌ Error común</th>
+          <th style="padding: 12px; text-align: left; border: 2px solid #fca5a5;">✅ Forma correcta</th>
+          <th style="padding: 12px; text-align: left; border: 2px solid #fca5a5;">💡 Explicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$$$x^2$$$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$$x^2$$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Máximo dos símbolos $</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$ x^2 $</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$x^2$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Sin espacios después del $</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$x^10$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$x^{10}$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Usa llaves para exponentes de más de un dígito</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$sin(x)$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$\sin(x)$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Las funciones llevan backslash</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$√x$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$\sqrt{x}$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Usa comandos LaTeX, no símbolos Unicode</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX - PARTE 2               -->
+<!-- SINTAXIS BÁSICA Y ÁLGEBRA DE BACHILLERATO -->
+<!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- SINTAXIS BÁSICA PARA BACHILLERATO         -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-calculator" style="color:#805ad5;"></i> Sintaxis Básica de LaTeX</h3>
+
+  <!-- ============================================ -->
+  <!-- NÚMEROS Y VARIABLES                         -->
+  <!-- ============================================ -->
+  <h4>📌 Números, variables y expresiones básicas</h4>
+  
+  <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #6b21a8; margin-top: 0;">Potencias y exponentes</h5>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #ede9fe;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Descripción</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Potencia simple</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x^2$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x^2$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Potencia con varios dígitos</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x^{10}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x^{10}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Potencia negativa</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x^{-1}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x^{-1}$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Potencia con expresión</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$e^{x+1}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$e^{x+1}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Potencia de potencia</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$(x^2)^3$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$(x^2)^3$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Base con subíndice y potencia</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x_0^2$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x_0^2$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #6b21a8; margin-top: 0;">Subíndices (muy útiles en física y química)</h5>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #ede9fe;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Descripción</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Subíndice simple</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x_1$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x_1$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Subíndice múltiple</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$x_{12}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$x_{12}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Variables de física</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$v_0$, $v_f$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$v_0$, $v_f$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Fórmulas químicas</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$H_2O$, $CO_2$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$H_2O$, $CO_2$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Doble subíndice</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$a_{i,j}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$a_{i,j}$</td>
+        </tr>
+        <tr style="background: #faf5ff;">
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">Texto como subíndice</td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;"><code>$V_{\text{max}}$</code></td>
+          <td style="padding: 8px; border: 1px solid #e9d5ff;">$V_{\text{max}}$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SÍMBOLOS MATEMÁTICOS                        -->
+  <!-- ============================================ -->
+  <h4>📌 Símbolos matemáticos esenciales</h4>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
+    <!-- Operaciones básicas -->
+    <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; border: 1px solid #0891b2;">
+      <h5 style="color: #0c4a6e; margin-top: 0;">Operaciones aritméticas</h5>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>$+$</code></td>
+          <td>→</td>
+          <td>$+$</td>
+          <td>Suma</td>
+        </tr>
+        <tr>
+          <td><code>$-$</code></td>
+          <td>→</td>
+          <td>$-$</td>
+          <td>Resta</td>
+        </tr>
+        <tr>
+          <td><code>$\times$</code></td>
+          <td>→</td>
+          <td>$\times$</td>
+          <td>Multiplicación</td>
+        </tr>
+        <tr>
+          <td><code>$\div$</code></td>
+          <td>→</td>
+          <td>$\div$</td>
+          <td>División</td>
+        </tr>
+        <tr>
+          <td><code>$\cdot$</code></td>
+          <td>→</td>
+          <td>$\cdot$</td>
+          <td>Producto punto</td>
+        </tr>
+        <tr>
+          <td><code>$\pm$</code></td>
+          <td>→</td>
+          <td>$\pm$</td>
+          <td>Más/menos</td>
+        </tr>
+        <tr>
+          <td><code>$\mp$</code></td>
+          <td>→</td>
+          <td>$\mp$</td>
+          <td>Menos/más</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Relaciones -->
+    <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #22c55e;">
+      <h5 style="color: #166534; margin-top: 0;">Relaciones y comparaciones</h5>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>$=$</code></td>
+          <td>→</td>
+          <td>$=$</td>
+          <td>Igual</td>
+        </tr>
+        <tr>
+          <td><code>$\neq$</code></td>
+          <td>→</td>
+          <td>$\neq$</td>
+          <td>Diferente</td>
+        </tr>
+        <tr>
+          <td><code>$<$</code></td>
+          <td>→</td>
+          <td>$<$</td>
+          <td>Menor que</td>
+        </tr>
+        <tr>
+          <td><code>$>$</code></td>
+          <td>→</td>
+          <td>$>$</td>
+          <td>Mayor que</td>
+        </tr>
+        <tr>
+          <td><code>$\leq$</code></td>
+          <td>→</td>
+          <td>$\leq$</td>
+          <td>Menor o igual</td>
+        </tr>
+        <tr>
+          <td><code>$\geq$</code></td>
+          <td>→</td>
+          <td>$\geq$</td>
+          <td>Mayor o igual</td>
+        </tr>
+        <tr>
+          <td><code>$\approx$</code></td>
+          <td>→</td>
+          <td>$\approx$</td>
+          <td>Aproximado</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Conjuntos y lógica -->
+    <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border: 1px solid #f59e0b;">
+      <h5 style="color: #78350f; margin-top: 0;">Conjuntos y lógica</h5>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>$\in$</code></td>
+          <td>→</td>
+          <td>$\in$</td>
+          <td>Pertenece</td>
+        </tr>
+        <tr>
+          <td><code>$\notin$</code></td>
+          <td>→</td>
+          <td>$\notin$</td>
+          <td>No pertenece</td>
+        </tr>
+        <tr>
+          <td><code>$\subset$</code></td>
+          <td>→</td>
+          <td>$\subset$</td>
+          <td>Subconjunto</td>
+        </tr>
+        <tr>
+          <td><code>$\cup$</code></td>
+          <td>→</td>
+          <td>$\cup$</td>
+          <td>Unión</td>
+        </tr>
+        <tr>
+          <td><code>$\cap$</code></td>
+          <td>→</td>
+          <td>$\cap$</td>
+          <td>Intersección</td>
+        </tr>
+        <tr>
+          <td><code>$\emptyset$</code></td>
+          <td>→</td>
+          <td>$\emptyset$</td>
+          <td>Conjunto vacío</td>
+        </tr>
+        <tr>
+          <td><code>$\infty$</code></td>
+          <td>→</td>
+          <td>$\infty$</td>
+          <td>Infinito</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- LETRAS GRIEGAS                              -->
+  <!-- ============================================ -->
+  <h4>📌 Alfabeto griego (esencial para matemáticas y física)</h4>
+  
+  <div style="background: #fff7ed; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+      <!-- Letras minúsculas más usadas -->
+      <div>
+        <h5 style="color: #9a3412; margin-top: 0;">Letras minúsculas comunes</h5>
+        <table style="width: 100%; font-size: 0.9em;">
+          <tr>
+            <td><code>$\alpha$</code></td>
+            <td>$\alpha$</td>
+            <td>alfa (ángulos)</td>
+          </tr>
+          <tr>
+            <td><code>$\beta$</code></td>
+            <td>$\beta$</td>
+            <td>beta (ángulos)</td>
+          </tr>
+          <tr>
+            <td><code>$\gamma$</code></td>
+            <td>$\gamma$</td>
+            <td>gamma (ángulos)</td>
+          </tr>
+          <tr>
+            <td><code>$\delta$</code></td>
+            <td>$\delta$</td>
+            <td>delta (cambios)</td>
+          </tr>
+          <tr>
+            <td><code>$\theta$</code></td>
+            <td>$\theta$</td>
+            <td>theta (ángulos)</td>
+          </tr>
+          <tr>
+            <td><code>$\lambda$</code></td>
+            <td>$\lambda$</td>
+            <td>lambda (longitud de onda)</td>
+          </tr>
+          <tr>
+            <td><code>$\mu$</code></td>
+            <td>$\mu$</td>
+            <td>mu (coef. fricción)</td>
+          </tr>
+          <tr>
+            <td><code>$\pi$</code></td>
+            <td>$\pi$</td>
+            <td>pi (3.14159...)</td>
+          </tr>
+          <tr>
+            <td><code>$\omega$</code></td>
+            <td>$\omega$</td>
+            <td>omega (vel. angular)</td>
+          </tr>
+        </table>
+      </div>
+      
+      <!-- Letras mayúsculas más usadas -->
+      <div>
+        <h5 style="color: #9a3412; margin-top: 0;">Letras mayúsculas comunes</h5>
+        <table style="width: 100%; font-size: 0.9em;">
+          <tr>
+            <td><code>$\Delta$</code></td>
+            <td>$\Delta$</td>
+            <td>Delta (cambio)</td>
+          </tr>
+          <tr>
+            <td><code>$\Sigma$</code></td>
+            <td>$\Sigma$</td>
+            <td>Sigma (suma)</td>
+          </tr>
+          <tr>
+            <td><code>$\Pi$</code></td>
+            <td>$\Pi$</td>
+            <td>Pi (producto)</td>
+          </tr>
+          <tr>
+            <td><code>$\Omega$</code></td>
+            <td>$\Omega$</td>
+            <td>Omega (ohmios)</td>
+          </tr>
+          <tr>
+            <td><code>$\Phi$</code></td>
+            <td>$\Phi$</td>
+            <td>Phi (flujo)</td>
+          </tr>
+          <tr>
+            <td><code>$\Psi$</code></td>
+            <td>$\Psi$</td>
+            <td>Psi (función de onda)</td>
+          </tr>
+          <tr>
+            <td><code>$\Gamma$</code></td>
+            <td>$\Gamma$</td>
+            <td>Gamma (función)</td>
+          </tr>
+          <tr>
+            <td><code>$\Lambda$</code></td>
+            <td>$\Lambda$</td>
+            <td>Lambda</td>
+          </tr>
+          <tr>
+            <td><code>$\Theta$</code></td>
+            <td>$\Theta$</td>
+            <td>Theta</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejemplo integrador -->
+  <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+    <h5 style="margin-top: 0;">💡 Ejemplo combinando todo lo anterior:</h5>
+    <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code>La velocidad inicial $v_0 = 10 \text{ m/s}$ forma un ángulo $\theta = 30^\circ$ con la horizontal.
+
+Si $\mu = 0.2$ es el coeficiente de fricción y $\Delta t = 5$ s, entonces:
+
+$$v_f^2 = v_0^2 - 2\mu g \Delta x$$
+
+donde $g \approx 9.8 \text{ m/s}^2$ y $\Delta x$ es el desplazamiento.</code></pre>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <p>La velocidad inicial $v_0 = 10 \text{ m/s}$ forma un ángulo $\theta = 30^\circ$ con la horizontal.</p>
+      <p>Si $\mu = 0.2$ es el coeficiente de fricción y $\Delta t = 5$ s, entonces:</p>
+      $$v_f^2 = v_0^2 - 2\mu g \Delta x$$
+      <p>donde $g \approx 9.8 \text{ m/s}^2$ y $\Delta x$ es el desplazamiento.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- ÁLGEBRA DE BACHILLERATO                   -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-square-root-alt" style="color:#e53e3e;"></i> Álgebra de Bachillerato</h3>
+
+  <!-- ============================================ -->
+  <!-- FRACCIONES                                  -->
+  <!-- ============================================ -->
+  <h4>🔢 Fracciones</h4>
+  
+  <div style="background: #fef2f2; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #fee2e2;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;">Tipo de fracción</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción simple</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{1}{2}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{1}{2}$</td>
+        </tr>
+        <tr style="background: #fff5f5;">
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción con variables</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{x}{y}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{x}{y}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción algebraica</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{x + 1}{x - 1}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{x + 1}{x - 1}$</td>
+        </tr>
+        <tr style="background: #fff5f5;">
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción compleja</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{x^2 + 2x + 1}{x^2 - 1}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{x^2 + 2x + 1}{x^2 - 1}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción anidada</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{1}{1 + \frac{1}{x}}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{1}{1 + \frac{1}{x}}$</td>
+        </tr>
+        <tr style="background: #fff5f5;">
+          <td style="padding: 8px; border: 1px solid #fecaca;">Fracción continua</td>
+          <td style="padding: 8px; border: 1px solid #fecaca;"><code>$\frac{1}{2 + \frac{1}{3 + \frac{1}{4}}}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fecaca;">$\frac{1}{2 + \frac{1}{3 + \frac{1}{4}}}$</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div style="margin-top: 15px; background: white; padding: 10px; border-radius: 6px;">
+      <p style="margin: 0;"><strong>💡 Tip:</strong> En modo display ($$...$$), las fracciones se ven más grandes y claras:</p>
+      $$\frac{x^2 + 2x + 1}{x^2 - 1} = \frac{(x+1)^2}{(x+1)(x-1)} = \frac{x+1}{x-1}$$
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- RAÍCES                                      -->
+  <!-- ============================================ -->
+  <h4>🔢 Raíces y radicales</h4>
+  
+  <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #dbeafe;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #bfdbfe;">Tipo de raíz</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #bfdbfe;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #bfdbfe;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz cuadrada simple</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt{x}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt{x}$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz cuadrada de expresión</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt{x^2 + y^2}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt{x^2 + y^2}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz cúbica</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt[3]{8}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt[3]{8}$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz n-ésima</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt[n]{x}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt[n]{x}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz de fracción</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt{\frac{a}{b}}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt{\frac{a}{b}}$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">Raíz anidada</td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;"><code>$\sqrt{2 + \sqrt{3}}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bfdbfe;">$\sqrt{2 + \sqrt{3}}$</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div style="margin-top: 15px; background: white; padding: 10px; border-radius: 6px;">
+      <p style="margin: 0;"><strong>📐 Ejemplo de racionalización:</strong></p>
+      $$\frac{1}{\sqrt{2}} = \frac{1}{\sqrt{2}} \cdot \frac{\sqrt{2}}{\sqrt{2}} = \frac{\sqrt{2}}{2}$$
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- FÓRMULA CUADRÁTICA Y EJEMPLOS               -->
+  <!-- ============================================ -->
+  <h4>📐 La fórmula cuadrática (¡La más importante del álgebra!)</h4>
+  
+  <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #166534; margin-top: 0;">Formas de escribir la fórmula cuadrática</h5>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #dcfce7;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #bbf7d0;">Descripción</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #bbf7d0;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: center; border: 1px solid #bbf7d0;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #bbf7d0;">Forma estándar</td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0;"><code>$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0; text-align: center;">$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px; border: 1px solid #bbf7d0;">Con discriminante</td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0;"><code>$x = \frac{-b \pm \sqrt{\Delta}}{2a}, \quad \Delta = b^2 - 4ac$</code></td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0; text-align: center;">$x = \frac{-b \pm \sqrt{\Delta}}{2a}, \quad \Delta = b^2 - 4ac$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #bbf7d0;">Soluciones separadas</td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0;"><code>$x_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}$<br>$x_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}$</code></td>
+          <td style="padding: 8px; border: 1px solid #bbf7d0; text-align: center;">$x_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}$$x_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}$</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Ejemplo completo resuelto -->
+    <div style="margin-top: 20px; background: white; padding: 15px; border-radius: 6px;">
+      <h5 style="color: #166534; margin-top: 0;">📝 Ejemplo resuelto paso a paso</h5>
+      <p><strong>Resolver:</strong> $3x^2 - 7x + 2 = 0$</p>
+      
+      <p><strong>Paso 1:</strong> Identificar coeficientes</p>
+      <p style="margin-left: 20px;">$a = 3$, $b = -7$, $c = 2$</p>
+      
+      <p><strong>Paso 2:</strong> Calcular el discriminante</p>
+      $\Delta = b^2 - 4ac = (-7)^2 - 4(3)(2) = 49 - 24 = 25$
+      
+      <p><strong>Paso 3:</strong> Aplicar la fórmula</p>
+      $x = \frac{-(-7) \pm \sqrt{25}}{2(3)} = \frac{7 \pm 5}{6}$
+      
+      <p><strong>Paso 4:</strong> Obtener las soluciones</p>
+      $x_1 = \frac{7 + 5}{6} = \frac{12}{6} = 2$
+      $x_2 = \frac{7 - 5}{6} = \frac{2}{6} = \frac{1}{3}$
+      
+      <p><strong>Verificación:</strong> $3(2)^2 - 7(2) + 2 = 12 - 14 + 2 = 0$ ✓</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SISTEMAS DE ECUACIONES                      -->
+  <!-- ============================================ -->
+  <h4>📊 Sistemas de ecuaciones</h4>
+  
+  <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #4b5563; margin-top: 0;">Diferentes formas de escribir sistemas</h5>
+    
+    <!-- Sistema 2x2 -->
+    <div style="margin-bottom: 20px;">
+      <p><strong>Sistema 2×2 básico:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$\begin{cases}
+2x + 3y = 7 \\
+x - y = 1
+\end{cases}$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $\begin{cases}
+        2x + 3y = 7 \\
+        x - y = 1
+        \end{cases}$
+      </div>
+    </div>
+    
+    <!-- Sistema 3x3 -->
+    <div style="margin-bottom: 20px;">
+      <p><strong>Sistema 3×3:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$\begin{cases}
+x + y + z = 6 \\
+2x - y + 3z = 14 \\
+3x + 2y - z = 2
+\end{cases}$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $\begin{cases}
+        x + y + z = 6 \\
+        2x - y + 3z = 14 \\
+        3x + 2y - z = 2
+        \end{cases}$
+      </div>
+    </div>
+    
+    <!-- Sistema con alineación -->
+    <div style="margin-bottom: 20px;">
+      <p><strong>Sistema con alineación mejorada:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$\left\{
+\begin{aligned}
+3x + 2y - z &= 1 \\
+2x - 2y + 4z &= -2 \\
+-x + \frac{1}{2}y - z &= 0
+\end{aligned}
+\right.$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $\left\{
+        \begin{aligned}
+        3x + 2y - z &= 1 \\
+        2x - 2y + 4z &= -2 \\
+        -x + \frac{1}{2}y - z &= 0
+        \end{aligned}
+        \right.$
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- FUNCIONES POR PARTES                        -->
+  <!-- ============================================ -->
+  <h4>📈 Funciones definidas por partes</h4>
+  
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <!-- Valor absoluto -->
+    <div style="margin-bottom: 20px;">
+      <p><strong>Función valor absoluto:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$|x| = \begin{cases}
+x & \text{si } x \geq 0 \\
+-x & \text{si } x < 0
+\end{cases}$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $|x| = \begin{cases}
+        x & \text{si } x \geq 0 \\
+        -x & \text{si } x < 0
+        \end{cases}$
+      </div>
+    </div>
+    
+    <!-- Función escalón -->
+    <div style="margin-bottom: 20px;">
+      <p><strong>Función escalón unitario:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$H(x) = \begin{cases}
+0 & \text{si } x < 0 \\
+\frac{1}{2} & \text{si } x = 0 \\
+1 & \text{si } x > 0
+\end{cases}$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $H(x) = \begin{cases}
+        0 & \text{si } x < 0 \\
+        \frac{1}{2} & \text{si } x = 0 \\
+        1 & \text{si } x > 0
+        \end{cases}$
+      </div>
+    </div>
+    
+    <!-- Función personalizada -->
+    <div>
+      <p><strong>Función definida por intervalos:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px;"><code>$f(x) = \begin{cases}
+x^2 + 1 & \text{si } x \leq -1 \\
+2x & \text{si } -1 < x < 2 \\
+5 & \text{si } x \geq 2
+\end{cases}$</code></pre>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 10px;">
+        $f(x) = \begin{cases}
+        x^2 + 1 & \text{si } x \leq -1 \\
+        2x & \text{si } -1 < x < 2 \\
+        5 & \text{si } x \geq 2
+        \end{cases}$
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- DESIGUALDADES Y INTERVALOS                  -->
+  <!-- ============================================ -->
+  <h4>📏 Desigualdades e intervalos</h4>
+  
+  <div style="background: #ede9fe; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #ddd6fe;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Tipo</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Código LaTeX</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #c4b5fd;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Desigualdad simple</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$x > 3$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$x > 3$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Desigualdad doble</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$-2 < x \leq 5$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$-2 < x \leq 5$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Intervalo abierto</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$(a, b)$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$(a, b)$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Intervalo cerrado</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$[a, b]$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$[a, b]$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Intervalo mixto</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$[a, b)$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$[a, b)$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">Intervalo infinito</td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;"><code>$(-\infty, a]$</code></td>
+          <td style="padding: 8px; border: 1px solid #c4b5fd;">$(-\infty, a]$</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div style="margin-top: 15px; background: white; padding: 10px; border-radius: 6px;">
+      <p style="margin: 0;"><strong>📌 Ejemplo:</strong> La solución de $x^2 - 4 < 0$ es $x \in (-2, 2)$</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- EXPRESIONES ALGEBRAICAS COMPLEJAS           -->
+  <!-- ============================================ -->
+  <h4>🎯 Expresiones algebraicas avanzadas</h4>
+  
+  <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+    <h5 style="margin-top: 0;">Ejemplos de expresiones complejas</h5>
+    
+    <!-- Factorización -->
+    <div style="margin-bottom: 15px;">
+      <p><strong>Factorización de polinomios:</strong></p>
+      $x^3 - 6x^2 + 11x - 6 = (x-1)(x-2)(x-3)$
+    </div>
+    
+    <!-- Productos notables -->
+    <div style="margin-bottom: 15px;">
+      <p><strong>Productos notables:</strong></p>
+      $(a+b)^2 = a^2 + 2ab + b^2$
+      $(a-b)^2 = a^2 - 2ab + b^2$
+      $(a+b)(a-b) = a^2 - b^2$
+      $(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$
+    </div>
+    
+    <!-- Racionalización -->
+    <div style="margin-bottom: 15px;">
+      <p><strong>Racionalización compleja:</strong></p>
+      $\frac{1}{\sqrt{x} + \sqrt{y}} = \frac{\sqrt{x} - \sqrt{y}}{(\sqrt{x} + \sqrt{y})(\sqrt{x} - \sqrt{y})} = \frac{\sqrt{x} - \sqrt{y}}{x - y}$
+    </div>
+    
+    <!-- Completar cuadrados -->
+    <div>
+      <p><strong>Completar el cuadrado:</strong></p>
+      $x^2 + 6x + 5 = (x^2 + 6x + 9) - 9 + 5 = (x + 3)^2 - 4$
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX - PARTE 3               -->
+<!-- GEOMETRÍA, TRIGONOMETRÍA Y FÍSICA         -->
+<!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- GEOMETRÍA Y TRIGONOMETRÍA                 -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-ruler-combined" style="color:#38a169;"></i> Geometría y Trigonometría</h3>
+
+  <!-- ============================================ -->
+  <!-- FÓRMULAS GEOMÉTRICAS BÁSICAS                -->
+  <!-- ============================================ -->
+  <h4>📐 Fórmulas geométricas fundamentales</h4>
+  
+  <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #166534; margin-top: 0;">Áreas y perímetros</h5>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #dcfce7;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #86efac;">Figura</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #86efac;">Fórmula</th>
+          <th style="padding: 10px; text-align: center; border: 1px solid #86efac;">LaTeX</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Círculo -->
+        <tr>
+          <td style="padding: 8px; border: 1px solid #86efac;" rowspan="2"><strong>Círculo</strong></td>
+          <td style="padding: 8px; border: 1px solid #86efac;">Área: $A = \pi r^2$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$A = \pi r^2$</code></td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px; border: 1px solid #86efac;">Perímetro: $P = 2\pi r$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$P = 2\pi r$</code></td>
+        </tr>
+        
+        <!-- Triángulo -->
+        <tr>
+          <td style="padding: 8px; border: 1px solid #86efac;" rowspan="3"><strong>Triángulo</strong></td>
+          <td style="padding: 8px; border: 1px solid #86efac;">Área: $A = \frac{1}{2}bh$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$A = \frac{1}{2}bh$</code></td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px; border: 1px solid #86efac;">Fórmula de Herón: $A = \sqrt{s(s-a)(s-b)(s-c)}$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$A = \sqrt{s(s-a)(s-b)(s-c)}$</code></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #86efac;">donde $s = \frac{a+b+c}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$s = \frac{a+b+c}{2}$</code></td>
+        </tr>
+        
+        <!-- Rectángulo -->
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px; border: 1px solid #86efac;" rowspan="2"><strong>Rectángulo</strong></td>
+          <td style="padding: 8px; border: 1px solid #86efac;">Área: $A = b \cdot h$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$A = b \cdot h$</code></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #86efac;">Perímetro: $P = 2(b + h)$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$P = 2(b + h)$</code></td>
+        </tr>
+        
+        <!-- Trapecio -->
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px; border: 1px solid #86efac;"><strong>Trapecio</strong></td>
+          <td style="padding: 8px; border: 1px solid #86efac;">Área: $A = \frac{(b_1 + b_2)h}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #86efac;"><code>$A = \frac{(b_1 + b_2)h}{2}$</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TEOREMAS FUNDAMENTALES                      -->
+  <!-- ============================================ -->
+  <h4>📏 Teoremas fundamentales</h4>
+  
+  <div style="background: #e0e7ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <!-- Teorema de Pitágoras -->
+    <div style="margin-bottom: 20px;">
+      <h5 style="color: #3730a3; margin-top: 0;">Teorema de Pitágoras</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        <p><strong>Forma clásica:</strong></p>
+        $$a^2 + b^2 = c^2$$
+        
+        <p><strong>Despejando la hipotenusa:</strong></p>
+        $$c = \sqrt{a^2 + b^2}$$
+        
+        <p><strong>Despejando un cateto:</strong></p>
+        $$a = \sqrt{c^2 - b^2}$$
+        
+        <p><strong>Ternas pitagóricas comunes:</strong></p>
+        <p style="text-align: center;">$(3,4,5)$, $(5,12,13)$, $(8,15,17)$, $(7,24,25)$</p>
+      </div>
+    </div>
+    
+    <!-- Teorema de Tales -->
+    <div>
+      <h5 style="color: #3730a3; margin-top: 0;">Teorema de Tales</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        <p>Si dos rectas son cortadas por paralelas:</p>
+        $$\frac{AB}{A'B'} = \frac{BC}{B'C'} = \frac{AC}{A'C'}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- FUNCIONES TRIGONOMÉTRICAS                   -->
+  <!-- ============================================ -->
+  <h4>📊 Funciones trigonométricas</h4>
+  
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #92400e; margin-top: 0;">Definiciones básicas</h5>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #fde68a;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #fbbf24;">Función</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #fbbf24;">Definición</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #fbbf24;">Código LaTeX</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Seno</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\sin(\theta) = \frac{\text{opuesto}}{\text{hipotenusa}}$</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\sin(\theta)$</code></td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Coseno</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\cos(\theta) = \frac{\text{adyacente}}{\text{hipotenusa}}$</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\cos(\theta)$</code></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Tangente</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\tan(\theta) = \frac{\text{opuesto}}{\text{adyacente}}$</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\tan(\theta)$</code></td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Cotangente</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\cot(\theta) = \frac{1}{\tan(\theta)}$</code></td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\cot(\theta)$</code></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Secante</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\sec(\theta) = \frac{1}{\cos(\theta)}$</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\sec(\theta)$</code></td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px; border: 1px solid #fbbf24;">Cosecante</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;">$\csc(\theta) = \frac{1}{\sin(\theta)}$</td>
+          <td style="padding: 8px; border: 1px solid #fbbf24;"><code>$\csc(\theta)$</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- IDENTIDADES TRIGONOMÉTRICAS                 -->
+  <!-- ============================================ -->
+  <h4>🔄 Identidades trigonométricas fundamentales</h4>
+  
+  <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <!-- Identidades pitagóricas -->
+    <div style="margin-bottom: 20px;">
+      <h5 style="color: #4b5563; margin-top: 0;">Identidades pitagóricas</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        $$\sin^2(\theta) + \cos^2(\theta) = 1$$
+        $$1 + \tan^2(\theta) = \sec^2(\theta)$$
+        $$1 + \cot^2(\theta) = \csc^2(\theta)$$
+      </div>
+    </div>
+    
+    <!-- Ángulo doble -->
+    <div style="margin-bottom: 20px;">
+      <h5 style="color: #4b5563;">Fórmulas de ángulo doble</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        $$\sin(2\theta) = 2\sin(\theta)\cos(\theta)$$
+        $$\cos(2\theta) = \cos^2(\theta) - \sin^2(\theta) = 2\cos^2(\theta) - 1 = 1 - 2\sin^2(\theta)$$
+        $$\tan(2\theta) = \frac{2\tan(\theta)}{1 - \tan^2(\theta)}$$
+      </div>
+    </div>
+    
+    <!-- Suma y resta de ángulos -->
+    <div>
+      <h5 style="color: #4b5563;">Fórmulas de suma y resta</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        $$\sin(\alpha \pm \beta) = \sin(\alpha)\cos(\beta) \pm \cos(\alpha)\sin(\beta)$$
+        $$\cos(\alpha \pm \beta) = \cos(\alpha)\cos(\beta) \mp \sin(\alpha)\sin(\beta)$$
+        $$\tan(\alpha \pm \beta) = \frac{\tan(\alpha) \pm \tan(\beta)}{1 \mp \tan(\alpha)\tan(\beta)}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- LEY DE SENOS Y COSENOS                      -->
+  <!-- ============================================ -->
+  <h4>📏 Ley de senos y ley de cosenos</h4>
+  
+  <div style="background: #fee2e2; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <!-- Ley de senos -->
+    <div style="margin-bottom: 20px;">
+      <h5 style="color: #991b1b; margin-top: 0;">Ley de senos</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        <p><strong>Forma estándar:</strong></p>
+        $$\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}$$
+        
+        <p><strong>Forma con el diámetro de la circunferencia circunscrita:</strong></p>
+        $$\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} = 2R$$
+        
+        <p><strong>Ejemplo de aplicación:</strong></p>
+        <p>Si $a = 10$, $A = 30°$, $B = 45°$:</p>
+        $$b = \frac{a \cdot \sin(B)}{\sin(A)} = \frac{10 \cdot \sin(45°)}{\sin(30°)} = \frac{10 \cdot \frac{\sqrt{2}}{2}}{\frac{1}{2}} = 10\sqrt{2}$$
+      </div>
+    </div>
+    
+    <!-- Ley de cosenos -->
+    <div>
+      <h5 style="color: #991b1b;">Ley de cosenos</h5>
+      <div style="background: white; padding: 15px; border-radius: 6px;">
+        <p><strong>Formas equivalentes:</strong></p>
+        $$a^2 = b^2 + c^2 - 2bc\cos(A)$$
+        $$b^2 = a^2 + c^2 - 2ac\cos(B)$$
+        $$c^2 = a^2 + b^2 - 2ab\cos(C)$$
+        
+        <p><strong>Para encontrar ángulos:</strong></p>
+        $$\cos(A) = \frac{b^2 + c^2 - a^2}{2bc}$$
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ÁNGULOS ESPECIALES                          -->
+  <!-- ============================================ -->
+  <h4>📐 Valores de ángulos especiales</h4>
+  
+  <div style="background: #f3f4f6; padding: 20px; border-radius: 8px;">
+    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+      <thead>
+        <tr style="background: #e5e7eb;">
+          <th style="padding: 10px; border: 1px solid #d1d5db;">Ángulo</th>
+          <th style="padding: 10px; border: 1px solid #d1d5db;">$0°$</th>
+          <th style="padding: 10px; border: 1px solid #d1d5db;">$30°$</th>
+          <th style="padding: 10px; border: 1px solid #d1d5db;">$45°$</th>
+          <th style="padding: 10px; border: 1px solid #d1d5db;">$60°$</th>
+          <th style="padding: 10px; border: 1px solid #d1d5db;">$90°$</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>Radianes</strong></td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$0$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\pi}{6}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\pi}{4}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\pi}{3}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\pi}{2}$</td>
+        </tr>
+        <tr style="background: #f9fafb;">
+          <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>$\sin$</strong></td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$0$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{1}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\sqrt{2}}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\sqrt{3}}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$1$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>$\cos$</strong></td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$1$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\sqrt{3}}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{\sqrt{2}}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{1}{2}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$0$</td>
+        </tr>
+        <tr style="background: #f9fafb;">
+          <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>$\tan$</strong></td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$0$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\frac{1}{\sqrt{3}}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$1$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\sqrt{3}$</td>
+          <td style="padding: 8px; border: 1px solid #d1d5db;">$\infty$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- FÍSICA DE BACHILLERATO                    -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-atom" style="color:#4c51bf;"></i> Física de Bachillerato</h3>
+
+  <!-- ============================================ -->
+  <!-- CINEMÁTICA                                  -->
+  <!-- ============================================ -->
+  <h4>🚗 Cinemática (Estudio del movimiento)</h4>
+  
+  <div style="background: #eef2ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #3730a3; margin-top: 0;">Movimiento Rectilíneo Uniforme (MRU)</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px;"><strong>Velocidad constante:</strong></td>
+          <td style="padding: 8px;">$v = \frac{d}{t} = \text{constante}$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px;"><strong>Posición:</strong></td>
+          <td style="padding: 8px;">$x = x_0 + vt$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Velocidad media:</strong></td>
+          <td style="padding: 8px;">$v_{\text{med}} = \frac{\Delta x}{\Delta t} = \frac{x_f - x_0}{t_f - t_0}$</td>
+        </tr>
+      </table>
+    </div>
+    
+    <h5 style="color: #3730a3;">Movimiento Rectilíneo Uniformemente Acelerado (MRUA)</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <p><strong>Ecuaciones fundamentales:</strong></p>
+      
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px; width: 40%;"><strong>Velocidad:</strong></td>
+          <td style="padding: 8px;">$v = v_0 + at$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px;"><strong>Posición:</strong></td>
+          <td style="padding: 8px;">$x = x_0 + v_0t + \frac{1}{2}at^2$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Velocidad-posición:</strong></td>
+          <td style="padding: 8px;">$v^2 = v_0^2 + 2a(x - x_0)$</td>
+        </tr>
+        <tr style="background: #f5f3ff;">
+          <td style="padding: 8px;"><strong>Posición (sin aceleración):</strong></td>
+          <td style="padding: 8px;">$x = x_0 + \frac{(v_0 + v)t}{2}$</td>
+        </tr>
+      </table>
+      
+      <div style="margin-top: 15px; background: #e0e7ff; padding: 10px; border-radius: 6px;">
+        <p style="margin: 0;"><strong>📌 Caso especial - Caída libre:</strong> $a = -g = -9.8 \text{ m/s}^2$</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MOVIMIENTO EN DOS DIMENSIONES               -->
+  <!-- ============================================ -->
+  <h4>🎯 Movimiento en dos dimensiones</h4>
+  
+  <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #166534; margin-top: 0;">Tiro parabólico</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <p><strong>Componentes de la velocidad inicial:</strong></p>
+      $$v_{0x} = v_0 \cos(\theta)$$
+      $$v_{0y} = v_0 \sin(\theta)$$
+      
+      <p><strong>Ecuaciones de posición:</strong></p>
+      $$x = v_0 \cos(\theta) \cdot t$$
+      $$y = v_0 \sin(\theta) \cdot t - \frac{1}{2}gt^2$$
+      
+      <p><strong>Altura máxima:</strong></p>
+      $$h_{\text{max}} = \frac{v_0^2 \sin^2(\theta)}{2g}$$
+      
+      <p><strong>Alcance horizontal:</strong></p>
+      $$R = \frac{v_0^2 \sin(2\theta)}{g}$$
+      
+      <p><strong>Tiempo de vuelo:</strong></p>
+      $$t_{\text{vuelo}} = \frac{2v_0 \sin(\theta)}{g}$$
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- DINÁMICA                                    -->
+  <!-- ============================================ -->
+  <h4>⚡ Dinámica (Fuerzas y leyes de Newton)</h4>
+  
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #92400e; margin-top: 0;">Leyes de Newton</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #fde68a;">
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Ley</th>
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Enunciado</th>
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Fórmula</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Primera</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Ley de inercia</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$\sum \vec{F} = 0 \Rightarrow \vec{v} = \text{constante}$</td>
+          </tr>
+          <tr style="background: #fffbeb;">
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Segunda</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">F = ma</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$\vec{F} = m\vec{a}$</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Tercera</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Acción-reacción</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$\vec{F}_{12} = -\vec{F}_{21}$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h5 style="color: #92400e;">Tipos de fuerzas comunes</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px; width: 30%;"><strong>Peso:</strong></td>
+          <td style="padding: 8px;">$\vec{W} = m\vec{g}$</td>
+          <td style="padding: 8px;">Siempre hacia abajo</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px;"><strong>Normal:</strong></td>
+          <td style="padding: 8px;">$\vec{N} \perp \text{superficie}$</td>
+          <td style="padding: 8px;">Perpendicular a la superficie</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Fricción estática:</strong></td>
+          <td style="padding: 8px;">$f_s \leq \mu_s N$</td>
+          <td style="padding: 8px;">Opuesta al movimiento potencial</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px;"><strong>Fricción cinética:</strong></td>
+          <td style="padding: 8px;">$f_k = \mu_k N$</td>
+          <td style="padding: 8px;">Opuesta al movimiento</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Fuerza elástica:</strong></td>
+          <td style="padding: 8px;">$\vec{F} = -k\vec{x}$</td>
+          <td style="padding: 8px;">Ley de Hooke</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 8px;"><strong>Tensión:</strong></td>
+          <td style="padding: 8px;">$\vec{T}$</td>
+          <td style="padding: 8px;">A lo largo de cuerdas/cables</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TRABAJO Y ENERGÍA                           -->
+  <!-- ============================================ -->
+  <h4>💡 Trabajo, energía y potencia</h4>
+  
+  <div style="background: #fee2e2; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #991b1b; margin-top: 0;">Trabajo mecánico</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+      <p><strong>Definición general:</strong></p>
+      $W = \vec{F} \cdot \vec{d} = F \cdot d \cdot \cos(\theta)$
+      
+      <p><strong>Casos especiales:</strong></p>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px;">Fuerza paralela al desplazamiento:</td>
+          <td style="padding: 8px;">$W = F \cdot d$</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+          <td style="padding: 8px;">Fuerza perpendicular:</td>
+          <td style="padding: 8px;">$W = 0$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">Trabajo de la gravedad:</td>
+          <td style="padding: 8px;">$W_g = -mg\Delta h$</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+          <td style="padding: 8px;">Trabajo de un resorte:</td>
+          <td style="padding: 8px;">$W_s = -\frac{1}{2}k(x_f^2 - x_i^2)$</td>
+        </tr>
+      </table>
+    </div>
+    
+    <h5 style="color: #991b1b;">Tipos de energía</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #fecaca;">
+            <th style="padding: 10px; border: 1px solid #fca5a5;">Tipo</th>
+            <th style="padding: 10px; border: 1px solid #fca5a5;">Fórmula</th>
+            <th style="padding: 10px; border: 1px solid #fca5a5;">Unidades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fca5a5;"><strong>Cinética</strong></td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">$E_k = \frac{1}{2}mv^2$</td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">Joules (J)</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 8px; border: 1px solid #fca5a5;"><strong>Potencial gravitatoria</strong></td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">$E_p = mgh$</td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">Joules (J)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fca5a5;"><strong>Potencial elástica</strong></td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">$E_{pe} = \frac{1}{2}kx^2$</td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">Joules (J)</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 8px; border: 1px solid #fca5a5;"><strong>Mecánica total</strong></td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">$E_m = E_k + E_p$</td>
+            <td style="padding: 8px; border: 1px solid #fca5a5;">Joules (J)</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 15px; background: #fee2e2; padding: 10px; border-radius: 6px;">
+        <p style="margin: 0;"><strong>⚡ Conservación de la energía:</strong> $E_{m,inicial} = E_{m,final}$ (sin fricción)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MOMENTO Y COLISIONES                        -->
+  <!-- ============================================ -->
+  <h4>🎱 Momento lineal y colisiones</h4>
+  
+  <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #4b5563; margin-top: 0;">Momento lineal (cantidad de movimiento)</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+      <p><strong>Definición:</strong></p>
+      $\vec{p} = m\vec{v}$
+      
+      <p><strong>Conservación del momento:</strong></p>
+      $\vec{p}_{\text{inicial}} = \vec{p}_{\text{final}}$
+      $m_1\vec{v}_{1i} + m_2\vec{v}_{2i} = m_1\vec{v}_{1f} + m_2\vec{v}_{2f}$
+      
+      <p><strong>Impulso:</strong></p>
+      $\vec{J} = \vec{F} \cdot \Delta t = \Delta \vec{p}$
+    </div>
+    
+    <h5 style="color: #4b5563;">Tipos de colisiones</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #e5e7eb;">
+            <th style="padding: 10px; border: 1px solid #d1d5db;">Tipo</th>
+            <th style="padding: 10px; border: 1px solid #d1d5db;">Momento</th>
+            <th style="padding: 10px; border: 1px solid #d1d5db;">Energía cinética</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>Elástica</strong></td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">Se conserva ✓</td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">Se conserva ✓</td>
+          </tr>
+          <tr style="background: #f9fafb;">
+            <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>Inelástica</strong></td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">Se conserva ✓</td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">No se conserva ✗</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #d1d5db;"><strong>Perfectamente inelástica</strong></td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">Se conserva ✓</td>
+            <td style="padding: 8px; border: 1px solid #d1d5db;">Pérdida máxima</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MOVIMIENTO CIRCULAR                         -->
+  <!-- ============================================ -->
+  <h4>🔄 Movimiento circular</h4>
+  
+  <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #0c4a6e; margin-top: 0;">Movimiento Circular Uniforme (MCU)</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px; width: 40%;"><strong>Velocidad angular:</strong></td>
+          <td style="padding: 8px;">$\omega = \frac{2\pi}{T} = 2\pi f$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px;"><strong>Velocidad tangencial:</strong></td>
+          <td style="padding: 8px;">$v = \omega r$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Aceleración centrípeta:</strong></td>
+          <td style="padding: 8px;">$a_c = \frac{v^2}{r} = \omega^2 r$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px;"><strong>Fuerza centrípeta:</strong></td>
+          <td style="padding: 8px;">$F_c = \frac{mv^2}{r} = m\omega^2 r$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Período:</strong></td>
+          <td style="padding: 8px;">$T = \frac{2\pi r}{v} = \frac{2\pi}{\omega}$</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+          <td style="padding: 8px;"><strong>Frecuencia:</strong></td>
+          <td style="padding: 8px;">$f = \frac{1}{T} = \frac{\omega}{2\pi}$</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ONDAS Y OSCILACIONES                        -->
+  <!-- ============================================ -->
+  <h4>🌊 Ondas y oscilaciones</h4>
+  
+  <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h5 style="color: #166534; margin-top: 0;">Movimiento Armónico Simple (MAS)</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+      <p><strong>Ecuación de posición:</strong></p>
+      $x(t) = A\cos(\omega t + \phi)$
+      
+      <p><strong>Velocidad:</strong></p>
+      $v(t) = -A\omega\sin(\omega t + \phi)$
+      
+      <p><strong>Aceleración:</strong></p>
+      $a(t) = -A\omega^2\cos(\omega t + \phi) = -\omega^2 x(t)$
+      
+      <p><strong>Energía en el MAS:</strong></p>
+      $E_{\text{total}} = \frac{1}{2}kA^2 = \frac{1}{2}m\omega^2A^2$
+    </div>
+    
+    <h5 style="color: #166534;">Características de las ondas</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 8px;"><strong>Velocidad de propagación:</strong></td>
+          <td style="padding: 8px;">$v = \lambda f = \frac{\lambda}{T}$</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px;"><strong>Longitud de onda:</strong></td>
+          <td style="padding: 8px;">$\lambda = \frac{v}{f}$</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Número de onda:</strong></td>
+          <td style="padding: 8px;">$k = \frac{2\pi}{\lambda}$</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+          <td style="padding: 8px;"><strong>Ecuación de onda:</strong></td>
+          <td style="padding: 8px;">$y(x,t) = A\sin(kx - \omega t)$</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ELECTRICIDAD BÁSICA                         -->
+  <!-- ============================================ -->
+  <h4>⚡ Electricidad básica</h4>
+  
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px;">
+    <h5 style="color: #92400e; margin-top: 0;">Conceptos fundamentales</h5>
+    
+    <div style="background: white; padding: 15px; border-radius: 6px;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #fde68a;">
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Magnitud</th>
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Fórmula</th>
+            <th style="padding: 10px; border: 1px solid #fbbf24;">Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Carga eléctrica</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$Q = n \cdot e$</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Coulomb (C)</td>
+          </tr>
+          <tr style="background: #fffbeb;">
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Corriente</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$I = \frac{Q}{t}$</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Ampere (A)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Voltaje</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$V = \frac{W}{Q}$</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Volt (V)</td>
+          </tr>
+          <tr style="background: #fffbeb;">
+            <td style="padding: 8px; border: 1px solid #fbbf24;"><strong>Resistencia</strong></td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">$R = \rho \frac{L}{A}$</td>
+            <td style="padding: 8px; border: 1px solid #fbbf24;">Ohm (Ω)</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="margin-top: 15px;">
+        <p><strong>Ley de Ohm:</strong></p>
+        $V = IR$
+        
+        <p><strong>Potencia eléctrica:</strong></p>
+        $P = VI = I^2R = \frac{V^2}{R}$
+        
+        <p><strong>Energía consumida:</strong></p>
+        $E = Pt = VIt$
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX - PARTE 4 (Ampliada)     -->
+<!-- MATRICES Y FUNCIONES A TROZOS              -->
+<!-- ========================================== -->
+
+<!-- MATRICES - AMPLIACIÓN -->
+<div class="card">
+  <h3><i class="fas fa-th" style="color:#805ad5;"></i> Tipos de matrices en LaTeX</h3>
+
+  <p>Las matrices se crean usando el entorno <code>\begin{matrix}</code> o sus variantes. Aquí tienes varios ejemplos con su código y visualización:</p>
+
+  <!-- Matriz con paréntesis -->
+  <h4>🔹 Matriz con paréntesis</h4>
+  $$\begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix}$$
+
+  <!-- Matriz con corchetes -->
+  <h4>🔹 Matriz con corchetes</h4>
+  $$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$$
+
+  <!-- Matriz con llaves -->
+  <h4>🔹 Matriz con llaves</h4>
+  $$\begin{Bmatrix} a & b & c \\ d & e & f \end{Bmatrix}$$
+
+  <!-- Matriz con una barra vertical -->
+  <h4>🔹 Matriz con barras (determinante)</h4>
+  $$\begin{vmatrix} 1 & 2 \\ 3 & 4 \end{vmatrix}$$
+
+  <!-- Matriz con doble barra -->
+  <h4>🔹 Matriz con barras dobles</h4>
+  $$\begin{Vmatrix} a & b & c \\ d & e & f \end{Vmatrix}$$
+
+  <!-- Matriz identidad con puntos -->
+  <h4>🔹 Matriz identidad con puntos</h4>
+  $$
+  \begin{pmatrix}
+  1 & 0 & \cdots & 0 \\
+  0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \cdots & 1
+  \end{pmatrix}
+  $$
+</div>
+
+<!-- FUNCIONES A TROZOS -->
+<div class="card">
+  <h3><i class="fas fa-code-branch" style="color:#ed8936;"></i> Funciones definidas por partes</h3>
+
+  <p>Las funciones a trozos se escriben usando el entorno <code>\begin{cases}</code>. Aquí tienes un ejemplo:</p>
+
+  <!-- Función valor absoluto -->
+  <h4>📐 Función valor absoluto</h4>
+  $$
+  |x| =
+  \begin{cases}
+    x, & \text{si } x \geq 0 \\
+    -x, & \text{si } x < 0
+  \end{cases}
+  $$
+
+  <!-- Otra función a trozos -->
+  <h4>📘 Ejemplo general</h4>
+  $$
+  f(x) =
+  \begin{cases}
+    x^2, & \text{si } x < 0 \\
+    2x + 1, & \text{si } 0 \leq x < 5 \\
+    10, & \text{si } x \geq 5
+  \end{cases}
+  $$
+</div>
+
+<!-- Nota final -->
+<div class="card">
+  <h4>📌 Tip importante</h4>
+  <p>Para las funciones a trozos, es recomendable usar <code>\text{}</code> dentro del entorno <code>cases</code> para mantener la fuente de texto en modo normal.</p>
+</div>
+
+<!-- ========================================== -->
+<!-- TUTORIAL DE LATEX - PARTE 5               -->
+<!-- ESTADÍSTICA, COMBINATORIA Y FUNCIONES     -->
+<!-- ========================================== -->
+
+<!-- COMBINATORIA -->
+<div class="card">
+  <h3><i class="fas fa-layer-group" style="color:#48bb78;"></i> Combinatoria en LaTeX</h3>
+
+  <p>Usamos notación con factoriales o binomios:</p>
+
+  <ul>
+    <li><strong>Factorial:</strong> $n!$</li>
+    <li><strong>Permutaciones:</strong> $P(n, r) = \dfrac{n!}{(n - r)!}$</li>
+    <li><strong>Combinaciones:</strong> $C(n, r) = \binom{n}{r} = \dfrac{n!}{r!(n - r)!}$</li>
+  </ul>
+
+  <p><strong>Ejemplo:</strong></p>
+  $$\binom{5}{2} = \frac{5!}{2!3!} = 10$$
+</div>
+
+<!-- ESTADÍSTICA DESCRIPTIVA -->
+<div class="card">
+  <h3><i class="fas fa-chart-bar" style="color:#63b3ed;"></i> Estadística: media, mediana y desviación</h3>
+
+  <p><strong>Media:</strong></p>
+  $$\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}$$
+
+  <p><strong>Mediana:</strong> Notación textual</p>
+  $$\text{Mediana} = x_{(n+1)/2} \text{ si n impar}$$
+
+  <p><strong>Desviación estándar:</strong></p>
+  $$\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2}$$
+</div>
+
+<!-- FUNCIONES ESPECIALES -->
+<div class="card">
+  <h3><i class="fas fa-square-root-alt" style="color:#f56565;"></i> Funciones especiales comunes</h3>
+
+  <ul>
+    <li>$\sqrt{x}$ — raíz cuadrada</li>
+    <li>$\log(x)$ — logaritmo base 10</li>
+    <li>$\ln(x)$ — logaritmo natural</li>
+    <li>$\sin(x), \cos(x), \tan(x)$ — funciones trigonométricas</li>
+    <li>$\arcsin(x), \arccos(x), \arctan(x)$ — funciones inversas</li>
+  </ul>
+</div>
+
+<!-- FUNCIONES Y GRÁFICOS -->
+<div class="card">
+  <h3><i class="fas fa-chart-area" style="color:#d69e2e;"></i> Representación de funciones</h3>
+
+  <p><strong>Ejemplo de parábola:</strong></p>
+  $$f(x) = x^2 - 2x + 1$$
+
+  <p>Puede complementarse con gráficos externos usando TikZ o PGFPlots:</p>
+
+  <pre><code>\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = middle,
+    xlabel = $x$,
+    ylabel = {$f(x)$}]
+    \addplot [domain=-2:4, samples=100, thick] {x^2 - 2*x + 1};
+  \end{axis}
+\end{tikzpicture}
+</code></pre>
+</div>
+
+<!-- NOTACIÓN CIENTÍFICA Y UNIDADES -->
+<div class="card">
+  <h3><i class="fas fa-bolt" style="color:#ecc94b;"></i> Notación científica y unidades</h3>
+
+  <p><strong>Notación científica:</strong> $1.23 \times 10^4$</p>
+  <p><strong>Unidades con texto:</strong> $10\,\text{m/s}$, $25\,\text{kg}$</p>
+  <p>Usa <code>\,</code> para un pequeño espacio entre el número y la unidad.</p>
+</div>
+
+

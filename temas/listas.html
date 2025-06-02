@@ -1,0 +1,491 @@
+<div id="listas-header" class="card" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-list-alt"></i> Listas en Python: Colecciones Flexibles y Poderosas 🧺
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Descubre cómo organizar, acceder y manipular colecciones ordenadas de datos. ¡Una herramienta esencial para cualquier programador!
+  </p>
+</div>
+
+<div id="intro-listas" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-info-circle"></i> 1. ¿Qué son las Listas en Python?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina que necesitas guardar una colección de elementos en un orden específico: las notas de tus exámenes, los nombres de los planetas del sistema solar, los ingredientes para una receta científica, o una secuencia de pasos en un experimento. Para esto y mucho más, Python nos ofrece las <strong>listas</strong>.
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Una lista en Python es una estructura de datos que permite almacenar una <strong>colección ordenada y mutable</strong> de elementos. Esto significa que:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.1em; line-height: 1.7;">
+        <li><i class="fas fa-sort-amount-down" style="color: #10b981;"></i> <strong>Ordenada:</strong> Los elementos mantienen el orden en el que fueron añadidos y puedes acceder a ellos por su posición (índice).</li>
+        <li><i class="fas fa-edit" style="color: #10b981;"></i> <strong>Mutable:</strong> Puedes cambiar, añadir o eliminar elementos de una lista después de haberla creado.</li>
+        <li><i class="fas fa-cubes" style="color: #10b981;"></i> <strong>Heterogénea (generalmente):</strong> Puede contener elementos de diferentes tipos de datos (números, cadenas, otras listas, etc.), aunque es común que las listas contengan elementos del mismo tipo para facilitar su procesamiento.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Las listas se definen utilizando corchetes <code>[ ]</code> y separando sus elementos con comas <code>,</code>.
+  </p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Una lista vacía
+lista_vacia = []
+print(f"Lista vacía: {lista_vacia}")
+
+# Lista de números (enteros y flotantes)
+notas_matematicas = [10, 8.5, 9.2, 7.0, 9.8]
+print(f"Notas: {notas_matematicas}")
+
+# Lista de cadenas de texto (strings)
+nombres_cientificos = ["Felis catus", "Canis lupus", "Homo sapiens"]
+print(f"Nombres científicos: {nombres_cientificos}")
+
+# Lista mixta (heterogénea)
+datos_experimento = ["Experimento Alpha", 2024, 15.75, True]
+print(f"Datos del experimento: {datos_experimento}")</code></pre>
+  <div style="margin-top: 20px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #4ade80; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🧺 <strong>Analogía:</strong> Piensa en una lista como una canasta de compras donde puedes poner diferentes productos en un orden específico. Puedes añadir más productos, quitar algunos, o cambiar un producto por otro.
+    </p>
+  </div>
+</div>
+
+<div id="acceder-elementos" class="card" style="background-color: #f0f9ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-search-location"></i> 2. Accediendo a los Elementos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Puedes acceder a los elementos individuales de una lista utilizando sus <strong>índices</strong> (posiciones). Python usa indexación basada en cero, lo que significa que el primer elemento tiene índice <code>0</code>, el segundo tiene índice <code>1</code>, y así sucesivamente.
+  </p>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Indexación Positiva:</h3>
+  <pre style="background-color: #1e3a8a; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>#             Indices:  0        1         2        3         4
+elementos_quimicos = ["Hidrógeno", "Helio", "Litio", "Berilio", "Boro"]
+
+primer_elemento = elementos_quimicos[0]  # "Hidrógeno"
+tercer_elemento = elementos_quimicos[2]  # "Litio"
+
+print(f"El primer elemento es: {primer_elemento}")
+print(f"El tercer elemento es: {tercer_elemento}")</code></pre>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Indexación Negativa:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    También puedes usar índices negativos para acceder a los elementos desde el final de la lista. El índice <code>-1</code> se refiere al último elemento, <code>-2</code> al penúltimo, y así sucesivamente.
+  </p>
+  <pre style="background-color: #1e3a8a; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>#             Indices:   -5        -4        -3        -2        -1
+elementos_quimicos = ["Hidrógeno", "Helio", "Litio", "Berilio", "Boro"]
+
+ultimo_elemento = elementos_quimicos[-1]   # "Boro"
+penultimo_elemento = elementos_quimicos[-2] # "Berilio"
+
+print(f"El último elemento es: {ultimo_elemento}")
+print(f"El penúltimo elemento es: {penultimo_elemento}")</code></pre>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Rebanado (Slicing): Extrayendo Sub-Listas 🔪</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El rebanado te permite obtener una porción (una sub-lista) de una lista. La sintaxis es <code>lista[inicio:fin:paso]</code>.
+    <ul style="font-size: 1em; line-height: 1.6;">
+        <li><code>inicio</code>: Índice del primer elemento a incluir (por defecto es 0).</li>
+        <li><code>fin</code>: Índice del primer elemento a <em>no</em> incluir (la rebanada va hasta <code>fin-1</code>).</li>
+        <li><code>paso</code>: Cada cuántos elementos tomar (por defecto es 1).</li>
+    </ul>
+  </p>
+  <pre style="background-color: #1e3a8a; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>#                    Indices:  0    1    2    3    4    5    6    7    8    9
+temperaturas_diarias_C = [18.5, 19.0, 20.2, 21.5, 20.8, 19.5, 18.0, 22.1, 23.0, 21.7]
+
+# Desde el índice 2 hasta el 4 (sin incluir el 5)
+primeros_dias_calidos = temperaturas_diarias_C[2:5]
+print(f"Días cálidos iniciales: {primeros_dias_calidos}") # Salida: [20.2, 21.5, 20.8]
+
+# Desde el inicio hasta el índice 3 (sin incluir el 4)
+primeros_cuatro_dias = temperaturas_diarias_C[:4]
+print(f"Primeros cuatro días: {primeros_cuatro_dias}") # Salida: [18.5, 19.0, 20.2, 21.5]
+
+# Desde el índice 5 hasta el final
+ultimos_dias = temperaturas_diarias_C[5:]
+print(f"Últimos días: {ultimos_dias}") # Salida: [19.5, 18.0, 22.1, 23.0, 21.7]
+
+# Toda la lista (una copia superficial)
+copia_temperaturas = temperaturas_diarias_C[:]
+print(f"Copia: {copia_temperaturas}")
+
+# Con paso: cada dos elementos
+cada_dos_dias = temperaturas_diarias_C[::2]
+print(f"Cada dos días: {cada_dos_dias}") # Salida: [18.5, 20.2, 20.8, 18.0, 23.0]
+
+# Revertir una lista con slicing
+lista_revertida = temperaturas_diarias_C[::-1]
+print(f"Lista revertida: {lista_revertida}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #e0f2fe; border-left: 5px solid #60a5fa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚠️ <strong>¡Cuidado con los Índices!</strong> Si intentas acceder a un índice que no existe en la lista (por ejemplo, <code>elementos_quimicos[10]</code> en una lista de 5 elementos), Python generará un error <code>IndexError</code>.
+    </p>
+  </div>
+</div>
+
+<div id="modificar-listas" class="card" style="background-color: #fefce8; border-left: 6px solid #facc15; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-edit"></i> 3. Modificando Listas (Mutabilidad)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Como mencionamos, las listas son <strong>mutables</strong>. Esto significa que puedes cambiar su contenido después de crearlas.
+  </p>
+  <pre style="background-color: #78350f; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Lista de componentes de un circuito
+componentes = ["Resistencia", "Capacitor", "Bobina", "Fuente"]
+print(f"Lista original: {componentes}")
+
+# Cambiar un elemento por su índice
+componentes[1] = "Diodo LED" # Cambiamos "Capacitor" por "Diodo LED"
+print(f"Después de cambiar el segundo elemento: {componentes}")
+
+# Cambiar varios elementos usando slicing
+componentes[2:4] = ["Transistor", "Microcontrolador"] # Cambia "Bobina" y "Fuente"
+print(f"Después de cambiar un rango: {componentes}")</code></pre>
+</div>
+
+<div id="metodos-listas" class="card" style="background-color: #fdf2f8; border-left: 6px solid #db2777; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #be185d; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-tools"></i> 4. Métodos Comunes de las Listas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Las listas en Python vienen con una variedad de <strong>métodos</strong> incorporados que te permiten realizar operaciones comunes de forma sencilla. Un método es como una función que "pertenece" a un objeto (en este caso, a una lista). Se llaman usando la sintaxis <code>nombre_lista.metodo(argumentos)</code>.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>append(elemento)</code></h3>
+      <p>Añade <code>elemento</code> al final de la lista.</p>
+      <pre><code>planetas = ["Mercurio", "Venus"]
+planetas.append("Tierra")
+# planetas es ahora ["Mercurio", "Venus", "Tierra"]
+print(planetas)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>extend(iterable)</code></h3>
+      <p>Añade todos los elementos de un <code>iterable</code> (como otra lista) al final.</p>
+      <pre><code>mas_planetas = ["Marte", "Júpiter"]
+planetas.extend(mas_planetas)
+# planetas es ahora ["Mercurio", ..., "Júpiter"]
+print(planetas)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>insert(indice, elemento)</code></h3>
+      <p>Inserta <code>elemento</code> en la posición <code>indice</code>.</p>
+      <pre><code>numeros = [10, 20, 40]
+numeros.insert(2, 30) # Inserta 30 en el índice 2
+# numeros es ahora [10, 20, 30, 40]
+print(numeros)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>remove(valor)</code></h3>
+      <p>Elimina la primera aparición de <code>valor</code> en la lista. Genera <code>ValueError</code> si el valor no está.</p>
+      <pre><code>frutas = ["manzana", "banana", "cereza", "banana"]
+frutas.remove("banana") # Elimina la primera "banana"
+# frutas es ahora ["manzana", "cereza", "banana"]
+print(frutas)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>pop(indice=-1)</code></h3>
+      <p>Elimina y devuelve el elemento en <code>indice</code>. Si no se especifica índice, elimina y devuelve el último.</p>
+      <pre><code>reactivos = ["Na", "Cl", "H2O"]
+ultimo_reactivo = reactivos.pop() # "H2O"
+# reactivos es ahora ["Na", "Cl"]
+print(f"Reactivo extraído: {ultimo_reactivo}, Restantes: {reactivos}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>clear()</code></h3>
+      <p>Elimina todos los elementos de la lista.</p>
+      <pre><code>datos_medicion = [1.2, 1.5, 1.1]
+datos_medicion.clear()
+# datos_medicion es ahora []
+print(datos_medicion)</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>index(valor, inicio=0, fin=len(lista))</code></h3>
+      <p>Devuelve el índice de la primera aparición de <code>valor</code>. Puede generar <code>ValueError</code>.</p>
+      <pre><code>notas_musicales = ["Do", "Re", "Mi", "Fa"]
+posicion_mi = notas_musicales.index("Mi")
+# posicion_mi es 2
+print(f"La nota Mi está en el índice: {posicion_mi}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>count(valor)</code></h3>
+      <p>Devuelve el número de veces que <code>valor</code> aparece en la lista.</p>
+      <pre><code>resultados_dados = [1, 2, 5, 2, 6, 2, 4]
+veces_dos = resultados_dados.count(2)
+# veces_dos es 3
+print(f"El número 2 aparece {veces_dos} veces.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>sort(key=None, reverse=False)</code></h3>
+      <p>Ordena los elementos de la lista <em>en su lugar</em> (in-place). <code>reverse=True</code> para orden descendente.</p>
+      <pre><code>tiempos_carrera_s = [12.5, 11.9, 13.1, 12.0]
+tiempos_carrera_s.sort() # Orden ascendente
+# tiempos_carrera_s es ahora [11.9, 12.0, 12.5, 13.1]
+print(f"Tiempos ordenados: {tiempos_carrera_s}")
+tiempos_carrera_s.sort(reverse=True) # Orden descendente
+print(f"Tiempos ordenados (desc): {tiempos_carrera_s}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>reverse()</code></h3>
+      <p>Invierte el orden de los elementos de la lista <em>en su lugar</em>.</p>
+      <pre><code>secuencia_pasos = ["Paso1", "Paso2", "Paso3"]
+secuencia_pasos.reverse()
+# secuencia_pasos es ahora ["Paso3", "Paso2", "Paso1"]
+print(f"Pasos invertidos: {secuencia_pasos}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>copy()</code></h3>
+      <p>Devuelve una copia superficial (shallow copy) de la lista.</p>
+      <pre><code>original = [1, ["a", "b"], 3]
+copia_superficial = original.copy()
+copia_superficial[0] = 100
+copia_superficial[1][0] = "X" # Modifica también la lista interna en 'original'
+print(f"Original: {original}") # [1, ['X', 'b'], 3]
+print(f"Copia: {copia_superficial}") # [100, ['X', 'b'], 3]</code></pre>
+    </div>
+     <div class="card-style-info" style="background-color: #fff1f2; border-left: 5px solid #f43f5e;">
+      <h3 style="color: #c026d3;"><code>len(lista)</code> (Función incorporada)</h3>
+      <p>Aunque no es un método (se llama como <code>len(mi_lista)</code>), devuelve el número de elementos en la lista.</p>
+      <pre><code>planetas = ["Mercurio", "Venus", "Tierra", "Marte"]
+num_planetas = len(planetas)
+# num_planetas es 4
+print(f"Hay {num_planetas} planetas en la lista.")</code></pre>
+    </div>
+
+  </div>
+  <style>
+    .card-style-info { padding: 18px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card-style-info h3 { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 1.2em; }
+    .card-style-info code { font-family: var(--font-mono); }
+    .card-style-info pre { background-color: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 6px; font-size: 0.9em; overflow-x: auto; margin-top: 8px;}
+  </style>
+  <div style="margin-top: 25px; padding: 15px; background-color: #fce7f3; border-left: 5px solid #ec4899; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ✨ <strong>Experimenta en Colab:</strong> La mejor forma de aprender estos métodos es usándolos. Crea tus propias listas y prueba cada método en una celda de Google Colab. ¡Observa cómo cambian tus listas!
+    </p>
+  </div>
+</div>
+
+<div id="operaciones-listas" class="card" style="background-color: #ecfdf5; border-left: 6px solid #22c55e; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #047857; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 5. Otras Operaciones con Listas
+  </h2>
+
+  <h3 style="color: #059669; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Concatenación (<code>+</code>) y Repetición (<code>*</code>):</h3>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>lista_a = [1, 2, 3]
+lista_b = ["a", "b", "c"]
+
+# Concatenación
+lista_combinada = lista_a + lista_b
+print(f"Concatenada: {lista_combinada}") # Salida: [1, 2, 3, 'a', 'b', 'c']
+
+# Repetición
+lista_repetida = ["eco"] * 3
+print(f"Repetida: {lista_repetida}")   # Salida: ['eco', 'eco', 'eco']</code></pre>
+
+  <h3 style="color: #059669; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Pertenencia (<code>in</code> y <code>not in</code>):</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Puedes verificar si un elemento existe o no en una lista. Devuelve <code>True</code> o <code>False</code>.
+  </p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>elementos_nobles = ["Helio", "Neón", "Argón", "Kriptón"]
+hay_helio = "Helio" in elementos_nobles
+print(f"¿Está Helio en la lista?: {hay_helio}") # Salida: True
+
+no_hay_oxigeno = "Oxígeno" not in elementos_nobles
+print(f"¿No está Oxígeno en la lista?: {no_hay_oxigeno}") # Salida: True</code></pre>
+</div>
+
+<div id="iterar-listas" class="card" style="background-color: #f3e8ff; border-left: 6px solid #8b5cf6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6b21a8; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-redo-alt"></i> 6. Iterando Sobre Listas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    A menudo querrás procesar cada elemento de una lista. La forma más común de hacerlo es con un bucle <code>for</code>.
+  </p>
+  <pre style="background-color: #3b0764; color: #e9d5ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo: Calcular el cuadrado de cada número en una lista
+numeros = [1, 2, 3, 4, 5]
+cuadrados = [] # Lista para guardar los resultados
+
+for numero in numeros:
+    cuadrado = numero ** 2
+    cuadrados.append(cuadrado)
+    print(f"El cuadrado de {numero} es {cuadrado}")
+
+print(f"Lista de cuadrados: {cuadrados}") # Salida: [1, 4, 9, 16, 25]
+
+# Iterar con índice y valor usando enumerate()
+aminoacidos = ["Alanina", "Glicina", "Serina"]
+for indice, aminoacido in enumerate(aminoacidos):
+    print(f"Índice {indice}: {aminoacido}")</code></pre>
+</div>
+
+<div id="list-comprehensions" class="card" style="background-color: #fffbeb; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-bolt"></i> 7. Listas por Comprensión (Una Pista Rápida)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python ofrece una sintaxis concisa y elegante para crear listas, conocida como "list comprehensions". Te permiten construir una nueva lista aplicando una expresión a cada elemento de un iterable (como otra lista) y, opcionalmente, filtrando elementos.
+  </p>
+  <pre style="background-color: #78350f; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo anterior de cuadrados, ahora con list comprehension:
+numeros = [1, 2, 3, 4, 5]
+cuadrados_comp = [numero**2 for numero in numeros]
+print(f"Cuadrados con list comprehension: {cuadrados_comp}") # Salida: [1, 4, 9, 16, 25]
+
+# Filtrar solo los números pares y luego obtener sus cuadrados
+numeros_pares_cuadrado = [n**2 for n in numeros if n % 2 == 0]
+print(f"Cuadrados de pares: {numeros_pares_cuadrado}") # Salida: [4, 16]</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fef9c3; border-left: 5px solid #eab308; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ✨ ¡Son muy "Pythónicas"! Aunque pueden parecer un poco crípticas al principio, las list comprehensions son muy poderosas y legibles una vez que te acostumbras. ¡Las explorarás más a fondo más adelante!
+    </p>
+  </div>
+</div>
+
+<div id="listas-anidadas" class="card" style="background-color: #f0f8ff; border-left: 6px solid #0ea5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-th"></i> 8. Listas Anidadas (Listas dentro de Listas)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Una lista puede contener otras listas como elementos. Esto se conoce como listas anidadas y es útil para representar estructuras bidimensionales como matrices, tablas o tableros de juego.
+  </p>
+  <pre style="background-color: #0c4a6e; color: #e0f2fe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Matriz (lista de listas representando filas)
+matriz_ejemplo = [
+    [1, 2, 3],  # Fila 0
+    [4, 5, 6],  # Fila 1
+    [7, 8, 9]   # Fila 2
+]
+
+# Acceder a un elemento: matriz[fila][columna]
+elemento_central = matriz_ejemplo[1][1] # Elemento en fila 1, columna 1
+print(f"Elemento central de la matriz: {elemento_central}") # Salida: 5
+
+# Imprimir toda la matriz fila por fila
+print("Matriz completa:")
+for fila in matriz_ejemplo:
+    print(fila)
+
+# Ejemplo: Coordenadas de puntos en un plano (Física/Matemáticas)
+puntos_ trayectoria = [[0,0], [1,2], [2,4], [3,6]]
+print(f"Segundo punto de la trayectoria: {puntos_trayectoria[1]}") # Salida: [1, 2]
+print(f"Coordenada Y del tercer punto: {puntos_trayectoria[2][1]}") # Salida: 4</code></pre>
+</div>
+
+<div id="ejemplos-listas" class="card" style="background-color: #f9fafb; border-left: 6px solid #6b7280; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #374151; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-flask"></i> 9. Aplicaciones de Listas en Diversas Áreas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Las listas son increíblemente versátiles. Veamos algunos ejemplos de cómo se pueden usar en diferentes campos:
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-calculator"></i> Matemáticas</h3>
+      <p>Almacenar coeficientes de un polinomio, una secuencia de números (ej. serie de Fibonacci), o coordenadas de puntos.</p>
+      <pre><code># Coeficientes del polinomio: 2x^2 - 3x + 1
+coeficientes_polinomio = [2, -3, 1]
+
+# Primeros números de Fibonacci
+fibonacci = [0, 1, 1, 2, 3, 5, 8, 13]
+print(f"Coeficientes: {coeficientes_polinomio}")
+print(f"Fibonacci: {fibonacci}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #047857;"><i class="fas fa-atom"></i> Física</h3>
+      <p>Registrar mediciones de un experimento (tiempo, velocidad), componentes de un vector, o estados de un sistema.</p>
+      <pre><code># Mediciones de tiempo (segundos)
+tiempos_caida_libre = [0.0, 0.45, 0.91, 1.37, 1.84]
+
+# Componentes de un vector fuerza (Fx, Fy, Fz) en Newtons
+vector_fuerza_N = [10.5, -5.2, 3.0]
+print(f"Tiempos: {tiempos_caida_libre}")
+print(f"Vector Fuerza: {vector_fuerza_N} N")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #facc15;">
+      <h3 style="color: #b45309;"><i class="fas fa-dna"></i> Biología</h3>
+      <p>Secuencia de bases de ADN, lista de especies en un hábitat, o signos vitales de pacientes.</p>
+      <pre><code># Pequeña secuencia de ADN (lista de bases)
+secuencia_adn = ['A', 'T', 'C', 'G', 'G', 'T', 'A']
+
+# Especies observadas en un ecosistema
+especies_bosque = ["Roble", "Pino", "Ardilla", "Ciervo"]
+print(f"ADN: {''.join(secuencia_adn)}")
+print(f"Especies: {especies_bosque}")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-vial"></i> Química</h3>
+      <p>Lista de elementos en una molécula, pH medidos en diferentes muestras, o pasos de un protocolo.</p>
+      <pre><code># pH de varias muestras
+ph_muestras = [7.0, 4.5, 8.2, 6.9]
+
+# Elementos en la molécula de glucosa (C6H12O6)
+# Podríamos usar una lista de tuplas (elemento, cantidad)
+# glucosa_composicion = [('C', 6), ('H', 12), ('O', 6)]
+print(f"Valores de pH: {ph_muestras}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f5f3ff; border-left: 5px solid #7c3aed;">
+      <h3 style="color: #5b21b6;"><i class="fas fa-landmark"></i> Ciencias Sociales</h3>
+      <p>Resultados de una encuesta (ej. respuestas sí/no), lista de eventos históricos importantes, o datos demográficos.</p>
+      <pre><code># Resultados de una encuesta (1=Sí, 0=No)
+respuestas_encuesta = [1, 0, 1, 1, 0, 0, 1, 1]
+num_si = respuestas_encuesta.count(1)
+print(f"Número de respuestas 'Sí': {num_si}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ecfdf5; border-left: 5px solid #14b8a6;">
+      <h3 style="color: #0f766e;"><i class="fas fa-music"></i> Música</h3>
+      <p>Secuencia de notas de una melodía, lista de canciones en un álbum, o duraciones de notas.</p>
+      <pre><code># Notas de una melodía simple
+melodia_do_re_mi = ["Do4", "Re4", "Mi4", "Fa4", "Sol4"]
+
+# Duraciones en tiempos (ej. 1=negra, 0.5=corchea)
+duraciones = [1, 1, 0.5, 0.5, 2]
+print(f"Melodía: {melodia_do_re_mi}")</code></pre>
+    </div>
+
+  </div>
+  <div style="margin-top: 25px; padding: 15px; background-color: #e5e7eb; border-left: 5px solid #4b5563; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎨 <strong>Creatividad sin Límites:</strong> Estos son solo algunos ejemplos. ¡Piensa cómo podrías usar listas para organizar información en tus propias áreas de interés o en problemas cotidianos!
+    </p>
+  </div>
+</div>
+
+
+<div id="conclusion-listas" class="card" style="background-color: #e0f2f2; border-left: 6px solid #06b6d4; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #0891b2; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-check-circle"></i> Conclusión: El Poder de las Listas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Has explorado el mundo de las listas en Python! Ahora sabes que son:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+      <li>Colecciones <strong>ordenadas</strong> de elementos.</li>
+      <li><strong>Mutables</strong>, lo que te permite modificarlas dinámicamente.</li>
+      <li>Capaces de almacenar datos de <strong>diferentes tipos</strong>.</li>
+      <li>Accesibles mediante <strong>índices</strong> y <strong>rebanadas (slicing)</strong>.</li>
+      <li>Equipadas con una gran cantidad de <strong>métodos útiles</strong> para manipular sus contenidos.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Las listas son una de las piedras angulares de la programación en Python. Su flexibilidad las hace indispensables para una amplia gama de tareas, desde simples almacenamientos de datos hasta la base para algoritmos más complejos y estructuras de datos avanzadas.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ccfbf1; border-left: 5px solid #2dd4bf; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Sigue Practicando:</strong> La mejor manera de dominar las listas es usándolas. Intenta resolver problemas creando y manipulando listas en Google Colab. Piensa en cómo podrías aplicar listas a tus proyectos de clase o intereses personales. ¡Las posibilidades son enormes!
+    </p>
+  </div>
+</div>

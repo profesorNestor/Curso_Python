@@ -1,0 +1,721 @@
+<div id="variables-header" class="card" style="background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-boxes"></i> Variables y Tipos de Datos en Python 💾
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Los cimientos de la programación: aprende a almacenar, etiquetar y clasificar información para resolver problemas científicos y cotidianos.
+  </p>
+</div>
+
+<div id="que-son-variables" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-box-open"></i> 1. ¿Qué son las Variables? Entendiendo los Contenedores de Datos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina que estás en un laboratorio 🧪. Tienes diferentes recipientes para guardar sustancias: uno para el agua, otro para el ácido, uno para una muestra de suelo, etc. Cada recipiente tiene una <strong>etiqueta</strong> que te dice qué contiene. En programación, una <strong>variable</strong> es muy similar: es como un <strong>contenedor con una etiqueta (su nombre) que guarda un valor o dato específico</strong>.
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Puedes pensar en una variable como un espacio reservado en la memoria de la computadora donde se almacena información. Lo más importante es que el valor guardado en una variable puede <strong>cambiar</strong> durante la ejecución de un programa, ¡pero su nombre (la etiqueta) generalmente permanece igual! 📦✨
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    En Python, las variables son más técnicamente <strong>referencias</strong> o "punteros" a objetos que residen en la memoria. Esto significa que el nombre de la variable no contiene el dato en sí mismo, sino la dirección de memoria donde se encuentra ese dato. Esta característica es parte de lo que hace a Python tan dinámico y flexible.
+  </p>
+  <div style="background-color: #fefce8; border-left: 5px solid #facc15; padding: 15px; border-radius: 8px; margin: 20px 0;">
+    <p style="margin: 0; font-size: 1em;">
+      🔍 <strong>Analogía Científica:</strong>
+      Piensa en una variable llamada <code>concentracion_glucosa</code>. En un momento, podría almacenar el valor <code>90</code> (mg/dL), representando la glucosa en ayunas de un paciente. Después de una comida, este valor podría actualizarse a <code>140</code> (mg/dL). La "etiqueta" <code>concentracion_glucosa</code> sigue siendo la misma, pero el dato que "apunta" ha cambiado.
+    </p>
+  </div>
+</div>
+
+<div id="definir-variables" class="card" style="background-color: #eff6ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-pencil-ruler"></i> 2. Definición y Asignación de Variables
+  </h2>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    Crear (o "declarar") una variable en Python es muy sencillo. Simplemente eliges un nombre para tu variable y usas el signo igual (<code>=</code>), conocido como el <strong>operador de asignación</strong>, para darle un valor.
+  </p>
+  
+  <h3 style="color: #1e3a8a; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Básica:</h3>
+  <pre style="background-color: #1e293b; color: #e0e7ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 1.05em;"><code>nombre_de_la_variable = valor_a_guardar</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Cuando Python ejecuta esta línea, hace tres cosas:
+    <ol style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li>Crea un objeto en memoria para guardar el <code>valor_a_guardar</code>.</li>
+        <li>Crea la etiqueta <code>nombre_de_la_variable</code>.</li>
+        <li>Hace que <code>nombre_de_la_variable</code> apunte o referencie a la ubicación en memoria de ese valor.</li>
+    </ol>
+  </p>
+
+  <h3 style="color: #1e3a8a; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">🔬 Ejemplos Aplicados a las Ciencias:</h3>
+  <pre style="background-color: #1e293b; color: #e0e7ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># En Física ⚛️
+velocidad_luz_vacio = 299792458  # Unidad: metros por segundo (m/s)
+constante_planck = 6.62607015e-34 # Unidad: Joules por segundo (J·s)
+temperatura_fusion_agua = 0.0    # Unidad: grados Celsius (°C)
+aceleracion_g = 9.81             # Unidad: metros por segundo al cuadrado (m/s²)
+
+# En Biología 🧬
+numero_cromosomas_humano = 46    # Adimensional
+ph_sangre_humana = 7.4           # Escala de pH (adimensional)
+es_organismo_eucariota = True    # Valor booleano (Verdadero/Falso)
+nombre_cientifico_humano = "Homo sapiens" # Cadena de texto
+
+# En Matemáticas 📐
+numero_pi = 3.1415926535
+radio_esfera = 5.2               # Podría ser en cm, m, etc.
+angulo_en_radianes = 1.57        # Aproximadamente pi/2
+ecuacion_lineal = "y = 2*x + 3"  # Representación como texto
+
+# En Química 🧪
+masa_molar_agua = 18.01528       # Unidad: gramos por mol (g/mol)
+numero_avogadro = 6.022e23       # Unidad: partículas por mol (mol⁻¹)
+simbolo_oxigeno = "O"
+es_reaccion_exotermica = False</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:15px;">
+      En Google Colab, puedes escribir estas asignaciones en una celda de código y luego usar <code>print(nombre_de_la_variable)</code> en la misma celda o en celdas posteriores para ver sus valores.
+  </p>
+
+  <div style="background-color: #dcfce7; border-left: 5px solid #22c55e; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 1em;">
+    <p style="margin-bottom:10px;">✅ <strong>Reglas Importantes para Nombrar Variables (¡Evita Errores!):</strong></p>
+    <ul style="margin-left: 20px;">
+      <li>Deben empezar con una letra (<code>a</code>-<code>z</code>, <code>A</code>-<code>Z</code>) o un guion bajo (<code>_</code>).</li>
+      <li>Después del primer carácter, pueden contener letras, números (<code>0</code>-<code>9</code>) y guiones bajos.</li>
+      <li>Son sensibles a mayúsculas y minúsculas: <code>masa</code>, <code>Masa</code> y <code>MASA</code> son tres variables diferentes.</li>
+      <li>No pueden contener espacios (usa guion bajo en su lugar, ej: <code>velocidad_inicial</code>).</li>
+      <li>No pueden usar caracteres especiales como <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>&</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>-</code> (excepto el guion bajo), <code>+</code>, etc.</li>
+      <li><strong>Muy Importante:</strong> No pueden ser iguales a las <a href="#" onclick="window.loadLesson('palabras-reservadas'); return false;">palabras reservadas</a> de Python (keywords como <code>if</code>, <code>for</code>, <code>while</code>, <code>class</code>, <code>def</code>, etc., que tienen un significado especial para el lenguaje).</li>
+    </ul>
+    <p style="margin-top:10px;">Ejemplos válidos: <code>temperatura_k</code>, <code>_angulo</code>, <code>velocidad2</code>, <code>fuerza_resultante</code>.</p>
+    <p style="margin-top:5px;">Ejemplos inválidos: <code>2velocidad</code> (empieza con número), <code>velocidad-luz</code> (contiene guion medio), <code>mi variable</code> (contiene espacio), <code>class</code> (palabra reservada).</p>
+  </div>
+</div>
+
+<div id="estilos-nomenclatura" class="card" style="background-color: #f8fafc; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 6px solid #7c3aed;">
+  <h2 style="color: #6d28d9; font-size: 2em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-palette"></i> 3. Estilos de Nomenclatura en Python (PEP 8)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom: 25px;">
+    Elegir buenos nombres para tus variables es crucial. No solo se trata de que el código funcione, sino de que sea fácil de leer y entender. En Python, la guía de estilo oficial <strong>PEP 8</strong> nos da recomendaciones claras. ¡Vamos a ver las más importantes!
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #047857;"><i class="fab fa-python"></i> Snake Case (<code>snake_case</code>)</h3>
+      <p>Palabras separadas por guiones bajos, todo en minúsculas. <strong>Es la convención estándar y recomendada en Python para variables y nombres de funciones.</strong></p>
+      <pre><code># Variables científicas:
+masa_particula_kg = 1.67e-27
+velocidad_inicial_mps = 25.0
+energia_cinetica_julios = 0.0</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #f59e0b;">
+      <h3 style="color: #b45309;"><i class="fas fa-font"></i> Camel Case (<code>camelCase</code>)</h3>
+      <p>Primera palabra en minúscula, siguientes con mayúscula inicial. <strong style="color: #92400e;">No recomendado en Python para variables</strong> (más común en JavaScript).</p>
+      <pre><code>// Evitar en Python para variables:
+masaParticula = 1.67e-27
+velocidadInicial = 25.0</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-building"></i> Pascal Case (<code>PascalCase</code>)</h3>
+      <p>Cada palabra empieza con mayúscula. <strong>Exclusivo para nombres de Clases en Python.</strong></p>
+      <pre><code># Solo para Clases:
+class CalculadoraFisica:
+    pass
+# No para variables: MasaObjeto = 5.0</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-bullhorn"></i> All Caps (<code>ALL_CAPS_SNAKE_CASE</code>)</h3>
+      <p>Todo en mayúsculas, con guiones bajos. <strong>Usado para constantes.</strong></p>
+      <pre><code># Constantes:
+PI = 3.14159265
+GRAVEDAD_TIERRA = 9.80665 # m/s²</code></pre>
+    </div>
+  </div>
+
+  <div style="margin-top: 25px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #8b5cf6; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1.05em;">
+      👍 <strong>En Resumen:</strong> Para la mayoría de tus variables y funciones en Python, ¡usa <code>snake_case</code>! Es lo más "Pythónico" y facilitará la lectura. Reserva <code>ALL_CAPS_SNAKE_CASE</code> para constantes.
+    </p>
+  </div>
+</div>
+
+<style>
+  .card-style-info {
+    padding: 18px; /* Un poco menos padding */
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .card-style-info h3 {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25em; /* Un poco más pequeño */
+  }
+  .card-style-info h3 i {
+      margin-right: 5px;
+  }
+  .card-style-info p {
+    margin-bottom: 12px;
+    font-size: 0.95em; /* Un poco más pequeño para que quepa mejor */
+    line-height: 1.55;
+    flex-grow: 1; /* Permite que el párrafo ocupe espacio disponible */
+  }
+  .card-style-info pre {
+    background-color: #2d3748; /* Color de fondo genérico para pre, ajusta si es necesario */
+    color: #e2e8f0;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    overflow-x: auto;
+    margin-top: auto; /* Empuja el pre al final si hay espacio extra */
+  }
+  /* Colores específicos para los <pre> dentro de cada tarjeta de estilo, si los colores base del pre no son suficientes */
+  .card-style-info[style*="border-left: 5px solid #10b981"] pre { background-color: #065f46; color: #a7f3d0; } /* Snake Case */
+  .card-style-info[style*="border-left: 5px solid #f59e0b"] pre { background-color: #78350f; color: #fef3c7; } /* Camel Case */
+  .card-style-info[style*="border-left: 5px solid #3b82f6"] pre { background-color: #1e3a8a; color: #dbeafe; } /* Pascal Case */
+  .card-style-info[style*="border-left: 5px solid #ef4444"] pre { background-color: #7f1d1d; color: #fee2e2; } /* All Caps */
+</style>
+
+<div id="tipos-de-datos" class="card" style="background-color: #fff7ed; border-left: 6px solid #f97316; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c2410c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cubes"></i> 4. Tipos de Datos Fundamentales en Python
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Cuando asignas un valor a una variable, ese valor tiene un "tipo". Python maneja varios tipos de datos básicos de forma automática. Conocerlos es esencial para realizar operaciones correctas y entender cómo Python trabaja con la información. En Google Colab, puedes experimentar fácilmente con estos tipos.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 20px;">
+    <div class="card-style-info" style="background-color: #f0f9ff; border-left: 5px solid #2563eb;">
+      <h3 style="color: #1e40af;"><i class="fas fa-calculator"></i> Números</h3>
+      
+      <h4 style="color: #1d4ed8; margin-top:10px; margin-bottom: 8px; font-size:1.1em;">🔢 Enteros (<code>int</code>)</h4>
+      <p>Representan números enteros, positivos o negativos, sin parte decimal. Útiles para contar, índices, etc.</p>
+      <pre><code>numero_estudiantes = 35
+anio_actual = 2024
+temperatura_minima = -5
+puntos_obtenidos = 1500</code></pre>
+      
+      <h4 style="color: #1d4ed8; margin-top:15px; margin-bottom: 8px; font-size:1.1em;">📐 Flotantes (<code>float</code>)</h4>
+      <p>Representan números reales (con decimales). Usados para mediciones precisas, cálculos científicos.</p>
+      <pre><code>pi = 3.14159
+distancia_km = 12.75
+concentracion_molar = 0.05
+peso_promedio_kg = 70.5</code></pre>
+
+      <h4 style="color: #1d4ed8; margin-top:15px; margin-bottom: 8px; font-size:1.1em;">🌀 Complejos (<code>complex</code>)</h4>
+      <p>Python soporta números complejos (parte real + parte imaginaria con <code>j</code>). Útiles en física y matemáticas.</p>
+      <pre><code>numero_complejo = 3 + 4j
+impedancia_z = 10 - 5j
+# print(numero_complejo.real) -> 3.0
+# print(numero_complejo.imag) -> 4.0</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #16a34a;">
+      <h3 style="color: #047857;"><i class="fas fa-font"></i> Texto y Lógica</h3>
+      
+      <h4 style="color: #059669; margin-top:10px; margin-bottom: 8px; font-size:1.1em;">📝 Cadenas de Texto (<code>str</code>)</h4>
+      <p>Secuencias de caracteres para texto. Se definen con comillas simples (<code>' '</code>), dobles (<code>" "</code>) o triples (<code>''' '''</code> para multilínea).</p>
+      <pre><code>nombre_planeta = "Tierra"
+mensaje = '¡Hola, científico!'
+formula_agua = "H₂O"
+descripcion = """Experimento sobre
+la fotosíntesis."""</code></pre>
+      
+      <h4 style="color: #059669; margin-top:15px; margin-bottom: 8px; font-size:1.1em;">✅ Valores Booleanos (<code>bool</code>)</h4>
+      <p>Representan verdad: <code>True</code> o <code>False</code>. Fundamentales para decisiones y condiciones.</p>
+      <pre><code>es_valido = True
+hay_error = False
+mayor_que_cero = (5 > 0) # True
+es_par = (4 % 2 == 0)  # True</code></pre>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; padding: 15px; background-color: #fff7ed; border-left: 5px solid #f97316; border-radius: 8px; font-size: 1em;">
+    <p style="margin-bottom:10px;">🔍 <strong>Verificando el Tipo de una Variable:</strong></p>
+    <p>Usa <code>type(variable)</code> para saber el tipo de dato. Usa <code>isinstance(variable, tipo)</code> para verificar si es de un tipo particular.</p>
+    <pre style="background-color: #7c2d12; color: #ffedd5; padding: 10px; border-radius: 5px; margin-top: 10px; font-size:0.95em;"><code>masa = 5.67
+print(f"Valor: {masa}, Tipo: {type(masa)}")
+# Salida: Valor: 5.67, Tipo: <class 'float'>
+
+nombre = "Einstein"
+print(f"'{nombre}' es instancia de str? {isinstance(nombre, str)}")
+# Salida: 'Einstein' es instancia de str? True</code></pre>
+    <p style="margin-top:10px;">¡Experimenta en Google Colab!</p>
+  </div>
+</div>
+
+<div id="tipado-dinamico" class="card" style="background-color: #fef2f2; border-left: 6px solid #ef4444; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b91c1c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-magic"></i> 5. Tipado Dinámico: La Flexibilidad de Python
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Una característica distintiva de Python es que es un lenguaje de <strong>tipado dinámico</strong>. Esto significa que no necesitas declarar explícitamente el tipo de una variable antes de usarla. Python infiere automáticamente el tipo de dato en el momento en que le asignas un valor.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Además, una misma variable puede "apuntar" a datos de diferentes tipos en diferentes momentos durante la ejecución del programa.
+  </p>
+  <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em;"><code>mi_variable = 10          # Python sabe que mi_variable es un entero (int)
+print(f"Valor: {mi_variable}, Tipo: {type(mi_variable)}")
+
+mi_variable = "Hola, científico!" # Ahora mi_variable apunta a una cadena (str)
+print(f"Valor: '{mi_variable}', Tipo: {type(mi_variable)}")
+
+mi_variable = 3.14159   # Y ahora es un flotante (float)
+print(f"Valor: {mi_variable}, Tipo: {type(mi_variable)}")</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Esta flexibilidad es muy conveniente y hace que Python sea rápido para prototipar y aprender. Sin embargo, también significa que debes tener cuidado y saber qué tipo de dato esperas en tus variables para evitar errores en tiempo de ejecución.
+  </p>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fff1f2; border-left: 5px solid #f43f5e; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🤔 <strong>Contraste con Tipado Estático:</strong> En lenguajes de tipado estático (como Java o C++), debes declarar el tipo de la variable cuando la creas (ej. <code>int edad = 30;</code>) y esa variable solo podrá contener datos de ese tipo. Python lo hace más fácil al principio, ¡pero la responsabilidad de usar los tipos correctamente recae en ti!
+    </p>
+  </div>
+</div>
+
+<div id="type-hints" class="card" style="background-color: #ecfdf5; border-left: 6px solid #059669; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #047857; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-pencil-alt"></i> 6. Anotaciones de Tipo (Type Hints) - Una Guía Opcional
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Aunque Python es de tipado dinámico, a partir de Python 3.5, se introdujeron las <strong>anotaciones de tipo</strong>. Son una forma <em>opcional</em> de indicar qué tipo de dato se espera para una variable, un parámetro de función o el valor que devuelve una función.
+  </p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em;"><code>nombre_cientifico: str = "Felis catus"
+edad_aproximada: int = 5
+peso_kg: float = 4.5
+es_mamifero: bool = True
+
+def calcular_energia_cinetica(masa: float, velocidad: float) -> float:
+    """Calcula la energía cinética. Espera masa y velocidad como float, devuelve float."""
+    return 0.5 * masa * (velocidad ** 2)
+
+energia: float = calcular_energia_cinetica(masa=10.0, velocidad=5.0)
+print(f"Energía calculada: {energia} Joules")</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    <strong>Puntos Clave sobre Type Hints:</strong>
+    <ul style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li><strong>Opcionales:</strong> Python funciona perfectamente sin ellas.</li>
+        <li><strong>No Verificadas por Python en Tiempo de Ejecución:</strong> Por defecto, Python no lanza errores si los tipos no coinciden con las anotaciones.</li>
+        <li><strong>Para Legibilidad y Herramientas:</strong> Ayudan a otros (y a tu yo futuro) a entender el código. Son muy útiles para editores de código (autocompletado) y herramientas de análisis estático (como MyPy) que sí pueden verificar los tipos.</li>
+    </ul>
+  </p>
+  <div style="margin-top: 15px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #22c55e; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Recomendación:</strong> Al principio, enfócate en entender los tipos básicos. A medida que tus proyectos se vuelvan más complejos, especialmente si trabajas en equipo o desarrollas funciones y clases reutilizables, las anotaciones de tipo serán una herramienta muy valiosa.
+    </p>
+  </div>
+</div>
+
+<div id="type-casting" class="card" style="background-color: #f0f9ff; border-left: 6px solid #0284c7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-exchange-alt"></i> 7. Conversión de Tipos Explícita (Type Casting)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    A veces, necesitas convertir un valor de un tipo de dato a otro. Por ejemplo, la función <code>input()</code> siempre devuelve el dato ingresado por el usuario como una cadena de texto (<code>str</code>), incluso si el usuario escribe un número. Para realizar operaciones matemáticas con esa entrada, primero debes convertirla a un tipo numérico (<code>int</code> o <code>float</code>). Este proceso de conversión explícita se llama <strong>type casting</strong>.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Python ofrece funciones incorporadas para estas conversiones:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+    <li><code>int(valor)</code>: Intenta convertir <code>valor</code> a un entero.</li>
+    <li><code>float(valor)</code>: Intenta convertir <code>valor</code> a un número de punto flotante.</li>
+    <li><code>str(valor)</code>: Convierte <code>valor</code> a una cadena de texto.</li>
+    <li><code>bool(valor)</code>: Convierte <code>valor</code> a un booleano (la mayoría de los valores son <code>True</code>; <code>0</code>, <code>0.0</code>, <code>""</code>, <code>[]</code>, <code>None</code>, etc., son <code>False</code>).</li>
+  </ul>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Ejemplos de Conversión de Tipos:</h3>
+  <pre style="background-color: #1e293b; color: #e0e7ff; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em;"><code># De cadena a número (muy común con input())
+edad_texto = input("Ingresa tu edad: ") # ej: el usuario escribe "25"
+edad_numero = int(edad_texto)           # Convertimos "25" (str) a 25 (int)
+print(f"En 10 años tendrás: {edad_numero + 10} años")
+
+altura_texto = input("Ingresa tu altura en metros (ej: 1.75): ")
+altura_flotante = float(altura_texto)   # Convertimos a float
+print(f"El doble de tu altura es: {altura_flotante * 2} m")
+
+# De número a cadena
+numero_experimento = 42
+id_experimento = "EXP-" + str(numero_experimento) # Convertimos 42 a "42" para concatenar
+print(id_experimento) # Salida: EXP-42
+
+# De número a booleano
+cantidad_muestras = 0
+hay_muestras = bool(cantidad_muestras) # False, porque cantidad_muestras es 0
+print(f"¿Hay muestras?: {hay_muestras}")
+
+lectura_sensor = 0.001
+sensor_activo = bool(lectura_sensor)  # True, porque no es cero
+print(f"¿Sensor activo?: {sensor_activo}")</code></pre>
+
+  <div style="margin-top: 15px; padding: 15px; background-color: #e0f2fe; border-left: 5px solid #38bdf8; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚠️ <strong>¡Cuidado con los <code>ValueError</code>!</strong> Si intentas una conversión inválida, como <code>int("hola")</code> o <code>float("tres.catorce")</code>, Python generará un error de tipo <code>ValueError</code> porque no puede realizar esa conversión. Aprenderás a manejar estos errores con bloques <code>try-except</code> en lecciones futuras.
+    </p>
+  </div>
+</div>
+
+<div id="palabras-reservadas" class="card" style="background-color: #fefce8; border-left: 6px solid #eab308; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #a16207; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-ban"></i> 8. Palabras Reservadas (Keywords) de Python
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Python tiene un conjunto de palabras especiales, llamadas <strong>palabras reservadas</strong> o <strong>keywords</strong>, que tienen un significado predefinido y una función específica dentro del lenguaje. <strong>¡No puedes usar estas palabras como nombres para tus variables, funciones o clases!</strong>
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Si intentas usar una palabra reservada como nombre de variable, Python te dará un error de sintaxis (<code>SyntaxError</code>).
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Aquí tienes algunas de las más comunes. No necesitas memorizarlas todas ahora, pero es bueno reconocerlas:
+  </p>
+  <div style="font-family: var(--font-mono); background-color: #fffbeb; padding: 15px; border-radius: 8px; margin-top:15px; margin-bottom:15px; font-size: 0.95em; line-height: 1.8; column-count: 3; -moz-column-count: 3; -webkit-column-count: 3; column-gap: 20px;">
+      <code>False</code>, <code>None</code>, <code>True</code>, <code>and</code>, <code>as</code>, <code>assert</code>, <code>async</code>, <code>await</code>,
+      <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>,
+      <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>,
+      <code>lambda</code>, <code>nonlocal</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>raise</code>, <code>return</code>,
+      <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Puedes ver la lista completa de palabras reservadas en tu versión de Python ejecutando el siguiente código en una celda de Google Colab o en una consola de Python:
+  </p>
+  <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em;"><code>import keyword
+print(keyword.kwlist)</code></pre>
+</div>
+
+<div id="variable-none" class="card" style="background-color: #fdf2f8; border-left: 6px solid #dd6b20; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c2410c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-ghost"></i> 9. El Valor Especial: <code>None</code>
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En Python, <code>None</code> es una palabra reservada y un objeto único que representa la <strong>ausencia de valor</strong> o un valor nulo. Es de tipo <code>NoneType</code>.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Es importante distinguirlo de <code>0</code> (cero), <code>False</code> (falso), o una cadena vacía <code>""</code>. <code>None</code> significa que una variable no tiene asignado ningún valor concreto o que una función no devuelve nada útil.
+  </p>
+  <h3 style="color: #9a3412; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">¿Cuándo se usa <code>None</code>?</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+      <li>Para inicializar una variable cuando aún no se conoce su valor definitivo:
+          <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 5px 10px; border-radius: 6px; margin-top:5px; font-size:0.95em;"><code>datos_del_sensor = None # Aún no hemos leído el sensor
+resultado_calculo = None # El cálculo no se ha realizado</code></pre>
+      </li>
+      <li>Las funciones que no especifican un valor de retorno con la palabra clave <code>return</code>, devuelven <code>None</code> implícitamente.</li>
+      <li>Como valor predeterminado para parámetros opcionales en funciones.</li>
+      <li>Para indicar que una búsqueda no encontró resultados o que una operación no produjo un valor esperado.</li>
+  </ul>
+  <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 1.05em;"><code># Ejemplo de uso de None
+lectura_ph = None # Supongamos que el medidor de pH falló
+
+if lectura_ph is None:
+    print("Advertencia: No se pudo obtener la lectura de pH.")
+else:
+    print(f"El pH medido es: {lectura_ph}")
+
+print(type(None)) # Salida: <class 'NoneType'></code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fff1f2; border-left: 5px solid #f43f5e; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Comparando con <code>None</code>:</strong> La forma recomendada y más segura de verificar si una variable es <code>None</code> es usando el operador de identidad <code>is</code> (o <code>is not</code>).
+      <br>Correcto: <code>if mi_variable is None:</code>
+      <br>Menos preferido (aunque a veces funciona): <code>if mi_variable == None:</code>
+    </p>
+  </div>
+</div>
+
+<div id="ejemplos-aplicados-matematicas" class="card" style="background-color: #fdf2f8; border-left: 6px solid #ec4899; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #be185d; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-square-root-alt"></i> Matemáticas Aplicadas con Variables 📐
+  </h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div class="card-style-info" style="background-color: #fdf4ff; border-left: 5px solid #a855f7;">
+      <h3 style="color: #7e22ce;"><i class="fas fa-shapes"></i> Geometría: Triángulo</h3>
+      <pre><code># Variables para geometría
+base_triangulo: float = 12.5   # metros
+altura_triangulo: float = 8.3  # metros
+
+# Cálculo del área
+area_triangulo: float = (base_triangulo * altura_triangulo) / 2
+
+print(f"Base: {base_triangulo} m")
+print(f"Altura: {altura_triangulo} m")
+print(f"Área del triángulo: {area_triangulo:.2f} m²")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #ea580c;">
+      <h3 style="color: #c2410c;"><i class="far fa-circle"></i> Geometría: Círculo</h3>
+      <pre><code># Constantes y variables
+PI_CONST: float = 3.14159265
+radio: float = 7.5  # cm
+
+perimetro: float = 2 * PI_CONST * radio
+area_circular: float = PI_CONST * (radio ** 2)
+
+print(f"Radio: {radio} cm")
+print(f"Perímetro: {perimetro:.2f} cm")
+print(f"Área: {area_circular:.2f} cm²")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #1d4ed8;">
+      <h3 style="color: #1e3a8a;"><i class="fas fa-chart-bar"></i> Estadística: Promedio</h3>
+      <pre><code># Lista de datos (ej. mediciones de temperatura)
+mediciones: list[float] = [19.5, 20.1, 19.8, 20.5, 20.0]
+cantidad_mediciones: int = len(mediciones)
+suma_mediciones: float = sum(mediciones)
+
+promedio_temp: float = suma_mediciones / cantidad_mediciones
+
+print(f"Mediciones: {mediciones}")
+print(f"Promedio: {promedio_temp:.2f} °C")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #f0fdfa; border-left: 5px solid #0d9488;">
+      <h3 style="color: #0f766e;"><i class="fas fa-calculator"></i> Álgebra: Ecuación Cuadrática</h3>
+      <pre><code># Coeficientes de ax² + bx + c = 0
+a: float = 1.0
+b: float = -3.0
+c: float = 2.0
+
+# Discriminante: b² - 4ac
+discriminante: float = (b**2) - (4*a*c)
+soluciones_reales: bool = (discriminante >= 0)
+
+print(f"Ecuación: {a}x² + {b}x + {c} = 0")
+print(f"Discriminante: {discriminante}")
+print(f"¿Tiene soluciones reales?: {soluciones_reales}")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="ejemplos-aplicados-fisica" class="card" style="background-color: #ecfdf5; border-left: 6px solid #059669; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #047857; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-atom"></i> Física Aplicada con Variables ⚛️
+  </h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #dc2626;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-running"></i> Cinemática (MRUV)</h3>
+      <pre><code># Movimiento Rectilíneo Uniformemente Variado
+pos_inicial_m: float = 0.0
+vel_inicial_mps: float = 10.0
+aceleracion_mps2: float = 2.0
+tiempo_s: float = 5.0
+
+# x_f = x_i + v_i*t + 0.5*a*t²
+pos_final_m: float = pos_inicial_m + \
+                   (vel_inicial_mps * tiempo_s) + \
+                   (0.5 * aceleracion_mps2 * tiempo_s**2)
+
+print(f"Posición final: {pos_final_m:.2f} m")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #16a34a;">
+      <h3 style="color: #059669;"><i class="fas fa-bolt"></i> Energía (Potencial y Cinética)</h3>
+      <pre><code># Constantes y variables
+GRAVEDAD_MPS2: float = 9.81
+masa_kg: float = 2.5
+altura_m: float = 10.0
+velocidad_mps: float = 4.0
+
+# E_p = m*g*h; E_c = 0.5*m*v²
+energia_potencial_j: float = masa_kg * GRAVEDAD_MPS2 * altura_m
+energia_cinetica_j: float = 0.5 * masa_kg * velocidad_mps**2
+energia_mecanica_j: float = energia_potencial_j + energia_cinetica_j
+
+print(f"E. Potencial: {energia_potencial_j:.2f} J")
+print(f"E. Cinética: {energia_cinetica_j:.2f} J")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-wave-square"></i> Ondas (Luz)</h3>
+      <pre><code># Propiedades de una onda electromagnética
+VELOCIDAD_LUZ_MPS: float = 299792458.0
+frecuencia_hz: float = 5.09e14 # Luz naranja
+
+# λ = c / f
+longitud_onda_m: float = VELOCIDAD_LUZ_MPS / frecuencia_hz
+longitud_onda_nm: float = longitud_onda_m * 1e9 # Convertir a nanómetros
+
+print(f"Frecuencia: {frecuencia_hz:.2e} Hz")
+print(f"Longitud de onda: {longitud_onda_nm:.1f} nm")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #fdf4ff; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #7c3aed;"><i class="fas fa-temperature-high"></i> Termodinámica (Gas Ideal)</h3>
+      <pre><code># Ley de los gases ideales: PV = nRT
+R_CONST: float = 8.314 # J/(mol·K)
+presion_pa: float = 101325.0 # 1 atm
+volumen_m3: float = 0.0224  # Para 1 mol a TPE
+temp_k: float = 273.15      # 0 °C
+
+# n = PV / RT
+num_moles: float = (presion_pa * volumen_m3) / (R_CONST * temp_k)
+
+print(f"Número de moles: {num_moles:.3f} mol")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="ejemplos-aplicados-biologia" class="card" style="background-color: #f0f9ff; border-left: 6px solid #0284c7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-dna"></i> Biología Aplicada con Variables 🧬
+  </h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div class="card-style-info" style="background-color: #ecfdf5; border-left: 5px solid #059669;">
+      <h3 style="color: #047857;"><i class="fas fa-dna"></i> Genética Básica</h3>
+      <pre><code># Información genética
+NUM_CROMOSOMAS_HUMANO: int = 46
+PORC_ADN_NO_CODIFICANTE: float = 98.5 # Porcentaje
+
+es_diploide: bool = True
+especie: str = "Homo sapiens"
+
+print(f"Especie: {especie}")
+print(f"Cromosomas: {NUM_CROMOSOMAS_HUMANO}")
+print(f"¿Diploide?: {es_diploide}")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #dc2626;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-heartbeat"></i> Fisiología Humana</h3>
+      <pre><code># Signos vitales (ejemplos)
+frecuencia_cardiaca_reposo_lpm: int = 70
+temperatura_corporal_c: float = 36.8
+saturacion_oxigeno_porc: float = 98.0
+
+esta_en_rango_normal_temp: bool = 36.5 <= temperatura_corporal_c <= 37.5
+
+print(f"FC Reposo: {frecuencia_cardiaca_reposo_lpm} lpm")
+print(f"Temp. Corporal: {temperatura_corporal_c}°C")
+print(f"Temp. Normal?: {esta_en_rango_normal_temp}")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-seedling"></i> Ecología: Crecimiento Poblacional</h3>
+      <pre><code># Modelo simple de crecimiento
+poblacion_inicial_conejos: int = 100
+tasa_natalidad_anual: float = 1.2 # 120%
+tasa_mortalidad_anual: float = 0.3 # 30%
+anios_estudio: int = 5
+
+# Suponiendo un modelo muy simple sin otros factores
+factor_crecimiento_neto = tasa_natalidad_anual - tasa_mortalidad_anual
+# No es un cálculo realista, solo para mostrar variables
+
+print(f"Población inicial: {poblacion_inicial_conejos}")
+print(f"Factor neto (simplificado): {factor_crecimiento_neto}") </code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #fdf4ff; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #7c3aed;"><i class="fas fa-leaf"></i> Botánica: Fotosíntesis</h3>
+      <pre><code># Reactivos y productos (simplificado)
+reactivo1: str = "Dióxido de Carbono (CO₂)"
+reactivo2: str = "Agua (H₂O)"
+condicion: str = "Luz Solar"
+producto1: str = "Glucosa (C₆H₁₂O₆)"
+producto2: str = "Oxígeno (O₂)"
+
+print(f"Fotosíntesis: {reactivo1} + {reactivo2} --({condicion})--> {producto1} + {producto2}")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="ejemplos-aplicados-quimica" class="card" style="background-color: #fefce8; border-left: 6px solid #ca8a04; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #a16207; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-flask"></i> Química Aplicada con Variables 🧪
+  </h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #f97316;">
+      <h3 style="color: #c2410c;"><i class="fas fa-balance-scale"></i> Estequiometría</h3>
+      <pre><code># Masas molares y cálculos
+MASA_MOLAR_H2O_G_MOL: float = 18.015
+MASA_MOLAR_O2_G_MOL: float = 31.998
+moles_de_o2: float = 2.5 # moles
+
+masa_de_o2_g: float = moles_de_o2 * MASA_MOLAR_O2_G_MOL
+
+print(f"{moles_de_o2} moles de O₂ equivalen a {masa_de_o2_g:.2f} g.")</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-vial"></i> Soluciones y Concentraciones</h3>
+      <pre><code># Preparación de una solución
+masa_soluto_g: float = 5.844 # NaCl
+volumen_solucion_L: float = 0.1 # 100 mL
+MASA_MOLAR_NaCl_G_MOL: float = 58.44
+
+moles_nacl: float = masa_soluto_g / MASA_MOLAR_NaCl_G_MOL
+concentracion_molar_M: float = moles_nacl / volumen_solucion_L
+
+print(f"Concentración de NaCl: {concentracion_molar_M:.2f} M")</code></pre>
+    </div>
+     <div class="card-style-info" style="background-color: #f0f9ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-atom"></i> Estructura Atómica</h3>
+      <pre><code># Datos de un elemento
+simbolo_elemento: str = "Na" # Sodio
+numero_atomico_Z: int = 11
+numero_masico_A: int = 23
+
+numero_protones: int = numero_atomico_Z
+numero_electrones: int = numero_atomico_Z # Átomo neutro
+numero_neutrones: int = numero_masico_A - numero_atomico_Z
+
+print(f"Elemento: {simbolo_elemento}")
+print(f"Protones: {numero_protones}, Neutrones: {numero_neutrones}")</code></pre>
+    </div>
+     <div class="card-style-info" style="background-color: #f0fdfa; border-left: 5px solid #14b8a6;">
+      <h3 style="color: #0f766e;"><i class="fas fa-thermometer-half"></i> pH y Ácido-Base</h3>
+      <pre><code># Cálculo de pH (simplificado)
+concentracion_H_ion: float = 1.0e-7 # Molar (agua neutra)
+# pH = -log10([H+]) - Necesitaríamos math.log10
+
+# Ejemplo conceptual con booleanos
+es_acido: bool = (concentracion_H_ion > 1.0e-7)
+es_neutro: bool = (concentracion_H_ion == 1.0e-7)
+es_basico: bool = (concentracion_H_ion < 1.0e-7)
+
+print(f"[H+]: {concentracion_H_ion:.1e} M")
+print(f"¿Es ácido?: {es_acido}")
+print(f"¿Es neutro?: {es_neutro}")</code></pre>
+    </div>
+  </div>
+</div>
+
+
+<div id="conclusion-variables" class="card" style="background-color: #f5f3ff; border-left: 6px solid #6d28d9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-graduation-cap"></i> 10. Resumen y ¡A Practicar!
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Felicidades! Ahora comprendes los conceptos fundamentales de las <strong>variables</strong> y los <strong>tipos de datos básicos</strong> en Python. Has aprendido:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-top:10px; margin-bottom: 15px;">
+    <li>Qué son las variables y cómo actúan como etiquetas para almacenar datos.</li>
+    <li>Cómo definir variables y las reglas para nombrarlas correctamente.</li>
+    <li>La importancia del estilo de nomenclatura (<code>snake_case</code> es tu amigo).</li>
+    <li>Los tipos de datos primordiales: enteros (<code>int</code>), flotantes (<code>float</code>), cadenas de texto (<code>str</code>) y booleanos (<code>bool</code>), e incluso una introducción a los complejos (<code>complex</code>).</li>
+    <li>Que Python tiene tipado dinámico, lo que ofrece flexibilidad.</li>
+    <li>Una introducción a las anotaciones de tipo (type hints) para el futuro.</li>
+    <li>Cómo convertir datos entre diferentes tipos (type casting).</li>
+    <li>Qué son las palabras reservadas y por qué no puedes usarlas como nombres.</li>
+    <li>El significado y uso de la variable especial <code>None</code>.</li>
+  </ul>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Estos conceptos son los ladrillos con los que construirás todos tus programas. Entenderlos bien te permitirá manipular datos, realizar cálculos complejos y crear soluciones ingeniosas para problemas en matemáticas, física, biología, química y cualquier otra área que te apasione.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #7c3aed; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em; font-weight: 500;">
+      🚀 <strong>¡Siguientes Pasos y Retos!</strong>
+    </p>
+    <ol style="margin-left: 20px; margin-top: 10px; font-size: 1em; line-height: 1.7;">
+      <li style="margin-bottom:8px;"><strong>Experimenta en Google Colab:</strong> Abre un notebook y declara variables con diferentes nombres y tipos de datos. Usa <code>print()</code> y <code>type()</code> para verificar sus valores y tipos.</li>
+      <li style="margin-bottom:8px;"><strong>Calculadora Simple:</strong>
+        <ul style="margin-left:15px; margin-top:5px;">
+            <li>Crea variables para dos números.</li>
+            <li>Realiza las cuatro operaciones aritméticas básicas (suma, resta, multiplicación, división) y guarda cada resultado en una nueva variable.</li>
+            <li>Imprime los resultados de forma clara (ej. "La suma de N1 y N2 es: RESULTADO").</li>
+        </ul>
+      </li>
+      <li style="margin-bottom:8px;"><strong>Datos Científicos:</strong> Elige una constante física (ej. velocidad del sonido, constante de Boltzmann) o un dato biológico/químico (ej. pH de una sustancia, masa atómica de un elemento). Declara una variable para almacenarlo y luego imprímela junto con sus unidades (como texto).</li>
+      <li style="margin-bottom:8px;"><strong>Conversión de Unidades:</strong>
+        <ul style="margin-left:15px; margin-top:5px;">
+            <li>Crea una variable para una temperatura en grados Celsius.</li>
+            <li>Calcula su equivalente en Fahrenheit (F = C * 9/5 + 32) y Kelvin (K = C + 273.15), almacenándolos en nuevas variables.</li>
+            <li>Imprime los tres valores de forma descriptiva.</li>
+        </ul>
+      </li>
+    </ol>
+    <p style="margin-top:10px; font-size: 1em;">
+      ¡La práctica constante es la clave! Cuanto más uses variables y tipos de datos, más intuitivos se volverán.
+    </p>
+  </div>
+</div>

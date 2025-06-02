@@ -1,0 +1,393 @@
+<div id="tuplas-header" class="card" style="background: linear-gradient(135deg, #8b5cf6 0%, #c026d3 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-grip-horizontal"></i> Tuplas en Python: Colecciones Inmutables y Eficientes 🛡️
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Descubre las tuplas: estructuras de datos ordenadas que garantizan la integridad de tu información.
+  </p>
+</div>
+
+<div id="intro-tuplas" class="card" style="background-color: #f3e8ff; border-left: 6px solid #8b5cf6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6b21a8; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-info-circle"></i> 1. ¿Qué Son las Tuplas y Por Qué Son Importantes?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En Python, una <strong>tupla</strong> es una estructura de datos que permite almacenar una colección de elementos de manera ordenada. Piensa en ellas como contenedores especiales donde guardas una secuencia de ítems[cite: 9, 73].
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    La característica más distintiva y crucial de las tuplas es su <strong>inmutabilidad</strong>. Esto significa que una vez que creas una tupla con ciertos elementos, ¡esos elementos y su orden no pueden ser modificados! [cite: 10, 40] No puedes añadir, eliminar o cambiar elementos dentro de una tupla existente. Esta "rigidez" es en realidad una gran ventaja en muchas situaciones.
+  </p>
+  <h3 style="color: #581c87; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Importancia de las Tuplas:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-shield-alt" style="color: #8b5cf6;"></i> <strong>Integridad de Datos:</strong> Al ser inmutables, garantizan que los datos que contienen permanezcan constantes, evitando modificaciones accidentales[cite: 11, 13]. Son perfectas para información que no debe cambiar, como constantes, coordenadas o registros fijos.</li>
+    <li><i class="fas fa-tachometer-alt" style="color: #8b5cf6;"></i> <strong>Eficiencia:</strong> Generalmente, las tuplas pueden ser un poco más eficientes en términos de memoria y rendimiento que las listas cuando solo necesitas almacenar y acceder a datos sin modificarlos[cite: 14].</li>
+    <li><i class="fas fa-key" style="color: #8b5cf6;"></i> <strong>Claves de Diccionario:</strong> Debido a su inmutabilidad, las tuplas pueden usarse como claves en los diccionarios, ¡algo que las listas no pueden hacer! [cite: 13, 102]</li>
+    <li><i class="fas fa-gift" style="color: #8b5cf6;"></i> <strong>Retorno Múltiple de Funciones:</strong> Python usa tuplas de forma natural para permitir que las funciones devuelvan varios valores a la vez[cite: 15, 52].</li>
+  </ul>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #a78bfa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🤔 <strong>Tuplas vs. Listas:</strong> La principal diferencia es la mutabilidad. Las listas <code>[ ]</code> son para colecciones que necesitas cambiar, mientras que las tuplas <code>( )</code> son para colecciones que quieres mantener fijas[cite: 111]. ¡Elegir la correcta depende de tu necesidad!
+    </p>
+  </div>
+</div>
+
+<div id="creacion-caracteristicas-tuplas" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-magic"></i> 2. Creando y Entendiendo las Tuplas
+  </h2>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;"></> Creación de Tuplas:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Crear tuplas en Python es muy sencillo. Generalmente se usan paréntesis <code>()</code> para delimitar los elementos, separados por comas[cite: 80].
+  </p>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Tupla vacía
+tupla_vacia = ()
+print(f"Tupla vacía: {tupla_vacia}, Tipo: {type(tupla_vacia)}")
+
+# Tupla con elementos homogéneos (todos del mismo tipo)
+numeros_primos = (2, 3, 5, 7, 11, 13)
+print(f"Números primos: {numeros_primos}")
+
+# Tupla con elementos heterogéneos (diferentes tipos) [cite: 26]
+info_constante_fisica = ("Constante de Planck", 6.62607015e-34, "J·s", True)
+print(f"Info constante: {info_constante_fisica}")
+
+# Creación sin paréntesis (empaquetado de tuplas) [cite: 81]
+coordenadas_gps = 4.5981, -74.0758 # Latitud, Longitud de Bogotá
+print(f"Coordenadas (empaquetadas): {coordenadas_gps}, Tipo: {type(coordenadas_gps)}")
+
+# Usando el constructor tuple() con un iterable (ej. una lista) [cite: 25]
+lista_colores = ["rojo", "verde", "azul"]
+tupla_colores = tuple(lista_colores)
+print(f"Tupla desde lista: {tupla_colores}")
+
+# ¡Importante! Tupla de un solo elemento [cite: 26, 85]
+# Necesita una coma al final para diferenciarla de una expresión entre paréntesis.
+tupla_un_elemento = (42,) # Esto es una tupla
+no_es_tupla = (42)      # Esto es simplemente el número 42
+print(f"Tupla de un elemento: {tupla_un_elemento}, Tipo: {type(tupla_un_elemento)}")
+print(f"Expresión con paréntesis: {no_es_tupla}, Tipo: {type(no_es_tupla)}")</code></pre>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">📋 Características Principales:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-sort-numeric-down" style="color: #10b981;"></i> <strong>Ordenadas:</strong> Conservan el orden en que se ingresaron los elementos[cite: 27]. La posición de cada elemento es fija.</li>
+    <li><i class="fas fa-lock" style="color: #10b981;"></i> <strong>Inmutables:</strong> Una vez creadas, no puedes cambiar, añadir ni quitar elementos[cite: 10, 27, 40]. Si necesitas una versión modificada, debes crear una nueva tupla.</li>
+    <li><i class="fas fa-boxes" style="color: #10b981;"></i> <strong>Heterogéneas:</strong> Pueden contener elementos de distintos tipos de datos (enteros, flotantes, cadenas, booleanos, ¡e incluso otras tuplas o listas!)[cite: 27].</li>
+    <li><i class="fas fa-hashtag" style="color: #10b981;"></i> <strong>Indexadas:</strong> Puedes acceder a sus elementos mediante un índice numérico, comenzando desde 0 para el primer elemento[cite: 28, 75].</li>
+    <li><i class="fas fa-copy" style="color: #10b981;"></i> <strong>Permiten Duplicados:</strong> Una tupla puede contener el mismo valor múltiples veces.</li>
+  </ul>
+</div>
+
+<div id="acceso-slicing-tuplas" class="card" style="background-color: #f0f9ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-crosshairs"></i> 3. Acceso a Elementos y Slicing (Rebanado)
+  </h2>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Indexación: Tomando un Elemento Específico</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Al igual que con las listas, usas corchetes <code>[]</code> con el número de índice para acceder a un elemento.
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>#              Índices:    0       1        2         3
+datos_vector_fis = ("Fuerza", 10.5, "Newtons", (0.707, 0.707)) # (Magnitud, Valor, Unidad, Dirección)
+
+nombre_magnitud = datos_vector_fis[0]  # "Fuerza"
+valor_numerico = datos_vector_fis[1]   # 10.5
+componente_x_dir = datos_vector_fis[3][0] # 0.707 (accediendo a elemento de tupla anidada)
+
+print(f"Magnitud: {nombre_magnitud}")
+print(f"Valor: {valor_numerico} {datos_vector_fis[2]}")
+print(f"Componente X de dirección: {componente_x_dir}")
+
+# Indexación negativa
+ultima_info = datos_vector_fis[-1] # (0.707, 0.707)
+print(f"Última información (dirección): {ultima_info}")</code></pre>
+
+  <h3 style="color: #1d4ed8; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">Slicing (Rebanado): Tomando Porciones de la Tupla 🔪</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El slicing te permite extraer una subtupla. La sintaxis es <code>tupla[inicio:fin:paso]</code>[cite: 43, 95]. Recuerda que el slicing crea una <em>nueva</em> tupla[cite: 44].
+    <ul style="font-size: 1em; line-height: 1.6; margin-left:20px;">
+      <li><code>inicio</code>: El índice donde comienza la rebanada (incluido). Si se omite, es 0[cite: 46].</li>
+      <li><code>fin</code>: El índice donde termina la rebanada (excluido). Si se omite, va hasta el final[cite: 48].</li>
+      <li><code>paso</code>: El incremento entre elementos. Si se omite, es 1[cite: 43].</li>
+    </ul>
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>#             Índices:    0       1        2         3         4         5
+notas_semestre_musica = (10.0,   9.5,     8.0,      9.8,      7.5,     10.0)
+#                             Do      Re       Mi        Fa        Sol      La
+
+# Las primeras tres notas
+primeras_tres = notas_semestre_musica[0:3] # o [:3]
+print(f"Primeras tres notas: {primeras_tres}") # Salida: (10.0, 9.5, 8.0)
+
+# Desde la nota "Mi" (índice 2) hasta el final
+desde_mi_hasta_final = notas_semestre_musica[2:]
+print(f"Desde Mi: {desde_mi_hasta_final}") # Salida: (8.0, 9.8, 7.5, 10.0)
+
+# Notas alternas (con paso 2)
+notas_alternas = notas_semestre_musica[::2]
+print(f"Notas alternas: {notas_alternas}") # Salida: (10.0, 8.0, 7.5)
+
+# Invertir la tupla
+notas_invertidas = notas_semestre_musica[::-1]
+print(f"Notas invertidas: {notas_invertidas}")</code></pre>
+</div>
+
+<div id="inmutabilidad-operaciones" class="card" style="background-color: #fff7ed; border-left: 6px solid #f97316; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c2410c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-shield-virus"></i> 4. El Poder de la Inmutabilidad y Operaciones Básicas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    La inmutabilidad significa que, una vez creada una tupla, no puedes alterar sus elementos individuales[cite: 10, 40]. Si intentas modificar un elemento de una tupla existente, Python te dará un error (<code>TypeError</code>).
+  </p>
+  <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>punto_cartesiano = (10, 25)
+# punto_cartesiano[0] = 15 # Esto generaría un TypeError: 'tuple' object does not support item assignment
+
+# Si necesitas "modificar" una tupla, en realidad creas una nueva:
+# Por ejemplo, para cambiar el primer elemento:
+nuevo_punto = (15,) + punto_cartesiano[1:] # Concatenamos una nueva tupla de un elemento con una rebanada de la original
+print(f"Punto original: {punto_cartesiano}")
+print(f"Nuevo punto (modificado): {nuevo_punto}") # Salida: (15, 25)</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fffbeb; border-left: 5px solid #f59e0b; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Para Modificar:</strong> Si sabes que necesitarás cambiar los elementos de una colección frecuentemente, ¡una lista es probablemente una mejor elección! Puedes convertir una tupla a lista (<code>list(mi_tupla)</code>), modificarla, y luego, si es necesario, convertirla de nuevo a tupla (<code>tuple(mi_lista_modificada)</code>)[cite: 38, 56, 57].
+    </p>
+  </div>
+
+  <h3 style="color: #9a3412; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">Operaciones Comunes (que no modifican la tupla original):</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><strong>Longitud 📏:</strong> <code>len(mi_tupla)</code> devuelve el número de elementos[cite: 94].</li>
+    <li><strong>Concatenación 🔗:</strong> <code>tupla1 + tupla2</code> crea una nueva tupla combinando ambas[cite: 90].</li>
+    <li><strong>Repetición *:</strong> <code>mi_tupla * n</code> crea una nueva tupla repitiendo los elementos de <code>mi_tupla</code>, <code>n</code> veces[cite: 91].</li>
+    <li><strong>Pertenencia ✅:</strong> <code>elemento in mi_tupla</code> (devuelve <code>True</code> o <code>False</code>)[cite: 92].</li>
+    <li><strong>Iteración 🚶:</strong> Puedes recorrer los elementos de una tupla con un bucle <code>for</code>.</li>
+  </ul>
+  <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; font-size: 1.05em; margin-top:10px;"><code>rgb_rojo = (255, 0, 0)
+descripcion = ("Color", "Rojo")
+
+print(f"Longitud de rgb_rojo: {len(rgb_rojo)}") # 3
+rgb_descripcion = descripcion + rgb_rojo         # Nueva tupla
+print(f"Combinada: {rgb_descripcion}")          # ('Color', 'Rojo', 255, 0, 0)
+
+patron_simple = (True, False) * 3
+print(f"Patrón repetido: {patron_simple}")      # (True, False, True, False, True, False)
+
+if 255 in rgb_rojo:
+    print("El valor 255 está en el color rojo.")
+
+print("Recorriendo el color rojo:")
+for componente in rgb_rojo:
+    print(componente)</code></pre>
+</div>
+
+<div id="metodos-tuplas" class="card" style="background-color: #f0fdfa; border-left: 6px solid #14b8a6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 5. Métodos de las Tuplas (¡Sí, Tienen un Par!)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Debido a su inmutabilidad, las tuplas no tienen métodos que modifiquen su contenido (como <code>append()</code> o <code>remove()</code> que sí tienen las listas)[cite: 36]. Sin embargo, poseen dos métodos útiles que no alteran la tupla original:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li>
+      <strong><code>count(valor)</code> <i class="fas fa-sort-numeric-up-alt"></i>:</strong> Devuelve el número de veces que <code>valor</code> aparece en la tupla[cite: 87].
+    </li>
+    <li>
+      <strong><code>index(valor, inicio=0, fin=len(tupla))</code> <i class="fas fa-search"></i>:</strong> Devuelve el índice de la primera aparición de <code>valor</code> en la tupla[cite: 88]. Si el valor no se encuentra, genera un error <code>ValueError</code>. Puedes especificar opcionalmente un rango de búsqueda con <code>inicio</code> y <code>fin</code>.
+    </li>
+  </ul>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em; margin-top:10px;"><code># Secuencia de eventos en un experimento físico
+eventos_temporales = (0.0, 1.5, 2.3, 1.5, 3.0, 1.5, 4.2) # Tiempos en segundos
+
+# ¿Cuántas veces ocurrió un evento a los 1.5 segundos?
+ocurrencias_1_5s = eventos_temporales.count(1.5)
+print(f"El evento a 1.5s ocurrió {ocurrencias_1_5s} veces.") # Salida: 3
+
+# ¿En qué momento (índice) ocurrió el primer evento a los 2.3 segundos?
+try:
+    indice_2_3s = eventos_temporales.index(2.3)
+    print(f"El evento a 2.3s ocurrió primero en el índice: {indice_2_3s}") # Salida: 2
+except ValueError:
+    print("El evento a 2.3s no se encontró.")
+
+# Buscando el segundo evento de 1.5s (a partir del índice después del primero)
+primer_1_5_idx = eventos_temporales.index(1.5)
+segundo_1_5_idx = eventos_temporales.index(1.5, primer_1_5_idx + 1)
+print(f"El segundo evento a 1.5s está en el índice: {segundo_1_5_idx}") # Salida: 3</code></pre>
+</div>
+
+<div id="desempaquetado-tuplas" class="card" style="background-color: #fef3c7; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-gift"></i> 6. Desempaquetado de Tuplas (Unpacking)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    El desempaquetado es una característica muy útil y "Pythónica" que te permite asignar los elementos de una tupla (u otro iterable) a variables individuales en una sola línea de código[cite: 49, 96]. ¡Es como abrir una caja y repartir su contenido!
+  </p>
+  <pre style="background-color: #78350f; color: #fefce8; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Coordenadas de un punto en física
+punto_espacio_tiempo = (10.5, 20.3, 5.0, 0.25) # (x, y, z, tiempo)
+
+# Desempaquetado básico
+x, y, z, t = punto_espacio_tiempo
+print(f"Coordenada x: {x}, Tiempo: {t}")
+
+# Ejemplo en biología: datos de una especie
+especie_info = ("Panthera leo", "Mamífero", "Carnívoro", 180.5) # (Nombre, Clase, Dieta, Peso_kg)
+nombre_cientifico, clase_animal, tipo_dieta, peso_promedio_kg = especie_info
+print(f"{nombre_cientifico} es un {clase_animal} {tipo_dieta}.")
+
+# Intercambio de valores de variables (¡un truco clásico!)
+a = 5  # Representa, por ej., la energía inicial de un sistema
+b = 10 # Representa la energía final
+print(f"Antes del intercambio: a={a}, b={b}")
+a, b = b, a # Desempaquetado para intercambiar valores sin variable temporal [cite: 52]
+print(f"Después del intercambio: a={a}, b={b}")
+
+# Desempaquetado extendido (con * para capturar múltiples elementos) [cite: 51, 97]
+mediciones_ph = (7.0, 7.2, 6.8, 7.1, 7.3, 6.9)
+primera_medicion, segunda_medicion, *restantes_mediciones = mediciones_ph
+print(f"Primera: {primera_medicion}, Segunda: {segunda_medicion}, Restantes: {restantes_mediciones}")
+# Salida: Primera: 7.0, Segunda: 7.2, Restantes: [6.8, 7.1, 7.3, 6.9] 
+# ¡Ojo! 'restantes_mediciones' se convierte en una LISTA
+
+# También para ignorar valores que no necesitas
+nombre, _, email_contacto = ("Ana", "García", "ag@example.com") # Ignoramos el apellido
+print(f"Nombre: {nombre}, Email: {email_contacto}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fef9c3; border-left: 5px solid #eab308; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ✨ <strong>Elegancia y Claridad:</strong> El desempaquetado hace tu código más legible y conciso, especialmente cuando trabajas con funciones que devuelven múltiples valores (lo cual hacen retornando una tupla implícitamente).
+    </p>
+  </div>
+</div>
+
+<div id="funciones-con-tuplas" class="card" style="background-color: #f0fdfa; border-left: 6px solid #22d3ee; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0891b2; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-puzzle-piece"></i> 7. Funciones Incorporadas Útiles con Tuplas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python ofrece varias funciones incorporadas que operan eficientemente sobre tuplas (y otros iterables)[cite: 59].
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom:15px;">
+    <li><code>len(tupla)</code>: Devuelve el número de elementos[cite: 94].</li>
+    <li><code>max(tupla)</code>: Devuelve el elemento máximo (si los elementos son comparables)[cite: 104].</li>
+    <li><code>min(tupla)</code>: Devuelve el elemento mínimo (si los elementos son comparables)[cite: 105].</li>
+    <li><code>sum(tupla_numerica, inicio=0)</code>: Suma los elementos de una tupla numérica[cite: 106].</li>
+    <li><code>sorted(tupla, key=None, reverse=False)</code>: Devuelve una <strong>nueva lista ordenada</strong> a partir de los elementos de la tupla (¡ojo, devuelve lista, no tupla!)[cite: 37, 107].</li>
+    <li><code>tuple(iterable)</code>: Convierte un iterable (como una lista, cadena, rango) en una nueva tupla[cite: 100].</li>
+    <li><code>zip(*iterables)</code>: Crea un iterador que agrega elementos de varios iterables en tuplas[cite: 108, 54].</li>
+    <li><code>any(iterable_booleano)</code> / <code>all(iterable_booleano)</code>: Verifican si algún/todos los elementos son verdaderos[cite: 109].</li>
+  </ul>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo: Datos de un experimento de física de partículas
+energias_detectadas_GeV = (102.5, 98.7, 105.3, 102.5, 110.1, 95.0)
+
+print(f"Número de detecciones: {len(energias_detectadas_GeV)}")
+print(f"Máxima energía detectada: {max(energias_detectadas_GeV)} GeV")
+print(f"Mínima energía detectada: {min(energias_detectadas_GeV)} GeV")
+print(f"Suma de energías (no muy físico, solo ejemplo): {sum(energias_detectadas_GeV):.1f} GeV")
+
+energias_ordenadas_lista = sorted(energias_detectadas_GeV)
+print(f"Energías ordenadas (como lista): {energias_ordenadas_lista}")
+
+# Usando zip con datos de diferentes mediciones
+tiempos_s = (0.1, 0.2, 0.3, 0.4)
+posiciones_m = (5, 11, 18, 26)
+mediciones_completas = tuple(zip(tiempos_s, posiciones_m))
+print(f"Mediciones (tiempo, posición): {mediciones_completas}")
+# Salida: ((0.1, 5), (0.2, 11), (0.3, 18), (0.4, 26))
+
+# Ejemplo con any/all para biología (presencia de ciertos genes)
+genes_presentes = ("GenA", "GenB", "GenC")
+gen_interes_1 = "GenB"
+gen_interes_2 = "GenX"
+hay_gen_de_interes = any(gen == gen_interes_1 for gen in genes_presentes)
+print(f"¿Se encontró el gen de interés '{gen_interes_1}'?: {hay_gen_de_interes}")</code></pre>
+</div>
+
+<div id="casos-uso-tuplas" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6d28d9; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-lightbulb"></i> 8. Casos de Uso Prácticos de las Tuplas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    La inmutabilidad y estructura de las tuplas las hacen ideales para una variedad de aplicaciones en el mundo real y científico.
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-map-marker-alt"></i> Coordenadas Geográficas (Geografía/Física)</h3>
+      <p>Las coordenadas (latitud, longitud, altitud) son datos que no deben cambiar para un punto fijo.</p>
+      <pre><code># (Latitud, Longitud, Nombre)
+punto_interes = (4.60971, -74.08175, "Plaza de Bolívar, Bogotá")
+lat, lon, nombre = punto_interes
+print(f"{nombre}: Lat={lat:.4f}, Lon={lon:.4f}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #047857;"><i class="fas fa-cogs"></i> Configuraciones de Sistema/Experimento</h3>
+      <p>Valores de configuración que deben permanecer constantes durante una ejecución.</p>
+      <pre><code># (Resolución_ancho, Resolución_alto, Prof_color_bits)
+CONFIG_GRAFICA = (1920, 1080, 24)
+PARAM_SIMULACION = ("Euler", 0.01, 1000) # (Metodo, Paso_tiempo, Iteraciones)
+print(f"Resolución: {CONFIG_GRAFICA[0]}x{CONFIG_GRAFICA[1]}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fefce8; border-left: 5px solid #facc15;">
+      <h3 style="color: #b45309;"><i class="fas fa-database"></i> Registros de una Base de Datos Simple</h3>
+      <p>Representar filas de una tabla donde cada fila es un registro fijo.</p>
+      <pre><code># (ID_Producto, Nombre, Precio_Unitario)
+producto1 = (101, "Microscopio Óptico", 450.75)
+producto2 = (102, "Kit de Disección", 35.50)
+print(f"Producto: {producto1[1]}, Precio: ${producto1[2]}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-palette"></i> Colores RGB (Diseño/Física de la Luz)</h3>
+      <p>Los componentes Rojo, Verde y Azul de un color.</p>
+      <pre><code>color_rojo_primario = (255, 0, 0)
+color_verde_hoja = (50, 150, 50)
+r, g, b = color_verde_hoja
+print(f"Componente verde de verde_hoja: {g}")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #f0f8ff; border-left: 5px solid #4682b4;">
+      <h3 style="color: #2e86c1;"><i class="fas fa-atom"></i> Constantes Físicas/Químicas</h3>
+      <p>Valores universales que no cambian.</p>
+      <pre><code># (Valor, Unidad)
+VELOCIDAD_LUZ = (299792458, "m/s")
+CONST_AVOGADRO = (6.022e23, "mol⁻¹")
+print(f"Velocidad de la luz: {VELOCIDAD_LUZ[0]} {VELOCIDAD_LUZ[1]}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fdf4ff; border-left: 5px solid #a855f7;">
+      <h3 style="color: #7e22ce;"><i class="fas fa-music"></i> Secuencias Musicales o Ritmos</h3>
+      <p>Una secuencia fija de notas o duraciones.</p>
+      <pre><code># (Nota, Duración_en_tiempos)
+fragmento_melodia = (("Do", 1), ("Re", 1), ("Mi", 0.5), ("Fa", 0.5))
+for nota, duracion in fragmento_melodia:
+    print(f"Nota: {nota}, Duración: {duracion}")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="conclusion-tuplas" class="card" style="background-color: #e0f2f2; border-left: 6px solid #06b6d4; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #0891b2; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-award"></i> Conclusión: La Fortaleza de la Inmutabilidad
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Has navegado por el mundo de las tuplas en Python! Estas estructuras de datos, aunque sencillas en apariencia, son increíblemente poderosas gracias a su <strong>inmutabilidad</strong>.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Recuerda que las tuplas son ideales cuando necesitas:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li>Almacenar colecciones de datos que <strong>no deben cambiar</strong>.</li>
+        <li>Garantizar la <strong>integridad</strong> de tus datos.</li>
+        <li>Usar colecciones como <strong>claves de diccionarios</strong>.</li>
+        <li>Devolver <strong>múltiples valores</strong> desde una función de forma elegante.</li>
+        <li>Representar <strong>registros o estructuras fijas</strong> como coordenadas, constantes o configuraciones.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    La inmutabilidad no es una limitación, sino una característica que aporta seguridad y, en algunos casos, eficiencia a tus programas[cite: 173, 174].
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ccfbf1; border-left: 5px solid #2dd4bf; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Desafío Científico:</strong> Intenta modelar las coordenadas (x, y, z) de los átomos en una molécula simple (como el agua H₂O) usando tuplas. ¿Cómo representarías los enlaces si solo pudieras usar tuplas? ¡Experimenta en Google Colab!
+    </p>
+  </div>
+</div>

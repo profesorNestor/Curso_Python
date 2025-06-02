@@ -1,0 +1,851 @@
+<!-- ========================================== -->
+<!-- CONSEJOS PRÁCTICOS PARA BACHILLERATO      -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-lightbulb" style="color:#10b981;"></i> Consejos para Usar LaTeX en tus Tareas</h3>
+
+  <h4>💡 Trucos útiles para bachillerato</h4>
+  <ul>
+    <li><strong>Unidades físicas:</strong> Usa <code>\text{}</code> → $v = 10 \text{ m/s}$</li>
+    <li><strong>Grados:</strong> Usa <code>^\circ</code> → $\theta = 30^\circ$</li>
+    <li><strong>Aproximaciones:</strong> Usa <code>\approx</code> → $\pi \approx 3.14$</li>
+    <li><strong>Proporcionalidad:</strong> Usa <code>\propto</code> → $F \propto ma$</li>
+  </ul>
+
+  <h4>🛠️ Resolución de problemas comunes</h4>
+  <pre><code># Si una fórmula no se ve bien:
+1. Verifica que uses $ al inicio y al final
+2. Para fórmulas grandes, usa $fórmula$
+3. Las llaves {} son importantes: x^{10} no x^10
+
+# Ejemplos corregidos:
+❌ $x^10+1$     →  ✅ $x^{10} + 1$
+❌ sin(x)       →  ✅ $\sin(x)$
+❌ $x/2$        →  ✅ $\frac{x}{2}$</code></pre>
+
+  <h4>📚 Fórmulas más usadas en bachillerato</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Distancia:</strong> $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</p>
+    <p><strong>Interés compuesto:</strong> $A = P(1 + \frac{r}{n})^{nt}$</p>
+    <p><strong>Ecuación de la recta:</strong> $y = mx + b$</p>
+    <p><strong>Ecuación del círculo:</strong> $(x-h)^2 + (y-k)^2 = r^2$</p>
+  </div>
+
+  <h4>🎯 Ejercicio práctico</h4>
+  <p>Copia este código en una celda Text de Google Colab:</p>
+  <pre><code>Un proyectil se lanza con velocidad inicial $v_0 = 20 \text{ m/s}$ 
+a un ángulo de $\theta = 45^\circ$.
+
+La altura máxima se calcula con:
+$h_{max} = \frac{v_0^2 \sin^2(\theta)}{2g}$
+
+Sustituyendo valores:
+$h_{max} = \frac{(20)^2 \sin^2(45^\circ)}{2 \times 9.8} \approx 10.2 \text{ m}$</code></pre>
+</div>
+
+<!-- ========================================== -->
+<!-- PRÁCTICA INTERACTIVA                      -->
+<!-- ========================================== -->
+<div class="card" style="background-color: #f0fdf4; border: 2px solid #22c55e;">
+  <h3><i class="fas fa-rocket" style="color:#22c55e;"></i> 🚀 Práctica: Crea tu primera fórmula</h3>
+
+  <p style="font-size: 1.1em; margin-bottom: 20px;">
+    <strong>¡Es tu turno!</strong> Sigue estos pasos para crear tu primera fórmula matemática en Google Colab:
+  </p>
+
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #16a34a;">Paso 1: Abre Google Colab</h4>
+    <ol>
+      <li>Ve a <a href="https://colab.research.google.com" target="_blank" style="color: #2563eb;">Google Colab</a></li>
+      <li>Crea un nuevo notebook</li>
+      <li>Haz clic en <strong>+ Texto</strong> para crear una celda de texto</li>
+    </ol>
+  </div>
+
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #16a34a;">Paso 2: Escribe tu primera fórmula</h4>
+    <p>Copia y pega este ejemplo en la celda de texto:</p>
+    <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code>## Mi primera fórmula matemática
+
+Voy a calcular el área de un círculo con radio $r = 5$ cm.
+
+La fórmula del área es:
+$A = \pi r^2$
+
+Sustituyendo el valor:
+$A = \pi \times 5^2 = 25\pi \approx 78.54 \text{ cm}^2$</code></pre>
+  </div>
+
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #16a34a;">Paso 3: Presiona Shift + Enter</h4>
+    <p>¡Mira cómo tu texto se transforma en hermosas fórmulas matemáticas!</p>
+  </div>
+
+  <div style="background: #dcfce7; padding: 20px; border-radius: 8px;">
+    <h4 style="color: #166534;">💪 Reto adicional</h4>
+    <p>Intenta crear estas fórmulas por tu cuenta:</p>
+    <ul>
+      <li>La ecuación de Einstein: $E = mc^2$</li>
+      <li>El teorema de Pitágoras: $a^2 + b^2 = c^2$</li>
+      <li>La ley de gravitación: $F = G\frac{m_1 m_2}{r^2}$</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- REFERENCIA RÁPIDA                         -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-bookmark" style="color:#9333ea;"></i> 📋 Referencia Rápida de LaTeX</h3>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    
+    <!-- Columna 1: Operaciones básicas -->
+    <div style="background: #f9fafb; padding: 15px; border-radius: 8px;">
+      <h4 style="color: #6b21a8; margin-top: 0;">Operaciones Básicas</h4>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>\times</code></td>
+          <td>→</td>
+          <td>$\times$</td>
+          <td>Multiplicación</td>
+        </tr>
+        <tr>
+          <td><code>\div</code></td>
+          <td>→</td>
+          <td>$\div$</td>
+          <td>División</td>
+        </tr>
+        <tr>
+          <td><code>\pm</code></td>
+          <td>→</td>
+          <td>$\pm$</td>
+          <td>Más/menos</td>
+        </tr>
+        <tr>
+          <td><code>\neq</code></td>
+          <td>→</td>
+          <td>$\neq$</td>
+          <td>Diferente</td>
+        </tr>
+        <tr>
+          <td><code>\leq</code></td>
+          <td>→</td>
+          <td>$\leq$</td>
+          <td>Menor o igual</td>
+        </tr>
+        <tr>
+          <td><code>\geq</code></td>
+          <td>→</td>
+          <td>$\geq$</td>
+          <td>Mayor o igual</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Columna 2: Letras griegas -->
+    <div style="background: #f9fafb; padding: 15px; border-radius: 8px;">
+      <h4 style="color: #6b21a8; margin-top: 0;">Letras Griegas</h4>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>\alpha</code></td>
+          <td>→</td>
+          <td>$\alpha$</td>
+          <td>Alfa</td>
+        </tr>
+        <tr>
+          <td><code>\beta</code></td>
+          <td>→</td>
+          <td>$\beta$</td>
+          <td>Beta</td>
+        </tr>
+        <tr>
+          <td><code>\theta</code></td>
+          <td>→</td>
+          <td>$\theta$</td>
+          <td>Theta</td>
+        </tr>
+        <tr>
+          <td><code>\pi</code></td>
+          <td>→</td>
+          <td>$\pi$</td>
+          <td>Pi</td>
+        </tr>
+        <tr>
+          <td><code>\omega</code></td>
+          <td>→</td>
+          <td>$\omega$</td>
+          <td>Omega</td>
+        </tr>
+        <tr>
+          <td><code>\Delta</code></td>
+          <td>→</td>
+          <td>$\Delta$</td>
+          <td>Delta</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Columna 3: Funciones -->
+    <div style="background: #f9fafb; padding: 15px; border-radius: 8px;">
+      <h4 style="color: #6b21a8; margin-top: 0;">Funciones</h4>
+      <table style="width: 100%; font-size: 0.9em;">
+        <tr>
+          <td><code>\sin</code></td>
+          <td>→</td>
+          <td>$\sin$</td>
+          <td>Seno</td>
+        </tr>
+        <tr>
+          <td><code>\cos</code></td>
+          <td>→</td>
+          <td>$\cos$</td>
+          <td>Coseno</td>
+        </tr>
+        <tr>
+          <td><code>\tan</code></td>
+          <td>→</td>
+          <td>$\tan$</td>
+          <td>Tangente</td>
+        </tr>
+        <tr>
+          <td><code>\log</code></td>
+          <td>→</td>
+          <td>$\log$</td>
+          <td>Logaritmo</td>
+        </tr>
+        <tr>
+          <td><code>\ln</code></td>
+          <td>→</td>
+          <td>$\ln$</td>
+          <td>Log natural</td>
+        </tr>
+        <tr>
+          <td><code>\lim</code></td>
+          <td>→</td>
+          <td>$\lim$</td>
+          <td>Límite</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Comandos más complejos -->
+  <div style="margin-top: 20px; background: #ede9fe; padding: 20px; border-radius: 8px;">
+    <h4 style="color: #5b21b6; margin-top: 0;">Comandos Avanzados</h4>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+      <div>
+        <strong>Fracciones:</strong><br>
+        <code>\frac{a}{b}</code> → $\frac{a}{b}$
+      </div>
+      <div>
+        <strong>Raíz cuadrada:</strong><br>
+        <code>\sqrt{x}</code> → $\sqrt{x}$
+      </div>
+      <div>
+        <strong>Raíz n-ésima:</strong><br>
+        <code>\sqrt[n]{x}</code> → $\sqrt[n]{x}$
+      </div>
+      <div>
+        <strong>Potencias:</strong><br>
+        <code>x^{10}</code> → $x^{10}$
+      </div>
+      <div>
+        <strong>Subíndices:</strong><br>
+        <code>x_0</code> → $x_0$
+      </div>
+      <div>
+        <strong>Vectores:</strong><br>
+        <code>\vec{v}</code> → $\vec{v}$
+      </div>
+      <div>
+        <strong>Integrales:</strong><br>
+        <code>\int_a^b</code> → $\int_a^b$
+      </div>
+      <div>
+        <strong>Sumatoria:</strong><br>
+        <code>\sum_{i=1}^n</code> → $\sum_{i=1}^n$
+      </div>
+      <div>
+        <strong>Infinito:</strong><br>
+        <code>\infty</code> → $\infty$
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- RECURSOS ADICIONALES                      -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-book-open" style="color:#0891b2;"></i> 📚 Recursos para Seguir Aprendiendo</h3>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    
+    <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border: 1px solid #0891b2;">
+      <h4 style="color: #0c4a6e; margin-top: 0;">🎓 Para Estudiantes</h4>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li>Practica con problemas de tu libro de texto</li>
+        <li>Crea resúmenes de fórmulas en Colab</li>
+        <li>Comparte notebooks con compañeros</li>
+        <li>Usa LaTeX para tareas y proyectos</li>
+      </ul>
+    </div>
+
+    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border: 1px solid #f59e0b;">
+      <h4 style="color: #78350f; margin-top: 0;">💡 Tips Avanzados</h4>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li>Combina LaTeX con código Python</li>
+        <li>Crea gráficos con etiquetas matemáticas</li>
+        <li>Usa LaTeX en presentaciones</li>
+        <li>Aprende más comandos según necesites</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; text-align: center; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+    <p style="font-size: 1.1em; margin-bottom: 15px;">
+      <strong>¡Felicidades!</strong> 🎉 Ya sabes usar LaTeX en Google Colab
+    </p>
+    <p style="color: #6b7280;">
+      Con práctica, escribirás fórmulas matemáticas como un profesional
+    </p>
+  </div>
+</div>== -->
+<!-- TUTORIAL DE LATEX PARA GOOGLE COLAB       -->
+<!-- Enfocado en Matemáticas y Física de Bachillerato -->
+<!-- Archivo: temas/latex.html                 -->
+<!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- INTRODUCCIÓN A LATEX                      -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-subscript" style="color:#2b6cb0;"></i> LaTeX para Matemáticas de Bachillerato</h3>
+
+  <p>
+    <strong>LaTeX</strong> te permite escribir <strong>fórmulas matemáticas hermosas</strong> en Google Colab. 
+    Es especialmente útil para matemáticas de bachillerato: álgebra, geometría, trigonometría, cálculo básico y física.
+  </p>
+
+  <p><strong>¿Para qué usar LaTeX en tus tareas?</strong></p>
+  <ul>
+    <li>📐 Escribir ecuaciones cuadráticas y sistemas de ecuaciones</li>
+    <li>📊 Mostrar funciones trigonométricas y gráficos</li>
+    <li>⚡ Fórmulas de física: cinemática, dinámica, energía</li>
+    <li>📈 Funciones matemáticas y representaciones gráficas</li>
+    <li>🧮 Ejercicios de cálculo: límites, derivadas básicas</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- CÓMO ESCRIBIR MATEMÁTICAS EN GOOGLE COLAB -->
+<!-- SECCIÓN MEJORADA Y AMPLIADA               -->
+<!-- ========================================== -->
+<div class="card" style="background-color: #f0f9ff; border-left: 4px solid #3182ce;">
+  <h3><i class="fas fa-keyboard" style="color:#3182ce;"></i> 📝 Cómo escribir matemáticas en Google Colab</h3>
+
+  <p style="font-size: 1.1em; margin-bottom: 20px;">
+    En Google Colab puedes escribir fórmulas matemáticas de <strong>dos formas diferentes</strong>, 
+    dependiendo de cómo quieras que se vean:
+  </p>
+
+  <!-- Forma 1: Fórmulas en línea -->
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #2563eb;">1️⃣ Fórmulas en línea (dentro del texto)</h4>
+    
+    <ul style="margin: 15px 0;">
+      <li><strong>Cómo escribirla:</strong> Usa <strong>UN</strong> símbolo de dólar <code>$</code> al inicio y al final</li>
+      <li><strong>Formato:</strong> <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">$tu_fórmula$</code></li>
+      <li><strong>Dónde aparece:</strong> En la misma línea del texto, como parte del párrafo</li>
+      <li><strong>Tamaño:</strong> Pequeño, ajustado al tamaño del texto</li>
+    </ul>
+
+    <div style="background: #f9fafb; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <p><strong>Ejemplo práctico:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code>La ecuación cuadrática $x^2 + 5x + 6 = 0$ tiene dos soluciones.</code></pre>
+      
+      <p style="margin-top: 10px;"><strong>Se verá así:</strong></p>
+      <p style="background: #e0e7ff; padding: 10px; border-radius: 4px;">
+        La ecuación cuadrática <span style="font-style: italic;">x² + 5x + 6 = 0</span> tiene dos soluciones.
+      </p>
+    </div>
+  </div>
+
+  <!-- Forma 2: Fórmulas centradas -->
+  <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #2563eb;">2️⃣ Fórmulas centradas (en su propia línea)</h4>
+    
+    <ul style="margin: 15px 0;">
+      <li><strong>Cómo escribirla:</strong> Usa <strong>DOS</strong> símbolos de dólar <code>$$</code> al inicio y al final</li>
+      <li><strong>Formato:</strong> <code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">$$tu_fórmula$$</code></li>
+      <li><strong>Dónde aparece:</strong> En una línea separada, centrada</li>
+      <li><strong>Tamaño:</strong> Grande y destacado</li>
+    </ul>
+
+    <div style="background: #f9fafb; padding: 15px; border-radius: 6px; margin-top: 15px;">
+      <p><strong>Ejemplo práctico:</strong></p>
+      <pre style="background: #1f2937; color: white; padding: 15px; border-radius: 6px; overflow-x: auto;"><code>La fórmula cuadrática es:
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</code></pre>
+      
+      <p style="margin-top: 10px;"><strong>Se verá así:</strong></p>
+      <div style="background: #e0e7ff; padding: 20px; border-radius: 4px; text-align: center;">
+        <p style="margin-bottom: 10px;">La fórmula cuadrática es:</p>
+        <p style="font-size: 1.4em; margin: 0;">
+          <em>x = (-b ± √(b² - 4ac)) / 2a</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparación visual -->
+  <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #92400e;">🎯 Comparación visual lado a lado</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background: #fef9c3;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #fbbf24;">Tipo</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #fbbf24;">Código</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #fbbf24;">Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><strong>En línea</strong></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>El área es $A = \pi r^2$ metros</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;">El área es <em>A = πr²</em> metros</td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><strong>Centrada</strong></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24;"><code>$$A = \pi r^2$$</code></td>
+          <td style="padding: 12px; border: 1px solid #fbbf24; text-align: center;">
+            <div style="font-size: 1.2em;"><em>A = πr²</em></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cuándo usar cada una -->
+  <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #166534;">💡 ¿Cuándo usar cada una?</h4>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+      <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #86efac;">
+        <h5 style="color: #166534; margin-top: 0;">Usa <code>$...$</code> (un dólar) cuando:</h5>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>Mencionas variables o ecuaciones simples en una oración</li>
+          <li>Quieres que la fórmula forme parte del texto</li>
+          <li>Son expresiones cortas como <em>x²</em>, <em>√2</em>, o <em>sin(θ)</em></li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #86efac;">
+        <h5 style="color: #166534; margin-top: 0;">Usa <code>$$...$$</code> (doble dólar) cuando:</h5>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>Quieres destacar una ecuación importante</li>
+          <li>La fórmula es larga o compleja</li>
+          <li>Necesitas que sea el centro de atención</li>
+          <li>Es el resultado final de un problema</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejemplo completo -->
+  <div style="background: #f3f4ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h4 style="color: #4338ca;">📌 Ejemplo completo en Google Colab</h4>
+    
+    <pre style="background: #1f2937; color: white; padding: 20px; border-radius: 6px; margin-top: 15px; overflow-x: auto;"><code>Para resolver la ecuación $ax^2 + bx + c = 0$, usamos la fórmula cuadrática.
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+Por ejemplo, si tenemos $2x^2 + 5x + 3 = 0$, entonces $a=2$, $b=5$ y $c=3$.</code></pre>
+    
+    <div style="background: white; padding: 20px; border-radius: 6px; margin-top: 15px;">
+      <p><strong>Resultado:</strong></p>
+      <p>Para resolver la ecuación <em>ax² + bx + c = 0</em>, usamos la fórmula cuadrática.</p>
+      <div style="text-align: center; margin: 20px 0;">
+        <p style="font-size: 1.3em;"><em>x = (-b ± √(b² - 4ac)) / 2a</em></p>
+      </div>
+      <p>Por ejemplo, si tenemos <em>2x² + 5x + 3 = 0</em>, entonces <em>a=2</em>, <em>b=5</em> y <em>c=3</em>.</p>
+    </div>
+  </div>
+
+  <!-- Errores comunes -->
+  <div style="background: #fee2e2; padding: 20px; border-radius: 8px;">
+    <h4 style="color: #991b1b;">⚠️ Errores comunes a evitar</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background: #fecaca;">
+          <th style="padding: 10px; text-align: left;">❌ Incorrecto</th>
+          <th style="padding: 10px; text-align: left;">✅ Correcto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$$$formula$$$</code> (tres dólares)</td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$$formula$$</code> (dos dólares)</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$ formula $</code> (espacios después del dólar)</td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;"><code>$formula$</code> (sin espacios)</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Mezclar ambos tipos <code>$formula$$</code></td>
+          <td style="padding: 10px; border: 1px solid #fca5a5;">Usar consistentemente <code>$formula$</code> o <code>$$formula$$</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SINTAXIS BÁSICA PARA BACHILLERATO         -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-calculator" style="color:#805ad5;"></i> Primeros Pasos con LaTeX</h3>
+
+  <h4>📌 Números y variables básicas</h4>
+  <pre><code># Potencias
+$x^2$, $a^3$, $10^{-5}$
+
+# Subíndices (muy útiles en física)
+$v_0$, $x_1$, $CO_2$, $H_2O$
+
+# Combinando ambos
+$v_f^2 = v_0^2 + 2ax$</code></pre>
+  
+  <p><strong>Resultado:</strong> $x^2, a^3, 10^{-5}$ | $v_0, x_1, CO_2, H_2O$ | $v_f^2 = v_0^2 + 2ax$</p>
+
+  <h4>📌 Símbolos matemáticos comunes</h4>
+  <pre><code># Operaciones básicas
+$\pm$, $\times$, $\div$, $\neq$, $\leq$, $\geq$
+
+# Letras griegas (muy usadas en física)
+$\alpha$, $\beta$, $\theta$, $\phi$, $\omega$, $\pi$</code></pre>
+  
+  <p><strong>Resultado:</strong> $\pm, \times, \div, \neq, \leq, \geq$ | $\alpha, \beta, \theta, \phi, \omega, \pi$</p>
+</div>
+
+<!-- ========================================== -->
+<!-- ÁLGEBRA DE BACHILLERATO                   -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-square-root-alt" style="color:#e53e3e;"></i> Álgebra de Bachillerato</h3>
+
+  <h4>🔢 Fracciones y raíces</h4>
+  <pre><code># Fracciones
+$\frac{1}{2}$, $\frac{x + 1}{x - 1}$, $\frac{-b}{2a}$
+
+# Raíces
+$\sqrt{x}$, $\sqrt{x^2 + y^2}$, $\sqrt[3]{8}$</code></pre>
+  
+  <p><strong>Ejemplos visuales:</strong></p>
+  <div style="text-align: center; font-size: 1.2em; margin: 1em 0;">
+    <p>Fracción: $\frac{x + 1}{x - 1}$ | Raíz cuadrada: $\sqrt{x^2 + y^2}$ | Raíz cúbica: $\sqrt[3]{8}$</p>
+  </div>
+
+  <h4>📐 Fórmula cuadrática (¡La más importante!)</h4>
+  <pre><code>$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</code></pre>
+  
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Fórmula cuadrática:</strong></p>
+    $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+  </div>
+
+  <h4>📊 Sistemas de ecuaciones</h4>
+  <pre><code># Sistema de 2x2
+$$\begin{cases}
+2x + 3y = 7 \\
+x - y = 1
+\end{cases}$$
+
+# Sistema de 3x3
+$$\begin{cases}
+x + y + z = 6 \\
+2x - y = 3 \\
+x + 2z = 5
+\end{cases}$$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    $$\begin{cases}
+    2x + 3y = 7 \\
+    x - y = 1
+    \end{cases}$$
+  </div>
+
+  <h4>📈 Funciones por partes</h4>
+  <pre><code># Valor absoluto
+$$|x| = \begin{cases}
+x & \text{si } x \geq 0 \\
+-x & \text{si } x < 0
+\end{cases}$$
+
+# Función escalón
+$$f(x) = \begin{cases}
+0 & \text{si } x < 0 \\
+1 & \text{si } x \geq 0
+\end{cases}$$</code></pre>
+</div>
+
+<!-- ========================================== -->
+<!-- GEOMETRÍA Y TRIGONOMETRÍA                 -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-ruler-combined" style="color:#38a169;"></i> Geometría y Trigonometría</h3>
+
+  <h4>📐 Fórmulas geométricas básicas</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Área del círculo:</strong> $A = \pi r^2$</p>
+    <p><strong>Perímetro del círculo:</strong> $P = 2\pi r$</p>
+    <p><strong>Área del triángulo:</strong> $A = \frac{1}{2}bh$</p>
+    <p><strong>Teorema de Pitágoras:</strong> $a^2 + b^2 = c^2$</p>
+  </div>
+
+  <h4>📊 Funciones trigonométricas</h4>
+  <pre><code># Funciones básicas
+$\sin(\theta)$, $\cos(\theta)$, $\tan(\theta)$
+
+# Identidades fundamentales
+$$\sin^2(\theta) + \cos^2(\theta) = 1$$
+
+$$\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Identidad fundamental:</strong></p>
+    $$\sin^2(\theta) + \cos^2(\theta) = 1$$
+    
+    <p><strong>Definición de tangente:</strong></p>
+    $$\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$$
+  </div>
+
+  <h4>📏 Ley de senos y cosenos</h4>
+  <pre><code># Ley de senos
+$$\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}$$
+
+# Ley de cosenos
+$$c^2 = a^2 + b^2 - 2ab\cos(C)$$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Ley de senos:</strong></p>
+    $$\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}$$
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- FÍSICA DE BACHILLERATO                    -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-atom" style="color:#4c51bf;"></i> Física de Bachillerato</h3>
+
+  <h4>🚗 Cinemática (Movimiento)</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Velocidad:</strong> $v = \frac{d}{t}$</p>
+    <p><strong>Aceleración:</strong> $a = \frac{\Delta v}{\Delta t}$</p>
+    <p><strong>Ecuación de movimiento:</strong> $x = x_0 + v_0 t + \frac{1}{2}at^2$</p>
+    <p><strong>Velocidad final:</strong> $v_f^2 = v_0^2 + 2a(x - x_0)$</p>
+  </div>
+
+  <h4>⚡ Dinámica (Fuerzas)</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Segunda ley de Newton:</strong> $\vec{F} = m\vec{a}$</p>
+    <p><strong>Peso:</strong> $W = mg$</p>
+    <p><strong>Fuerza de fricción:</strong> $f = \mu N$</p>
+    <p><strong>Fuerza elástica:</strong> $F = -kx$</p>
+  </div>
+
+  <h4>💡 Energía y trabajo</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Energía cinética:</strong> $E_k = \frac{1}{2}mv^2$</p>
+    <p><strong>Energía potencial:</strong> $E_p = mgh$</p>
+    <p><strong>Trabajo:</strong> $W = F \cdot d \cdot \cos(\theta)$</p>
+    <p><strong>Potencia:</strong> $P = \frac{W}{t}$</p>
+  </div>
+
+  <h4>🌊 Ondas y electricidad básica</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Velocidad de onda:</strong> $v = \lambda f$</p>
+    <p><strong>Ley de Ohm:</strong> $V = IR$</p>
+    <p><strong>Potencia eléctrica:</strong> $P = VI$</p>
+    <p><strong>Energía eléctrica:</strong> $E = Pt$</p>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- CÁLCULO BÁSICO                            -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-chart-line" style="color:#dd6b20;"></i> Introducción al Cálculo</h3>
+
+  <h4>🎯 Límites básicos</h4>
+  <pre><code># Límite simple
+$\lim_{x \to 2} (x^2 + 1) = 5$
+
+# Límite al infinito
+$\lim_{x \to \infty} \frac{1}{x} = 0$
+
+# Límites laterales
+$\lim_{x \to 0^+} \frac{1}{x} = +\infty$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p>$$\lim_{x \to 2} (x^2 + 1) = 5$$</p>
+  </div>
+
+  <h4>📈 Derivadas básicas</h4>
+  <pre><code># Notación de derivada
+$f'(x)$ o $\frac{df}{dx}$
+
+# Reglas básicas
+$\frac{d}{dx}[x^n] = nx^{n-1}$
+
+$\frac{d}{dx}[\sin(x)] = \cos(x)$
+
+$\frac{d}{dx}[e^x] = e^x$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Regla de la potencia:</strong></p>
+    $$\frac{d}{dx}[x^n] = nx^{n-1}$$
+  </div>
+
+  <h4>📊 Integrales básicas</h4>
+  <pre><code># Integral indefinida
+$\int x^2 \, dx = \frac{x^3}{3} + C$
+
+# Integral definida (área bajo la curva)
+$\int_0^1 x^2 \, dx = \frac{1}{3}$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Integral de potencia:</strong></p>
+    $$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$$
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- VECTORES PARA FÍSICA                      -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-arrows-alt" style="color:#319795;"></i> Vectores en Física</h3>
+
+  <h4>➡️ Notación de vectores</h4>
+  <pre><code># Vector con flecha
+$\vec{v}$, $\vec{F}$, $\vec{a}$
+
+# Vector en componentes
+$\vec{v} = v_x \hat{i} + v_y \hat{j}$
+
+# Magnitud del vector
+$|\vec{v}| = \sqrt{v_x^2 + v_y^2}$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Vector velocidad:</strong> $\vec{v} = v_x \hat{i} + v_y \hat{j}$</p>
+    <p><strong>Magnitud:</strong> $|\vec{v}| = \sqrt{v_x^2 + v_y^2}$</p>
+  </div>
+
+  <h4>📐 Operaciones con vectores</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Suma:</strong> $\vec{A} + \vec{B} = (A_x + B_x)\hat{i} + (A_y + B_y)\hat{j}$</p>
+    <p><strong>Producto punto:</strong> $\vec{A} \cdot \vec{B} = A_x B_x + A_y B_y$</p>
+    <p><strong>Producto cruz:</strong> $\vec{A} \times \vec{B} = |\vec{A}||\vec{B}|\sin(\theta)$</p>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MATRICES BÁSICAS                          -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-th" style="color:#f59e0b;"></i> Matrices para Sistemas de Ecuaciones</h3>
+
+  <h4>📊 Representación matricial</h4>
+  <pre><code># Matriz 2x2
+$$A = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}$$
+
+# Sistema como matriz
+$$\begin{pmatrix}
+2 & 3 \\
+1 & -1
+\end{pmatrix} \begin{pmatrix}
+x \\
+y
+\end{pmatrix} = \begin{pmatrix}
+7 \\
+1
+\end{pmatrix}$$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    $$\begin{pmatrix}
+    2 & 3 \\
+    1 & -1
+    \end{pmatrix} \begin{pmatrix}
+    x \\
+    y
+    \end{pmatrix} = \begin{pmatrix}
+    7 \\
+    1
+    \end{pmatrix}$$
+  </div>
+
+  <h4>🧮 Determinantes (para resolver sistemas)</h4>
+  <pre><code># Determinante 2x2
+$$\det(A) = \begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} = ad - bc$$</code></pre>
+
+  <div style="text-align: center; margin: 1em 0;">
+    $$\det(A) = \begin{vmatrix}
+    a & b \\
+    c & d
+    \end{vmatrix} = ad - bc$$
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- CONSEJOS PRÁCTICOS PARA BACHILLERATO      -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-lightbulb" style="color:#10b981;"></i> Consejos para Usar LaTeX en tus Tareas</h3>
+
+  <h4>💡 Trucos útiles para bachillerato</h4>
+  <ul>
+    <li><strong>Unidades físicas:</strong> Usa <code>\text{}</code> → $v = 10 \text{ m/s}$</li>
+    <li><strong>Grados:</strong> Usa <code>^\circ</code> → $\theta = 30^\circ$</li>
+    <li><strong>Aproximaciones:</strong> Usa <code>\approx</code> → $\pi \approx 3.14$</li>
+    <li><strong>Proporcionalidad:</strong> Usa <code>\propto</code> → $F \propto ma$</li>
+  </ul>
+
+  <h4>🛠️ Resolución de problemas comunes</h4>
+  <pre><code># Si una fórmula no se ve bien:
+1. Verifica que uses $ al inicio y al final
+2. Para fórmulas grandes, usa $$fórmula$$
+3. Las llaves {} son importantes: x^{10} no x^10
+
+# Ejemplos corregidos:
+❌ $x^10+1$     →  ✅ $x^{10} + 1$
+❌ sin(x)       →  ✅ $\sin(x)$
+❌ $x/2$        →  ✅ $\frac{x}{2}$</code></pre>
+
+  <h4>📚 Fórmulas más usadas en bachillerato</h4>
+  <div style="text-align: center; margin: 1em 0;">
+    <p><strong>Distancia:</strong> $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</p>
+    <p><strong>Interés compuesto:</strong> $A = P(1 + \frac{r}{n})^{nt}$</p>
+    <p><strong>Ecuación de la recta:</strong> $y = mx + b$</p>
+    <p><strong>Ecuación del círculo:</strong> $(x-h)^2 + (y-k)^2 = r^2$</p>
+  </div>
+
+  <h4>🎯 Ejercicio práctico</h4>
+  <p>Copia este código en una celda Text de Google Colab:</p>
+  <pre><code>Un proyectil se lanza con velocidad inicial $v_0 = 20 \text{ m/s}$ 
+a un ángulo de $\theta = 45^\circ$.
+
+La altura máxima se calcula con:
+$$h_{max} = \frac{v_0^2 \sin^2(\theta)}{2g}$$
+
+Sustituyendo valores:
+$$h_{max} = \frac{(20)^2 \sin^2(45^\circ)}{2 \times 9.8} \approx 10.2 \text{ m}$$</code></pre>
+</div>

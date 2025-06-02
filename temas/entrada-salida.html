@@ -1,0 +1,365 @@
+<div id="entrada-salida-header" class="card" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-exchange-alt"></i> Entrada y Salida de Datos en Python 🖨️🧑‍💻
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Aprende cómo tus programas pueden comunicarse con el mundo exterior: mostrando información útil y recibiendo datos del usuario. ¡Fundamental para la interactividad!
+  </p>
+</div>
+
+<div id="intro-es" class="card" style="background-color: #f0f8ff; border-left: 6px solid #0ea5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-comments"></i> 1. Comunicación con el Programa: Entrada y Salida (E/S)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina que tu programa Python es un científico brillante 🧑‍🔬. Para que pueda hacer su trabajo, necesita dos cosas fundamentales:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.1em; line-height: 1.7;">
+        <li>📬 **Recibir información (Entrada):** Datos de experimentos, parámetros de un modelo, respuestas de un usuario, etc.</li>
+        <li>📢 **Presentar resultados (Salida):** Conclusiones, gráficos, mensajes informativos, alertas, etc.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    En Python, las herramientas principales para esta comunicación son la función <code>input()</code> para la entrada de datos desde el teclado, y la función <code>print()</code> para la salida de datos a la pantalla o consola. En entornos interactivos como <strong>Google Colab</strong> o Jupyter Notebooks, también contamos con funciones especiales como <code>display()</code> para mostrar resultados de forma más enriquecida. ¡Vamos a dominarlas! 🚀
+  </p>
+</div>
+
+<div id="funcion-print" class="card" style="background-color: #f0fdfa; border-left: 6px solid #14b8a6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-print"></i> 2. Mostrando Información: La Versátil Función <code>print()</code>
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    La función <code>print()</code> es tu principal aliada para mostrar mensajes, valores de variables y resultados de tus cálculos en la consola. Es fundamental para entender qué está haciendo tu programa y para comunicarte con el usuario.
+  </p>
+
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Uso Básico:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Simplemente pasas lo que quieres imprimir como argumento entre los paréntesis. Puedes imprimir texto (cadenas o strings), números, o el valor de variables.
+  </p>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>print("¡Hola, futuros científicos de datos!") # Imprime una cadena de texto
+print(3.14159)                             # Imprime un número flotante
+numero_atomico_H = 1
+print(numero_atomico_H)                  # Imprime el valor de una variable (1)
+
+# Puedes imprimir múltiples cosas a la vez, separadas por comas:
+nombre_elemento = "Oxígeno"
+simbolo = "O"
+print("El elemento", nombre_elemento, "tiene el símbolo:", simbolo)
+# Salida: El elemento Oxígeno tiene el símbolo: O</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Por defecto, <code>print()</code> añade un espacio entre los argumentos separados por comas y un salto de línea (<code>\n</code>) al final de cada llamada.
+  </p>
+
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">Personalizando la Salida con Parámetros Clave:</h3>
+  
+  <h4 style="color: #115e59; font-size: 1.2em; margin-top: 15px; margin-bottom: 5px;">✨ El Parámetro <code>sep</code> (Separador):</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El parámetro <code>sep</code> te permite especificar qué cadena de texto se usará para separar los múltiples argumentos que pasas a <code>print()</code>. Por defecto, es un espacio.
+  </p>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>dia = 25
+mes = "Diciembre"
+anio = 2024
+print(dia, mes, anio)                     # Salida: 25 Diciembre 2024 (separador por defecto: espacio)
+print(dia, mes, anio, sep="/")            # Salida: 25/Diciembre/2024
+print("Masa", "Volumen", "Densidad", sep=" | ") # Salida: Masa | Volumen | Densidad
+print("Puntos:", 10, 20, 30, sep=", ")      # Salida: Puntos: 10, 20, 30</code></pre>
+
+  <h4 style="color: #115e59; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🏁 El Parámetro <code>end</code> (Finalizador):</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El parámetro <code>end</code> controla qué carácter o cadena se imprime al final de la llamada a <code>print()</code>. Por defecto, es un salto de línea (<code>\n</code>), lo que hace que cada <code>print()</code> aparezca en una nueva línea. Puedes cambiarlo si quieres que varias llamadas a <code>print()</code> continúen en la misma línea.
+  </p>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>print("Procesando datos", end="")      # No añade salto de línea
+print(".", end="")
+print(".", end="")
+print(". ¡Completo!")
+# Salida: Procesando datos... ¡Completo!
+
+print("Resultado 1:", end=" | ")
+print("Resultado 2:", end=" | ")
+print("Resultado 3")
+# Salida: Resultado 1: | Resultado 2: | Resultado 3 </code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #cffafe; border-left: 5px solid #22d3ee; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Dato para Colab:</strong> En Google Colab, la salida de cada celda se muestra debajo de ella. Usar <code>end=""</code> es útil si quieres construir una línea de salida a partir de varios <code>print()</code> dentro de la misma ejecución de celda.
+    </p>
+  </div>
+</div>
+
+<div id="f-strings" class="card" style="background-color: #fef3c7; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-magic"></i> 3. F-Strings: Formateo de Texto Elegante y Moderno
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Las **f-strings** (o cadenas literales formateadas) son una forma moderna, concisa y muy legible de incrustar expresiones y valores de variables directamente dentro de una cadena de texto en Python (disponibles desde Python 3.6). ¡Son la forma preferida de formatear cadenas para la mayoría de los casos!
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Para crear una f-string, simplemente precede la comilla de apertura de tu cadena con la letra <code>f</code> o <code>F</code>. Luego, dentro de la cadena, puedes colocar variables o expresiones entre llaves <code>{ }</code>, y Python reemplazará esas llaves con el valor evaluado de la expresión.
+  </p>
+
+  <pre style="background-color: #78350f; color: #fefce8; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>nombre_planeta = "Marte"
+distancia_media_sol_km = 227.9e6  # 227.9 millones de km
+numero_lunas = 2
+
+# Usando f-string para crear un mensaje
+mensaje_cientifico = f"El planeta {nombre_planeta} tiene {numero_lunas} lunas y está a una distancia media de {distancia_media_sol_km} km del Sol."
+print(mensaje_cientifico)
+# Salida: El planeta Marte tiene 2 lunas y está a una distancia media de 227900000.0 km del Sol.
+
+# Incluso puedes hacer cálculos dentro de las llaves:
+masa_kg = 70
+altura_m = 1.75
+imc = masa_kg / (altura_m ** 2)
+print(f"Paciente con masa {masa_kg} kg y altura {altura_m} m. Su IMC es: {imc}")
+# Salida: Paciente con masa 70 kg y altura 1.75 m. Su IMC es: 22.857142857142858</code></pre>
+
+  <h3 style="color: #92400e; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">Formateando Números con F-Strings:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Las f-strings también te permiten controlar el formato de los números, como la cantidad de decimales, el uso de notación científica, o el relleno con ceros. Esto se hace añadiendo dos puntos <code>:</code> seguidos de un especificador de formato dentro de las llaves.
+  </p>
+  <pre style="background-color: #78350f; color: #fefce8; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>PI = 3.141592653589793
+radio = 5.0
+area = PI * radio**2
+
+# Mostrar con 2 decimales:
+print(f"El valor de PI es aproximadamente: {PI:.2f}")        # Salida: El valor de PI es aproximadamente: 3.14
+print(f"El área de un círculo con radio {radio} es: {area:.2f} unidades cuadradas.") # Salida: ...78.54...
+
+# Notación científica con 3 decimales:
+constante_planck = 6.62607015e-34
+print(f"Constante de Planck (h) ≈ {constante_planck:.3e} J·s") # Salida: ...6.626e-34 J·s
+
+# Relleno con ceros (ej. para códigos o IDs):
+id_experimento = 7
+print(f"ID del Experimento: {id_experimento:04d}") # Salida: ID del Experimento: 0007</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fef9c3; border-left: 5px solid #eab308; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎨 <strong>Ventaja de las F-Strings:</strong> Son más legibles y a menudo más rápidas que otros métodos de formateo de cadenas en Python (como el método <code>.format()</code> o el operador <code>%</code>). ¡Intenta usarlas siempre que puedas!
+    </p>
+  </div>
+</div>
+
+<div id="funcion-input" class="card" style="background-color: #f3e8ff; border-left: 6px solid #8b5cf6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6b21a8; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-edit"></i> 4. Recibiendo Datos del Usuario: La Función <code>input()</code>
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Para que tus programas sean interactivos, necesitas una forma de que el usuario ingrese datos. En Python, la función <code>input()</code> se encarga de esto. Cuando se llama, <code>input()</code> pausa la ejecución del programa y espera a que el usuario escriba algo en la consola y presione <kbd>Enter</kbd>.
+  </p>
+
+  <h3 style="color: #581c87; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Uso Básico:</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Puedes pasarle un mensaje (prompt) como argumento a <code>input()</code>, que se mostrará al usuario para indicarle qué información debe ingresar.
+  </p>
+  <pre style="background-color: #3b0764; color: #e9d5ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Pedir el nombre al usuario
+nombre_usuario = input("Por favor, ingresa tu nombre: ")
+print(f"¡Hola, {nombre_usuario}! Encantado de conocerte. 👋")
+
+# Pedir una magnitud física
+fuerza_aplicada_texto = input("Introduce el valor de la fuerza aplicada (en Newtons): ")
+print(f"Has ingresado una fuerza de: {fuerza_aplicada_texto} N")</code></pre>
+  
+  <h3 style="color: #581c87; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">¡Importante! <code>input()</code> Siempre Devuelve una Cadena (<code>str</code>)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Un detalle crucial es que la función <code>input()</code> <strong>siempre devuelve el dato ingresado por el usuario como una cadena de texto (string)</strong>, sin importar si el usuario escribe números.
+  </p>
+  <pre style="background-color: #3b0764; color: #e9d5ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>edad_texto = input("¿Cuántos años tienes? ") # Si el usuario escribe 20
+print(type(edad_texto))                      # Salida: <class 'str'> ¡Es "20", no el número 20!
+
+# Si intentas hacer una operación matemática directamente, ¡tendrás un error!
+# edad_mas_cinco = edad_texto + 5 # Esto daría un TypeError
+
+# Debes convertir la cadena a un tipo numérico si quieres hacer cálculos:
+edad_numero = int(edad_texto)   # Convertir a entero
+print(f"En cinco años tendrás: {edad_numero + 5} años.")
+
+# Para números con decimales, usa float():
+altura_texto = input("Ingresa tu altura en metros (ej: 1.75): ")
+altura_numero = float(altura_texto)
+print(f"Tu altura multiplicada por dos es: {altura_numero * 2} m")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #a78bfa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🔄 <strong>Conversión de Tipos:</strong> Recuerda usar <code>int()</code> para convertir a entero y <code>float()</code> para convertir a número decimal (flotante) las entradas que esperas sean numéricas. Si el usuario ingresa algo que no se puede convertir (ej. texto cuando esperas un número), Python generará un error <code>ValueError</code>.
+    </p>
+  </div>
+</div>
+
+<div id="funcion-display" class="card" style="background-color: #f0fff0; border-left: 6px solid #22c55e; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #15803d; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-desktop"></i> 5. Visualización Enriquecida con <code>display()</code> (Colab/Jupyter)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    En entornos interactivos como Google Colab y Jupyter Notebooks, además de <code>print()</code>, tienes acceso a la función <code>display()</code>. Esta función es más potente porque puede renderizar diferentes tipos de objetos de forma más "inteligente" y visualmente atractiva. Proviene del módulo <code>IPython.display</code>.
+  </p>
+  
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">¿Cómo usar <code>display()</code>?</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Primero, necesitas importarla. Luego, puedes pasarle varios tipos de objetos:
+  </p>
+  <pre style="background-color: #064e3b; color: #d1fae5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>from IPython.display import display, HTML, Markdown, Latex
+
+# Display básico (similar a print, pero a veces con mejor formato por defecto)
+nombre_cientifico = "Albert Einstein"
+display(nombre_cientifico)
+
+# Display de DataFrames de Pandas (se ven como tablas bonitas)
+# import pandas as pd
+# data = {'Columna1': [1, 2], 'Columna2': [3, 4]}
+# df = pd.DataFrame(data)
+# display(df) # En Colab, esto renderiza una tabla HTML interactiva
+
+# Display de HTML (¡puedes generar salidas con estilo!)
+html_output = "&lt;h3 style='color: blue;'&gt;Resultados del Experimento 🔬&lt;/h3&gt;"
+html_output += "&lt;p&gt;La muestra A mostró un incremento del &lt;strong&gt;25%&lt;/strong&gt;.&lt;/p&gt;"
+display(HTML(html_output))
+
+# Display de Markdown
+markdown_text = """
+### Sección Importante
+- Punto 1
+- Punto 2 con `código`
+"""
+display(Markdown(markdown_text))
+
+# Display de LaTeX (renderiza fórmulas matemáticas)
+formula_latex = r"$$ E = mc^2 $$" # La r indica "raw string"
+display(Latex(formula_latex))</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    (Recuerda que para los ejemplos de Pandas, HTML, Markdown y LaTeX, necesitas importar las clases correspondientes como se muestra).
+  </p>
+  <div style="margin-top: 15px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #4ade80; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🌟 <strong>Ventaja de <code>display()</code> en Colab/Jupyter:</strong> Es especialmente útil para:
+      <ul style="margin-top: 5px; margin-left: 20px;">
+        <li>Mostrar tablas de datos (DataFrames de Pandas) de forma interactiva.</li>
+        <li>Incrustar HTML personalizado para salidas con mucho estilo.</li>
+        <li>Renderizar texto formateado con Markdown directamente en la salida.</li>
+        <li>Mostrar imágenes, audio, video y, por supuesto, fórmulas LaTeX.</li>
+      </ul>
+      Para la salida de texto simple, <code>print()</code> suele ser suficiente y más universal si tu código se ejecutará fuera de un notebook.
+    </p>
+  </div>
+</div>
+
+<div id="ejemplos-es" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 6. Ejemplos Prácticos de Entrada y Salida en Diversas Áreas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    ¡Pongamos en práctica <code>input()</code> y <code>print()</code> (con f-strings) en contextos académicos!
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-calculator"></i> Matemáticas: Área de un Rectángulo</h3>
+      <p>Solicitar la base y altura de un rectángulo, calcular y mostrar su área.</p>
+      <pre style="font-size:0.95em;"><code># Solicitamos los datos al usuario
+print("--- Calculadora de Área de Rectángulo ---")
+base_rect = float(input("Ingresa la base del rectángulo (ej: 10.5): "))
+altura_rect = float(input("Ingresa la altura del rectángulo (ej: 5.2): "))
+
+# Calculamos el área
+area_rect = base_rect * altura_rect
+
+# Mostramos el resultado
+print(f"\n📏 Datos Ingresados:")
+print(f"Base: {base_rect} unidades")
+print(f"Altura: {altura_rect} unidades")
+print(f"El área del rectángulo es: {area_rect:.2f} unidades cuadradas.")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #047857;"><i class="fas fa-atom"></i> Física: Cálculo de Fuerza (F=ma)</h3>
+      <p>Pedir la masa de un objeto y la aceleración aplicada para calcular la fuerza resultante.</p>
+      <pre style="font-size:0.95em;"><code># Solicitamos los datos
+print("--- Calculadora de Fuerza (Segunda Ley de Newton) ---")
+masa_kg = float(input("Ingresa la masa del objeto (en kg): "))
+aceleracion_mps2 = float(input("Ingresa la aceleración (en m/s²): "))
+
+# Calculamos la fuerza
+fuerza_newtons = masa_kg * aceleracion_mps2
+
+# Mostramos el resultado
+print(f"\n⚛️ Resultados:")
+print(f"Masa: {masa_kg} kg")
+print(f"Aceleración: {aceleracion_mps2} m/s²")
+print(f"La fuerza resultante es: {fuerza_newtons:.2f} N (Newtons).")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fefce8; border-left: 5px solid #facc15;">
+      <h3 style="color: #b45309;"><i class="fas fa-dna"></i> Biología: IMC Simple</h3>
+      <p>Calcular un Índice de Masa Corporal (IMC) básico pidiendo peso y altura.</p>
+      <pre style="font-size:0.95em;"><code># Solicitamos los datos
+print("--- Calculadora de IMC (Básica) ---")
+peso_kg = float(input("Ingresa tu peso (en kilogramos): "))
+altura_m = float(input("Ingresa tu altura (en metros, ej: 1.70): "))
+
+# Calculamos el IMC: peso / (altura*altura)
+if altura_m > 0: # Evitar división por cero
+    imc = peso_kg / (altura_m ** 2)
+    resultado_imc = f"Tu IMC es: {imc:.2f}"
+else:
+    resultado_imc = "Altura no válida para calcular IMC."
+
+# Mostramos el resultado
+print(f"\n🧬 Resultados del IMC:")
+print(f"Peso: {peso_kg} kg")
+print(f"Altura: {altura_m} m")
+print(resultado_imc)</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-landmark"></i> Ciencias Sociales: Datos Demográficos</h3>
+      <p>Solicitar el nombre de una ciudad y su población estimada.</p>
+      <pre style="font-size:0.95em;"><code># Solicitamos los datos
+print("--- Registro Demográfico Simple ---")
+nombre_ciudad = input("Ingresa el nombre de la ciudad: ")
+poblacion_estimada_str = input(f"Ingresa la población estimada de {nombre_ciudad}: ")
+
+# Intentamos convertir la población a número
+try:
+    poblacion = int(poblacion_estimada_str)
+    mensaje_poblacion = f"Población estimada: {poblacion:,} habitantes."
+except ValueError:
+    mensaje_poblacion = f"Población estimada: {poblacion_estimada_str} (entrada no numérica)."
+
+# Mostramos la información
+print(f"\n🏙️ Ficha de la Ciudad:")
+print(f"Nombre: {nombre_ciudad}")
+print(mensaje_poblacion)</code></pre>
+    </div>
+  </div>
+  <div style="margin-top: 25px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #8b5cf6; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>¡Ahora te toca a ti!</strong> Modifica estos ejemplos o crea los tuyos. Prueba pedir diferentes tipos de datos, realiza cálculos y presenta los resultados de forma clara. Por ejemplo:
+      <ul style="margin-top: 5px; margin-left: 20px;">
+        <li>Calculadora de velocidad promedio (Física).</li>
+        <li>Conversor de temperaturas Celsius a Fahrenheit (Química/Física).</li>
+        <li>Un pequeño cuestionario sobre capitales del mundo (Ciencias Sociales).</li>
+      </ul>
+      ¡Experimenta en Google Colab!
+    </p>
+  </div>
+</div>
+
+<div id="conclusion-es" class="card" style="background-color: #e0f2f2; border-left: 6px solid #06b6d4; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #0891b2; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-check-circle"></i> Conclusión: ¡Comunicándote con Python!
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Felicidades! Has aprendido las herramientas esenciales para la entrada y salida de datos en Python:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7;">
+      <li>La función <code>print()</code> para mostrar todo tipo de información, con sus útiles parámetros <code>sep</code> y <code>end</code>.</li>
+      <li>Las <strong>f-strings</strong>, una forma moderna y potente de formatear tus salidas de texto.</li>
+      <li>La función <code>input()</code> para recibir datos directamente del usuario y la importancia de convertir estos datos al tipo correcto.</li>
+      <li>Una introducción a <code>display()</code> de IPython para visualizaciones más ricas en entornos como Google Colab.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Dominar la entrada y salida es fundamental, ya que te permite crear programas interactivos, depurar tu código mostrando valores intermedios, y presentar resultados de forma clara y profesional en tus proyectos científicos y académicos.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ccfbf1; border-left: 5px solid #2dd4bf; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Sigue Explorando:</strong> En futuras lecciones, verás cómo leer y escribir datos desde/hacia archivos, lo que expandirá enormemente las capacidades de tus programas para manejar grandes cantidades de información. ¡La aventura de datos apenas comienza!
+    </p>
+  </div>
+</div>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Completo de Python - Néstor Fabio Montoya Palacios</title>
+    <meta name="description" content="Curso completo de Python desde cero. Aprende programación en Python con ejemplos prácticos y ejercicios interactivos.">
+    <meta name="author" content="Néstor Fabio Montoya Palacios">
+    <meta name="keywords" content="Python, programación, curso, tutorial, aprender, código, matemáticas, física, ciencias">
+
+    <meta property="og:title" content="Curso Completo de Python">
+    <meta property="og:description" content="Aprende Python desde cero con este curso completo e interactivo, con aplicaciones a matemáticas, física y ciencias.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="mathjax-config.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+    
+    </head>
+<body>
+    <div id="loader" class="loader" role="status" aria-live="polite">
+        <div class="loader-content">
+            <i class="fab fa-python"></i> <div class="loader-text">Cargando curso...</div>
+        </div>
+    </div>
+
+    <nav id="sidebar" class="sidebar" aria-label="Navegación principal del curso">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fab fa-python"></i> <span>Python Course</span>
+            </div>
+            <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Mostrar/ocultar menú lateral">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-menu" id="sidebar-menu" role="menu">
+                <p class="menu-section-title">📁 BIENVENIDA Y FUNDAMENTOS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/introduccion.html" class="menu-item"><i class="fas fa-info-circle"></i> Introducción al Curso</a></li>
+                  <li><a href="temas/google-colab.html" class="menu-item"><i class="fab fa-google"></i> Uso de Google Colab</a></li>
+                  <li><a href="temas/markdown.html" class="menu-item"><i class="fas fa-paragraph"></i> Sintaxis Markdown</a></li>
+                  <li><a href="temas/latex.html" class="menu-item"><i class="fas fa-subscript"></i> Introducción a LaTeX</a></li>
+                  <li><a href="temas/instalacion.html" class="menu-item"><i class="fas fa-laptop-code"></i> Instalación y Entornos</a></li>
+                </ul>
+
+                <p class="menu-section-title">⚙️ PRIMEROS PASOS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/hola-mundo.html" class="menu-item"><i class="fas fa-terminal"></i> Hola Mundo</a></li>
+                  <li><a href="temas/comentarios-estilo.html" class="menu-item"><i class="fas fa-comment-dots"></i> Comentarios y Estilo de Código</a></li>
+                  <li><a href="temas/variables-tipos.html" class="menu-item"><i class="fas fa-font"></i> Variables y Tipos de Datos</a></li>
+                  <li><a href="temas/entrada-salida.html" class="menu-item"><i class="fas fa-keyboard"></i> Entrada y Salida de Datos</a></li>
+                  <li><a href="temas/operadores.html" class="menu-item"><i class="fas fa-equals"></i> Operadores en Python</a></li>
+                </ul>
+
+                <p class="menu-section-title">🧺 COLECCIONES Y ESTRUCTURAS DE DATOS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/listas.html" class="menu-item"><i class="fas fa-list"></i> Listas</a></li>
+                  <li><a href="temas/tuplas.html" class="menu-item"><i class="fas fa-stream"></i> Tuplas</a></li>
+                  <li><a href="temas/conjuntos.html" class="menu-item"><i class="fas fa-layer-group"></i> Conjuntos (sets)</a></li>
+                  <li><a href="temas/diccionarios.html" class="menu-item"><i class="fas fa-book"></i> Diccionarios</a></li>
+                  <li><a href="temas/deque.html" class="menu-item"><i class="fas fa-warehouse"></i> Listas tipo deque</a></li>
+                </ul>
+
+                <p class="menu-section-title">🧠 ESTRUCTURAS DE CONTROL O DECISIÓN</p>
+                <ul class="menu-list">
+                  <li><a href="temas/condicionales.html" class="menu-item"><i class="fas fa-code-branch"></i> Condicionales (if, else, elif)</a></li>
+                  <li><a href="temas/match-case.html" class="menu-item"><i class="fas fa-random"></i> Estructura match-case</a></li>
+                  <li><a href="temas/excepciones.html" class="menu-item"><i class="fas fa-bug"></i> Manejo de excepciones</a></li>
+                </ul>
+
+                <p class="menu-section-title">🔁 ESTRUCTURAS DE REPETICIÓN (CICLOS)</p>
+                <ul class="menu-list">
+                  <li><a href="temas/for.html" class="menu-item"><i class="fas fa-sync-alt"></i> Ciclo for</a></li>
+                  <li><a href="temas/while.html" class="menu-item"><i class="fas fa-redo-alt"></i> Ciclo while</a></li>
+                </ul>
+
+                <p class="menu-section-title">🔧 FUNCIONES</p>
+                <ul class="menu-list">
+                  <li><a href="temas/funciones.html" class="menu-item"><i class="fas fa-puzzle-piece"></i> Introducción a funciones</a></li>
+                </ul>
+
+                <p class="menu-section-title">🧰 LIBRERÍAS BÁSICAS DE PYTHON</p>
+                <ul class="menu-list">
+                  <li><a href="temas/librerias-basicas.html" class="menu-item"><i class="fas fa-toolbox"></i> Librería math, calendar, tabulate</a></li>
+                </ul>
+
+                <p class="menu-section-title">📈 GRÁFICAS EN PYTHON</p>
+                <ul class="menu-list">
+                  <li><a href="temas/graficas.html" class="menu-item"><i class="fas fa-chart-line"></i> matplotlib, plotly, seaborn</a></li>
+                </ul>
+
+                <p class="menu-section-title">📂 ARCHIVOS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/archivos.html" class="menu-item"><i class="fas fa-folder-open"></i> Lectura y escritura de archivos</a></li>
+                </ul>
+
+                <p class="menu-section-title">🧱 PROGRAMACIÓN ORIENTADA A OBJETOS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/poo.html" class="menu-item"><i class="fas fa-cube"></i> Clases, atributos y métodos</a></li>
+                </ul>
+
+                <p class="menu-section-title">🧪 LIBRERÍAS CIENTÍFICAS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/numpy.html" class="menu-item"><i class="fas fa-square-root-alt"></i> NumPy</a></li>
+                  <li><a href="temas/sympy.html" class="menu-item"><i class="fas fa-superscript"></i> SymPy</a></li>
+                  <li><a href="temas/scipy.html" class="menu-item"><i class="fas fa-flask"></i> SciPy</a></li>
+                </ul>
+
+                <p class="menu-section-title">🖥️ INTERFACES GRÁFICAS</p>
+                <ul class="menu-list">
+                  <li><a href="temas/tkinter.html" class="menu-item"><i class="fas fa-window-restore"></i> Tkinter</a></li>
+                </ul>
+
+                <p class="menu-section-title">🌐 PÁGINAS WEB CON PYTHON</p>
+                <ul class="menu-list">
+                  <li><a href="temas/flask.html" class="menu-item"><i class="fab fa-python"></i> Introducción a Flask</a></li>
+                  <li><a href="temas/django.html" class="menu-item"><i class="fas fa-network-wired"></i> Introducción a Django</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo de color">
+                <i class="fas fa-moon"></i> <span>Modo Oscuro</span>
+            </button>
+        </div>
+    </nav>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <main id="main-content" class="main-content" role="main">
+        <header class="header" id="header">
+            <div class="header-content">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Mostrar menú móvil">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-text">
+                    <h1 class="header-title">Curso Completo de Python</h1>
+                    <p class="header-subtitle">Aprende programación desde cero hasta nivel avanzado</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="loadLesson('temas/introduccion.html')">
+                        <i class="fas fa-play"></i>
+                        Comenzar
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section id="content-area" class="content-area" tabindex="0">
+            <div class="welcome-message" style="text-align: center; padding: 40px;">
+                <h2><i class="fas fa-home"></i> Bienvenido al Curso de Python</h2>
+                <p>Explora el menú de la izquierda y selecciona un tema para comenzar.</p>
+                <button class="btn btn-primary" style="margin-top: 20px;" onclick="loadLesson('temas/introduccion.html')">
+                    <i class="fas fa-play"></i> Comenzar el Curso
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">👨‍🏫 Profesor</h3>
+                    <p class="instructor-name">M.Sc. Néstor Fabio Montoya Palacios</p>
+                    <p class="instructor-description">Especialista en programación Python y desarrollo de software educativo.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">📧 Contacto</h3>
+                    <div class="contact-links">
+                        <a href="mailto:nestormontoyapalacios@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>nestormontoyapalacios@gmail.com</span>
+                        </a>
+                        <a href="https://github.com/profesorNestor" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">🔗 Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/documentacion_general.html'); return false;">Documentación General</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/ejemplos_codigo.html'); return false;">Ejemplos de Código</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/ejercicios_propuestos.html'); return false;">Ejercicios Propuestos</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/comunidad_ayuda.html'); return false;">Comunidad y Ayuda</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Curso de Python - <strong>Néstor Fabio Montoya Palacios</strong>. Todos los derechos reservados.</p>
+                <p><small>Diseñado con ❤️ y 🐍</small></p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Es CRUCIAL que este archivo contenga la lógica para:
+         1. Ocultar el loader (#loader)
+         2. Cargar dinámicamente el contenido de las lecciones en #content-area
+         3. Manejar el toggle del sidebar y el cambio de tema
+         4. Inicializar Highlight.js (hljs.highlightAll()) y MathJax (MathJax.typesetPromise()) después de cargar contenido.
+    -->
+    <script src="script.js"></script>
+</body>
+</html>

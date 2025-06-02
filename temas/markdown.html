@@ -1,0 +1,359 @@
+<!-- ========================================== -->
+<!-- INTRODUCCIÓN A MARKDOWN                   -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-file-alt" style="color:#3182ce;"></i> Introducción a Markdown</h3>
+
+  <p>
+    <strong>Markdown</strong> es un lenguaje de marcado ligero creado por John Gruber y Aaron Swartz. Su objetivo es permitir la escritura de texto plano con una sintaxis fácil de leer y escribir, que pueda convertirse fácilmente en HTML.
+  </p>
+
+  <p>
+    Es ampliamente utilizado en plataformas como <strong>GitHub</strong>, <strong>GitLab</strong>, <strong>Jupyter Notebooks</strong>, <strong>Google Colab</strong>, y sistemas de documentación como <strong>Read the Docs</strong>.
+  </p>
+
+  <p><strong>Principales ventajas de Markdown:</strong></p>
+  <ul>
+    <li>✅ Sencillez y legibilidad</li>
+    <li>✅ Conversión fácil a HTML y otros formatos</li>
+    <li>✅ Ideal para documentación técnica, tutoriales y blogs</li>
+    <li>✅ Compatible con herramientas modernas de desarrollo y aprendizaje</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- ENCABEZADOS / TÍTULOS                     -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-heading" style="color:#805ad5;"></i> Encabezados en Markdown</h3>
+
+  <p>Los <strong>encabezados</strong> permiten estructurar tu contenido en secciones, jerarquizando los títulos y subtítulos en distintos niveles, del <code>H1</code> al <code>H6</code>.</p>
+
+  <p>La sintaxis es muy simple: se utilizan signos de numeral <code>#</code> al inicio de la línea.</p>
+
+  <pre><code># Título 1
+## Título 2
+### Título 3
+#### Título 4
+##### Título 5
+###### Título 6</code></pre>
+
+  <p><strong>🔍 Vista previa:</strong></p>
+  <div style="padding-left:1rem;">
+    <h1 style="margin:0;">Título 1</h1>
+    <h2 style="margin:0;">Título 2</h2>
+    <h3 style="margin:0;">Título 3</h3>
+    <h4 style="margin:0;">Título 4</h4>
+    <h5 style="margin:0;">Título 5</h5>
+    <h6 style="margin:0;">Título 6</h6>
+  </div>
+
+  <p><strong>📌 Sugerencias didácticas:</strong></p>
+  <ul>
+    <li>Utiliza <code>#</code> (H1) solo una vez, como título principal del documento.</li>
+    <li>Los subtítulos (<code>##</code>, <code>###</code>, etc.) se usan para organizar el contenido jerárquicamente.</li>
+    <li>Evita saltarte niveles (no pases de H1 directo a H4).</li>
+    <li>En plataformas como GitHub o Jupyter, los encabezados se pueden plegar automáticamente para facilitar la navegación.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- ESTILOS DE TEXTO: CURSIVA, NEGRITA, ETC.  -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-font" style="color:#e53e3e;"></i> Estilos de Texto en Markdown</h3>
+
+  <p>Markdown permite aplicar <strong>formatos de texto</strong> como <em>cursiva</em>, <strong>negrita</strong>, <del>tachado</del> y <u>subrayado</u> (con HTML). Estos estilos son útiles para enfatizar palabras clave o destacar ideas importantes.</p>
+
+  <h4>📌 Cursiva</h4>
+  <pre><code>*Texto en cursiva*  o  _Texto en cursiva_</code></pre>
+  <p><em>Texto en cursiva</em></p>
+
+  <h4>📌 Negrita</h4>
+  <pre><code>**Texto en negrita**  o  __Texto en negrita__</code></pre>
+  <p><strong>Texto en negrita</strong></p>
+
+  <h4>📌 Tachado</h4>
+  <pre><code>~~Texto tachado~~</code></pre>
+  <p><del>Texto tachado</del></p>
+
+  <h4>📌 Subrayado (usando HTML)</h4>
+  <pre><code>&lt;u&gt;Texto subrayado&lt;/u&gt;</code></pre>
+  <p><u>Texto subrayado</u></p>
+
+  <h4>💡 Ejemplos de combinaciones</h4>
+  <pre><code>**Texto en negrita y _cursiva_ combinados**
+~~Texto tachado con **negrita**~~
+*Cursiva con &lt;u&gt;subrayado&lt;/u&gt;*</code></pre>
+  
+  <p><strong>Texto en negrita y <em>cursiva</em> combinados</strong></p>
+  <p><del>Texto tachado con <strong>negrita</strong></del></p>
+  <p><em>Cursiva con <u>subrayado</u></em></p>
+</div>
+
+<!-- ========================================== -->
+<!-- ENLACES (LINKS)                           -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-link" style="color:#3182ce;"></i> Enlaces en Markdown</h3>
+
+  <p>Markdown permite insertar enlaces fácilmente usando una sintaxis muy legible. Es útil para redirigir a documentos, sitios web o recursos externos.</p>
+
+  <h4>🔗 Enlace simple</h4>
+  <pre><code>[Google](https://www.google.com)</code></pre>
+  <p><a href="https://www.google.com" target="_blank">Google</a></p>
+
+  <h4>🔗 Enlace con título emergente</h4>
+  <pre><code>[Python Oficial](https://www.python.org "Sitio oficial de Python")</code></pre>
+  <p><a href="https://www.python.org" title="Sitio oficial de Python" target="_blank">Python Oficial</a></p>
+
+  <h4>🔗 Enlaces de referencia (útiles para documentos largos)</h4>
+  <pre><code>[Wikipedia][1]
+
+[1]: https://www.wikipedia.org</code></pre>
+  <p><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></p>
+
+  <p><strong>📌 Recomendaciones:</strong></p>
+  <ul>
+    <li>Utiliza enlaces descriptivos, evita usar textos como "haz clic aquí".</li>
+    <li>Verifica que los enlaces funcionen correctamente antes de compartir.</li>
+    <li>Para enlaces internos, puedes usar anclas HTML si el visor lo permite.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- INSERCIÓN DE IMÁGENES                     -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-image" style="color:#38a169;"></i> Inserción de Imágenes en Markdown</h3>
+
+  <p>Markdown permite mostrar imágenes en línea con una sintaxis muy similar a los enlaces. La diferencia principal es el signo de exclamación <code>!</code> al principio.</p>
+
+  <h4>🖼️ Imagen desde URL</h4>
+  <pre><code>![Texto alternativo](https://via.placeholder.com/150)</code></pre>
+  <img src="https://via.placeholder.com/150" alt="Ejemplo de imagen" style="border:1px solid #ccc; border-radius:4px;">
+
+  <h4>🖼️ Imagen local (solo si el visor lo permite)</h4>
+  <pre><code>![Mi imagen](ruta/imagen.png)</code></pre>
+  <p>⚠️ Esto solo funciona si el archivo se encuentra accesible desde la misma ubicación del documento Markdown.</p>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Incluye siempre un texto alternativo <code>[texto]</code> para accesibilidad.</li>
+    <li>Para portadas o logos, usa formatos livianos como <code>.webp</code> o <code>.png</code>.</li>
+    <li>Utiliza una resolución adecuada para evitar sobrecargar tu documento.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- INSERCIÓN DE VIDEOS                       -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-video" style="color:#d69e2e;"></i> Inserción de Videos en Markdown</h3>
+
+  <p>Markdown no tiene una sintaxis oficial para insertar videos como sí la tiene para imágenes o enlaces. Sin embargo, puedes insertar videos mediante HTML directamente, especialmente útil en plataformas como GitHub Pages, Jupyter Notebooks, o Google Colab.</p>
+
+  <h4>▶️ Video de YouTube con HTML</h4>
+  <pre><code>&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+  <p>⬇ Vista previa:</p>
+  <div style="border:1px solid #ccc; border-radius:4px; overflow:hidden;">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <h4>🎥 Insertar videos alojados localmente (solo con HTML)</h4>
+  <pre><code>&lt;video width="320" height="240" controls&gt;
+  &lt;source src="mi_video.mp4" type="video/mp4"&gt;
+  Tu navegador no soporta el elemento de video.
+&lt;/video&gt;</code></pre>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Usa videos alojados en YouTube o Vimeo para garantizar compatibilidad.</li>
+    <li>Utiliza la versión de enlace "embed" para insertar correctamente el video.</li>
+    <li>Si estás trabajando en Jupyter o Colab, asegúrate de que el entorno soporte iframes.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- LISTAS ORDENADAS Y NO ORDENADAS           -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-list" style="color:#4c51bf;"></i> Listas en Markdown</h3>
+
+  <p>Markdown permite crear <strong>listas ordenadas</strong> (numeradas) y <strong>no ordenadas</strong> (con viñetas). También puedes anidar listas fácilmente con sangrías.</p>
+
+  <h4>📍 Lista no ordenada</h4>
+  <pre><code>- Elemento uno
+- Elemento dos
+  - Sub-elemento dos.1
+  - Sub-elemento dos.2
+- Elemento tres</code></pre>
+  <ul>
+    <li>Elemento uno</li>
+    <li>Elemento dos
+      <ul>
+        <li>Sub-elemento dos.1</li>
+        <li>Sub-elemento dos.2</li>
+      </ul>
+    </li>
+    <li>Elemento tres</li>
+  </ul>
+
+  <h4>📍 Lista ordenada</h4>
+  <pre><code>1. Primer paso
+2. Segundo paso
+   1. Detalle 2.1
+   2. Detalle 2.2
+3. Tercer paso</code></pre>
+  <ol>
+    <li>Primer paso</li>
+    <li>Segundo paso
+      <ol>
+        <li>Detalle 2.1</li>
+        <li>Detalle 2.2</li>
+      </ol>
+    </li>
+    <li>Tercer paso</li>
+  </ol>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Usa listas no ordenadas para enumeraciones generales.</li>
+    <li>Utiliza listas numeradas para procedimientos paso a paso.</li>
+    <li>Para sublistas, agrega al menos dos espacios o una tabulación.</li>
+    <li>Evita hacer listas muy profundas, ya que dificultan la lectura.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- TABLAS EN MARKDOWN                        -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-table" style="color:#319795;"></i> Tablas en Markdown</h3>
+
+  <p>Markdown permite crear tablas simples para organizar información en filas y columnas. Aunque las funcionalidades son limitadas comparadas con HTML, son suficientes para representar datos de forma clara.</p>
+
+  <h4>🧪 Sintaxis básica</h4>
+  <pre><code>| Nombre  | Edad | Ciudad    |
+|--------|------|-----------|
+| Ana    | 23   | Bogotá    |
+| Luis   | 30   | Medellín  |
+| Marta  | 27   | Cali      |</code></pre>
+
+  <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ana</td><td>23</td><td>Bogotá</td></tr>
+        <tr><td>Luis</td><td>30</td><td>Medellín</td></tr>
+        <tr><td>Marta</td><td>27</td><td>Cali</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>🔬 Ejemplo: Fragmento de la Tabla Periódica</h4>
+  <pre><code>| Elemento | Símbolo | Número Atómico |
+|----------|---------|----------------|
+| Hidrógeno | H       | 1              |
+| Helio     | He      | 2              |
+| Litio     | Li      | 3              |</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>Elemento</th><th>Símbolo</th><th>Número Atómico</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hidrógeno</td><td>H</td><td>1</td></tr>
+      <tr><td>Helio</td><td>He</td><td>2</td></tr>
+      <tr><td>Litio</td><td>Li</td><td>3</td></tr>
+    </tbody>
+  </table>
+
+  <h4>🌌 Ejemplo: Planetas del Sistema Solar</h4>
+  <pre><code>| Planeta   | Distancia al Sol (millones de km) | Días de rotación |
+|-----------|------------------------------------|------------------|
+| Mercurio | 57.9                               | 59               |
+| Venus    | 108.2                              | 243              |
+| Tierra   | 149.6                              | 1                |</code></pre>
+
+  <table>
+    <thead>
+      <tr><th>Planeta</th><th>Distancia al Sol (millones km)</th><th>Días de rotación</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mercurio</td><td>57.9</td><td>59</td></tr>
+      <tr><td>Venus</td><td>108.2</td><td>243</td></tr>
+      <tr><td>Tierra</td><td>149.6</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Usa <code>|</code> para separar columnas y <code>-</code> para dividir encabezado y contenido.</li>
+    <li>Evita celdas con saltos de línea; mantén todo en una sola línea.</li>
+    <li>Si necesitas tablas más complejas (con celdas fusionadas), usa HTML.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- BLOQUES DE CÓDIGO EN PYTHON               -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-code" style="color:#2b6cb0;"></i> Código en Python con Markdown</h3>
+
+  <p>Para incluir fragmentos de código en Markdown, puedes usar <strong>comillas invertidas</strong> (`) para resaltar pequeñas líneas o bloques con tres tildes invertidas <code>```</code>.</p>
+
+  <h4>📌 Código en línea</h4>
+  <pre><code>`print("Hola Mundo")`</code></pre>
+  <p>Resultado: <code>print("Hola Mundo")</code></p>
+
+  <h4>📌 Bloque de código en Python</h4>
+  <pre><code>```python
+nombre = "Ana"
+print(f"Hola, {nombre}")
+```</code></pre>
+
+  <div style="background:#f7fafc; border:1px solid #cbd5e0; padding:1em; font-family:monospace;">
+    <pre><code>nombre = "Ana"
+print(f"Hola, {nombre}")</code></pre>
+  </div>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Utiliza la etiqueta del lenguaje después de las comillas invertidas para activar el resaltado de sintaxis.</li>
+    <li>En Colab, Jupyter o VS Code, los bloques se renderizan automáticamente.</li>
+    <li>Evita copiar comillas curvas o caracteres especiales invisibles.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- EMOJIS EN MARKDOWN                        -->
+<!-- ========================================== -->
+<div class="card">
+  <h3><i class="fas fa-smile" style="color:#dd6b20;"></i> Emojis en Markdown</h3>
+
+  <p>En algunas plataformas como <strong>GitHub</strong> o <strong>Discord</strong>, puedes insertar emojis usando la sintaxis de dos puntos <code>:emoji:</code>.</p>
+
+  <h4>😀 Ejemplos comunes</h4>
+  <pre><code>:smile:  → 😄
+:rocket: → 🚀
+:heart:  → ❤️
+:book:   → 📖</code></pre>
+
+  <p>📚 Resultado en GitHub u otros visores compatibles:</p>
+  <ul>
+    <li>:smile: 😄</li>
+    <li>:rocket: 🚀</li>
+    <li>:heart: ❤️</li>
+    <li>:book: 📖</li>
+  </ul>
+
+  <h4>📌 Recomendaciones:</h4>
+  <ul>
+    <li>Consulta listas completas en <a href="https://gist.github.com/rxaviers/7360908" target="_blank">GitHub Emoji Cheat Sheet</a>.</li>
+    <li>Evita abusar de los emojis en documentación técnica formal.</li>
+    <li>Úsalos para destacar secciones, comentarios o instrucciones amigables.</li>
+  </ul>
+</div>

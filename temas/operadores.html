@@ -1,0 +1,471 @@
+<div id="operadores-header" class="card" style="background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-calculator"></i> Operadores en Python: Las Herramientas del Cálculo y la Lógica ⚙️
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Descubre cómo realizar operaciones matemáticas, comparaciones y tomar decisiones lógicas en tus programas de Python.
+  </p>
+</div>
+
+<div id="intro-operadores" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 1. ¿Qué son los Operadores en Programación?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En Python, como en matemáticas, un <strong>operador</strong> es un símbolo especial que le indica al intérprete que realice una operación específica, ya sea matemática, lógica o de comparación, sobre uno o más valores (llamados <strong>operandos</strong>). [cite: 90]
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Por ejemplo, en la expresión <code>5 + 3</code>, el signo <code>+</code> es el operador de suma, y los números <code>5</code> y <code>3</code> son los operandos. Los operadores son fundamentales porque te permiten manipular datos, realizar cálculos complejos y controlar el flujo de tus programas.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Python ofrece una rica variedad de operadores para diferentes propósitos. En esta lección, nos enfocaremos en los más utilizados en el ámbito científico y de programación general: aritméticos, relacionales (o de comparación), lógicos y de asignación.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #8b5cf6; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Importancia en las Ciencias:</strong> Desde calcular la trayectoria de un proyectil en física, modelar el crecimiento de una población en biología, hasta analizar tendencias económicas en ciencias sociales, los operadores son las herramientas que te permitirán traducir estas lógicas y cálculos a código Python.
+    </p>
+  </div>
+</div>
+
+<div id="operadores-aritmeticos" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-plus-minus"></i> 2. Operadores Aritméticos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Los operadores aritméticos se utilizan para realizar operaciones matemáticas básicas con números. [cite: 90] Funcionan de manera muy similar a como lo hacen en matemáticas. [cite: 91]
+  </p>
+
+  <div style="overflow-x: auto;">
+    <table class="styled-table" style="width:100%; margin-bottom: 20px;">
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Ejemplo (en Python)</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>+</code></td>
+          <td>Suma</td>
+          <td>Suma dos operandos.</td>
+          <td><code>7 + 4</code></td>
+          <td><code>11</code></td>
+        </tr>
+        <tr>
+          <td><code>-</code></td>
+          <td>Resta</td>
+          <td>Resta el segundo operando del primero.</td>
+          <td><code>10 - 3.5</code></td>
+          <td><code>6.5</code></td>
+        </tr>
+        <tr>
+          <td><code>*</code></td>
+          <td>Multiplicación</td>
+          <td>Multiplica ambos operandos.</td>
+          <td><code>6 * 7</code></td>
+          <td><code>42</code></td>
+        </tr>
+        <tr>
+          <td><code>/</code></td>
+          <td>División</td>
+          <td>Divide el primer operando por el segundo (siempre devuelve un flotante).</td>
+          <td><code>10 / 4</code></td>
+          <td><code>2.5</code></td>
+        </tr>
+        <tr>
+          <td><code>//</code></td>
+          <td>División Entera (o de Piso)</td>
+          <td>Divide y devuelve la parte entera del cociente.</td>
+          <td><code>10 // 4</code></td>
+          <td><code>2</code></td>
+        </tr>
+        <tr>
+          <td><code>%</code></td>
+          <td>Módulo (o Residuo)</td>
+          <td>Devuelve el residuo de la división.</td>
+          <td><code>10 % 4</code></td>
+          <td><code>2</code></td>
+        </tr>
+        <tr>
+          <td><code>**</code></td>
+          <td>Exponenciación (Potencia)</td>
+          <td>Eleva el primer operando a la potencia del segundo.</td>
+          <td><code>3 ** 4</code> (3 elevado a 4)</td>
+          <td><code>81</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    .styled-table { border-collapse: collapse; font-size: 0.95em; }
+    .styled-table th, .styled-table td { border: 1px solid #a7f3d0; padding: 8px 10px; text-align: left; }
+    .styled-table thead { background-color: #d1fae5; }
+    .styled-table code { background-color: #e6fffa; padding: 2px 4px; border-radius: 4px; color: #047857; }
+  </style>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Aplicados en Ciencias:</h3>
+  <pre style="background-color: #064e3b; color: #d1fae5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Física: Cálculo de velocidad media
+distancia_m = 150.0  # metros
+tiempo_s = 12.5      # segundos
+velocidad_media_mps = distancia_m / tiempo_s
+print(f"Velocidad media: {velocidad_media_mps} m/s") # Imprimirá: 12.0 m/s
+
+# Química: Calcular moles
+masa_gramos = 54.0         # gramos de H2O
+masa_molar_h2o = 18.015    # g/mol
+moles_h2o = masa_gramos / masa_molar_h2o
+print(f"Moles de H2O: {moles_h2o:.2f} mol") # Imprimirá: Moles de H2O: 3.00 mol (aprox)
+
+# Matemáticas: Área de un círculo A = πr²
+PI = 3.14159
+radio = 5.0
+area_circulo = PI * (radio ** 2)
+print(f"Área del círculo: {area_circulo:.2f} unidades²") # Imprimirá: Área del círculo: 78.54 unidades²</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #4ade80; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>En Google Colab:</strong> ¡Puedes probar todas estas operaciones directamente en una celda de código! Escribe la operación y usa <code>print()</code> para ver el resultado. Por ejemplo: <code>print(100 / 3)</code>.
+    </p>
+  </div>
+</div>
+
+<div id="operadores-relacionales" class="card" style="background-color: #fef2f2; border-left: 6px solid #ef4444; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b91c1c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-balance-scale-right"></i> 3. Operadores Relacionales (de Comparación)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Los operadores relacionales se utilizan para comparar dos valores. [cite: 96] El resultado de una comparación siempre es un valor booleano: <code>True</code> (verdadero) o <code>False</code> (falso). [cite: 97] Son esenciales para las estructuras de control como los condicionales (<code>if</code>, <code>elif</code>, <code>else</code>) y los bucles (<code>while</code>). [cite: 97]
+  </p>
+
+  <div style="overflow-x: auto;">
+    <table class="styled-table-danger" style="width:100%; margin-bottom: 20px;">
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Significado</th>
+          <th>Ejemplo</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>==</code></td>
+          <td>Igual a</td>
+          <td><code>5 == 5</code></td>
+          <td><code>True</code></td>
+        </tr>
+        <tr>
+          <td><code>!=</code></td>
+          <td>Diferente de (No igual a)</td>
+          <td><code>5 != 3</code></td>
+          <td><code>True</code></td>
+        </tr>
+        <tr>
+          <td><code>&gt;</code></td>
+          <td>Mayor que</td>
+          <td><code>10 &gt; 5</code></td>
+          <td><code>True</code></td>
+        </tr>
+        <tr>
+          <td><code>&lt;</code></td>
+          <td>Menor que</td>
+          <td><code>3 &lt; 8</code></td>
+          <td><code>True</code></td>
+        </tr>
+        <tr>
+          <td><code>&gt;=</code></td>
+          <td>Mayor o igual que</td>
+          <td><code>7 &gt;= 7</code></td>
+          <td><code>True</code></td>
+        </tr>
+        <tr>
+          <td><code>&lt;=</code></td>
+          <td>Menor o igual que</td>
+          <td><code>4 &lt;= 5</code></td>
+          <td><code>True</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    .styled-table-danger { border-collapse: collapse; font-size: 0.95em; }
+    .styled-table-danger th, .styled-table-danger td { border: 1px solid #fca5a5; padding: 8px 10px; text-align: left; }
+    .styled-table-danger thead { background-color: #fecaca; }
+    .styled-table-danger code { background-color: #fee2e2; padding: 2px 4px; border-radius: 4px; color: #b91c1c; }
+  </style>
+  
+  <h3 style="color: #991b1b; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Aplicados en Ciencias:</h3>
+  <pre style="background-color: #7f1d1d; color: #fee2e2; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Física: Comparando energías [cite: 100]
+masa_kg = 4
+velocidad_mps = 10
+altura_m = 5
+gravedad_mps2 = 9.81
+
+energia_cinetica = 0.5 * masa_kg * velocidad_mps**2  # Ec = 0.5*m*v^2
+energia_potencial = masa_kg * gravedad_mps2 * altura_m # Ep = m*g*h
+
+print(f"Energía Cinética (Ec): {energia_cinetica:.2f} J")
+print(f"Energía Potencial (Ep): {energia_potencial:.2f} J")
+print(f"¿Ec == Ep?: {energia_cinetica == energia_potencial}") # False en este caso [cite: 100]
+print(f"¿Ec > Ep?: {energia_cinetica > energia_potencial}")   # True en este caso [cite: 100]
+
+# Biología: Rango de pH para neutralidad
+ph_muestra = 7.2
+es_neutro_aprox = (ph_muestra >= 6.8 and ph_muestra <= 7.2) # Usando operadores lógicos también
+print(f"pH de la muestra: {ph_muestra}")
+print(f"¿Es aproximadamente neutro (6.8-7.2)?: {es_neutro_aprox}")
+
+# Matemáticas: Verificar si un número está en un intervalo
+numero_x = 15
+esta_en_rango = (numero_x > 10 and numero_x < 20)
+print(f"¿El número {numero_x} está entre 10 y 20?: {esta_en_rango}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #ffe4e6; border-left: 5px solid #f43f5e; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎯 <strong>Para Recordar:</strong> Los operadores relacionales son tus herramientas para hacer preguntas al programa cuyas respuestas solo pueden ser "verdadero" o "falso". Estas respuestas guiarán las decisiones que tome tu código.
+    </p>
+  </div>
+</div>
+
+<div id="operadores-logicos" class="card" style="background-color: #f0f9ff; border-left: 6px solid #0ea5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-brain"></i> 4. Operadores Lógicos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Los operadores lógicos se utilizan para combinar o modificar expresiones booleanas (<code>True</code> o <code>False</code>). [cite: 102, 103] Son fundamentales para construir condiciones más complejas. Los principales son <code>and</code>, <code>or</code>, y <code>not</code>.
+  </p>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔹 Operador <code>and</code> (Conjunción Lógica "Y")</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Devuelve <code>True</code> si <strong>ambas</strong> expresiones que conecta son verdaderas. Si al menos una es falsa, devuelve <code>False</code>. [cite: 108, 109]
+  </p>
+  <p style="font-weight:bold; font-size: 1.05em;">Tabla de Verdad para <code>and</code>:</p>
+  <div style="overflow-x: auto;">
+    <table class="styled-table-info" style="width:80%; margin-bottom: 15px; margin-left:auto; margin-right:auto;">
+      <thead><tr><th>Expresión A</th><th>Expresión B</th><th>A <code>and</code> B</th></tr></thead>
+      <tbody>
+        <tr><td><code>True</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+        <tr><td><code>True</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+        <tr><td><code>False</code></td><td><code>True</code></td><td><code>False</code></td></tr>
+        <tr><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 10px; border-radius: 6px; font-size: 1.05em;"><code>temperatura_C = 25
+humedad_relativa_porc = 60
+
+# Condición: ¿Es un día cálido Y húmedo?
+dia_calido_y_humedo = (temperatura_C > 20) and (humedad_relativa_porc > 50)
+print(f"¿Día cálido y húmedo?: {dia_calido_y_humedo}") # Salida: True</code></pre>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">🔹 Operador <code>or</code> (Disyunción Lógica "O")</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Devuelve <code>True</code> si <strong>al menos una</strong> de las expresiones que conecta es verdadera. Solo devuelve <code>False</code> si ambas son falsas. [cite: 114, 115]
+  </p>
+  <p style="font-weight:bold; font-size: 1.05em;">Tabla de Verdad para <code>or</code>:</p>
+  <div style="overflow-x: auto;">
+    <table class="styled-table-info" style="width:80%; margin-bottom: 15px; margin-left:auto; margin-right:auto;">
+      <thead><tr><th>Expresión A</th><th>Expresión B</th><th>A <code>or</code> B</th></tr></thead>
+      <tbody>
+        <tr><td><code>True</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+        <tr><td><code>True</code></td><td><code>False</code></td><td><code>True</code></td></tr>
+        <tr><td><code>False</code></td><td><code>True</code></td><td><code>True</code></td></tr>
+        <tr><td><code>False</code></td><td><code>False</code></td><td><code>False</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 10px; border-radius: 6px; font-size: 1.05em;"><code># Biología: ¿El organismo es un productor O un consumidor primario?
+es_planta = False
+es_herbivoro = True
+requiere_luz_o_come_plantas = es_planta or es_herbivoro
+print(f"¿Requiere luz o come plantas?: {requiere_luz_o_come_plantas}") # Salida: True</code></pre>
+
+  <h3 style="color: #0c4a6e; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">🔹 Operador <code>not</code> (Negación Lógica "NO")</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Invierte el valor booleano de una expresión. Si la expresión es <code>True</code>, <code>not</code> la convierte en <code>False</code>, y viceversa. [cite: 122, 124]
+  </p>
+  <p style="font-weight:bold; font-size: 1.05em;">Tabla de Verdad para <code>not</code>:</p>
+  <div style="overflow-x: auto;">
+    <table class="styled-table-info" style="width:50%; margin-bottom: 15px; margin-left:auto; margin-right:auto;">
+      <thead><tr><th>Expresión A</th><th><code>not</code> A</th></tr></thead>
+      <tbody>
+        <tr><td><code>True</code></td><td><code>False</code></td></tr>
+        <tr><td><code>False</code></td><td><code>True</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 10px; border-radius: 6px; font-size: 1.05em;"><code># Física: Comprobar si un sistema NO está en equilibrio
+fuerza_neta_newtons = 0.5
+sistema_en_equilibrio = (fuerza_neta_newtons == 0) # False
+
+print(f"¿Sistema en equilibrio?: {sistema_en_equilibrio}")
+print(f"¿Sistema NO está en equilibrio?: {not sistema_en_equilibrio}") # Salida: True</code></pre>
+  
+  <style>
+    .styled-table-info { border-collapse: collapse; font-size: 0.95em; }
+    .styled-table-info th, .styled-table-info td { border: 1px solid #93c5fd; padding: 8px 10px; text-align: left; }
+    .styled-table-info thead { background-color: #dbeafe; }
+    .styled-table-info code { background-color: #e0f2fe; padding: 2px 4px; border-radius: 4px; color: #0369a1; }
+  </style>
+  <div style="margin-top: 20px; padding: 15px; background-color: #dbeafe; border-left: 5px solid #60a5fa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🧠 <strong>Aplicación en Decisiones Complejas:</strong> En un modelo climático, podrías necesitar que se cumplan múltiples condiciones para predecir lluvia: <code>(temperatura < umbral_temp) and (humedad > umbral_hum) and (presion_baja or frente_frio_cerca)</code>. Los operadores lógicos te permiten construir estas reglas.
+    </p>
+  </div>
+</div>
+
+<div id="operadores-asignacion" class="card" style="background-color: #fefce8; border-left: 6px solid #eab308; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #ca8a04; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-pen-nib"></i> 5. Operadores de Asignación
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Ya conoces el operador de asignación básico <code>=</code>. Python ofrece operadores de asignación combinados que realizan una operación aritmética y luego asignan el resultado a la variable original. Son una forma abreviada y eficiente de actualizar variables.
+  </p>
+
+  <div style="overflow-x: auto;">
+    <table class="styled-table-warning" style="width:100%; margin-bottom: 20px;">
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Ejemplo</th>
+          <th>Equivalente a</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>=</code></td>
+          <td><code>x = 10</code></td>
+          <td><code>x = 10</code></td>
+          <td>Asigna el valor de la derecha a la variable de la izquierda.</td>
+        </tr>
+        <tr>
+          <td><code>+=</code></td>
+          <td><code>x += 5</code></td>
+          <td><code>x = x + 5</code></td>
+          <td>Suma el valor de la derecha a la variable y asigna el resultado a la variable.</td>
+        </tr>
+        <tr>
+          <td><code>-=</code></td>
+          <td><code>x -= 3</code></td>
+          <td><code>x = x - 3</code></td>
+          <td>Resta el valor de la derecha de la variable y asigna el resultado.</td>
+        </tr>
+        <tr>
+          <td><code>*=</code></td>
+          <td><code>x *= 2</code></td>
+          <td><code>x = x * 2</code></td>
+          <td>Multiplica la variable por el valor de la derecha y asigna el resultado.</td>
+        </tr>
+        <tr>
+          <td><code>/=</code></td>
+          <td><code>x /= 4</code></td>
+          <td><code>x = x / 4</code></td>
+          <td>Divide la variable por el valor de la derecha y asigna el resultado (flotante).</td>
+        </tr>
+        <tr>
+          <td><code>//=</code></td>
+          <td><code>x //= 3</code></td>
+          <td><code>x = x // 3</code></td>
+          <td>Realiza división entera y asigna el resultado.</td>
+        </tr>
+        <tr>
+          <td><code>%=</code></td>
+          <td><code>x %= 2</code></td>
+          <td><code>x = x % 2</code></td>
+          <td>Calcula el módulo y asigna el resultado.</td>
+        </tr>
+        <tr>
+          <td><code>**=</code></td>
+          <td><code>x **= 3</code></td>
+          <td><code>x = x ** 3</code></td>
+          <td>Eleva la variable a la potencia del valor de la derecha y asigna el resultado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    .styled-table-warning { border-collapse: collapse; font-size: 0.95em; }
+    .styled-table-warning th, .styled-table-warning td { border: 1px solid #fde047; padding: 8px 10px; text-align: left; }
+    .styled-table-warning thead { background-color: #fef08a; }
+    .styled-table-warning code { background-color: #fef9c3; padding: 2px 4px; border-radius: 4px; color: #ca8a04; }
+  </style>
+
+  <h3 style="color: #a16207; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🌱 Ejemplo: Crecimiento de una Planta</h3>
+  <pre style="background-color: #713f12; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>altura_planta_cm = 15.0
+print(f"Altura inicial: {altura_planta_cm} cm")
+
+# La planta crece 2.5 cm
+altura_planta_cm += 2.5 
+print(f"Altura después de crecer: {altura_planta_cm} cm") # Salida: 17.5 cm
+
+# Si la cantidad de agua se reduce a la mitad
+cantidad_agua_ml = 500
+cantidad_agua_ml /= 2
+print(f"Cantidad de agua restante: {cantidad_agua_ml} ml") # Salida: 250.0 ml</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fef9c3; border-left: 5px solid #f59e0b; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚡ <strong>Eficiencia y Claridad:</strong> Estos operadores no solo ahorran un poco de escritura, sino que también pueden hacer el código más claro al indicar directamente que se está modificando una variable existente. Son muy comunes en bucles para actualizar contadores o acumuladores.
+    </p>
+  </div>
+</div>
+
+<div id="precedencia-operadores" class="card" style="background-color: #fdf4ff; border-left: 6px solid #a855f7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #7e22ce; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-sort-amount-down"></i> 6. Precedencia de Operadores (Orden de las Operaciones)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Al igual que en matemáticas, los operadores en Python tienen un orden de precedencia que determina cuáles se evalúan primero en una expresión compleja. Por ejemplo, la multiplicación y división se realizan antes que la suma y la resta.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    El orden general (de mayor a menor precedencia) es aproximadamente:
+    <ol style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li><code>()</code> Paréntesis (para agrupar y forzar un orden).</li>
+        <li><code>**</code> Exponenciación.</li>
+        <li><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code> Multiplicación, División, División entera, Módulo (se evalúan de izquierda a derecha).</li>
+        <li><code>+</code>, <code>-</code> Suma y Resta (se evalúan de izquierda a derecha).</li>
+        <li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, <code>==</code> Operadores de comparación.</li>
+        <li><code>not</code> Operador lógico NOT.</li>
+        <li><code>and</code> Operador lógico AND.</li>
+        <li><code>or</code> Operador lógico OR.</li>
+    </ol>
+  </p>
+  <pre style="background-color: #581c87; color: #e9d5ff; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>resultado1 = 5 + 3 * 2  # Primero 3*2=6, luego 5+6=11
+print(f"5 + 3 * 2 = {resultado1}")
+
+resultado2 = (5 + 3) * 2 # Primero (5+3)=8, luego 8*2=16
+print(f"(5 + 3) * 2 = {resultado2}")
+
+# Ejemplo con operadores lógicos y relacionales
+edad = 20
+tiene_licencia = True
+puede_conducir = edad >= 18 and tiene_licencia # Ambas deben ser True
+print(f"¿Puede conducir?: {puede_conducir}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #f3e8ff; border-left: 5px solid #9333ea; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🤔 <strong>En Caso de Duda, ¡Usa Paréntesis!</strong> Si no estás seguro del orden de evaluación o quieres que una parte se calcule primero, usa paréntesis <code>()</code> para agrupar explícitamente las operaciones. Esto hace tu código más legible y previene errores sutiles.
+    </p>
+  </div>
+</div>
+
+<div id="conclusion-operadores" class="card" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #3730a3; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas-award"></i> Conclusión: Dominando los Operadores
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Has completado un recorrido fundamental por los operadores de Python! Estas herramientas son esenciales para:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li>Realizar cálculos numéricos (aritméticos).</li>
+        <li>Comparar valores para tomar decisiones (relacionales).</li>
+        <li>Combinar condiciones lógicas (lógicos).</li>
+        <li>Asignar y actualizar valores de variables de forma eficiente (asignación).</li>
+    </ul>
+    Comprender cómo funcionan y cómo se combinan (precedencia) te dará un gran poder para escribir programas más complejos y lógicos, aplicables a cualquier campo científico o de ingeniería.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Próximos Desafíos:</strong> Ahora que conoces los operadores, el siguiente paso natural es aprender a usarlos dentro de las <strong>estructuras de control</strong> (como <code>if</code>, <code>for</code>, <code>while</code>) para que tus programas puedan tomar decisiones y repetir tareas. ¡Sigue experimentando en Google Colab con diferentes combinaciones de operadores y observa los resultados!
+    </p>
+  </div>
+</div>

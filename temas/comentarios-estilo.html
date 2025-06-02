@@ -1,0 +1,276 @@
+<div id="comentarios-en-python" class="card" style="background-color: #fef3f2; border-left: 6px solid #dc2626; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b91c1c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-comment-alt"></i> Comentarios en Python: 🧠 ¡Tu Voz en el Código!
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina que estás leyendo un libro de texto complejo o siguiendo los pasos de un experimento científico. Las notas al margen, diagramas y explicaciones adicionales te ayudan a entender mejor, ¿verdad? En programación, los <strong>comentarios</strong> cumplen un rol similar. Son mensajes que dejas en tu código <span style="color:#e11d48;"><strong>que el intérprete de Python ignora por completo</strong></span>, pero que son increíblemente valiosos para los humanos que leen y trabajan con ese código (¡incluido tu "yo" del futuro!). ✍️💬
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top: 10px;">
+    En entornos como Google Colab, escribir comentarios es tan sencillo como en cualquier editor de Python. Aprender a comentar bien tu código desde el principio te ayudará a aprender mejor, a colaborar con otros y, si alguna vez enseñas, a explicar tus ideas con claridad. 📘
+  </p>
+
+  <h3 style="color: #991b1b; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-hashtag"></i> Comentarios de una Sola Línea con <code>#</code> (Almohadilla)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Para comentarios breves o notas rápidas, Python usa el símbolo de almohadilla <code>#</code>. Todo lo que escribas en una línea después del <code>#</code> será considerado un comentario y no se ejecutará.
+  </p>
+  <pre style="background-color: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em; margin-top:10px;"><code># Este es un comentario que ocupa toda una línea.
+# Se usa para introducir una sección de código o una idea general.
+
+variable_x = 10  # Esto es un comentario al final de una línea de código.
+                 # Explica qué significa o hace la variable_x.
+
+# print("Esta línea no se ejecutará porque está comentada")
+print("Esta línea sí se ejecutará.")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fffbeb; border-left: 5px solid #f59e0b; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ✨ <strong>Consejo Práctico:</strong> Usa comentarios de una línea para:
+      <ul style="margin-top: 5px; margin-left: 20px;">
+        <li>Explicar el propósito de una variable: <code>velocidad_luz = 299792458 # m/s</code></li>
+        <li>Aclarar un paso complejo en un cálculo matemático o físico.</li>
+        <li>Dejar recordatorios: <code># TODO: Optimizar esta función más adelante</code></li>
+        <li>"Apagar" temporalmente una línea de código para probar algo, sin borrarla.</li>
+      </ul>
+    </p>
+  </div>
+
+  <h3 style="color: #991b1b; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-align-left"></i> Comentarios de Múltiples Líneas (Bloques de Comentarios)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Para explicaciones más largas que abarcan varias líneas, puedes usar el símbolo <code>#</code> al inicio de cada línea. Alternativamente, Python permite usar cadenas de texto multilínea (delimitadas por tres comillas simples <code>'''</code> o tres comillas dobles <code>"""</code>) que, si no se asignan a una variable, el intérprete las ignora y pueden funcionar como comentarios de bloque.
+  </p>
+  <pre style="background-color: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em; margin-top:10px;"><code># Opción 1: Múltiples comentarios de una línea
+# Este es un comentario largo que explica
+# el siguiente bloque de código, detallando
+# su propósito y funcionamiento.
+
+"""
+Opción 2: Usando comillas triples (esto es técnicamente una cadena multilínea).
+Es comúnmente usado para comentarios de bloque o para "docstrings"
+(documentación de funciones y clases), que veremos más adelante.
+Si no se asigna a una variable, Python la ignora.
+"""
+
+'''
+También puedes usar comillas simples triples.
+Lo importante es la consistencia.
+'''
+print("El programa continúa después de los comentarios.")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #d1fae5; border-left: 5px solid #10b981; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Docstrings (Cadenas de Documentación):</strong> Una aplicación especial y muy importante de las cadenas multilínea con comillas triples es para documentar funciones, clases y módulos. Estos se llaman "docstrings" y son una parte fundamental de escribir buen código Python. ¡Aprenderás sobre ellos cuando veamos funciones!
+    </p>
+  </div>
+
+  <h3 style="color: #991b1b; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-question-circle"></i> ¿Por Qué y Cuándo Comentar?</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+    <li><strong>Para Ti Mismo/a en el Futuro 🕰️:</strong> Créeme, después de unas semanas (¡o días!), podrías no recordar por qué escribiste una sección de código de cierta manera. Un buen comentario es un regalo para tu futuro yo.</li>
+    <li><strong>Para Colaborar 🤝:</strong> Si trabajas en proyectos con otros estudiantes, profesores o colegas, los comentarios son esenciales para que todos entiendan el código.</li>
+    <li><strong>Para Explicar Lógica Compleja 🧠:</strong> Si implementas un algoritmo difícil, una fórmula matemática no obvia, o una simulación física con muchos pasos, los comentarios ayudan a desglosar la lógica.</li>
+    <li><strong>Para Documentar Decisiones 🤔:</strong> A veces, eliges una forma particular de resolver un problema. Un comentario puede explicar por qué tomaste esa decisión.</li>
+    <li><strong>Para Depurar (Debugging) 🐞:</strong> Comentar temporalmente bloques de código es una técnica útil para aislar errores.</li>
+  </ul>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    ⚠️ <strong>Importante:</strong> No comentes lo obvio. Un buen código debe ser legible por sí mismo en la medida de lo posible. Los comentarios deben añadir valor, no redundancia.
+    <br>Mal ejemplo: <code>x = 5  # Asigno 5 a la variable x</code> (Esto es obvio por el código).
+    <br>Buen ejemplo: <code>g = 9.8  # Aceleración debido a la gravedad en la Tierra (m/s^2)</code>
+  </p>
+  
+  <h3 style="color: #7c2d12; font-size: 1.4em; margin-top: 25px; margin-bottom:10px;">📐 Aplicaciones Transversales de los Comentarios</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    Veamos cómo los comentarios enriquecen el código en diferentes áreas de estudio:
+  </p>
+
+  <h4 style="color: #7c2d12; font-size: 1.2em;">🔢 Matemáticas: Explicando Fórmulas</h4>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em;"><code># Calculamos el área de un círculo.
+# Fórmula: A = π * r²
+radio = 5  # Definimos el radio en cm
+pi_aproximado = 3.14159
+area_circulo = pi_aproximado * (radio ** 2) # Aplicamos la fórmula
+print(f"El área de un círculo con radio {radio} cm es {area_circulo} cm².")</code></pre>
+
+  <h4 style="color: #7c2d12; font-size: 1.2em; margin-top: 15px;">⚛️ Física: Describiendo Variables y Unidades</h4>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em;"><code># Cálculo de la energía cinética de un objeto en movimiento.
+# Fórmula: Ec = 0.5 * m * v²
+masa = 10      # Masa del objeto en kilogramos (kg)
+velocidad = 4  # Velocidad del objeto en metros por segundo (m/s)
+
+energia_cinetica = 0.5 * masa * (velocidad ** 2) # Resultado en Joules (J)
+print(f"La energía cinética es: {energia_cinetica} J.")</code></pre>
+
+  <h4 style="color: #7c2d12; font-size: 1.2em; margin-top: 15px;">🧬 Biología: Documentando un Proceso</h4>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em;"><code>'''
+Simulación simple del crecimiento de una población bacteriana
+bajo condiciones ideales (crecimiento exponencial).
+P_final = P_inicial * (2 ** n_generaciones)
+'''
+poblacion_inicial = 100  # Número inicial de bacterias
+tasa_crecimiento_por_hora = 2 # Se duplican cada hora
+horas = 3                # Tiempo transcurrido
+
+# Calculamos el número de generaciones
+numero_generaciones = horas 
+poblacion_final = poblacion_inicial * (tasa_crecimiento_por_hora ** numero_generaciones)
+print(f"Después de {horas} horas, la población de bacterias será: {poblacion_final}.")</code></pre>
+
+  <h4 style="color: #7c2d12; font-size: 1.2em; margin-top: 15px;">🌍 Ciencias Sociales: Referenciando Datos</h4>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.05em;"><code># Datos demográficos de un país imaginario para un estudio
+pais = "Valleverde"
+poblacion_total = 15000000  # Fuente: Censo Nacional Ficticio 2023
+tasa_natalidad = 15.5      # Por cada 1000 habitantes
+tasa_mortalidad = 7.2      # Por cada 1000 habitantes
+
+# Calculamos el crecimiento natural (simplificado)
+crecimiento_natural_por_mil = tasa_natalidad - tasa_mortalidad
+print(f"El crecimiento natural de {pais} es de {crecimiento_natural_por_mil} por cada 1000 habitantes.")</code></pre>
+
+  <div style="margin-top: 25px; padding: 15px; background-color: #fbcfe8; border-left: 5px solid #ec4899; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎁 <strong>En Conclusión sobre Comentarios:</strong> Usar comentarios es como dejar un mapa claro de tus ideas en el código. ¡No subestimes su poder! Te ayudan a entender, recordar, enseñar, depurar y colaborar eficazmente. 🧑‍🏫✨
+    </p>
+  </div>
+</div>
+
+<div id="estilo-de-codigo" class="card" style="background-color: #f0f9ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-paint-brush"></i> Estilo de Código en Python: Escribiendo Código Elegante (PEP 8)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Así como en la escritura humana hay reglas de gramática y estilo para que un texto sea claro y agradable de leer, en programación también existen convenciones. Escribir código no solo se trata de que funcione, ¡sino también de que sea <strong>legible, comprensible y mantenible</strong> por ti y por otros! 🎨✍️
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Para Python, la guía de estilo más importante y reconocida es la <strong>PEP 8</strong> (Python Enhancement Proposal #8). Seguir PEP 8 hace que tu código sea más "Pythónico", es decir, que se sienta natural y coherente con el resto del ecosistema Python.
+  </p>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-list-check"></i> Principios Clave de PEP 8 (Simplificado)</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    No te preocupes por memorizar todo PEP 8 de inmediato. Aquí te presentamos algunos de los puntos más importantes para empezar:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+    <li>
+      <strong>Indentación (Sangría) 📏:</strong>
+      Usa <strong>4 espacios</strong> por cada nivel de indentación. ¡No uses tabulaciones, o si las usas, configúralas para que se conviertan en 4 espacios! Google Colab y la mayoría de los editores modernos te ayudan con esto.
+      <pre style="background-color: #1e293b; color: #e0e7ff; padding: 10px; border-radius: 6px; margin-top:5px;"><code>def mi_funcion():
+    # Esta línea está indentada 4 espacios
+    if condicion:
+        # Esta línea está indentada 8 espacios
+        print("Correcto")</code></pre>
+    </li>
+    <li>
+      <strong>Nombres de Variables y Funciones 🏷️:</strong>
+      Usa <code>snake_case</code>: palabras en minúsculas separadas por guiones bajos.
+      <br>Ejemplos: <code>velocidad_inicial</code>, <code>nombre_estudiante</code>, <code>calcular_area()</code>.
+    </li>
+    <li>
+      <strong>Nombres de Clases (para Programación Orientada a Objetos) 🏛️:</strong>
+      Usa <code>PascalCase</code> (o <code>CapWords</code>): cada palabra comienza con mayúscula, sin guiones bajos.
+      <br>Ejemplos: <code>MiClaseEstudiante</code>, <code>SimuladorFisica</code>. (Lo verás en detalle en POO).
+    </li>
+    <li>
+      <strong>Nombres de Constantes 🌌:</strong>
+      Usa <code>MAYUSCULAS_CON_GUIONES_BAJOS</code>. Las constantes son variables cuyo valor no debería cambiar.
+      <br>Ejemplos: <code>PI = 3.14159</code>, <code>GRAVEDAD_TIERRA = 9.81</code>.
+    </li>
+    <li>
+      <strong>Espaciado Alrededor de Operadores y Comas 💨:</strong>
+      Usa un espacio antes y después de los operadores aritméticos (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>=</code>, <code>==</code>, <code><</code>, <code>></code>, etc.).
+      <br>Ejemplos: <code>x = y + 5</code> (bien), <code>x=y+5</code> (mal).
+      <br>Usa un espacio después de las comas.
+      <br>Ejemplos: <code>print(a, b, c)</code> (bien), <code>print(a,b,c)</code> (mal).
+    </li>
+    <li>
+      <strong>Longitud Máxima de Línea 📐:</strong>
+      PEP 8 recomienda que las líneas no excedan los <strong>79 caracteres</strong>. Esto ayuda a la legibilidad, especialmente cuando se ven varios archivos lado a lado. Puedes dividir líneas largas usando paréntesis, corchetes, llaves o el carácter de continuación de línea <code>\</code> (aunque este último se usa con menos frecuencia).
+    </li>
+    <li>
+      <strong>Líneas en Blanco 🧘:</strong>
+      Usa líneas en blanco para separar bloques de código lógicamente distintos, como definiciones de funciones (dos líneas en blanco antes y después) o secciones dentro de una función (una línea en blanco).
+    </li>
+    <li>
+      <strong>Importaciones (<code>import</code>) 🚚:</strong>
+      Coloca todas las importaciones al principio del archivo, justo después de los comentarios del módulo y docstrings. Cada importación debe ir en su propia línea.
+      <br>Bien:
+      <pre style="background-color: #1e293b; color: #e0e7ff; padding: 5px; border-radius: 6px; margin-top:5px;"><code>import math
+import os</code></pre>
+      <br>Mal: <code>import math, os</code>
+    </li>
+  </ul>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-question-circle"></i> ¿Por Qué es Tan Importante el Estilo?</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    "El código se lee mucho más a menudo de lo que se escribe." – Guido van Rossum (creador de Python).
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><strong>Legibilidad Mejorada:</strong> Un estilo consistente hace que el código sea más fácil de leer y entender para ti y para otros.</li>
+    <li><strong>Mantenimiento Sencillo:</strong> Cuando necesitas volver a tu código después de un tiempo, o si alguien más necesita modificarlo, un buen estilo facilita enormemente la tarea.</li>
+    <li><strong>Menos Errores:</strong> Un código claro y bien formateado ayuda a detectar errores más fácilmente.</li>
+    <li><strong>Colaboración Eficaz:</strong> Si todos en un equipo siguen las mismas convenciones de estilo, la integración del trabajo es mucho más fluida.</li>
+    <li><strong>Profesionalismo:</strong> Escribir código con buen estilo es una marca de un programador cuidadoso y profesional.</li>
+  </ul>
+
+  <div style="margin-top: 20px; padding: 15px; background-color: #dbeafe; border-left: 5px solid #60a5fa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🛠️ <strong>Herramientas de Ayuda:</strong> No tienes que hacerlo todo manualmente. Existen herramientas llamadas "linters" (como <strong>Flake8</strong> o <strong>Pylint</strong>) que revisan tu código en busca de errores de estilo y otros problemas, y "formateadores" (como <strong>Black</strong> o <strong>autopep8</strong>) que pueden aplicar automáticamente el estilo PEP 8 a tu código. Muchos editores, ¡incluido Google Colab!, ya integran algunas de estas ayudas.
+    </p>
+  </div>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 25px; margin-bottom: 10px;"><i class="fas fa-exchange-alt"></i> Ejemplo: Antes y Después de PEP 8</h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">
+    Observa cómo un pequeño fragmento de código cambia al aplicar algunas reglas de PEP 8:
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div>
+      <h4 style="color: #c2410c; font-size: 1.1em;">❌ Antes (Estilo inconsistente):</h4>
+      <pre style="background-color: #4A0404; color: #fee2e2; padding: 10px; border-radius: 6px; font-size: 0.95em;"><code>#calcula area
+def calcularArea(Base,ALTURA):
+ resultado=Base*ALTURA/2
+ return resultado
+
+b=10
+h= 5
+AreaTriangulo=calcularArea(b,h)
+print("area:",AreaTriangulo)</code></pre>
+    </div>
+    <div>
+      <h4 style="color: #065f46; font-size: 1.1em;">✅ Después (Estilo PEP 8):</h4>
+      <pre style="background-color: #064e3b; color: #d1fae5; padding: 10px; border-radius: 6px; font-size: 0.95em;"><code># Calcula el área de un triángulo
+
+def calcular_area_triangulo(base, altura):
+    """Calcula el área de un triángulo dada su base y altura."""
+    resultado = (base * altura) / 2
+    return resultado
+
+# Definimos las dimensiones del triángulo
+base_triangulo = 10
+altura_triangulo = 5
+
+# Calculamos y mostramos el área
+area_del_triangulo = calcular_area_triangulo(base_triangulo, altura_triangulo)
+print(f"El área del triángulo es: {area_del_triangulo}")</code></pre>
+    </div>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:15px;">
+    Nota las diferencias en nombres de variables, espaciado, comentarios y el uso de un docstring en la función. ¡Mucho más legible!
+  </p>
+</div>
+
+<div id="conclusion-comentarios-estilo" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-award"></i> Conclusión: Escribiendo Código Como un Profesional
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Dominar los <strong>comentarios</strong> y adherirse a un buen <strong>estilo de código</strong> como PEP 8 son habilidades tan importantes como aprender la sintaxis de Python. Estas prácticas no solo hacen tu código más profesional, sino que también:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-top:10px; margin-bottom: 15px;">
+    <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Facilitan enormemente la comprensión y el mantenimiento a largo plazo.</li>
+    <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Mejoran la colaboración en proyectos grupales.</li>
+    <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Reducen la probabilidad de errores y facilitan su detección.</li>
+    <li><i class="fas fa-check-circle" style="color: #10b981;"></i> Te preparan para los estándares del mundo profesional y académico.</li>
+  </ul>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    ¡Empieza a aplicar estos hábitos desde hoy en tus ejercicios en Google Colab y en todos tus proyectos! Verás cómo se convierten en una segunda naturaleza. 🚀
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #8b5cf6; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🌟 <strong>Recuerda:</strong> Un código claro, bien comentado y con buen estilo es un reflejo de un pensamiento claro y organizado. ¡Sigue practicando!
+    </p>
+  </div>
+</div>

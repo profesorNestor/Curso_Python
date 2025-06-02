@@ -1,0 +1,170 @@
+<div id="hola-mundo-intro" class="card" style="background-color: #fef3c7; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-flag-checkered"></i> ¡Tu Primer Programa en Python!
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Bienvenido/a al emocionante mundo de la programación! 🎉 Todo gran viaje comienza con un primer paso, y en programación, ese paso es tradicionalmente el programa "Hola Mundo". Escribir "Hola Mundo" es una costumbre que te conecta con millones de programadores que, como tú, iniciaron así su aventura. Es una forma sencilla de verificar que tu entorno de programación funciona y de familiarizarte con la sintaxis más básica del lenguaje.
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top: 10px;">
+    Prepárate, porque estás a punto de darle tu primera instrucción a la computadora usando Python. ¡Vamos a empezar! 👨‍💻👩‍💻
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🧠 <strong>Dato Curioso:</strong> El programa "Hola Mundo" se popularizó en los años 70 gracias al libro "The C Programming Language" de Kernighan y Ritchie, y desde entonces es el rito de iniciación para aprender la mayoría de los lenguajes de programación.
+    </p>
+  </div>
+</div>
+
+<div id="hola-mundo-codigo-basico" class="card" style="background-color: #f0fdf4; border-left: 6px solid #22c55e; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h3 style="color: #15803d; font-size: 1.7em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-code"></i> Escribiendo tu "Hola Mundo" en Python
+  </h3>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    En Python, mostrar un mensaje en la pantalla es increíblemente simple. Solo necesitas usar la función <code>print()</code>. Observa el siguiente código:
+  </p>
+
+  <pre style="background-color: #1e293b; color: #f8fafc; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 1.1em; margin-top: 15px; margin-bottom:15px;"><code># Este es tu primer programa en Python.
+# La línea de abajo mostrará el mensaje "Hola Mundo" en la consola.
+print("Hola Mundo")</code></pre>
+  
+  <h4 style="color: #047857; font-size: 1.3em; margin-top: 20px; margin-bottom: 10px;">📋 Explicación del Código:</h4>
+  <ul style="font-size: 1.05em; line-height: 1.7; margin-left: 20px; margin-bottom: 15px;">
+    <li><code># Este es tu primer programa...</code>: Esta línea es un <strong>comentario</strong>. Los comentarios en Python comienzan con el símbolo <code>#</code> y son ignorados por el intérprete. Sirven para dejar notas o explicaciones en el código.</li>
+    <li><code>print()</code>: Es una <strong>función</strong> incorporada en Python. Las funciones son bloques de código que realizan una tarea específica. La tarea de <code>print()</code> es mostrar en la pantalla (o consola) lo que le pases entre los paréntesis.</li>
+    <li><code>"Hola Mundo"</code>: Es una <strong>cadena de texto</strong> (o <em>string</em> en inglés). En Python, el texto se escribe entre comillas (pueden ser dobles <code>" "</code> o simples <code>' '</code>). Esto que está entre comillas es el <strong>argumento</strong> que le estamos dando a la función <code>print()</code> para que lo muestre.</li>
+  </ul>
+
+  <h4 style="color: #047857; font-size: 1.3em; margin-top: 20px; margin-bottom: 10px;">🚀 ¿Dónde puedes ejecutar este código?</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+    Puedes escribir y ejecutar este simple programa en varios lugares:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.7; margin-left: 20px;">
+    <li><i class="fab fa-google" style="color: #DB4437;"></i> <strong>Google Colab:</strong> Crea una nueva celda de código, escribe <code>print("Hola Mundo")</code> y presiona <kbd>Shift</kbd> + <kbd>Enter</kbd>. ¡Es la forma más rápida de empezar sin instalar nada! (Como viste en la lección anterior).</li>
+    <li><i class="fas fa-laptop-code" style="color: #007ACC;"></i> <strong>IDEs Locales (VS Code, PyCharm, Spyder):</strong> Si ya tienes Python instalado en tu computadora y un Entorno de Desarrollo Integrado (IDE), crea un nuevo archivo (ej. `mi_programa.py`), escribe el código y ejecútalo.</li>
+    <li><i class="fas fa-terminal" style="color: #4D4D4D;"></i> <strong>Consola de Python (REPL):</strong> Abre una terminal o símbolo del sistema, escribe `python` (o `python3`) y presiona Enter. Luego, escribe <code>print("Hola Mundo")</code> directamente.</li>
+    <li><i class="fas fa-globe" style="color: #3B82F6;"></i> <strong>Intérpretes Online:</strong> Hay muchas páginas web que te permiten ejecutar código Python directamente en el navegador (busca "Python online interpreter").</li>
+  </ul>
+
+  <div style="margin-top: 20px; padding: 15px; background-color: #ecfccb; border-left: 5px solid #84cc16; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ✅ <strong>TIP Práctico:</strong> Para este curso, te recomendamos usar <a href="#" onclick="window.loadLesson('google-colab'); return false;">Google Colab</a> por su facilidad de uso y porque no requiere instalación. Simplemente abre una celda de código, pega <code>print("Hola Mundo")</code> y ejecútala con <kbd>Shift</kbd> + <kbd>Enter</kbd>.
+    </p>
+  </div>
+</div>
+
+<div id="hola-mundo-ejemplos-aplicados" class="card" style="background-color: #e0f2fe; border-left: 6px solid #0284c7; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h3 style="color: #0369a1; font-size: 1.7em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-shapes"></i> Usando <code>print()</code> en Diferentes Contextos
+  </h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    La función <code>print()</code> no solo sirve para "Hola Mundo". Es tu herramienta principal para ver resultados, mensajes y depurar tus programas. Veamos cómo podrías usarla para mostrar información relacionada con diferentes materias escolares:
+  </p>
+
+  <h4 style="color: #1d4ed8; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🔢 Para Matemáticas:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Puedes mostrar el resultado de operaciones o enunciados de problemas.</p>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Mostrar una suma simple
+print("La suma de 125 + 345 es:", 125 + 345)
+
+# Enunciado de un teorema (como texto)
+print("Teorema de Pitágoras: En un triángulo rectángulo, a² + b² = c²")</code></pre>
+
+  <h4 style="color: #1d4ed8; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🌱 Para Biología:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Imprimir clasificaciones, nombres científicos, o datos curiosos.</p>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Partes de una célula
+print("Partes principales de la célula: Membrana, Citoplasma, Núcleo.")
+
+# Dato sobre el cuerpo humano
+print("El cuerpo humano adulto tiene 206 huesos.")</code></pre>
+
+  <h4 style="color: #1d4ed8; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🌎 Para Ciencias Sociales:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Mostrar capitales, fechas importantes, o nombres de personajes históricos.</p>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Capital de Colombia
+print("La capital de Colombia es Bogotá D.C.")
+
+# Fecha importante
+print("La independencia de Colombia se proclamó el 20 de julio de 1810.")</code></pre>
+  
+  <h4 style="color: #1d4ed8; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🔭 Para Física:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Mostrar constantes físicas, fórmulas o unidades.</p>
+  <pre style="background-color: #1e3a8a; color: #e0e7ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Constante de la gravedad
+print("Aceleración de la gravedad en la Tierra (g) ≈ 9.8 m/s²")
+
+# Fórmula de velocidad (MRU)
+print("Fórmula de velocidad: v = d / t")</code></pre>
+
+  <div style="margin-top: 25px; padding: 15px; background-color: #bae6fd; border-left: 5px solid #0ea5e9; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      👩‍🏫 <strong>¡A Practicar!:</strong> Intenta modificar estos ejemplos. Cambia los textos, los números, o crea tus propios mensajes relacionados con lo que estás aprendiendo en otras asignaturas. ¡La función <code>print()</code> es tu ventana para comunicarte con el mundo a través del código! 🧠💻
+    </p>
+  </div>
+</div>
+
+<div id="hola-mundo-variaciones" class="card" style="background-color: #fdf2f8; border-left: 6px solid #db2777; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h3 style="color: #be185d; font-size: 1.7em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-palette"></i> Variaciones Creativas con <code>print()</code>
+  </h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    La función <code>print()</code> es más versátil de lo que parece. Aquí te mostramos algunas formas de hacer tus mensajes más expresivos e informativos desde el inicio de tu aprendizaje:
+  </p>
+
+  <h4 style="color: #9d174d; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">💬 Mensajes con Emojis:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Puedes incluir emojis directamente en tus cadenas de texto para darles un toque más amigable (la capacidad de mostrarlos dependerá de tu consola o entorno).</p>
+  <pre style="background-color: #581c87; color: #f3e8ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Mensajes con emojis
+print("🚀 ¡Bienvenidos al emocionante mundo de Python!")
+print("🧠 Aprender a programar es como adquirir un nuevo superpoder.")
+print("💡 Un pequeño paso hoy, ¡un gran salto para tu futuro!")</code></pre>
+
+  <h4 style="color: #9d174d; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">📄 Múltiples Líneas con un solo `print()`:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Puedes usar el carácter especial <code>\n</code> (llamado "secuencia de escape de nueva línea") para que el texto continúe en la línea siguiente.</p>
+  <pre style="background-color: #581c87; color: #f3e8ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Texto en varias líneas
+print("Línea 1: Hola, soy Python.\nLínea 2: Estoy aquí para ayudarte a crear cosas asombrosas.\nLínea 3: ¡Vamos a programar juntos!")</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;"><em>Resultado esperado en la consola:</em><br>
+    Línea 1: Hola, soy Python.<br>
+    Línea 2: Estoy aquí para ayudarte a crear cosas asombrosas.<br>
+    Línea 3: ¡Vamos a programar juntos!
+  </p>
+
+  <h4 style="color: #9d174d; font-size: 1.2em; margin-top: 20px; margin-bottom: 5px;">🧮 Imprimiendo Variables y Texto Combinado:</h4>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:10px;">Puedes pasar múltiples argumentos a <code>print()</code>, separados por comas. Python los imprimirá con un espacio entre ellos. También puedes usar "f-strings" (cadenas formateadas) para una forma más moderna y legible de incluir variables en el texto (lo veremos en detalle más adelante).</p>
+  <pre style="background-color: #581c87; color: #f3e8ff; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 1.1em;"><code># Usando comas con print()
+nombre_estudiante = "Sofía"
+edad_estudiante = 13
+print("Estudiante:", nombre_estudiante, "- Edad:", edad_estudiante, "años.")
+
+# Ejemplo con f-string (más avanzado, pero muy útil)
+materia = "Matemáticas"
+nota = 4.5
+print(f"En {materia}, {nombre_estudiante} obtuvo una nota de {nota}.")</code></pre>
+
+  <div style="margin-top: 25px; padding: 15px; background-color: #fbcfe8; border-left: 5px solid #ec4899; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎯 <strong>Explora y Experimenta:</strong> No te limites al "Hola Mundo". Intenta imprimir diferentes tipos de mensajes, resultados de pequeñas operaciones, o incluso dibujar arte ASCII simple usando varios <code>print()</code>. ¡La creatividad es bienvenida! 🌍✨
+    </p>
+  </div>
+</div>
+
+<div id="hola-mundo-siguientes-pasos" class="card" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h3 style="color: #3730a3; font-size: 1.7em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-shoe-prints"></i> ¿Qué Sigue Después del "Hola Mundo"?
+  </h3>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    ¡Felicidades por completar tu primer programa en Python! Aunque "Hola Mundo" es simple, es un hito fundamental. Has dado la primera instrucción a la computadora y has visto cómo responde.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:15px;">
+    Ahora que has roto el hielo, estás listo/a para sumergirte en conceptos más profundos y poderosos de Python. En las próximas lecciones, exploraremos:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+    <li>✍️ <strong>Comentarios y Estilo de Código:</strong> Cómo escribir código claro y legible.</li>
+    <li><i class="fas fa-box"></i> <strong>Variables y Tipos de Datos:</strong> Cómo almacenar y manejar diferentes tipos de información.</li>
+    <li><i class="fas fa-exchange-alt"></i> <strong>Operadores:</strong> Las herramientas para realizar cálculos y comparaciones.</li>
+    <li><i class="fas fa-keyboard"></i> <strong>Entrada y Salida de Datos:</strong> Cómo hacer que tus programas interactúen con el usuario.</li>
+  </ul>
+  <p style="font-size: 1.05em; line-height: 1.7;">
+    Cada uno de estos temas construirá sobre lo que has aprendido hoy, abriéndote las puertas para crear programas cada vez más complejos e interesantes. ¡Sigue adelante con curiosidad y entusiasmo!
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Tu Aventura Continúa:</strong> El "Hola Mundo" es solo el comienzo. ¡Hay todo un universo de posibilidades esperándote en el mundo de la programación con Python!
+    </p>
+  </div>
+</div>

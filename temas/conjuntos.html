@@ -1,0 +1,398 @@
+<div id="conjuntos-header" class="card" style="background: linear-gradient(135deg, #22c55e 0%, #84cc16 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-object-group"></i> Conjuntos (Sets) en Python: El Poder de lo Único 💎
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Domina las colecciones de elementos únicos y las operaciones de la teoría de conjuntos para resolver problemas de forma eficiente y elegante.
+  </p>
+</div>
+
+<div id="intro-conjuntos" class="card" style="background-color: #f0fdf4; border-left: 6px solid #22c55e; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #15803d; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-shapes"></i> 1. ¿Qué Son los Conjuntos (Sets) en Python?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En matemáticas, un conjunto es una colección de elementos distintos y no ordenados. Python toma este concepto y nos ofrece una estructura de datos increíblemente útil llamada <strong>set</strong>. Un `set` en Python es una colección que tiene dos características principales[cite: 10, 11]:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.1em; line-height: 1.7;">
+        <li><i class="fas fa-fingerprint" style="color: #16a34a;"></i> <strong>Elementos Únicos:</strong> Un conjunto no puede contener elementos duplicados. Si intentas añadir un elemento que ya existe, simplemente no se añade de nuevo[cite: 10]. ¡Perfecto para eliminar duplicados de otras colecciones!</li>
+        <li><i class="fas fa-random" style="color: #16a34a;"></i> <strong>No Ordenados:</strong> Los elementos en un conjunto no tienen una posición o índice específico[cite: 11, 17]. No puedes pedir "el primer elemento" de un conjunto de la misma forma que lo harías con una lista. El orden en que se muestran puede variar.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Los conjuntos son ideales para realizar operaciones de la teoría de conjuntos (unión, intersección, diferencia, etc.) de manera muy eficiente y para comprobar rápidamente si un elemento pertenece o no a una colección[cite: 10, 14].
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #4ade80; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>Analogía Científica:</strong> Piensa en un conjunto como una colección de especies únicas encontradas en un ecosistema. No importa cuántas veces veas un "Roble", en tu conjunto de especies del ecosistema "Roble" solo aparecerá una vez. Y no hay un "primer" o "último" roble en el concepto del conjunto de especies.
+    </p>
+  </div>
+</div>
+
+<div id="creacion-conjuntos" class="card" style="background-color: #f0f9ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-plus-circle"></i> 2. Creando Conjuntos en Python
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Hay dos formas principales de crear conjuntos en Python:
+  </p>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px; margin-bottom: 15px;">
+    <li>Usando llaves <code>{ }</code> con elementos separados por comas[cite: 35].</li>
+    <li>Usando la función incorporada <code>set(iterable)</code>, que toma un objeto iterable (como una lista, tupla o cadena) y devuelve un nuevo conjunto con los elementos únicos del iterable[cite: 36].</li>
+  </ul>
+
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Creación con llaves {}
+conjunto_numeros = {1, 2, 3, 4, 5, 5, 4} # Los duplicados se eliminan automáticamente
+print(f"Conjunto de números: {conjunto_numeros}") # Salida: {1, 2, 3, 4, 5} (el orden puede variar)
+
+conjunto_elementos_quimicos = {"H", "O", "C", "N", "H"}
+print(f"Elementos químicos únicos: {conjunto_elementos_quimicos}") # Salida: {'O', 'H', 'C', 'N'} (el orden puede variar)
+
+# Creación con la función set() desde una lista
+lista_planetas = ["Mercurio", "Venus", "Tierra", "Marte", "Tierra"]
+conjunto_planetas = set(lista_planetas) # Elimina "Tierra" duplicado
+print(f"Planetas (conjunto): {conjunto_planetas}")
+
+# Creación con set() desde una cadena (obtiene caracteres únicos)
+palabra = "bioinformatica"
+letras_unicas = set(palabra)
+print(f"Letras únicas en '{palabra}': {letras_unicas}")
+
+# ¡Importante! Creación de un CONJUNTO VACÍO
+conjunto_vacio_correcto = set() # Esta es la forma correcta
+conjunto_vacio_incorrecto = {}  # ¡Esto crea un DICCIONARIO vacío, NO un conjunto! [cite: 40]
+
+print(f"Conjunto vacío correcto: {conjunto_vacio_correcto}, Tipo: {type(conjunto_vacio_correcto)}")
+print(f"Diccionario vacío (creado con {{}}): {conjunto_vacio_incorrecto}, Tipo: {type(conjunto_vacio_incorrecto)}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #e0f2fe; border-left: 5px solid #60a5fa; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚠️ <strong>Ojo con el Conjunto Vacío:</strong> Para crear un conjunto vacío, debes usar <code>set()</code>. Si usas <code>{}</code>, Python creará un diccionario vacío.
+    </p>
+  </div>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:15px;">
+    Los elementos de un conjunto deben ser de tipo <strong>inmutable</strong> (como números, cadenas, tuplas). No puedes tener listas o otros conjuntos mutables como elementos directos de un conjunto[cite: 160].
+  </p>
+</div>
+
+<div id="metodos-conjuntos" class="card" style="background-color: #fefce8; border-left: 6px solid #eab308; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #ca8a04; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 3. Métodos Principales de los Conjuntos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Los conjuntos tienen varios métodos útiles para manipular sus elementos. Recuerda que los métodos que modifican un conjunto lo hacen "in-place" (directamente sobre el conjunto original).
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-plus-square"></i> <code>add(elemento)</code></h3>
+      <p>Añade un <code>elemento</code> al conjunto. Si el elemento ya existe, el conjunto no cambia[cite: 60, 130].</p>
+      <pre><code>colores_primarios = {"rojo", "amarillo"}
+colores_primarios.add("azul")
+colores_primarios.add("rojo") # No añade duplicado
+# colores_primarios es {"rojo", "amarillo", "azul"}
+print(colores_primarios)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-folder-plus"></i> <code>update(iterable)</code></h3>
+      <p>Añade todos los elementos de un <code>iterable</code> (lista, tupla, otro conjunto) al conjunto[cite: 60, 146].</p>
+      <pre><code>conjunto_base = {1, 2}
+elementos_nuevos = [2, 3, 4]
+conjunto_base.update(elementos_nuevos)
+# conjunto_base es {1, 2, 3, 4}
+print(conjunto_base)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-trash-alt"></i> <code>remove(elemento)</code></h3>
+      <p>Elimina <code>elemento</code> del conjunto. Si el elemento no existe, genera un error <code>KeyError</code>[cite: 60, 147].</p>
+      <pre><code>numeros = {10, 20, 30, 40}
+numeros.remove(30)
+# numeros es {10, 20, 40}
+# numeros.remove(50) # Esto daría KeyError
+print(numeros)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-eraser"></i> <code>discard(elemento)</code></h3>
+      <p>Elimina <code>elemento</code> del conjunto si está presente. Si no existe, NO genera error[cite: 60, 148].</p>
+      <pre><code>planetas_rocosos = {"Mercurio", "Venus", "Tierra"}
+planetas_rocosos.discard("Venus")
+planetas_rocosos.discard("Júpiter") # No hace nada, no hay error
+# planetas_rocosos es {"Mercurio", "Tierra"}
+print(planetas_rocosos)</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-random"></i> <code>pop()</code></h3>
+      <p>Elimina y devuelve un elemento <em>arbitrario</em> del conjunto (recuerda que no tienen orden). Genera <code>KeyError</code> si el conjunto está vacío[cite: 60, 150].</p>
+      <pre><code>conjunto_letras = {'a', 'b', 'c', 'd'}
+letra_extraida = conjunto_letras.pop()
+print(f"Letra extraída: {letra_extraida}")
+print(f"Conjunto restante: {conjunto_letras}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="fas fa-broom"></i> <code>clear()</code></h3>
+      <p>Elimina todos los elementos del conjunto, dejándolo vacío[cite: 60, 152].</p>
+      <pre><code>mis_hobbies = {"leer", "programar", "andar"}
+mis_hobbies.clear()
+# mis_hobbies es set()
+print(mis_hobbies)</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fff7ed; border-left: 5px solid #fb923c;">
+      <h3 style="color: #c2410c;"><i class="far fa-copy"></i> <code>copy()</code></h3>
+      <p>Devuelve una copia superficial (shallow copy) del conjunto[cite: 60, 153].</p>
+      <pre><code>conjunto_original = {10, 20, {"dato_interno": 5}} # Ojo con elementos mutables internos
+# Para elementos inmutables es simple:
+# conjunto_original = {10, 20, 30}
+copia = conjunto_original.copy()
+print(copia)</code></pre>
+    </div>
+  </div>
+  <style> /* Estilos para las tarjetas de métodos y operaciones */
+    .card-style-info { padding: 18px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .card-style-info h3 { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 1.2em; }
+    .card-style-info h3 i { min-width: 20px; text-align: center; }
+    .card-style-info p { margin-bottom: 12px; font-size: 0.95em; line-height: 1.55; flex-grow: 1; }
+    .card-style-info pre { background-color: #4a5568; color: #e2e8f0; padding: 10px; border-radius: 6px; font-size: 0.9em; overflow-x: auto; margin-top: auto; }
+  </style>
+</div>
+
+<div id="operaciones-matematicas-conjuntos" class="card" style="background-color: #f3e8ff; border-left: 6px solid #8b5cf6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6b21a8; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-infinity"></i> 4. Operaciones de Teoría de Conjuntos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Una de las mayores fortalezas de los sets en Python es su capacidad para realizar operaciones de la teoría de conjuntos de forma eficiente. Estas operaciones devuelven un <strong>nuevo conjunto</strong> como resultado, sin modificar los originales (a menos que uses las versiones `_update()`).
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #7c3aed;">
+      <h3 style="color: #581c87;"><i class="fas fa-compress-arrows-alt"></i> Unión (<code>A ∪ B</code>)</h3>
+      <p>Elementos que están en el conjunto A, en el conjunto B, o en ambos[cite: 66]. En Python: <code>A.union(B)</code> o <code>A | B</code>[cite: 69, 70].</p>
+      <pre><code>A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+union_AB = A.union(B)  # o A | B
+# union_AB es {1, 2, 3, 4, 5, 6}
+print(f"{A} ∪ {B} = {union_AB}")</code></pre>
+      <p style="font-size:0.9em; text-align:center; margin-top:5px;"><em>(Imagina dos círculos de Venn donde se sombrea toda el área de ambos)</em></p>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #7c3aed;">
+      <h3 style="color: #581c87;"><i class="fas fa-object-intersect"></i> Intersección (<code>A ∩ B</code>)</h3> <p>Elementos que están presentes en <strong>ambos</strong> conjuntos, A y B[cite: 71]. En Python: <code>A.intersection(B)</code> o <code>A & B</code>[cite: 72].</p>
+      <pre><code>A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+interseccion_AB = A.intersection(B) # o A & B
+# interseccion_AB es {3, 4}
+print(f"{A} ∩ {B} = {interseccion_AB}")</code></pre>
+      <p style="font-size:0.9em; text-align:center; margin-top:5px;"><em>(Imagina dos círculos de Venn donde se sombrea solo el área donde se superponen)</em></p>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #7c3aed;">
+      <h3 style="color: #581c87;"><i class="fas fa-minus-circle"></i> Diferencia (<code>A \ B</code> o <code>A - B</code>)</h3>
+      <p>Elementos que están en el conjunto A pero <strong>no</strong> en el conjunto B[cite: 73]. En Python: <code>A.difference(B)</code> o <code>A - B</code>[cite: 76].</p>
+      <pre><code>A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+diferencia_A_B = A.difference(B) # o A - B
+# diferencia_A_B es {1, 2}
+print(f"{A} \\ {B} = {diferencia_A_B}")</code></pre>
+      <p style="font-size:0.9em; text-align:center; margin-top:5px;"><em>(Imagina dos círculos de Venn donde se sombrea solo la parte de A que no se superpone con B)</em></p>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #7c3aed;">
+      <h3 style="color: #581c87;"><i class="fas fa-not-equal"></i> Diferencia Simétrica (<code>A Δ B</code>)</h3>
+      <p>Elementos que están en A o en B, pero <strong>no en ambos</strong> (es decir, (A ∪ B) - (A ∩ B))[cite: 77]. En Python: <code>A.symmetric_difference(B)</code> o <code>A ^ B</code>[cite: 80].</p>
+      <pre><code>A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+dif_simetrica_AB = A.symmetric_difference(B) # o A ^ B
+# dif_simetrica_AB es {1, 2, 5, 6}
+print(f"{A} Δ {B} = {dif_simetrica_AB}")</code></pre>
+      <p style="font-size:0.9em; text-align:center; margin-top:5px;"><em>(Imagina dos círculos de Venn donde se sombrean las partes de A y B que NO se superponen)</em></p>
+    </div>
+  </div>
+
+  <h3 style="color: #6b21a8; font-size: 1.4em; margin-top: 25px; margin-bottom: 10px;">Conceptos Adicionales de Teoría de Conjuntos:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><strong>Conjunto Universal (U):</strong> En un contexto dado, es el conjunto que contiene todos los elementos posibles bajo consideración. Python no tiene un "conjunto universal" predefinido; tú lo definirías según tu problema (ej. `U = set(range(1, 101))` para los números del 1 al 100).</li>
+    <li><strong>Complemento de un Conjunto (A'):</strong> Son todos los elementos del conjunto universal (U) que NO están en el conjunto A. En Python, se calcularía como `U - A` o `U.difference(A)`.</li>
+    <li><strong>Conjunto Vacío (∅):</strong> Un conjunto que no tiene elementos. Se crea con `set()`. Es el elemento neutro para la unión y el resultado de la intersección de conjuntos disjuntos.</li>
+  </ul>
+  <pre style="background-color: #3b0764; color: #e9d5ff; padding: 15px; border-radius: 8px; font-size: 1.05em; margin-top:10px;"><code># Ejemplo de Complemento
+conjunto_universal_U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+conjunto_A = {1, 3, 5, 7, 9} # Números impares en U
+
+complemento_A = conjunto_universal_U.difference(conjunto_A)
+print(f"Universo U: {conjunto_universal_U}")
+print(f"Conjunto A: {conjunto_A}")
+print(f"Complemento de A (A'): {complemento_A}") # Salida: {2, 4, 6, 8, 10}</code></pre>
+</div>
+
+<div id="relaciones-conjuntos" class="card" style="background-color: #f0fdfa; border-left: 6px solid #0d9488; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-link"></i> 5. Verificando Relaciones Entre Conjuntos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python también ofrece métodos para comprobar relaciones como subconjunto, superconjunto o si son disjuntos.
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div class="card-style-info" style="background-color: #ccfbf1; border-left: 5px solid #14b8a6;">
+      <h3 style="color: #0d9488;"><i class="fas fa-sitemap"></i> Subconjunto (<code>A ⊆ B</code>)</h3>
+      <p><code>A.issubset(B)</code> o <code>A <= B</code>. Devuelve <code>True</code> si todos los elementos de A están en B[cite: 142].</p>
+      <pre><code>primos_menores = {2, 3, 5}
+numeros_hasta_10 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+print(primos_menores.issubset(numeros_hasta_10)) # True</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #ccfbf1; border-left: 5px solid #14b8a6;">
+      <h3 style="color: #0d9488;"><i class="fas fa-expand-arrows-alt"></i> Superconjunto (<code>A supseteq B</code>)</h3>
+      <p><code>A.issuperset(B)</code> o <code>A >= B</code>. Devuelve <code>True</code> si A contiene todos los elementos de B[cite: 143].</p>
+      <pre><code>mamiferos = {"gato", "perro", "humano", "ballena"}
+caninos = {"perro"}
+print(mamiferos.issuperset(caninos)) # True</code></pre>
+    </div>
+    <div class="card-style-info" style="background-color: #ccfbf1; border-left: 5px solid #14b8a6;">
+      <h3 style="color: #0d9488;"><i class="fas fa-arrows-alt-h"></i> Disjuntos (<code>A ∩ B = ∅</code>)</h3>
+      <p><code>A.isdisjoint(B)</code>. Devuelve <code>True</code> si A y B no tienen elementos en común[cite: 144].</p>
+      <pre><code>frutas_rojas = {"fresa", "cereza"}
+frutas_amarillas = {"banana", "mango"}
+print(frutas_rojas.isdisjoint(frutas_amarillas)) # True</code></pre>
+    </div>
+  </div>
+   <p style="font-size: 1.05em; line-height: 1.7; margin-top:20px;">
+    También puedes comparar conjuntos para igualdad (<code>A == B</code>) o desigualdad (<code>A != B</code>). Dos conjuntos son iguales si y solo si contienen exactamente los mismos elementos.
+  </p>
+</div>
+
+<div id="frozenset" class="card" style="background-color: #f0f9ff; border-left: 6px solid #0ea5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0369a1; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-snowflake"></i> 6. <code>frozenset</code>: El Conjunto Inmutable
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Python ofrece una variante inmutable del conjunto llamada <code>frozenset</code>[cite: 122]. Una vez que creas un <code>frozenset</code>, no puedes añadirle ni quitarle elementos.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    ¿Para qué sirve un conjunto inmutable?
+    <ul style="margin-left:20px; font-size: 1.05em; line-height: 1.7;">
+        <li><strong>Elementos de otro conjunto:</strong> Puedes añadir un <code>frozenset</code> como elemento dentro de otro <code>set</code> (porque los elementos de un `set` deben ser inmutables).</li>
+        <li><strong>Claves de Diccionario:</strong> Puedes usar un <code>frozenset</code> como clave en un diccionario.</li>
+        <li><strong>Garantizar la no modificación:</strong> Cuando quieres asegurarte de que una colección de ítems únicos no cambie.</li>
+    </ul>
+  </p>
+  <pre style="background-color: #1e293b; color: #dbeafe; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Crear un frozenset
+constantes_matematicas_fs = frozenset({3.14159, 2.71828, 1.61803})
+print(f"Frozenset: {constantes_matematicas_fs}")
+
+# constantes_matematicas_fs.add(1.414) # Esto daría un AttributeError
+
+# Usar frozenset como clave de diccionario
+configuraciones_validas = {
+    frozenset({"permiso_lectura", "permiso_escritura"}): "Acceso Completo",
+    frozenset({"permiso_lectura"}): "Solo Lectura"
+}
+permisos_usuario = frozenset({"permiso_lectura"})
+print(f"Acceso del usuario: {configuraciones_validas[permisos_usuario]}")</code></pre>
+</div>
+
+<div id="ejemplos-conjuntos-aplicados" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6d28d9; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-vials"></i> 7. Aplicaciones de Conjuntos en las Ciencias y Más
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Los conjuntos son herramientas poderosas para el análisis y la manipulación de datos en muchos campos.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #eff6ff; border-left: 5px solid #3b82f6;">
+      <h3 style="color: #1e40af;"><i class="fas fa-calculator"></i> Matemáticas: Divisores Comunes</h3>
+      <p>Encontrar los divisores comunes de dos números.</p>
+      <pre><code>def obtener_divisores(n):
+    divs = set()
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            divs.add(i)
+            divs.add(n//i)
+    return divs
+
+divisores_24 = obtener_divisores(24)
+divisores_36 = obtener_divisores(36)
+divisores_comunes = divisores_24.intersection(divisores_36)
+print(f"Divisores de 24: {sorted(list(divisores_24))}")
+print(f"Divisores de 36: {sorted(list(divisores_36))}")
+print(f"Divisores comunes: {sorted(list(divisores_comunes))}")
+print(f"Máximo Común Divisor (MCD): {max(divisores_comunes)}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #f0fdf4; border-left: 5px solid #10b981;">
+      <h3 style="color: #047857;"><i class="fas fa-microscope"></i> Biología: Comparación de Genes</h3>
+      <p>Comparar conjuntos de genes entre dos especies para encontrar genes compartidos y únicos.</p>
+      <pre><code>genes_especie_A = {"gen1", "gen2", "gen3", "gen_comun_XY"}
+genes_especie_B = {"gen4", "gen5", "gen_comun_XY", "gen6"}
+
+genes_compartidos = genes_especie_A & genes_especie_B
+genes_unicos_A = genes_especie_A - genes_especie_B
+genes_solo_en_una = genes_especie_A ^ genes_especie_B
+
+print(f"Genes compartidos: {genes_compartidos}")
+print(f"Genes únicos en A: {genes_unicos_A}")
+print(f"Genes solo en una especie: {genes_solo_en_una}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #fffbeb; border-left: 5px solid #facc15;">
+      <h3 style="color: #b45309;"><i class="fas fa-language"></i> Lingüística: Vocabulario Común</h3>
+      <p>Analizar el vocabulario único y común en dos textos.</p>
+      <pre><code>texto1 = "el gato juega en el jardin con la pelota"
+texto2 = "un perro juega con su pelota azul en el parque"
+
+palabras_texto1 = set(texto1.lower().split())
+palabras_texto2 = set(texto2.lower().split())
+
+palabras_comunes = palabras_texto1.intersection(palabras_texto2)
+vocabulario_total = palabras_texto1.union(palabras_texto2)
+
+print(f"Palabras comunes: {palabras_comunes}")
+print(f"Total palabras únicas: {len(vocabulario_total)}")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #fef2f2; border-left: 5px solid #ef4444;">
+      <h3 style="color: #b91c1c;"><i class="fas fa-users"></i> Ciencias Sociales: Encuestas</h3>
+      <p>Analizar respuestas a preguntas de opción múltiple (donde un encuestado puede elegir varias opciones).</p>
+      <pre><code># Intereses de dos grupos de estudiantes
+intereses_grupo_A = {"deportes", "música", "videojuegos", "lectura"}
+intereses_grupo_B = {"viajes", "música", "arte", "deportes"}
+
+intereses_comunes = intereses_grupo_A & intereses_grupo_B
+todos_los_intereses = intereses_grupo_A | intereses_grupo_B
+intereses_solo_A = intereses_grupo_A - intereses_grupo_B
+
+print(f"Comunes: {intereses_comunes}")
+print(f"Solo en Grupo A: {intereses_solo_A}")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="conclusion-conjuntos" class="card" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #3730a3; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas-award"></i> Conclusión: Conjuntos, Eficiencia y Elegancia
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Has explorado a fondo los conjuntos (<code>set</code> y <code>frozenset</code>) en Python! Estas estructuras de datos son herramientas increíblemente valiosas cuando necesitas trabajar con colecciones de <strong>elementos únicos</strong> y realizar operaciones de la <strong>teoría de conjuntos</strong> de manera eficiente.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Recuerda sus características clave: no ordenados, elementos únicos, y (para `set`) mutabilidad. Su capacidad para eliminar duplicados automáticamente y realizar operaciones como unión (<code>∪</code>), intersección (<code>∩</code>), diferencia (<code>\</code>) y diferencia simétrica (<code>Δ</code>) los convierte en una elección inteligente para muchos problemas de programación, especialmente en análisis de datos, matemáticas y algoritmos.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Desafío Final:</strong>
+      Imagina que tienes listas de síntomas para diferentes enfermedades (resfriado, gripe, alergia). ¿Cómo usarías conjuntos para:
+      <ol style="margin-left:20px; margin-top:5px;">
+          <li>Encontrar los síntomas comunes a todas ellas?</li>
+          <li>Encontrar los síntomas que son únicos de la gripe pero no del resfriado?</li>
+          <li>Saber si los síntomas de un paciente son un subconjunto exacto de los síntomas de la alergia?</li>
+      </ol>
+      ¡Inténtalo en Google Colab! La práctica te hará un maestro de los conjuntos.
+    </p>
+  </div>
+</div>
