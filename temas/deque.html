@@ -1,0 +1,318 @@
+<div id="deque-header" class="card" style="background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-exchange-alt"></i> Listas Deque en Python: Colas de Doble Extremo Eficientes ↔️
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Descubre las `deque`, una estructura de datos optimizada para añadir y quitar elementos rápidamente por ambos extremos.
+  </p>
+</div>
+
+<div id="intro-deque" class="card" style="background-color: #f0fdfa; border-left: 6px solid #14b8a6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-info-circle"></i> 1. ¿Qué es una `deque` y por qué usarla?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    En Python, además de las listas estándar <code>[]</code>, existe una estructura de datos especializada muy útil llamada <strong><code>deque</code></strong> (pronunciada como "deck", la abreviatura de "double-ended queue" o "cola de doble extremo"). Las deques están disponibles en el módulo incorporado <code>collections</code>.
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Una <code>deque</code> es una secuencia similar a una lista, pero con una gran ventaja: está altamente optimizada para realizar operaciones de <strong>añadir (append) y quitar (pop) elementos desde ambos extremos</strong> (izquierda y derecha) de manera muy rápida y eficiente.
+  </p>
+  
+  <h3 style="color: #0d9488; font-size: 1.5em; margin-top: 20px; margin-bottom: 10px;">Principales Ventajas de <code>deque</code> sobre las Listas Estándar:</h3>
+  <ul style="font-size: 1.05em; line-height: 1.8; margin-left: 20px;">
+    <li><i class="fas fa-shipping-fast" style="color: #14b8a6;"></i> <strong>Eficiencia en los Extremos:</strong> Mientras que en una lista normal, operaciones como <code>lista.insert(0, valor)</code> (añadir al principio) o <code>lista.pop(0)</code> (quitar del principio) son lentas (complejidad $O(N)$, donde N es el tamaño de la lista, porque todos los demás elementos deben desplazarse), en una <code>deque</code>, las operaciones equivalentes (<code>appendleft()</code>, <code>popleft()</code>) son muy rápidas (complejidad $O(1)$, tiempo constante).</li>
+    <li><i class="fas fa-stream" style="color: #14b8a6;"></i> <strong>Implementación de Pilas y Colas:</strong> Son perfectas para implementar eficientemente estructuras de datos como pilas (LIFO - Last In, First Out) usando <code>append()</code> y <code>pop()</code>, y colas (FIFO - First In, First Out) usando <code>append()</code> y <code>popleft()</code>.</li>
+    <li><i class="fas fa-history" style="color: #14b8a6;"></i> <strong>Historial Limitado:</strong> Se pueden crear deques con una longitud máxima fija. Si se añaden elementos a una deque llena, los elementos del extremo opuesto se descartan automáticamente, lo cual es ideal para mantener un historial de los últimos N ítems.</li>
+  </ul>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Para usar una <code>deque</code>, primero debes importarla desde el módulo <code>collections</code>.
+  </p>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>from collections import deque
+
+# Crear una deque vacía
+cola_de_tareas = deque()
+
+# Crear una deque a partir de una lista existente
+datos_sensor_iniciales = [10.1, 10.3, 10.2]
+buffer_sensor = deque(datos_sensor_iniciales)
+print(f"Deque inicial: {buffer_sensor}")
+
+# Crear una deque con una longitud máxima (maxlen)
+# Útil para historiales o buffers circulares
+ultimas_lecturas = deque(maxlen=5) 
+print(f"Deque con longitud máxima (vacía): {ultimas_lecturas}")</code></pre>
+  <div style="margin-top: 20px; padding: 15px; background-color: #cffafe; border-left: 5px solid #22d3ee; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      💡 <strong>¿Cuándo elegir <code>deque</code>?</strong> Si tu aplicación requiere añadir o quitar elementos frecuentemente del inicio de una secuencia, o si necesitas una cola o pila eficiente, ¡<code>deque</code> es tu mejor opción! Para acceso aleatorio por índice en el medio de la secuencia, las listas normales siguen siendo adecuadas.
+    </p>
+  </div>
+</div>
+
+<div id="metodos-deque" class="card" style="background-color: #f0f9ff; border-left: 6px solid #3b82f6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e40af; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-cogs"></i> 2. Métodos Principales de las Deques
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    Las deques comparten muchos métodos con las listas, pero tienen algunos específicos para operaciones eficientes en ambos extremos.
+  </p>
+
+  <h3 style="color: #1d4ed8; font-size: 1.5em; margin-top: 20px; margin-bottom: 10px;">📋 Tabla Resumen de Métodos Clave de <code>deque</code>:</h3>
+  <div style="overflow-x: auto; margin-bottom: 25px;">
+    <table class="styled-table-blue" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Método</th>
+          <th>Descripción Breve</th>
+          <th>Complejidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>append(x)</code></td>
+          <td>Añade <code>x</code> al extremo derecho (final) de la deque.</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td><code>appendleft(x)</code></td>
+          <td>Añade <code>x</code> al extremo izquierdo (inicio) de la deque.</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td><code>pop()</code></td>
+          <td>Elimina y devuelve el elemento del extremo derecho. Lanza <code>IndexError</code> si está vacía.</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td><code>popleft()</code></td>
+          <td>Elimina y devuelve el elemento del extremo izquierdo. Lanza <code>IndexError</code> si está vacía.</td>
+          <td>$O(1)$</td>
+        </tr>
+        <tr>
+          <td><code>extend(iterable)</code></td>
+          <td>Añade los elementos de <code>iterable</code> al extremo derecho.</td>
+          <td>$O(k)$ (k=longitud del iterable)</td>
+        </tr>
+        <tr>
+          <td><code>extendleft(iterable)</code></td>
+          <td>Añade los elementos de <code>iterable</code> al extremo izquierdo. Los elementos se añaden en orden inverso al del iterable.</td>
+          <td>$O(k)$</td>
+        </tr>
+        <tr>
+          <td><code>remove(value)</code></td>
+          <td>Elimina la primera aparición de <code>value</code>. Lanza <code>ValueError</code> si no está.</td>
+          <td>$O(N)$</td>
+        </tr>
+        <tr>
+          <td><code>clear()</code></td>
+          <td>Elimina todos los elementos de la deque.</td>
+          <td>$O(N)$</td>
+        </tr>
+        <tr>
+          <td><code>rotate(n=1)</code></td>
+          <td>Rota la deque <code>n</code> pasos a la derecha. Si <code>n</code> es negativo, rota a la izquierda.</td>
+          <td>$O(N)$</td>
+        </tr>
+        <tr>
+          <td><code>reverse()</code></td>
+          <td>Invierte los elementos de la deque <em>in-place</em>.</td>
+          <td>$O(N)$</td>
+        </tr>
+        <tr>
+          <td><code>count(x)</code></td>
+          <td>Cuenta las apariciones de <code>x</code>.</td>
+          <td>$O(N)$</td>
+        </tr>
+        <tr>
+          <td><code>index(x[, start[, stop]])</code></td>
+          <td>Devuelve el índice de la primera aparición de <code>x</code>. Lanza <code>ValueError</code> si no está.</td>
+          <td>$O(N)$</td>
+        </tr>
+         <tr>
+          <td><code>maxlen</code> (atributo)</td>
+          <td>Tamaño máximo de la deque (si se especificó al crearla), o <code>None</code>.</td>
+          <td>$O(1)$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+    .styled-table-blue { border-collapse: collapse; font-size: 0.9em; line-height:1.4;}
+    .styled-table-blue th, .styled-table-blue td { border: 1px solid #93c5fd; padding: 10px 12px; text-align: left; }
+    .styled-table-blue thead { background-color: #dbeafe; }
+    .styled-table-blue tbody tr:nth-child(odd) { background-color: #eff6ff; }
+    .styled-table-blue code { background-color: #bfdbfe; color: #1e3a8a; padding: 2px 5px; border-radius: 4px; font-size: 0.95em;}
+  </style>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-bottom:20px;">
+    Exploremos algunos de estos métodos con ejemplos:
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #e0f2fe; border-left: 5px solid #38bdf8;">
+      <h3 style="color: #075985;"><i class="fas fa-arrow-right"></i> <code>append(x)</code> y <i class="fas fa-arrow-left"></i> <code>appendleft(x)</code></h3>
+      <p>Añadir elementos a ambos extremos.</p>
+      <pre><code>from collections import deque
+# Simulación de llegada de tareas a un procesador
+tareas_pendientes = deque(["TareaC"])
+tareas_pendientes.append("TareaD")     # Añade al final (derecha)
+tareas_pendientes.appendleft("TareaB") # Añade al inicio (izquierda)
+tareas_pendientes.appendleft("TareaA")
+print(f"Cola de tareas: {tareas_pendientes}")
+# Salida: deque(['TareaA', 'TareaB', 'TareaC', 'TareaD'])</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #e0f2fe; border-left: 5px solid #38bdf8;">
+      <h3 style="color: #075985;"><i class="fas fa-eject"></i> <code>pop()</code> y <i class="fas fa-eject fa-flip-horizontal"></i> <code>popleft()</code></h3>
+      <p>Eliminar y obtener elementos de ambos extremos.</p>
+      <pre><code># Procesando la cola de tareas (FIFO - First In, First Out)
+primera_tarea = tareas_pendientes.popleft()
+print(f"Procesando: {primera_tarea}") # Sale 'TareaA'
+print(f"Tareas restantes: {tareas_pendientes}")
+
+# Si fuera una pila (LIFO - Last In, First Out)
+# ultima_tarea_anadida = tareas_pendientes.pop() 
+# print(f"Procesando (LIFO): {ultima_tarea_anadida}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #e0f2fe; border-left: 5px solid #38bdf8;">
+      <h3 style="color: #075985;"><i class="fas fa-redo"></i> <code>rotate(n)</code></h3>
+      <p>Rota los elementos. <code>n > 0</code> rota a la derecha, <code>n < 0</code> rota a la izquierda.</p>
+      <pre><code># Física: Simular un cifrado César o un carrusel
+secuencia_original = deque(['A', 'B', 'C', 'D', 'E'])
+secuencia_original.rotate(2)  # Rota 2 posiciones a la derecha
+print(f"Rotada +2: {secuencia_original}") 
+# Salida: deque(['D', 'E', 'A', 'B', 'C'])
+
+secuencia_original.rotate(-1) # Rota 1 posición a la izquierda
+print(f"Rotada -1: {secuencia_original}")
+# Salida: deque(['E', 'A', 'B', 'C', 'D'])</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #e0f2fe; border-left: 5px solid #38bdf8;">
+      <h3 style="color: #075985;"><i class="fas fa-history"></i> <code>maxlen</code> (Atributo y Comportamiento)</h3>
+      <p>Mantiene un historial de tamaño fijo. Al añadir a una deque llena, los elementos del extremo opuesto se descartan.</p>
+      <pre><code># Biología: Últimas N mediciones de pH en un cultivo celular
+ultimos_ph = deque(maxlen=3)
+ultimos_ph.append(7.4)
+ultimos_ph.append(7.3)
+ultimos_ph.append(7.5)
+print(f"Últimos pH: {ultimos_ph}") # deque([7.4, 7.3, 7.5], maxlen=3)
+
+ultimos_ph.append(7.2) # Añade 7.2, y 7.4 (el más antiguo) se va
+print(f"Después de añadir 7.2: {ultimos_ph}") 
+# Salida: deque([7.3, 7.5, 7.2], maxlen=3)</code></pre>
+    </div>
+  </div>
+  <style> /* Estilos para las tarjetas de métodos y operaciones */
+    .card-style-info { padding: 18px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .card-style-info h3 { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-size: 1.2em; }
+    .card-style-info h3 i { min-width: 20px; text-align: center; }
+    .card-style-info p { margin-bottom: 12px; font-size: 0.95em; line-height: 1.55; flex-grow: 1; }
+    .card-style-info pre { background-color: #1e293b; color: #dbeafe; padding: 10px; border-radius: 6px; font-size: 0.9em; overflow-x: auto; margin-top: auto; }
+  </style>
+</div>
+
+<div id="aplicaciones-deque" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #6d28d9; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-lightbulb"></i> 3. Aplicaciones Prácticas de las Deques
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:20px;">
+    La eficiencia de las deques en operaciones de extremo las hace ideales para varios escenarios:
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #581c87;"><i class="fas fa-layer-group"></i> Implementación de Pilas (LIFO)</h3>
+      <p>Una pila sigue el principio "Último en Entrar, Primero en Salir". Usa <code>append()</code> para apilar (push) y <code>pop()</code> para desapilar.</p>
+      <pre><code># Matemáticas: Evaluar expresiones con paréntesis
+pila_operaciones = deque()
+pila_operaciones.append("Operación1") # Push
+pila_operaciones.append("Operación2") # Push
+print(f"Pila: {pila_operaciones}")
+elemento_sacado = pila_operaciones.pop() # Pop "Operación2"
+print(f"Sacado: {elemento_sacado}, Pila ahora: {pila_operaciones}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #581c87;"><i class="fas fa-users"></i> Implementación de Colas (FIFO)</h3>
+      <p>Una cola sigue el principio "Primero en Entrar, Primero en Salir". Usa <code>append()</code> para encolar y <code>popleft()</code> para desencolar.</p>
+      <pre><code># Simulación de cola de impresión (Informática)
+cola_impresion = deque()
+cola_impresion.append("DocumentoA.pdf")
+cola_impresion.append("ImagenB.jpg")
+print(f"Cola: {cola_impresion}")
+trabajo_actual = cola_impresion.popleft() # Sale "DocumentoA.pdf"
+print(f"Imprimiendo: {trabajo_actual}, Cola ahora: {cola_impresion}")</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #581c87;"><i class="fas fa-undo"></i> Historial de "Deshacer" (Undo)</h3>
+      <p>Mantener un historial limitado de acciones recientes (usando <code>maxlen</code>).</p>
+      <pre><code># Editor de texto simple
+historial_acciones = deque(maxlen=5)
+def realizar_accion(accion):
+    historial_acciones.append(accion)
+    print(f"Acción: {accion}, Historial: {list(historial_acciones)}")
+
+realizar_accion("Escribir 'Hola'")
+realizar_accion("Cambiar fuente")
+realizar_accion("Guardar")
+realizar_accion("Insertar imagen")
+realizar_accion("Añadir tabla")
+realizar_accion("Borrar párrafo") # "Escribir 'Hola'" se descarta</code></pre>
+    </div>
+
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #581c87;"><i class="fas fa-search"></i> Algoritmo BFS (Búsqueda en Anchura)</h3>
+      <p>En teoría de grafos (Matemáticas/Computación), las deques son perfectas para implementar la cola en BFS.</p>
+      <pre><code># Ejemplo conceptual de BFS
+# grafo = { 'A': ['B', 'C'], 'B': ['D'], ... }
+# por_visitar = deque(['NodoInicial'])
+# while por_visitar:
+#     nodo_actual = por_visitar.popleft()
+#     # procesar nodo_actual
+#     # añadir vecinos no visitados a por_visitar.append()
+print("BFS usa deque para la cola de nodos por visitar.")</code></pre>
+    </div>
+    
+    <div class="card-style-info" style="background-color: #ede9fe; border-left: 5px solid #8b5cf6;">
+      <h3 style="color: #581c87;"><i class="fas fa-sliders-h"></i> Ventanas Deslizantes (Procesamiento de Señales/Datos)</h3>
+      <p>Analizar subconjuntos de datos de tamaño fijo a medida que llegan nuevos datos (Física/Estadística).</p>
+      <pre><code># Simulación de datos de un sensor de temperatura
+datos_ventana = deque(maxlen=4)
+nuevas_mediciones = [20.1, 20.3, 20.5, 20.4, 20.6, 20.7]
+for medicion in nuevas_mediciones:
+    datos_ventana.append(medicion)
+    if len(datos_ventana) == datos_ventana.maxlen:
+        promedio_ventana = sum(datos_ventana) / len(datos_ventana)
+        print(f"Ventana: {list(datos_ventana)}, Promedio: {promedio_ventana:.2f}°C")</code></pre>
+    </div>
+  </div>
+</div>
+
+<div id="conclusion-deque" class="card" style="background-color: #e0f2f2; border-left: 6px solid #06b6d4; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #0891b2; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-check-circle"></i> Conclusión: Deques para Eficiencia en los Extremos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Has aprendido sobre las <strong>deques</strong> del módulo <code>collections</code>, una alternativa especializada y eficiente a las listas de Python cuando necesitas realizar operaciones frecuentes en ambos extremos de una secuencia.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Recuerda sus puntos fuertes:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li>Operaciones <code>appendleft()</code> y <code>popleft()</code> con rendimiento $O(1)$.</li>
+        <li>Excelentes para implementar pilas (LIFO) y colas (FIFO).</li>
+        <li>Capacidad de tener una longitud máxima (<code>maxlen</code>) para historiales o buffers.</li>
+        <li>Métodos útiles como <code>rotate()</code> para manipulación de secuencias.</li>
+    </ul>
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    Si bien las listas son la estructura de secuencia de propósito general en Python, conocer y saber cuándo usar una <code>deque</code> puede optimizar significativamente tus algoritmos y estructuras de datos.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ccfbf1; border-left: 5px solid #2dd4bf; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Desafío de Simulación:</strong>
+      Imagina un sistema de procesamiento de datos de un telescopio (Astronomía). Los datos llegan en paquetes. Usa una <code>deque</code> con <code>maxlen</code> para almacenar los últimos 5 paquetes de datos recibidos. Cada vez que llega un nuevo paquete, añádelo. Si la deque está llena, el más antiguo se descarta. Imprime el estado de la deque después de añadir cada nuevo paquete para ver cómo funciona el buffer. ¡Pruébalo en Google Colab!
+    </p>
+  </div>
+</div>
