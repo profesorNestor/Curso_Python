@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 
@@ -25,11 +25,12 @@
     
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
     
-    </head>
+</head>
 <body>
     <div id="loader" class="loader" role="status" aria-live="polite">
         <div class="loader-content">
-            <i class="fab fa-python"></i> <div class="loader-text">Cargando curso...</div>
+            <i class="fab fa-python"></i> 
+            <div class="loader-text">Cargando curso...</div>
         </div>
     </div>
 
@@ -42,92 +43,97 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+
         <div class="sidebar-content">
             <div class="sidebar-menu" id="sidebar-menu" role="menu">
                 <p class="menu-section-title">📁 BIENVENIDA Y FUNDAMENTOS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/introduccion.html" class="menu-item"><i class="fas fa-info-circle"></i> Introducción al Curso</a></li>
-                  <li><a href="temas/google-colab.html" class="menu-item"><i class="fab fa-google"></i> Uso de Google Colab</a></li>
-                  <li><a href="temas/markdown.html" class="menu-item"><i class="fas fa-paragraph"></i> Sintaxis Markdown</a></li>
-                  <li><a href="temas/latex.html" class="menu-item"><i class="fas fa-subscript"></i> Introducción a LaTeX</a></li>
-                  <li><a href="temas/instalacion.html" class="menu-item"><i class="fas fa-laptop-code"></i> Instalación y Entornos</a></li>
+                    <li><a href="temas/introduccion.html" class="menu-item" data-lesson-id="introduccion"><i class="fas fa-info-circle"></i> Introducción al Curso</a></li>
+                    <li><a href="temas/google-colab.html" class="menu-item" data-lesson-id="google-colab"><i class="fab fa-google"></i> Uso de Google Colab</a></li>
+                    <li><a href="temas/markdown.html" class="menu-item" data-lesson-id="markdown"><i class="fas fa-paragraph"></i> Sintaxis Markdown</a></li>
+                    <li><a href="temas/latex.html" class="menu-item" data-lesson-id="latex"><i class="fas fa-subscript"></i> Introducción a LaTeX</a></li>
+                    <li><a href="temas/html5_curso.html" class="menu-item" data-lesson-id="html5"><i class="fab fa-html5"></i> HTML5 Esencial</a></li>
+                    <li><a href="temas/css3_estilos.html" class="menu-item" data-lesson-id="css3"><i class="fab fa-css3-alt"></i> CSS3 para Estilos Web</a></li>
+                    <li><a href="temas/javascript_intro.html" class="menu-item" data-lesson-id="javascript"><i class="fab fa-js-square"></i> JavaScript Básico</a></li>
+                    <li><a href="temas/instalacion.html" class="menu-item" data-lesson-id="instalacion"><i class="fas fa-laptop-code"></i> Instalación y Entornos</a></li>
                 </ul>
 
                 <p class="menu-section-title">⚙️ PRIMEROS PASOS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/hola-mundo.html" class="menu-item"><i class="fas fa-terminal"></i> Hola Mundo</a></li>
-                  <li><a href="temas/comentarios-estilo.html" class="menu-item"><i class="fas fa-comment-dots"></i> Comentarios y Estilo de Código</a></li>
-                  <li><a href="temas/variables-tipos.html" class="menu-item"><i class="fas fa-font"></i> Variables y Tipos de Datos</a></li>
-                  <li><a href="temas/entrada-salida.html" class="menu-item"><i class="fas fa-keyboard"></i> Entrada y Salida de Datos</a></li>
-                  <li><a href="temas/operadores.html" class="menu-item"><i class="fas fa-equals"></i> Operadores en Python</a></li>
+                    <li><a href="temas/hola-mundo.html" class="menu-item" data-lesson-id="hola-mundo"><i class="fas fa-terminal"></i> Hola Mundo</a></li>
+                    <li><a href="temas/comentarios-estilo.html" class="menu-item" data-lesson-id="comentarios-estilo"><i class="fas fa-comment-dots"></i> Comentarios y Estilo de Código</a></li>
+                    <li><a href="temas/variables-tipos.html" class="menu-item" data-lesson-id="variables-tipos"><i class="fas fa-font"></i> Variables y Tipos de Datos</a></li>
+                    <li><a href="temas/entrada-salida.html" class="menu-item" data-lesson-id="entrada-salida"><i class="fas fa-keyboard"></i> Entrada y Salida de Datos</a></li>
+                    <li><a href="temas/operadores.html" class="menu-item" data-lesson-id="operadores"><i class="fas fa-equals"></i> Operadores en Python</a></li>
                 </ul>
 
                 <p class="menu-section-title">🧺 COLECCIONES Y ESTRUCTURAS DE DATOS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/listas.html" class="menu-item"><i class="fas fa-list"></i> Listas</a></li>
-                  <li><a href="temas/tuplas.html" class="menu-item"><i class="fas fa-stream"></i> Tuplas</a></li>
-                  <li><a href="temas/conjuntos.html" class="menu-item"><i class="fas fa-layer-group"></i> Conjuntos (sets)</a></li>
-                  <li><a href="temas/diccionarios.html" class="menu-item"><i class="fas fa-book"></i> Diccionarios</a></li>
-                  <li><a href="temas/deque.html" class="menu-item"><i class="fas fa-warehouse"></i> Listas tipo deque</a></li>
+                    <li><a href="temas/listas.html" class="menu-item" data-lesson-id="listas"><i class="fas fa-list"></i> Listas</a></li>
+                    <li><a href="temas/tuplas.html" class="menu-item" data-lesson-id="tuplas"><i class="fas fa-stream"></i> Tuplas</a></li>
+                    <li><a href="temas/conjuntos.html" class="menu-item" data-lesson-id="conjuntos"><i class="fas fa-layer-group"></i> Conjuntos (sets)</a></li>
+                    <li><a href="temas/diccionarios.html" class="menu-item" data-lesson-id="diccionarios"><i class="fas fa-book"></i> Diccionarios</a></li>
+                    <li><a href="temas/deque.html" class="menu-item" data-lesson-id="deque"><i class="fas fa-warehouse"></i> Listas tipo deque</a></li>
                 </ul>
 
                 <p class="menu-section-title">🧠 ESTRUCTURAS DE CONTROL O DECISIÓN</p>
                 <ul class="menu-list">
-                  <li><a href="temas/condicionales.html" class="menu-item"><i class="fas fa-code-branch"></i> Condicionales (if, else, elif)</a></li>
-                  <li><a href="temas/match-case.html" class="menu-item"><i class="fas fa-random"></i> Estructura match-case</a></li>
-                  <li><a href="temas/excepciones.html" class="menu-item"><i class="fas fa-bug"></i> Manejo de excepciones</a></li>
+                    <li><a href="temas/condicionales.html" class="menu-item" data-lesson-id="condicionales"><i class="fas fa-code-branch"></i> Condicionales (if, else, elif)</a></li>
+                    <li><a href="temas/match-case.html" class="menu-item" data-lesson-id="match-case"><i class="fas fa-random"></i> Estructura match-case</a></li>
+                    <li><a href="temas/excepciones.html" class="menu-item" data-lesson-id="excepciones"><i class="fas fa-bug"></i> Manejo de excepciones</a></li>
                 </ul>
 
                 <p class="menu-section-title">🔁 ESTRUCTURAS DE REPETICIÓN (CICLOS)</p>
                 <ul class="menu-list">
-                  <li><a href="temas/for.html" class="menu-item"><i class="fas fa-sync-alt"></i> Ciclo for</a></li>
-                  <li><a href="temas/while.html" class="menu-item"><i class="fas fa-redo-alt"></i> Ciclo while</a></li>
+                    <li><a href="temas/for.html" class="menu-item" data-lesson-id="for"><i class="fas fa-sync-alt"></i> Ciclo for</a></li>
+                    <li><a href="temas/while.html" class="menu-item" data-lesson-id="while"><i class="fas fa-redo-alt"></i> Ciclo while</a></li>
                 </ul>
 
                 <p class="menu-section-title">🔧 FUNCIONES</p>
                 <ul class="menu-list">
-                  <li><a href="temas/funciones.html" class="menu-item"><i class="fas fa-puzzle-piece"></i> Introducción a funciones</a></li>
+                    <li><a href="temas/funciones.html" class="menu-item" data-lesson-id="funciones"><i class="fas fa-puzzle-piece"></i> Introducción a funciones</a></li>
                 </ul>
 
                 <p class="menu-section-title">🧰 LIBRERÍAS BÁSICAS DE PYTHON</p>
                 <ul class="menu-list">
-                  <li><a href="temas/librerias-basicas.html" class="menu-item"><i class="fas fa-toolbox"></i> Librería math, calendar, tabulate</a></li>
+                    <li><a href="temas/librerias-basicas.html" class="menu-item" data-lesson-id="librerias-basicas"><i class="fas fa-toolbox"></i> Librería math, calendar, tabulate</a></li>
                 </ul>
 
                 <p class="menu-section-title">📈 GRÁFICAS EN PYTHON</p>
                 <ul class="menu-list">
-                  <li><a href="temas/graficas.html" class="menu-item"><i class="fas fa-chart-line"></i> matplotlib, plotly, seaborn</a></li>
+                    <li><a href="temas/graficas.html" class="menu-item" data-lesson-id="graficas"><i class="fas fa-chart-line"></i> matplotlib, plotly, seaborn</a></li>
                 </ul>
 
                 <p class="menu-section-title">📂 ARCHIVOS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/archivos.html" class="menu-item"><i class="fas fa-folder-open"></i> Lectura y escritura de archivos</a></li>
+                    <li><a href="temas/archivos.html" class="menu-item" data-lesson-id="archivos"><i class="fas fa-folder-open"></i> Lectura y escritura de archivos</a></li>
                 </ul>
 
                 <p class="menu-section-title">🧱 PROGRAMACIÓN ORIENTADA A OBJETOS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/poo.html" class="menu-item"><i class="fas fa-cube"></i> Clases, atributos y métodos</a></li>
+                    <li><a href="temas/poo.html" class="menu-item" data-lesson-id="poo"><i class="fas fa-cube"></i> Clases, atributos y métodos</a></li>
                 </ul>
 
                 <p class="menu-section-title">🧪 LIBRERÍAS CIENTÍFICAS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/numpy.html" class="menu-item"><i class="fas fa-square-root-alt"></i> NumPy</a></li>
-                  <li><a href="temas/sympy.html" class="menu-item"><i class="fas fa-superscript"></i> SymPy</a></li>
-                  <li><a href="temas/scipy.html" class="menu-item"><i class="fas fa-flask"></i> SciPy</a></li>
+                    <li><a href="temas/numpy.html" class="menu-item" data-lesson-id="numpy"><i class="fas fa-square-root-alt"></i> NumPy</a></li>
+                    <li><a href="temas/sympy.html" class="menu-item" data-lesson-id="sympy"><i class="fas fa-superscript"></i> SymPy</a></li>
+                    <li><a href="temas/scipy.html" class="menu-item" data-lesson-id="scipy"><i class="fas fa-flask"></i> SciPy</a></li>
                 </ul>
 
                 <p class="menu-section-title">🖥️ INTERFACES GRÁFICAS</p>
                 <ul class="menu-list">
-                  <li><a href="temas/tkinter.html" class="menu-item"><i class="fas fa-window-restore"></i> Tkinter</a></li>
+                    <li><a href="temas/tkinter.html" class="menu-item" data-lesson-id="tkinter"><i class="fas fa-window-restore"></i> Tkinter</a></li>
                 </ul>
 
                 <p class="menu-section-title">🌐 PÁGINAS WEB CON PYTHON</p>
                 <ul class="menu-list">
-                  <li><a href="temas/flask.html" class="menu-item"><i class="fab fa-python"></i> Introducción a Flask</a></li>
-                  <li><a href="temas/django.html" class="menu-item"><i class="fas fa-network-wired"></i> Introducción a Django</a></li>
+                    <li><a href="temas/flask.html" class="menu-item" data-lesson-id="flask"><i class="fab fa-python"></i> Introducción a Flask</a></li>
+                    <li><a href="temas/django.html" class="menu-item" data-lesson-id="django"><i class="fas fa-network-wired"></i> Introducción a Django</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="sidebar-footer">
             <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo de color">
                 <i class="fas fa-moon"></i> <span>Modo Oscuro</span>
@@ -148,7 +154,7 @@
                     <p class="header-subtitle">Aprende programación desde cero hasta nivel avanzado</p>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-primary" onclick="loadLesson('temas/introduccion.html')">
+                    <button class="btn btn-primary" onclick="loadLesson('introduccion')">
                         <i class="fas fa-play"></i>
                         Comenzar
                     </button>
@@ -160,7 +166,7 @@
             <div class="welcome-message" style="text-align: center; padding: 40px;">
                 <h2><i class="fas fa-home"></i> Bienvenido al Curso de Python</h2>
                 <p>Explora el menú de la izquierda y selecciona un tema para comenzar.</p>
-                <button class="btn btn-primary" style="margin-top: 20px;" onclick="loadLesson('temas/introduccion.html')">
+                <button class="btn btn-primary" style="margin-top: 20px;" onclick="loadLesson('introduccion')">
                     <i class="fas fa-play"></i> Comenzar el Curso
                 </button>
             </div>
@@ -185,16 +191,16 @@
                             <i class="fab fa-github"></i>
                             <span>GitHub</span>
                         </a>
-                        </div>
+                    </div>
                 </div>
 
                 <div class="footer-section">
                     <h3 class="footer-title">🔗 Recursos</h3>
                     <ul class="footer-links">
-                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/documentacion_general.html'); return false;">Documentación General</a></li>
-                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/ejemplos_codigo.html'); return false;">Ejemplos de Código</a></li>
-                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/ejercicios_propuestos.html'); return false;">Ejercicios Propuestos</a></li>
-                        <li><a href="#" class="footer-link" onclick="loadLesson('temas/comunidad_ayuda.html'); return false;">Comunidad y Ayuda</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('documentacion_general'); return false;">Documentación General</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('ejemplos_codigo'); return false;">Ejemplos de Código</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('ejercicios_propuestos'); return false;">Ejercicios Propuestos</a></li>
+                        <li><a href="#" class="footer-link" onclick="loadLesson('comunidad_ayuda'); return false;">Comunidad y Ayuda</a></li>
                     </ul>
                 </div>
             </div>
