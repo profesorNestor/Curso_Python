@@ -1,0 +1,345 @@
+<div id="condicionales-header" class="card" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.8em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-code-branch"></i> Estructuras de Control: El Poder de Decidir en Python 🧭
+  </h1>
+  <p style="font-size: 1.2em; opacity: 0.95; line-height: 1.6;">
+    Aprende a guiar el flujo de tus programas tomando decisiones basadas en condiciones lógicas. ¡La base para crear código inteligente!
+  </p>
+</div>
+
+<div id="intro-condicionales" class="card" style="background-color: #f5f3ff; border-left: 6px solid #7c3aed; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #5b21b6; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-project-diagram"></i> 1. ¿Por Qué Necesitamos Tomar Decisiones en el Código?
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    Imagina que estás programando un sistema para analizar datos de un experimento físico. Quizás necesites hacer algo diferente si la temperatura supera un umbral crítico, o si la velocidad de una partícula es positiva o negativa. En la vida real, constantemente tomamos decisiones basadas en condiciones: "Si llueve, llevo paraguas", "Si la nota es mayor o igual a 3.0, apruebo".
+  </p>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-top:10px;">
+    En Python, las <strong>estructuras de control de decisión</strong> (o condicionales) nos permiten exactamente eso: ejecutar ciertos bloques de código solo si se cumplen determinadas condiciones, y otros bloques si no se cumplen[cite: 390]. Esto le da a nuestros programas la capacidad de reaccionar de manera diferente a distintas situaciones, haciéndolos mucho más inteligentes y útiles.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Las condiciones se evalúan generalmente como <code>True</code> (verdadero) o <code>False</code> (falso), utilizando los operadores de comparación (<code>==</code>, <code>!=</code>, <code><</code>, <code>></code>, <code><=</code>, <code>>=</code>) y los operadores lógicos (<code>and</code>, <code>or</code>, <code>not</code>) que ya conoces.
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #ede9fe; border-left: 5px solid #8b5cf6; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🎯 <strong>Objetivo Principal:</strong> Aprenderás a usar las sentencias <code>if</code>, <code>elif</code>, y <code>else</code> para controlar el flujo de ejecución de tus programas en Python, ¡y también daremos un vistazo a la nueva estructura <code>match-case</code>!
+    </p>
+  </div>
+</div>
+
+<div id="sentencia-if" class="card" style="background-color: #f0fdf4; border-left: 6px solid #10b981; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #059669; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-check-circle"></i> 2. La Sentencia <code>if</code>: Decisiones Simples
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    La estructura <code>if</code> es la forma más básica de tomar una decisión. Permite que un bloque de código se ejecute <strong>solo si una condición específica es verdadera</strong>[cite: 393]. Si la condición es falsa, el bloque de código indentado debajo del <code>if</code> simplemente se ignora y el programa continúa con las siguientes instrucciones.
+  </p>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis:</h3>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>if condicion_a_evaluar:
+    # Bloque de código que se ejecuta SI la condición_a_evaluar es True
+    # ¡La indentación (4 espacios) es crucial aquí!
+    print("La condición es verdadera.")
+# Esta línea se ejecuta siempre, después del bloque if (si la condición fue True) o directamente (si fue False)
+print("Fin de la evaluación del if.")</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Recuerda: la <code>condicion_a_evaluar</code> debe ser una expresión que resulte en <code>True</code> o <code>False</code>. Los dos puntos <code>:</code> al final de la línea del <code>if</code> son obligatorios, y el bloque de código que depende del <code>if</code> debe estar <strong>indentado</strong> (generalmente con 4 espacios)[cite: 395, 396].
+  </p>
+
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#e6fffa; border-radius:8px;">
+    <p style="font-style:italic; color: #0f766e;">--( Espacio para Diagrama de Flujo: Condicional `if` )-- <br> (Como la Figura 1.2 de tu PDF, mostrando cómo si la condición es 'True' se ejecutan las instrucciones, y si es 'False' se salta ese bloque).</p>
+    </div>
+
+  <h3 style="color: #047857; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
+  <pre style="background-color: #065f46; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - ¿Es positivo?
+numero = float(input("Ingresa un número: "))
+if numero > 0:
+    print(f"El número {numero} es positivo.")
+print("Análisis completado.")
+
+# Ejemplo 2: Física - ¿Objeto en reposo?
+velocidad_mps = 0.0 # metros por segundo
+if velocidad_mps == 0:
+    print("El objeto está en reposo.")
+
+# Ejemplo 3: Biología - ¿Muestra ácida?
+ph_muestra = float(input("Ingresa el pH de la muestra: "))
+if ph_muestra < 7.0:
+    print(f"Con pH {ph_muestra}, la muestra es ácida.")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #dcfce7; border-left: 5px solid #4ade80; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🧪 <strong>¡Pruébalo en Google Colab!</strong> Copia estos ejemplos, modifícalos y observa cómo se comporta el flujo del programa según los valores que ingreses o definas.
+    </p>
+  </div>
+</div>
+
+<div id="sentencia-if-else" class="card" style="background-color: #fff7ed; border-left: 6px solid #f97316; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c2410c; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-balance-scale"></i> 3. La Sentencia <code>if-else</code>: Dos Caminos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    A menudo, no solo queremos hacer algo si una condición es verdadera, sino también hacer algo diferente si es falsa. Para esto, usamos la estructura <code>if-else</code>[cite: 401, 402].
+  </p>
+
+  <h3 style="color: #9a3412; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis:</h3>
+  <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>if condicion_a_evaluar:
+    # Bloque de código que se ejecuta SI la condición es True
+    print("La condición fue Verdadera.")
+else:
+    # Bloque de código que se ejecuta SI la condición es False
+    print("La condición fue Falsa.")
+print("Evaluación if-else completada.")</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    La palabra clave <code>else</code> y su bloque de código indentado solo se ejecutan si la condición del <code>if</code> inicial es <code>False</code>.
+  </p>
+
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff1e6; border-radius:8px;">
+    <p style="font-style:italic; color: #c2410c;">--( Espacio para Diagrama de Flujo: Condicional <code>if-else</code> )-- <br> (Como la Figura 1.3 de tu PDF, mostrando los dos caminos posibles).</p>
+  </div>
+
+  <h3 style="color: #9a3412; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
+  <pre style="background-color: #7c2d12; color: #ffedd5; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - ¿Par o Impar?
+numero = int(input("Ingresa un número entero: "))
+if numero % 2 == 0:
+    print(f"El número {numero} es PAR.")
+else:
+    print(f"El número {numero} es IMPAR.")
+
+# Ejemplo 2: Física - ¿Movimiento o Reposo Basado en Fuerza Neta?
+fuerza_neta_N = float(input("Ingresa la fuerza neta sobre el objeto (N): "))
+if fuerza_neta_N == 0:
+    print("Según la Primera Ley de Newton, el objeto mantiene su estado de movimiento (o reposo).")
+else:
+    print("El objeto experimentará una aceleración (Segunda Ley de Newton).")
+
+# Ejemplo 3: Ciencias Sociales - ¿Mayor de edad para votar?
+edad = int(input("Ingresa la edad de la persona: "))
+EDAD_MINIMA_VOTAR = 18 # Constante
+if edad >= EDAD_MINIMA_VOTAR:
+    print(f"Con {edad} años, la persona SÍ puede votar.")
+else:
+    print(f"Con {edad} años, la persona NO puede votar aún.")</code></pre>
+</div>
+
+<div id="sentencia-if-elif-else" class="card" style="background-color: #fef9c3; border-left: 6px solid #eab308; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #ca8a04; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-traffic-light"></i> 4. La Sentencia <code>if-elif-else</code>: Múltiples Caminos
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    ¿Qué pasa si tienes más de dos posibilidades? Para esto usamos <code>elif</code> (abreviatura de "else if"). Te permite verificar múltiples condiciones en secuencia[cite: 425]. Python evalúa cada condición de arriba hacia abajo. Tan pronto como encuentra una condición <code>True</code>, ejecuta el bloque de código asociado y ¡se salta el resto de los <code>elif</code> y el <code>else</code> final! El bloque <code>else</code> al final es opcional y se ejecuta si ninguna de las condiciones anteriores fue verdadera.
+  </p>
+
+  <h3 style="color: #a16207; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis:</h3>
+  <pre style="background-color: #713f12; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>if condicion_1:
+    # Bloque si condicion_1 es True
+    print("Se cumplió la condición 1.")
+elif condicion_2:
+    # Bloque si condicion_1 es False Y condicion_2 es True
+    print("Se cumplió la condición 2.")
+elif condicion_3:
+    # Bloque si condicion_1 y condicion_2 son False Y condicion_3 es True
+    print("Se cumplió la condición 3.")
+# ... puedes tener tantos elif como necesites ...
+else:
+    # Bloque opcional si NINGUNA de las condiciones anteriores fue True
+    print("Ninguna de las condiciones anteriores se cumplió.")
+print("Evaluación if-elif-else completada.")</code></pre>
+
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fffbeb; border-radius:8px;">
+    <p style="font-style:italic; color: #b45309;">--( Espacio para Diagrama de Flujo: Condicional <code>if-elif-else</code> )-- <br> (Como la Figura 1.5 de tu PDF, mostrando la secuencia de decisiones).</p>
+  </div>
+
+  <h3 style="color: #a16207; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos Didácticos:</h3>
+  <pre style="background-color: #713f12; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - Clasificar un número
+numero = int(input("Ingresa un número entero: "))
+if numero > 0:
+    print(f"{numero} es positivo.")
+elif numero < 0:
+    print(f"{numero} es negativo.")
+else:
+    print(f"El número es cero.")
+
+# Ejemplo 2: Física - Estados del Agua según Temperatura (°C a 1 atm)
+temperatura_agua_C = float(input("Ingresa la temperatura del agua en °C: "))
+if temperatura_agua_C <= 0:
+    print("El agua estaría en estado SÓLIDO (hielo).")
+elif temperatura_agua_C < 100:
+    print("El agua estaría en estado LÍQUIDO.")
+else: # temperatura_agua_C >= 100
+    print("El agua estaría en estado GASEOSO (vapor).")
+
+# Ejemplo 3: Biología - Clasificación de pH
+ph_valor = float(input("Introduce el valor de pH de la solución: "))
+if ph_valor < 0 or ph_valor > 14:
+    print("Valor de pH fuera del rango típico (0-14).")
+elif ph_valor < 7:
+    print(f"Con pH {ph_valor}, la solución es ÁCIDA.")
+elif ph_valor == 7: # Es raro obtener exactamente 7.0 con floats
+    print(f"Con pH {ph_valor}, la solución es NEUTRA.")
+else: # ph_valor > 7
+    print(f"Con pH {ph_valor}, la solución es BÁSICA (alcalina).")</code></pre>
+</div>
+
+<div id="condicionales-anidados" class="card" style="background-color: #f0fdfa; border-left: 6px solid #14b8a6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-layer-group"></i> 5. Condicionales Anidados (Decisiones dentro de Decisiones)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Puedes colocar una estructura <code>if</code> (o <code>if-else</code>, <code>if-elif-else</code>) dentro de otra. Esto se llama anidamiento y permite tomar decisiones más complejas basadas en múltiples niveles de condiciones[cite: 405].
+  </p>
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Ejemplo:</h3>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>if condicion_exterior:
+    # Código si condicion_exterior es True
+    print("Condición exterior cumplida.")
+    if condicion_interior:
+        # Código si condicion_exterior Y condicion_interior son True
+        print("Ambas condiciones (exterior e interior) cumplidas.")
+    else:
+        # Código si condicion_exterior es True PERO condicion_interior es False
+        print("Condición exterior cumplida, pero la interior no.")
+else:
+    # Código si condicion_exterior es False
+    print("Condición exterior no cumplida.")</code></pre>
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#cffafe; border-radius:8px;">
+    <p style="font-style:italic; color: #0891b2;">--( Espacio para Diagrama de Flujo: Condicional Anidado )-- <br> (Como la Figura 1.4 de tu PDF, mostrando la jerarquía de decisiones).</p>
+  </div>
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplo Aplicado: Física - Clasificación de Partícula</h3>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Simulación simplificada para clasificar una partícula
+masa_kg = float(input("Masa de la partícula (kg, ej: 9.11e-31 para electrón): "))
+carga_C = float(input("Carga de la partícula (C, ej: -1.602e-19 para electrón): "))
+
+TOLERANCIA_CERO_MASA = 1e-35 # Para comparar con masa cero
+
+if masa_kg > TOLERANCIA_CERO_MASA:
+    print("La partícula tiene masa.")
+    if carga_C == 0:
+        print("Es una partícula masiva neutra (ej: neutrón).")
+    elif carga_C > 0:
+        print("Es una partícula masiva con carga positiva (ej: protón).")
+    else: # carga_C < 0
+        print("Es una partícula masiva con carga negativa (ej: electrón).")
+else: # masa_kg es cercana a cero o cero
+    print("La partícula no tiene masa (o es muy pequeña).")
+    if carga_C == 0:
+        print("Podría ser una partícula sin masa y sin carga (ej: fotón, neutrino idealizado).")
+    else:
+        print("Una partícula sin masa con carga es teóricamente inusual en modelos estándar.")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #cffafe; border-left: 5px solid #22d3ee; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚠️ <strong>Legibilidad:</strong> Si tienes muchos niveles de anidamiento, tu código puede volverse difícil de leer y seguir. A menudo, puedes simplificar condicionales anidados usando operadores lógicos (<code>and</code>, <code>or</code>) o reestructurando con <code>elif</code>.
+    </p>
+  </div>
+</div>
+
+<div id="sentencia-match-case" class="card" style="background-color: #fefce8; border-left: 6px solid #f59e0b; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #b45309; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-sitemap"></i> 6. La Estructura <code>match-case</code> (Python 3.10+)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    A partir de Python 3.10, se introdujo una nueva estructura de control llamada <strong><code>match-case</code></strong>, también conocida como "coincidencia de patrones estructurales" (structural pattern matching)[cite: 392, 447]. Ofrece una forma más declarativa y a menudo más legible de manejar múltiples condiciones, especialmente cuando se comparan valores contra diferentes patrones o estructuras de datos. Es similar a las sentencias <code>switch</code> o <code>case</code> de otros lenguajes, pero mucho más potente.
+  </p>
+  <h3 style="color: #92400e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis Básica:</h3>
+  <pre style="background-color: #78350f; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>match sujeto_a_evaluar:
+    case patron_1:
+        # Código si el sujeto coincide con patron_1
+        print("Coincide con Patrón 1")
+    case patron_2 if condicion_adicional: # 'Guardia' opcional
+        # Código si el sujeto coincide con patron_2 Y la condicion_adicional es True
+        print("Coincide con Patrón 2 y cumple la guarda")
+    case patron_3 | patron_4: # Patrones OR
+        # Código si coincide con patron_3 O con patron_4
+        print("Coincide con Patrón 3 o 4")
+    case _: # Caso comodín (wildcard) - Opcional, se ejecuta si ningún caso anterior coincide
+        print("No coincide con ningún patrón específico.")</code></pre>
+  <div style="text-align:center; margin: 20px 0; padding:10px; background-color:#fff7ed; border-radius:8px;">
+    <p style="font-style:italic; color: #c2410c;">--( Espacio para Diagrama de Flujo: <code>match-case</code> )-- <br> (Como la Figura 1.6 de tu PDF).</p>
+  </div>
+  <h3 style="color: #92400e; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplo: Matemáticas - Tipo de Ángulo (Grados) [cite: 457, 459]</h3>
+  <pre style="background-color: #78350f; color: #fef3c7; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>angulo_grados = float(input("Ingrese el ángulo en grados (0-360): "))
+
+match angulo_grados:
+    case 0:
+        tipo_angulo = "Nulo"
+    case angulo if 0 < angulo < 90:
+        tipo_angulo = "Agudo"
+    case 90.0: # Es importante ser preciso con flotantes si se compara igualdad
+        tipo_angulo = "Recto"
+    case angulo if 90 < angulo < 180:
+        tipo_angulo = "Obtuso"
+    case 180.0:
+        tipo_angulo = "Llano (o extendido)"
+    case angulo if 180 < angulo < 360:
+        tipo_angulo = "Cóncavo (o reflejo)"
+    case 360.0:
+        tipo_angulo = "Completo (o perigonal)"
+    case _: # Caso comodín para valores fuera de rango o no especificados
+        tipo_angulo = "Valor no clasificado o fuera de rango (0-360)."
+
+print(f"El ángulo de {angulo_grados}° es de tipo: {tipo_angulo}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fffbeb; border-left: 5px solid #f59e0b; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🆕 <strong>Nota sobre Versión:</strong> <code>match-case</code> está disponible a partir de Python 3.10. Si estás usando una versión anterior, deberás usar cadenas de <code>if-elif-else</code>. Google Colab usualmente tiene versiones recientes de Python, ¡así que puedes probarlo!
+    </p>
+  </div>
+</div>
+
+<div id="expresion-condicional" class="card" style="background-color: #f0fdfa; border-left: 6px solid #14b8a6; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #0f766e; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-question"></i> 7. Expresiones Condicionales (Operador Ternario)
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7; margin-bottom:15px;">
+    Python ofrece una forma concisa de escribir una sentencia <code>if-else</code> simple en una sola línea, conocida como expresión condicional o operador ternario.
+  </p>
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">Sintaxis:</h3>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code>valor_si_true if condicion else valor_si_false</code></pre>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    La <code>condicion</code> se evalúa primero. Si es <code>True</code>, toda la expresión devuelve <code>valor_si_true</code>. Si es <code>False</code>, devuelve <code>valor_si_false</code>.
+  </p>
+  <h3 style="color: #0d9488; font-size: 1.4em; margin-top: 20px; margin-bottom: 10px;">🔬 Ejemplos:</h3>
+  <pre style="background-color: #134e4a; color: #ccfbf1; padding: 15px; border-radius: 8px; font-size: 1.05em;"><code># Ejemplo 1: Matemáticas - Valor absoluto simple
+numero = -10
+valor_abs = numero if numero >= 0 else -numero
+print(f"El valor absoluto de {numero} es {valor_abs}") # Salida: 10
+
+# Ejemplo 2: Física - Estado de un interruptor
+voltaje_aplicado_V = 5.0
+estado_interruptor = "ENCENDIDO" if voltaje_aplicado_V > 0 else "APAGADO"
+print(f"El interruptor está: {estado_interruptor}") # Salida: ENCENDIDO
+
+# Ejemplo 3: Biología - Clasificación simple de temperatura corporal
+temperatura_paciente_C = 37.5
+estado_fiebre = "Fiebre" if temperatura_paciente_C > 37.2 else "Normal"
+print(f"Estado del paciente (temperatura): {estado_fiebre}")</code></pre>
+  <div style="margin-top: 15px; padding: 15px; background-color: #cffafe; border-left: 5px solid #22d3ee; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      ⚖️ <strong>Uso con Moderación:</strong> Las expresiones condicionales son geniales para asignaciones simples y hacer el código más corto. Sin embargo, si la lógica es compleja o los bloques <code>valor_si_true</code> / <code>valor_si_false</code> son largos, una estructura <code>if-else</code> tradicional es más legible.
+    </p>
+  </div>
+</div>
+
+<div id="conclusion-condicionales" class="card" style="background-color: #eef2ff; border-left: 6px solid #4f46e5; padding: 25px; border-radius: 12px;">
+  <h2 style="color: #3730a3; font-size: 2em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+    <i class="fas fa-award"></i> 8. Conclusión: Tomando el Control de tus Programas
+  </h2>
+  <p style="font-size: 1.1em; line-height: 1.7;">
+    ¡Felicidades! Has aprendido a usar las estructuras de control condicionales <code>if</code>, <code>elif</code>, y <code>else</code>, que son fundamentales para que tus programas tomen decisiones y reaccionen de forma inteligente a diferentes situaciones. También has tenido un primer vistazo a la potente estructura <code>match-case</code> y a las concisas expresiones condicionales.
+  </p>
+  <p style="font-size: 1.05em; line-height: 1.7; margin-top:10px;">
+    Estas herramientas te permitirán:
+    <ul style="margin-left: 20px; margin-top:10px; font-size: 1.05em; line-height: 1.7; margin-bottom: 15px;">
+        <li>Ejecutar diferentes bloques de código según si se cumplen o no ciertas condiciones.</li>
+        <li>Validar entradas de usuario (ej: asegurarse que un número esté en un rango).</li>
+        <li>Clasificar datos (ej: un resultado de pH como ácido, neutro o básico).</li>
+        <li>Implementar la lógica de juegos, simulaciones y modelos científicos.</li>
+        <li>Crear programas mucho más dinámicos y adaptables.</li>
+    </ul>
+  </p>
+  <div style="margin-top: 20px; padding: 15px; background-color: #e0e7ff; border-left: 5px solid #6366f1; border-radius: 8px;">
+    <p style="margin: 0; font-size: 1em;">
+      🚀 <strong>Próximos Pasos:</strong> Con el poder de tomar decisiones, el siguiente gran paso es aprender a repetir acciones. ¡Prepárate para los <strong>bucles (<code>for</code> y <code>while</code>)</strong> en la próxima lección! Combinando condicionales y bucles, podrás resolver una increíble variedad de problemas.
+      <br><br>
+      🧪 <strong>Desafío Científico:</strong>
+      Intenta escribir un programa en Google Colab que simule la clasificación de un tipo de roca (Ígnea, Sedimentaria, Metamórfica) basado en algunas de sus características (ej. `tiene_cristales_visibles: bool`, `tiene_capas: bool`, `proviene_de_enfriamiento_magma: bool`). ¡Usa <code>if-elif-else</code>!
+    </p>
+  </div>
+</div>
