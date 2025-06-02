@@ -211,16 +211,27 @@ function getInitialLessonId() {
 // ==========================================
 // 🎨 GESTIÓN DEL TEMA (MODO OSCURO/CLARO)
 // ==========================================
+
+/**
+ * Carga el tema guardado en localStorage o establece el tema claro por defecto en la primera visita.
+ */
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
-  // Si no hay tema guardado y el usuario prefiere oscuro, usar oscuro.
-  if (savedTheme === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    isDarkMode = true;
-  } else {
-    isDarkMode = savedTheme === 'dark';
+  
+  if (savedTheme) { // Si ya hay un tema guardado en localStorage
+    isDarkMode = (savedTheme === 'dark');
+    console.log(`🌓 Tema cargado desde localStorage: ${isDarkMode ? 'Oscuro' : 'Claro'}`);
+  } else { // No hay tema guardado: es la primera visita o se borró localStorage
+    // Establecer el tema claro por defecto para la primera visita
+    isDarkMode = false; // false para tema claro
+    localStorage.setItem('theme', 'light'); // Guardar este defecto para futuras visitas
+    console.log('💡 Primera visita o localStorage vacío. Estableciendo tema claro por defecto.');
   }
-  applyTheme();
+  
+  applyTheme(); // Aplica el tema (actualiza el body y el texto/icono del botón)
 }
+
+// La función toggleTheme y applyTheme que ya tienes permanecen igual:
 
 function toggleTheme() {
   isDarkMode = !isDarkMode;
@@ -236,14 +247,16 @@ function applyTheme() {
   const themeText = themeToggleButton ? themeToggleButton.querySelector('span') : null;
 
   body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-  if (themeIcon) {
-    themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
-  }
-  if (themeText) {
-    themeText.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
+  
+  if (themeToggleButton) { // Asegurarse de que el botón exista
+    if (themeIcon) {
+      themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    if (themeText) {
+      themeText.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
+    }
   }
 }
-
 // ==========================================
 // 📖 GESTIÓN DE CONTENIDO: CARGA DE LECCIONES
 // ==========================================
