@@ -1,0 +1,1028 @@
+<!-- ========================================
+     HTML5 ESENCIAL - CURSO DE PYTHON
+     Archivo: temas/html5_curso.html
+     Versión Completa y Mejorada
+     ======================================== -->
+
+<!-- HEADER PRINCIPAL CON ANIMACIÓN -->
+<div id="html5-header" class="card" style="background: linear-gradient(135deg, #e65100 0%, #ff9800 50%, #ffc107 100%); padding: 50px 30px; text-align: center; color: white; margin-bottom: 30px; border-radius: 15px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(230, 81, 0, 0.3);">
+  <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 8px, transparent 8px, transparent 16px); animation: htmlShift 35s linear infinite;"></div>
+  
+  <!-- ESTILOS CSS EMBEBIDOS PARA HTML5 -->
+  <style>
+    /* Animación del header */
+    @keyframes htmlShift { 0% { background-position: 0 0; } 100% { background-position: 300px 300px; } }
+    
+    /* Estilos para la línea de tiempo interactiva */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(180deg, #e65100, #ff9800, #ffc107);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      padding: 15px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateY(-3px);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: #ff9800;
+      border: 3px solid #fff;
+      top: 20px;
+      border-radius: 50%;
+      z-index: 1;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    .timeline-item:hover::after {
+      transform: scale(1.2);
+      background-color: #e65100;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 20px 25px;
+      background-color: white;
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 4px solid #ff9800;
+    }
+    
+    .timeline-year {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #e65100;
+      margin-bottom: 10px;
+    }
+    
+    .timeline-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .timeline-description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    /* Etiquetas HTML interactivas */
+    .html-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #ecf0f1;
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 1px solid #34495e;
+    }
+    
+    .html-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+    
+    .html-tag.semantic {
+      background: linear-gradient(135deg, #27ae60, #229954);
+    }
+    
+    .html-tag.semantic:hover {
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+    }
+    
+    .html-tag.form {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+    
+    .html-tag.form:hover {
+      background: linear-gradient(135deg, #5dade2, #3498db);
+    }
+    
+    .html-tag.media {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    }
+    
+    .html-tag.media:hover {
+      background: linear-gradient(135deg, #bb8fce, #9b59b6);
+    }
+    
+    /* Tooltips para etiquetas */
+    .html-tag .tooltip {
+      visibility: hidden;
+      width: 250px;
+      background-color: #2c3e50;
+      color: white;
+      text-align: left;
+      border-radius: 8px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1000;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -125px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8em;
+      font-weight: normal;
+      line-height: 1.4;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .html-tag .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #2c3e50 transparent transparent transparent;
+    }
+    
+    .html-tag:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Estilos para código HTML */
+    .html-code {
+      background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+      color: #f8f8f2;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin: 15px 0;
+      overflow-x: auto;
+      border: 1px solid #444;
+      position: relative;
+    }
+    
+    .html-code::before {
+      content: 'HTML';
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #e74c3c;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+    
+    /* Colores de sintaxis para HTML */
+    .html-code .tag { color: #f92672; }
+    .html-code .attr { color: #a6e22e; }
+    .html-code .value { color: #e6db74; }
+    .html-code .text { color: #f8f8f2; }
+    .html-code .comment { color: #75715e; font-style: italic; }
+    
+    /* Estructura visual de página web */
+    .webpage-structure {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 0;
+      margin: 20px 0;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .webpage-header {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      padding: 15px 20px;
+      font-weight: bold;
+      position: relative;
+    }
+    
+    .webpage-nav {
+      background: #34495e;
+      color: white;
+      padding: 10px 20px;
+      font-size: 0.9em;
+    }
+    
+    .webpage-main {
+      display: flex;
+      min-height: 200px;
+    }
+    
+    .webpage-content {
+      flex: 2;
+      padding: 20px;
+      background: #fafafa;
+      border-right: 1px solid #ddd;
+    }
+    
+    .webpage-aside {
+      flex: 1;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    
+    .webpage-footer {
+      background: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    
+    /* Botones interactivos */
+    .interactive-btn {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      margin: 5px;
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    }
+    
+    .interactive-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+    
+    .interactive-btn.secondary {
+      background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+      box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+    }
+    
+    .interactive-btn.secondary:hover {
+      box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+    }
+    
+    /* Grid de tarjetas */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 4px solid;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .feature-card.html5 { border-left-color: #e74c3c; }
+    .feature-card.semantic { border-left-color: #27ae60; }
+    .feature-card.responsive { border-left-color: #3498db; }
+    .feature-card.accessibility { border-left-color: #9b59b6; }
+    
+    .feature-icon {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .feature-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    
+    .feature-description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0%;
+      }
+      
+      .webpage-main {
+        flex-direction: column;
+      }
+      
+      .webpage-content {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  </style>
+  
+  <div style="position:relative; z-index:1;">
+    <h1 style="font-size: 3.5em; margin-bottom: 15px; text-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+      <i class="fab fa-html5"></i> HTML5: El Lenguaje de la Web Moderna 🌐
+    </h1>
+    <p style="font-size: 1.4em; opacity: 0.95; line-height: 1.7; max-width: 900px; margin:auto;">
+      Descubre la evolución, estructura y poder del lenguaje que define la World Wide Web
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN 1: QUÉ ES HTML5 Y SU SIGNIFICADO -->
+<div class="card" style="border-left: 6px solid #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #c0392b; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+    <i class="fas fa-info-circle"></i> 1. ¿Qué es HTML5? 🤔
+  </h2>
+  
+  <div class="cards-grid">
+    <div class="feature-card html5">
+      <div class="feature-icon">📝</div>
+      <div class="feature-title">HyperText Markup Language</div>
+      <div class="feature-description">
+        <strong>HyperText:</strong> Texto con enlaces que conecta documentos<br>
+        <strong>Markup:</strong> Etiquetas que estructuran el contenido<br>
+        <strong>Language:</strong> Vocabulario estándar para la web
+      </div>
+    </div>
+    
+    <div class="feature-card semantic">
+      <div class="feature-icon">🏗️</div>
+      <div class="feature-title">Quinta Evolución</div>
+      <div class="feature-description">
+        HTML5 es la quinta versión mayor del estándar HTML, introduciendo elementos semánticos, APIs avanzadas y multimedia nativa.
+      </div>
+    </div>
+    
+    <div class="feature-card responsive">
+      <div class="feature-icon">🌍</div>
+      <div class="feature-title">Estándar Universal</div>
+      <div class="feature-description">
+        Mantenido por el W3C (World Wide Web Consortium), es el lenguaje estándar para crear páginas web accesibles desde cualquier dispositivo.
+      </div>
+    </div>
+    
+    <div class="feature-card accessibility">
+      <div class="feature-icon">♿</div>
+      <div class="feature-title">Accesibilidad Nativa</div>
+      <div class="feature-description">
+        Incluye elementos y atributos específicos para hacer la web más accesible para personas con discapacidades.
+      </div>
+    </div>
+  </div>
+  
+  <h3 style="color: #c0392b; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin: 30px 0 20px;">
+    🎯 Principales Innovaciones de HTML5
+  </h3>
+  
+  <ul style="font-size: 1.1em; line-height: 1.8; color: #2c3e50; list-style: none; padding-left: 0;">
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>Elementos Semánticos:</strong> &lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;, &lt;footer&gt;</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>Multimedia Nativa:</strong> &lt;video&gt; y &lt;audio&gt; sin plugins</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>Canvas y SVG:</strong> Gráficos 2D y vectoriales integrados</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>Formularios Mejorados:</strong> Nuevos tipos de input y validación</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>APIs Avanzadas:</strong> Geolocalización, Local Storage, Web Workers</li>
+    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 10px;"></i><strong>Responsive Design:</strong> Soporte nativo para diseños adaptativos</li>
+  </ul>
+</div>
+
+<!-- SECCIÓN 2: HISTORIA Y EVOLUCIÓN - LÍNEA DE TIEMPO INTERACTIVA -->
+<div class="card" style="border-left: 6px solid #3498db; background: linear-gradient(135deg, #ebf8ff 0%, #dbeafe 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #2563eb; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+    <i class="fas fa-history"></i> 2. Historia y Evolución de HTML 📚
+  </h2>
+  
+  <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 30px; text-align: center;">
+    Desde sus humildes comienzos en el CERN hasta convertirse en el lenguaje que estructura toda la web moderna.
+  </p>
+  
+  <div class="timeline">
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <div class="timeline-year">1989-1991</div>
+        <div class="timeline-title">🌟 Nacimiento de la Web</div>
+        <div class="timeline-description">
+          Tim Berners-Lee en el CERN crea el primer navegador web, servidor web y las primeras páginas HTML. HTML era extremadamente simple: solo 18 elementos básicos.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <div class="timeline-year">1993</div>
+        <div class="timeline-title">📄 HTML 1.0</div>
+        <div class="timeline-description">
+          Primera especificación informal. Incluía elementos básicos como &lt;title&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;p&gt;, &lt;a&gt;, &lt;ul&gt;, &lt;li&gt; y el revolucionario hipervínculo.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <div class="timeline-year">1995</div>
+        <div class="timeline-title">🖼️ HTML 2.0</div>
+        <div class="timeline-description">
+          Primera especificación oficial (RFC 1866). Añadió formularios (&lt;form&gt;, &lt;input&gt;), imágenes (&lt;img&gt;) y tablas básicas. La web se vuelve interactiva.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <div class="timeline-year">1997</div>
+        <div class="timeline-title">🎨 HTML 3.2</div>
+        <div class="timeline-description">
+          Introducción de tablas complejas, applets de Java, y elementos de presentación. Netscape vs Internet Explorer: las "Guerras de Navegadores" comienzan.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-title">📐 HTML 4.01</div>
+        <div class="timeline-description">
+          Separación de contenido y presentación. Introducción de CSS, marcos (frames), y mejor soporte para internacionalización. Base sólida para la web moderna.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <div class="timeline-year">2000-2009</div>
+        <div class="timeline-title">❄️ La Era XHTML</div>
+        <div class="timeline-description">
+          XHTML 1.0 y 1.1: HTML reformulado como XML. Sintaxis más estricta, pero desarrollo lento. La web necesitaba más dinamismo y multimedia.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <div class="timeline-year">2008</div>
+        <div class="timeline-title">🚀 HTML5 Borrador</div>
+        <div class="timeline-description">
+          WHATWG (Web Hypertext Application Technology Working Group) publica el primer borrador de HTML5. Enfoque en aplicaciones web, no solo documentos.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item right">
+      <div class="timeline-content">
+        <div class="timeline-year">2014</div>
+        <div class="timeline-title">🎉 HTML5 Oficial</div>
+        <div class="timeline-description">
+          W3C publica HTML5 como Recomendación oficial. Elementos semánticos, multimedia nativa, Canvas, APIs avanzadas. La web moderna nace oficialmente.
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item left">
+      <div class="timeline-content">
+        <div class="timeline-year">2017-Presente</div>
+        <div class="timeline-title">🔄 HTML Living Standard</div>
+        <div class="timeline-description">
+          HTML se convierte en un "Living Standard" - evolución continua. Nuevas APIs, Web Components, Progressive Web Apps. El futuro es ahora.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 3: ETIQUETAS PRINCIPALES HTML5 -->
+<div class="card" style="border-left: 6px solid #27ae60; background: linear-gradient(135deg, #f0fff4 0%, #e6ffed 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #1e8449; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+    <i class="fas fa-code"></i> 3. Etiquetas Principales de HTML5 🏷️
+  </h2>
+  
+  <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+    HTML5 introduce más de 100 elementos. Aquí tienes los más importantes organizados por categorías:
+  </p>
+  
+  <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+    🏗️ Elementos Semánticos (Estructura de Página)
+  </h3>
+  
+  <div style="margin-bottom: 25px;">
+    <div class="html-tag semantic">
+      &lt;header&gt;
+      <span class="tooltip">
+        <strong>&lt;header&gt;</strong><br>
+        Define el encabezado de una página o sección. Contiene elementos introductorios, navegación o logos.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;nav&gt;
+      <span class="tooltip">
+        <strong>&lt;nav&gt;</strong><br>
+        Contiene enlaces de navegación principales del sitio. Ayuda a lectores de pantalla y SEO.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;main&gt;
+      <span class="tooltip">
+        <strong>&lt;main&gt;</strong><br>
+        Contenido principal único de la página. Solo debe haber uno por documento.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;section&gt;
+      <span class="tooltip">
+        <strong>&lt;section&gt;</strong><br>
+        Sección temática del contenido, típicamente con un encabezado. Agrupa contenido relacionado.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;article&gt;
+      <span class="tooltip">
+        <strong>&lt;article&gt;</strong><br>
+        Contenido independiente y reutilizable. Como un post de blog, noticia o comentario.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;aside&gt;
+      <span class="tooltip">
+        <strong>&lt;aside&gt;</strong><br>
+        Contenido lateral relacionado indirectamente. Sidebars, widgets, información adicional.
+      </span>
+    </div>
+    <div class="html-tag semantic">
+      &lt;footer&gt;
+      <span class="tooltip">
+        <strong>&lt;footer&gt;</strong><br>
+        Pie de página o sección. Información del autor, copyright, enlaces relacionados.
+      </span>
+    </div>
+  </div>
+  
+  <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+    🎥 Elementos de Multimedia
+  </h3>
+  
+  <div style="margin-bottom: 25px;">
+    <div class="html-tag media">
+      &lt;video&gt;
+      <span class="tooltip">
+        <strong>&lt;video&gt;</strong><br>
+        Reproduce videos nativamente sin plugins. Soporta múltiples formatos y controles personalizados.
+      </span>
+    </div>
+    <div class="html-tag media">
+      &lt;audio&gt;
+      <span class="tooltip">
+        <strong>&lt;audio&gt;</strong><br>
+        Reproduce archivos de audio. Soporte para MP3, OGG, WAV y controles nativos.
+      </span>
+    </div>
+    <div class="html-tag media">
+      &lt;canvas&gt;
+      <span class="tooltip">
+        <strong>&lt;canvas&gt;</strong><br>
+        Área de dibujo para gráficos 2D y 3D con JavaScript. Juegos, visualizaciones, editores gráficos.
+      </span>
+    </div>
+    <div class="html-tag media">
+      &lt;svg&gt;
+      <span class="tooltip">
+        <strong>&lt;svg&gt;</strong><br>
+        Gráficos vectoriales escalables integrados. Íconos, ilustraciones, animaciones vectoriales.
+      </span>
+    </div>
+    <div class="html-tag media">
+      &lt;picture&gt;
+      <span class="tooltip">
+        <strong>&lt;picture&gt;</strong><br>
+        Imágenes responsivas con múltiples fuentes. Diferentes imágenes para diferentes dispositivos.
+      </span>
+    </div>
+  </div>
+  
+  <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+    📝 Formularios Avanzados
+  </h3>
+  
+  <div style="margin-bottom: 25px;">
+    <div class="html-tag form">
+      &lt;input type="email"&gt;
+      <span class="tooltip">
+        <strong>Input Email</strong><br>
+        Validación automática de formato de email. Teclado específico en móviles.
+      </span>
+    </div>
+    <div class="html-tag form">
+      &lt;input type="date"&gt;
+      <span class="tooltip">
+        <strong>Input Date</strong><br>
+        Selector de fecha nativo del navegador. Formato consistente entre plataformas.
+      </span>
+    </div>
+    <div class="html-tag form">
+      &lt;input type="range"&gt;
+      <span class="tooltip">
+        <strong>Input Range</strong><br>
+        Control deslizante para seleccionar valores numéricos en un rango específico.
+      </span>
+    </div>
+    <div class="html-tag form">
+      &lt;input type="color"&gt;
+      <span class="tooltip">
+        <strong>Input Color</strong><br>
+        Selector de color nativo. Devuelve valores hexadecimales del color seleccionado.
+      </span>
+    </div>
+    <div class="html-tag form">
+      &lt;datalist&gt;
+      <span class="tooltip">
+        <strong>&lt;datalist&gt;</strong><br>
+        Lista de opciones predefinidas para inputs. Autocompletado inteligente.
+      </span>
+    </div>
+    <div class="html-tag form">
+      &lt;progress&gt;
+      <span class="tooltip">
+        <strong>&lt;progress&gt;</strong><br>
+        Barra de progreso nativa. Ideal para mostrar el avance de cargas o procesos.
+      </span>
+    </div>
+  </div>
+  
+  <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+    📋 Elementos de Texto y Contenido
+  </h3>
+  
+  <div style="margin-bottom: 25px;">
+    <div class="html-tag">
+      &lt;mark&gt;
+      <span class="tooltip">
+        <strong>&lt;mark&gt;</strong><br>
+        Resalta texto importante o relevante. Como un marcador fluorescente digital.
+      </span>
+    </div>
+    <div class="html-tag">
+      &lt;time&gt;
+      <span class="tooltip">
+        <strong>&lt;time&gt;</strong><br>
+        Marca fechas y horas de forma semántica. Ayuda a motores de búsqueda y accesibilidad.
+      </span>
+    </div>
+    <div class="html-tag">
+      &lt;details&gt;
+      <span class="tooltip">
+        <strong>&lt;details&gt;</strong><br>
+        Contenido desplegable nativo. Funciona sin JavaScript para mostrar/ocultar información.
+      </span>
+    </div>
+    <div class="html-tag">
+      &lt;summary&gt;
+      <span class="tooltip">
+        <strong>&lt;summary&gt;</strong><br>
+        Título clickeable para el elemento &lt;details&gt;. Define qué texto se muestra siempre.
+      </span>
+    </div>
+    <div class="html-tag">
+      &lt;figure&gt;
+      <span class="tooltip">
+        <strong>&lt;figure&gt;</strong><br>
+        Contenido ilustrativo como imágenes, diagramas, código. Semánticamente independiente.
+      </span>
+    </div>
+    <div class="html-tag">
+      &lt;figcaption&gt;
+      <span class="tooltip">
+        <strong>&lt;figcaption&gt;</strong><br>
+        Leyenda o descripción para el contenido de &lt;figure&gt;. Mejora la accesibilidad.
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 4: ESTRUCTURA DE UNA PÁGINA WEB BÁSICA -->
+<div class="card" style="border-left: 6px solid #9b59b6; background: linear-gradient(135deg, #f8f4ff 0%, #f0e6ff 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #7d3c98; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+    <i class="fas fa-sitemap"></i> 4. Estructura y Maquetación Web Básica 🏗️
+  </h2>
+  
+  <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+    Una página web HTML5 moderna sigue una estructura semántica clara. Veamos cómo se organiza:
+  </p>
+  
+  <h3 style="color: #7d3c98; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; margin: 30px 0 20px;">
+    📐 Estructura Visual de una Página Web
+  </h3>
+  
+  <div class="webpage-structure">
+    <div class="webpage-header">
+      <i class="fas fa-crown"></i> HEADER - Encabezado del sitio (Logo, título principal)
+    </div>
+    <div class="webpage-nav">
+      <i class="fas fa-compass"></i> NAV - Menú de navegación principal
+    </div>
+    <div class="webpage-main">
+      <div class="webpage-content">
+        <h4><i class="fas fa-newspaper"></i> MAIN - Contenido principal</h4>
+        <p>Aquí va el contenido único de cada página:</p>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li><strong>SECTION:</strong> Secciones temáticas</li>
+          <li><strong>ARTICLE:</strong> Artículos independientes</li>
+          <li><strong>H1-H6:</strong> Jerarquía de títulos</li>
+          <li><strong>P:</strong> Párrafos de texto</li>
+        </ul>
+      </div>
+      <div class="webpage-aside">
+        <h4><i class="fas fa-sidebar"></i> ASIDE</h4>
+        <p>Contenido relacionado:</p>
+        <ul style="font-size: 0.9em; margin: 10px 0;">
+          <li>Enlaces relacionados</li>
+          <li>Publicidad</li>
+          <li>Información adicional</li>
+          <li>Widgets sociales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="webpage-footer">
+      <i class="fas fa-info-circle"></i> FOOTER - Información del sitio (Copyright, contacto, enlaces)
+    </div>
+  </div>
+  
+  <h3 style="color: #7d3c98; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; margin: 30px 0 20px;">
+    💻 Código HTML5 Completo
+  </h3>
+  
+  <div class="html-code">
+<span class="comment">&lt;!-- Estructura HTML5 semántica completa --&gt;</span>
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="value">"es"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset=</span><span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="value">"viewport"</span> <span class="attr">content=</span><span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="value">"description"</span> <span class="attr">content=</span><span class="value">"Descripción de mi página web"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">Mi Página Web HTML5</span><span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="value">"stylesheet"</span> <span class="attr">href=</span><span class="value">"styles.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+    <span class="comment">&lt;!-- Encabezado del sitio --&gt;</span>
+    <span class="tag">&lt;header&gt;</span>
+        <span class="tag">&lt;h1&gt;</span><span class="text">Mi Sitio Web Increíble</span><span class="tag">&lt;/h1&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="text">Bienvenido a mi espacio digital</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+
+    <span class="comment">&lt;!-- Navegación principal --&gt;</span>
+    <span class="tag">&lt;nav&gt;</span>
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"#inicio"</span><span class="tag">&gt;</span><span class="text">Inicio</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"#about"</span><span class="tag">&gt;</span><span class="text">Acerca de</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"#contacto"</span><span class="tag">&gt;</span><span class="text">Contacto</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/nav&gt;</span>
+
+    <span class="comment">&lt;!-- Contenido principal --&gt;</span>
+    <span class="tag">&lt;main&gt;</span>
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"inicio"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h2&gt;</span><span class="text">Bienvenido</span><span class="tag">&lt;/h2&gt;</span>
+            <span class="tag">&lt;p&gt;</span><span class="text">Esta es mi página web creada con HTML5.</span><span class="tag">&lt;/p&gt;</span>
+            
+            <span class="tag">&lt;article&gt;</span>
+                <span class="tag">&lt;h3&gt;</span><span class="text">Mi Primer Artículo</span><span class="tag">&lt;/h3&gt;</span>
+                <span class="tag">&lt;time</span> <span class="attr">datetime=</span><span class="value">"2025-06-02"</span><span class="tag">&gt;</span><span class="text">2 de junio, 2025</span><span class="tag">&lt;/time&gt;</span>
+                <span class="tag">&lt;p&gt;</span><span class="text">Contenido del artículo...</span><span class="tag">&lt;/p&gt;</span>
+            <span class="tag">&lt;/article&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+
+        <span class="tag">&lt;section</span> <span class="attr">id=</span><span class="value">"multimedia"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h2&gt;</span><span class="text">Multimedia</span><span class="tag">&lt;/h2&gt;</span>
+            
+            <span class="tag">&lt;figure&gt;</span>
+                <span class="tag">&lt;video</span> <span class="attr">controls</span> <span class="attr">width=</span><span class="value">"400"</span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;source</span> <span class="attr">src=</span><span class="value">"video.mp4"</span> <span class="attr">type=</span><span class="value">"video/mp4"</span><span class="tag">&gt;</span>
+                    <span class="text">Tu navegador no soporta video HTML5.</span>
+                <span class="tag">&lt;/video&gt;</span>
+                <span class="tag">&lt;figcaption&gt;</span><span class="text">Video de demostración</span><span class="tag">&lt;/figcaption&gt;</span>
+            <span class="tag">&lt;/figure&gt;</span>
+        <span class="tag">&lt;/section&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+
+    <span class="comment">&lt;!-- Contenido lateral --&gt;</span>
+    <span class="tag">&lt;aside&gt;</span>
+        <span class="tag">&lt;h3&gt;</span><span class="text">Enlaces Relacionados</span><span class="tag">&lt;/h3&gt;</span>
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"#"</span><span class="tag">&gt;</span><span class="text">Recurso 1</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"#"</span><span class="tag">&gt;</span><span class="text">Recurso 2</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/aside&gt;</span>
+
+    <span class="comment">&lt;!-- Pie de página --&gt;</span>
+    <span class="tag">&lt;footer&gt;</span>
+        <span class="tag">&lt;p&gt;</span><span class="text">&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</span><span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;address&gt;</span>
+            <span class="text">Contacto: </span><span class="tag">&lt;a</span> <span class="attr">href=</span><span class="value">"mailto:hola@misitio.com"</span><span class="tag">&gt;</span><span class="text">hola@misitio.com</span><span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/address&gt;</span>
+    <span class="tag">&lt;/footer&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+  </div>
+</div>
+
+<!-- SECCIÓN 5: HTML EN GOOGLE COLAB -->
+<div class="card" style="border-left: 6px solid #ff6b35; background: linear-gradient(135deg, #fff8f5 0%, #ffeee8 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+  <h2 style="color: #d84315; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+    <i class="fab fa-google"></i> 5. HTML en Google Colab con %%html 🚀
+  </h2>
+  
+  <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+    Google Colab no es solo para Python. Puedes crear y mostrar contenido HTML directamente en tus notebooks usando la celda mágica <code>%%html</code>.
+  </p>
+  
+  <h3 style="color: #d84315; border-bottom: 3px solid #ff6b35; padding-bottom: 10px; margin: 30px 0 20px;">
+    🎯 ¿Para qué usar %%html en Colab?
+  </h3>
+  
+  <div class="cards-grid">
+    <div class="feature-card html5">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Visualizaciones Interactivas</div>
+      <div class="feature-description">
+        Crear dashboards, gráficos interactivos con D3.js, o visualizaciones personalizadas que complementen tu análisis de datos.
+      </div>
+    </div>
+    
+    <div class="feature-card semantic">
+      <div class="feature-icon">🎓</div>
+      <div class="feature-title">Material Educativo</div>
+      <div class="feature-description">
+        Diseñar tutoriales interactivos, explicaciones con animaciones, o presentaciones dinámicas directamente en el notebook.
+      </div>
+    </div>
+    
+    <div class="feature-card responsive">
+      <div class="feature-icon">🔬</div>
+      <div class="feature-title">Interfaces de Experimentos</div>
+      <div class="feature-description">
+        Crear formularios para entrada de parámetros, controles para simulaciones, o interfaces de usuario para algoritmos.
+      </div>
+    </div>
+    
+    <div class="feature-card accessibility">
+      <div class="feature-icon">📝</div>
+      <div class="feature-title">Reportes Personalizados</div>
+      <div class="feature-description">
+        Generar reportes con estilos personalizados, documentación rica, o presentaciones de resultados más atractivas.
+      </div>
+    </div>
+  </div>
+  
+  <h3 style="color: #d84315; border-bottom: 3px solid #ff6b35; padding-bottom: 10px; margin: 30px 0 20px;">
+    💻 Ejemplos Prácticos en Colab
+  </h3>
+  
+  <h4 style="color: #d84315; margin: 25px 0 15px;">📝 Ejemplo Básico: Página de Bienvenida</h4>
+  <div class="html-code">
+<span class="comment"># En una celda de Colab, escribes:</span>
+<span class="tag">%%html</span>
+<span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+           padding: 30px; border-radius: 15px; color: white; text-align: center;
+           font-family: Arial, sans-serif; margin: 20px 0;"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h1</span> <span class="attr">style=</span><span class="value">"font-size: 2.5em; margin: 0;"</span><span class="tag">&gt;</span>
+        <span class="text">🚀 Análisis de Datos con Python</span>
+    <span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p</span> <span class="attr">style=</span><span class="value">"font-size: 1.2em; margin: 15px 0;"</span><span class="tag">&gt;</span>
+        <span class="text">Notebook por: Tu Nombre | Fecha: 2025-06-02</span>
+    <span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"background: rgba(255,255,255,0.2); padding: 15px; 
+              border-radius: 10px; margin-top: 20px;"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;strong&gt;</span><span class="text">Objetivos del análisis:</span><span class="tag">&lt;/strong&gt;</span>
+        <span class="tag">&lt;ul</span> <span class="attr">style=</span><span class="value">"text-align: left; margin: 10px 0;"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">Explorar el dataset</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">Identificar patrones</span><span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span><span class="text">Crear visualizaciones</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+  </div>
+  
+  <h4 style="color: #d84315; margin: 25px 0 15px;">📊 Ejemplo Avanzado: Dashboard Interactivo</h4>
+  <div class="html-code">
+<span class="tag">%%html</span>
+<span class="tag">&lt;div</span> <span class="attr">id=</span><span class="value">"dashboard"</span> <span class="attr">style=</span><span class="value">"max-width: 800px; margin: 0 auto; font-family: Arial;"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Header del dashboard --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"background: #2c3e50; color: white; padding: 20px; 
+              border-radius: 10px 10px 0 0; text-align: center;"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h2</span> <span class="attr">style=</span><span class="value">"margin: 0;"</span><span class="tag">&gt;</span><span class="text">📈 Dashboard de Ventas</span><span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    
+    <span class="comment">&lt;!-- Métricas principales --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"display: flex; background: #ecf0f1; padding: 20px;"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"flex: 1; text-align: center; margin: 0 10px; 
+                  background: white; padding: 20px; border-radius: 8px;
+                  box-shadow: 0 2px 10px rgba(0,0,0,0.1);"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h3</span> <span class="attr">style=</span><span class="value">"color: #27ae60; margin: 0; font-size: 2em;"</span><span class="tag">&gt;</span><span class="text">$125,430</span><span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p</span> <span class="attr">style=</span><span class="value">"margin: 5px 0; color: #666;"</span><span class="tag">&gt;</span><span class="text">Ventas Totales</span><span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        
+        <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"flex: 1; text-align: center; margin: 0 10px; 
+                  background: white; padding: 20px; border-radius: 8px;
+                  box-shadow: 0 2px 10px rgba(0,0,0,0.1);"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h3</span> <span class="attr">style=</span><span class="value">"color: #3498db; margin: 0; font-size: 2em;"</span><span class="tag">&gt;</span><span class="text">1,247</span><span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p</span> <span class="attr">style=</span><span class="value">"margin: 5px 0; color: #666;"</span><span class="tag">&gt;</span><span class="text">Clientes</span><span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        
+        <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"flex: 1; text-align: center; margin: 0 10px; 
+                  background: white; padding: 20px; border-radius: 8px;
+                  box-shadow: 0 2px 10px rgba(0,0,0,0.1);"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h3</span> <span class="attr">style=</span><span class="value">"color: #e74c3c; margin: 0; font-size: 2em;"</span><span class="tag">&gt;</span><span class="text">24.5%</span><span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p</span> <span class="attr">style=</span><span class="value">"margin: 5px 0; color: #666;"</span><span class="tag">&gt;</span><span class="text">Crecimiento</span><span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    
+    <span class="comment">&lt;!-- Área de gráficos --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"background: white; padding: 20px; margin: 20px; 
+              border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h4</span> <span class="attr">style=</span><span class="value">"margin-top: 0; color: #2c3e50;"</span><span class="tag">&gt;</span><span class="text">📊 Aquí iría tu gráfico de Python</span><span class="tag">&lt;/h4&gt;</span>
+        <span class="tag">&lt;p</span> <span class="attr">style=</span><span class="value">"color: #666;"</span><span class="tag">&gt;</span>
+            <span class="text">Esta sección se puede combinar con matplotlib, plotly, o seaborn</span>
+        <span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;style&gt;</span>
+<span class="comment">/* Estilos responsivos para móviles */</span>
+<span class="attr">@media (max-width: 600px)</span> {
+    <span class="value">#dashboard div[style*="display: flex"]</span> {
+        <span class="attr">flex-direction:</span> <span class="value">column !important;</span>
+    }
+}
+<span class="tag">&lt;/style&gt;</span>
+  </div>
+  
+  <h4 style="color: #d84315; margin: 25px 0 15px;">🔧 Ejemplo con JavaScript Interactivo</h4>
+  <div class="html-code">
+<span class="tag">%%html</span>
+<span class="tag">&lt;div</span> <span class="attr">style=</span><span class="value">"max-width: 500px; margin: 20px auto; padding: 20px; 
+           border: 2px solid #3498db; border-radius: 15px; 
+           background: linear-gradient(135deg, #f8fafc, #e2e8f0);"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h3</span> <span class="attr">style=</span><span class="value">"text-align: center; color: #2c3e50;"</span><span class="tag">&gt;</span>
+        <span class="text">🧮 Calculadora de IM

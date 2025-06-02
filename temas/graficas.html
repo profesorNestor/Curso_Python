@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Gráficos con Matplotlib – Guía Visual para Matemáticas y Física</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <style>
+        /* —— Reset & base —— */
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Segoe UI','Helvetica Neue',sans-serif;line-height:1.65;background:#f5f7fa;color:#333;padding:20px; margin:0;} /* Reducido padding y quitado margin */
+        h1,h2,h3,h4{font-weight:600;line-height:1.25}
+        a{color:#2563eb;text-decoration:none}
+        a:hover{text-decoration:underline}
+        code{font-family:'Courier New',monospace;background:rgba(0,0,0,0.05);padding:2px 6px;border-radius:4px; font-size: 0.9em;} /* Ligeramente más pequeño y color de fondo más sutil */
+        pre{margin:0;} /* Reset margin for pre */
+        pre code{background:none;padding:0; font-size: 1em;} /* Reset para code dentro de pre */
+
+        /* —— Contenedor Principal —— */
+        .main-container {max-width: 900px; margin: 20px auto; padding: 0 15px;} /* Centrado y con padding */
+        
+        /* —— Cards & Sections —— */
+        .card{border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);margin-bottom:30px} /* Reducido margin-bottom */
+        .section-title{display:flex;align-items:center;gap:10px;font-size:1.8em;margin-bottom:18px} /* Reducido font-size y margin */
+
+        /* —— Code blocks —— */
+        .code-block-mpl{position:relative;background:#1e293b;color:#cbd5e1;border-radius:10px;padding:18px;font-family:'Courier New',monospace;font-size:0.95em;overflow-x:auto;margin:15px 0} /* Ajustes generales */
+        .code-block-mpl .copy-btn{position:absolute;top:10px;right:10px;background:#475569;border:none;border-radius:6px;padding:6px 10px;font-size:.8em;color:#e2e8f0;cursor:pointer;opacity:.7;transition:opacity .3s, background-color .3s;}
+        .code-block-mpl:hover .copy-btn{opacity:1}
+        .code-block-mpl .copy-btn:hover{background-color: #5a6b82;}
+        .code-caption{display:block;font-size:.8em;color:#64748b;margin-bottom:5px; margin-top: 10px;} /* Ajustes generales */
+
+        /* —— Notes —— */
+        .note{border-left:5px solid;padding:15px;border-radius:8px;margin-top:18px; font-size:0.95em;}
+
+        /* —— Feature Grid —— */
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px} /* Ajustado minmax y gap */
+        .feature-card{padding:18px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05); font-size:0.95em;} /* Ajustado padding y shadow */
+        .feature-card h4 {margin-top:0; margin-bottom: 8px;}
+        .feature-card p {margin-bottom:0;}
+
+
+        /* —— Animaciones —— */
+        @keyframes subtleShiftMplt{0%{background-position:0 0}100%{background-position:220px 220px}}
+
+        /* Mejoras de accesibilidad y responsividad */
+        @media (max-width: 768px) {
+            body {padding: 15px;}
+            .section-title {font-size: 1.6em;}
+            .code-block-mpl {font-size: 0.9em;}
+            .feature-grid{grid-template-columns:1fr;} /* Una columna en móviles */
+        }
+    </style>
+</head>
+<body>
+<div class="main-container"> <header class="card" style="background:linear-gradient(135deg,#1e3a8a 0%,#6366f1 100%);padding:40px 25px;text-align:center;color:#fff;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 7px,transparent 7px 14px);animation:subtleShiftMplt 40s linear infinite"></div>
+    <div style="position:relative;z-index:1">
+        <h1 style="font-size:2.5em;margin-bottom:12px;text-shadow:1px 1px 4px rgba(0,0,0,0.5);"><i class="fas fa-chart-line"></i> Domina Matplotlib 📈</h1>
+        <p style="font-size:1.2em;max-width:750px;margin:0 auto;opacity:.95">Construye visualizaciones profesionales para matemáticas 🧮 y física 🔬 usando la librería de gráficos más popular de Python.</p>
+    </div>
+</header>
+
+<section id="instalacion" class="card" style="border-left:6px solid #0ea5e9;background:linear-gradient(135deg,#e0f2fe 0%,#bae6fd 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#075985"><i class="fas fa-download"></i> 1. Instalación &amp; Importación</h2>
+    <p style="font-size:1.05em">Matplotlib se instala vía <code>pip</code> y se importa normalmente como <code>plt</code>. Esta convención se usa en casi todos los libros y tutoriales.</p>
+
+    <div class="feature-grid" style="margin-top:18px">
+        <div class="feature-card" style="background:#f0f9ff;border-left:4px solid #0ea5e9"><h4 style="color:#0369a1"><i class="fas fa-terminal"></i> Instalación</h4><code>pip install matplotlib</code></div>
+        <div class="feature-card" style="background:#f0f9ff;border-left:4px solid #0ea5e9"><h4 style="color:#0369a1"><i class="fas fa-code"></i> Importación</h4><code>import matplotlib.pyplot as plt</code></div>
+    </div>
+
+    <span class="code-caption">Código 1.1 — Prueba rápida</span>
+    <div class="code-block-mpl">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+plt.plot([0,1,2],[0,1,4])
+plt.title("¡Tu primer gráfico!")
+plt.show()</code></pre>
+    </div>
+
+    <div class="note" style="border-left-color:#0284c7;background:#cffafe">
+        <p><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> <strong>Tip rápido:</strong> ejecuta el código anterior en un entorno interactivo (Jupyter, IPython) para ver el gráfico emergente.</p>
+    </div>
+</section>
+
+<section id="basicos" class="card" style="border-left:6px solid #8b5cf6;background:linear-gradient(135deg,#f3e8ff 0%,#ede9fe 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#6b21a8"><i class="fas fa-cubes"></i> 2. Anatomía de Matplotlib</h2>
+    <p style="font-size:1.05em">El núcleo de Matplotlib gira en torno a la pareja <code>Figure</code> (<code>fig</code>) y <code>Axes</code> (<code>ax</code>). Una <strong>Figure</strong> es el lienzo global; los <strong>Axes</strong> son los sistemas de coordenadas donde dibujas.</p>
+
+    <div style="text-align:center;margin:22px 0">
+        <img src="assets/images/mpl-anatomy.png" alt="Anatomía de Matplotlib: Muestra la jerarquía de Figure, Axes, Axis, Spines, Title, Labels, Ticks y Legend." style="max-width:550px;width:100%;border:1px solid #d8b4fe;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.12)">
+        <p style="font-style:italic;color:#7e22ce;font-size:.85em;margin-top:6px">Diagrama sugerido de la jerarquía Figure → Axes → Axis/Spines.</p>
+    </div>
+
+    <span class="code-caption">Código 2.1 — Crear un lienzo vacío</span>
+    <div class="code-block-mpl" style="background:#4c1d95">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">fig = plt.figure(figsize=(6,4))      # Crea la Figure
+ax  = fig.add_subplot(111)          # Añade un Axes (1x1 grid)
+ax.set_title("Ejes primarios")
+ax.plot([],[])                      # Aún sin datos
+plt.show()</code></pre>
+    </div>
+
+    <h3 style="color:#6b21a8;margin-top:22px; font-size: 1.3em;">📑 Glosario rápido</h3>
+    <div class="feature-grid">
+        <div class="feature-card" style="background:#faf5ff;border-left:4px solid #a78bfa"><h4><i class="fas fa-layer-group"></i> <code>fig</code></h4><p>Lienzo global (puede contener varios Axes).</p></div>
+        <div class="feature-card" style="background:#faf5ff;border-left:4px solid #a78bfa"><h4><i class="fas fa-border-all"></i> <code>ax</code></h4><p>Sistema de coordenadas donde se dibujan líneas, barras, etc.</p></div>
+        <div class="feature-card" style="background:#faf5ff;border-left:4px solid #a78bfa"><h4><i class="fas fa-th-large"></i> <code>subplot</code></h4><p>Atajo para crear Axes multipanel en grillas.</p></div>
+        <div class="feature-card" style="background:#faf5ff;border-left:4px solid #a78bfa"><h4><i class="fas fa-vector-square"></i> Spines</h4><p>Los bordes del gráfico (superior, inferior, izq., der.).</p></div>
+    </div>
+</section>
+
+<section id="tipos" class="card" style="border-left:6px solid #f59e0b;background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#b45309"><i class="fas fa-chart-bar"></i> 3. Tipos de Gráficos 🍭</h2>
+    <p style="font-size:1.05em">Matplotlib soporta una gran variedad de gráficos. Estos son los más usados:</p>
+
+    <div class="feature-grid" style="margin-top:18px;">
+        <div class="feature-card" style="background:#fff7ed;border-left:4px solid #f59e0b"><h4><i class="fas fa-wave-square"></i> Línea (<code>plot</code>)</h4><p>Datos continuos, series temporales.</p></div>
+        <div class="feature-card" style="background:#fff7ed;border-left:4px solid #f59e0b"><h4><i class="fas fa-chart-column"></i> Barra (<code>bar</code>)</h4><p>Categorías discretas.</p></div>
+        <div class="feature-card" style="background:#fff7ed;border-left:4px solid #f59e0b"><h4><i class="fas fa-braille"></i> Dispersión (<code>scatter</code>)</h4><p>Pares (x,y) para correlaciones.</p></div>
+        <div class="feature-card" style="background:#fff7ed;border-left:4px solid #f59e0b"><h4><i class="fas fa-bars"></i> Histograma (<code>hist</code>)</h4><p>Distribución de frecuencias.</p></div>
+    </div>
+
+    <span class="code-caption">Código 3.1 — Cuatro gráficos en un solo lienzo</span>
+    <div class="code-block-mpl" style="background:#78350f">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">import numpy as np
+fig, axs = plt.subplots(2, 2, figsize=(8,6))
+
+# 1) Línea
+x = np.linspace(0, 2*np.pi, 100)
+axs[0,0].plot(x, np.sin(x), color='indigo')
+axs[0,0].set_title('Seno')
+
+# 2) Barras
+cats = ['A','B','C']
+axs[0,1].bar(cats, [3,7,5], color='teal')
+axs[0,1].set_title('Barras')
+
+# 3) Dispersión
+rng = np.random.default_rng(0)
+axs[1,0].scatter(rng.random(50), rng.random(50), c='tomato')
+axs[1,0].set_title('Dispersión')
+
+# 4) Histograma
+data = rng.normal(size=500)
+axs[1,1].hist(data, bins=20, color='goldenrod', edgecolor='white')
+axs[1,1].set_title('Histograma')
+
+plt.tight_layout() # Ajusta el espaciado para evitar superposiciones
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section id="personalizacion" class="card" style="border-left:6px solid #ef4444;background:linear-gradient(135deg,#fee2e2 0%,#fecaca 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#b91c1c"><i class="fas fa-paint-brush"></i> 4. Personalización Básica 🎨</h2>
+    <p style="font-size:1.05em">Puedes ajustar prácticamente todo: títulos, ejes, leyendas, estilos de línea, colores…</p>
+
+    <span class="code-caption">Código 4.1 — Apariencia a la carta</span>
+    <div class="code-block-mpl" style="background:#991b1b">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">fig, ax = plt.subplots(figsize=(6,4))
+x = np.linspace(0, 2*np.pi, 100) # Definir x si no viene de la sección anterior
+
+ax.plot(x, np.sin(x), label='Seno', linewidth=3, linestyle='--', color='#0ea5e9')
+ax.plot(x, np.cos(x), label='Coseno', linewidth=2, linestyle='-.', color='#f97316')
+
+ax.set_title('Funciones trigonométricas', fontsize=16, fontweight='bold')
+ax.set_xlabel('x (rad)')
+ax.set_ylabel('f(x)')
+ax.grid(alpha=0.3)
+ax.legend(frameon=False)
+
+# Oculta el spine superior & derecho (estética minimalista)
+for sp in ['right','top']:
+    ax.spines[sp].set_visible(False)
+
+plt.show()</code></pre>
+    </div>
+
+    <div class="note" style="border-left-color:#dc2626;background:#fee2e2">
+        <p><i class="fas fa-eye"></i> Usa <code>plt.style.available</code> para ver estilos prehechos. Prueba: <code>plt.style.use('ggplot')</code>.</p>
+    </div>
+</section>
+
+<section id="subplots" class="card" style="border-left:6px solid #14b8a6;background:linear-gradient(135deg,#ecfdf5 0%,#ccfbf1 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#0f766e"><i class="fas fa-th"></i> 5. El Poder de <code>fig, ax = plt.subplots()</code></h2>
+    <p style="font-size:1.05em">Esta función devuelve la dupla <code>Figure</code> y <code>Axes</code> de forma directa, favoreciendo un código más limpio y explícito. Es la forma recomendada de iniciar tus gráficos.</p>
+
+    <div class="feature-grid" style="margin-top:18px">
+        <div class="feature-card" style="background:#f0fdfa;border-left:4px solid #14b8a6"><h4><i class="fas fa-check-circle"></i> Explícito</h4><p>Separa claramente <code>fig</code> y uno o más <code>ax</code>.</p></div>
+        <div class="feature-card" style="background:#f0fdfa;border-left:4px solid #14b8a6"><h4><i class="fas fa-arrows-split-up-and-left"></i> Multipanel</h4><p>Crea grillas al instante (ej: <code>plt.subplots(2,3)</code>).</p></div>
+        <div class="feature-card" style="background:#f0fdfa;border-left:4px solid #14b8a6"><h4><i class="fas fa-compress-alt"></i> <code>tight_layout()</code></h4><p>Optimiza espacios automáticamente en la figura.</p></div>
+    </div>
+    <span class="code-caption">Código 5.1 — Ejemplo con subplots()</span>
+     <div class="code-block-mpl" style="background:#047857">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python"># Crear una figura con 1 fila y 2 columnas de subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+
+# Primer subplot
+x = np.linspace(0, 10, 100)
+ax1.plot(x, np.sin(x), color='crimson')
+ax1.set_title('Seno en ax1')
+
+# Segundo subplot
+ax2.plot(x, np.cos(x), color='dodgerblue')
+ax2.set_title('Coseno en ax2')
+
+plt.tight_layout() # Importante para que los subplots no se solapen
+plt.show()
+</code></pre>
+    </div>
+</section>
+
+<section id="matematicas" class="card" style="border-left:6px solid #4f46e5;background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#3730a3"><i class="fas fa-square-root-alt"></i> 6. Ejemplos Matemáticos 🧮</h2>
+    <p style="font-size:1.05em">Visualizar funciones ayuda a comprender conceptos de cálculo y álgebra.</p>
+
+    <h3 style="color:#3730a3;margin-top:18px; font-size: 1.3em;"><i class="fas fa-wave-square"></i> 6.1 — Seno, Coseno y Tangente</h3>
+    <div class="code-block-mpl" style="background:#312e81">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">import numpy as np # Asegurar que numpy está importado
+import matplotlib.pyplot as plt # Asegurar que pyplot está importado
+
+x = np.linspace(0, 2*np.pi, 400)
+fig, ax = plt.subplots(figsize=(7,4))
+ax.plot(x, np.sin(x), label='sen(x)')
+ax.plot(x, np.cos(x), label='cos(x)')
+ax.plot(x, np.tan(x), label='tan(x)', alpha=0.4) # Tangente con transparencia
+ax.set_ylim(-2,2) # Limitar el eje Y para mejor visualización de tan(x)
+ax.legend(loc='upper right')
+ax.set_title('Funciones trigonométricas')
+ax.grid(True, linestyle=':', alpha=0.5)
+plt.show()</code></pre>
+    </div>
+
+    <h3 style="color:#3730a3;margin-top:22px; font-size: 1.3em;"><i class="fas fa-calculator"></i> 6.2 — Derivada Numérica</h3>
+    <div class="code-block-mpl" style="background:#312e81">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">f  = lambda x: x**3 - 3*x**2 + 2
+xp = np.linspace(-1,4,200)
+yp = f(xp)
+
+dydx = np.gradient(yp, xp)   # Derivada numérica usando np.gradient
+
+fig, ax = plt.subplots()
+ax.plot(xp, yp, label='f(x) = x³-3x²+2')
+ax.plot(xp, dydx, label="f'(x) (numérica)", linestyle='--')
+ax.set_title('Función y su derivada numérica')
+ax.legend()
+ax.grid(True, linestyle=':', alpha=0.5)
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section id="fisica" class="card" style="border-left:6px solid #f97316;background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#c2410c"><i class="fas fa-atom"></i> 7. Ejemplos de Física 🔬</h2>
+
+    <h3 style="color:#c2410c; font-size: 1.3em;"><i class="fas fa-parachute-box"></i> 7.1 — Movimiento Parabólico</h3>
+    <div class="code-block-mpl" style="background:#7c2d12">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">g = 9.81      # Aceleración gravitacional (m/s²)
+v0 = 20       # Velocidad inicial (m/s)
+angle = 45    # Ángulo de lanzamiento (grados)
+
+theta = np.radians(angle) # Convertir ángulo a radianes
+
+# Tiempo total de vuelo
+t_total = 2*v0*np.sin(theta)/g
+
+t = np.linspace(0, t_total, 200) # Vector de tiempo
+x_pos = v0*np.cos(theta)*t         # Posición horizontal
+y_pos = v0*np.sin(theta)*t - 0.5*g*t**2 # Posición vertical
+
+fig, ax = plt.subplots()
+ax.plot(x_pos, y_pos, color='green')
+ax.set_xlabel('Distancia Horizontal (m)')
+ax.set_ylabel('Altura Vertical (m)')
+ax.set_title(f'Trayectoria Parabólica (v₀={v0}m/s, θ={angle}°)')
+ax.grid(True, linestyle=':', alpha=0.5)
+ax.set_aspect('equal', adjustable='box') # Para que la trayectoria se vea proporcional
+plt.show()</code></pre>
+    </div>
+
+    <h3 style="color:#c2410c;margin-top:22px; font-size: 1.3em;"><i class="fas fa-wave-square"></i> 7.2 — Onda Senoidal &amp; Superposición</h3>
+    <div class="code-block-mpl" style="background:#7c2d12">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">t = np.linspace(0, 2, 1000) # Tiempo de 0 a 2 segundos
+wave1 = np.sin(2*np.pi*5*t)     # Onda de 5 Hz
+wave2 = 0.5*np.sin(2*np.pi*7*t) # Onda de 7 Hz con mitad de amplitud
+superposicion = wave1 + wave2   # Suma de las ondas
+
+fig, ax = plt.subplots(figsize=(8,5))
+ax.plot(t, wave1, label='Onda 1 (5Hz)', linestyle=':', alpha=0.7)
+ax.plot(t, wave2, label='Onda 2 (7Hz)', linestyle=':', alpha=0.7)
+ax.plot(t, superposicion, label='Superposición', color='purple', linewidth=1.5)
+ax.set_xlabel('Tiempo (s)')
+ax.set_ylabel('Amplitud')
+ax.set_title('Interferencia de dos ondas sinusoidales')
+ax.legend()
+ax.grid(True, linestyle=':', alpha=0.5)
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section id="savefig" class="card" style="border-left:6px solid #10b981;background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#047857"><i class="fas fa-save"></i> 8. Guardar tus Gráficos 💾</h2>
+    <p style="font-size:1.05em">Usa <code>fig.savefig()</code> o directamente <code>plt.savefig()</code> <strong>antes</strong> de <code>plt.show()</code>. Matplotlib infiere el formato por la extensión del archivo (<code>.png</code>, <code>.pdf</code>, <code>.svg</code>, <code>.jpg</code>).</p>
+
+    <span class="code-caption">Código 8.1 — Alta resolución para publicaciones</span>
+    <div class="code-block-mpl" style="background:#064e3b">
+        <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">fig, ax = plt.subplots()
+ax.plot([0,1,2],[0,1,4], label='Datos de ejemplo')
+ax.set_title('Gráfico de Ejemplo para Guardar')
+ax.legend()
+
+# Guardar la figura (asegúrate que la carpeta 'assets/images/' exista o cambia la ruta)
+# fig.savefig('assets/images/mi_grafico.png', dpi=300, bbox_inches='tight')
+# fig.savefig('mi_grafico_vectorial.svg', bbox_inches='tight') # Formato vectorial
+
+# Para demostración, no ejecutaremos savefig aquí para evitar errores de ruta
+# print("El gráfico se guardaría con: fig.savefig('nombre_archivo.png', dpi=300)")
+
+plt.show() # show() usualmente limpia la figura, por eso savefig() va antes.
+</code></pre>
+    </div>
+    <div class="note" style="border-left-color:#059669;background:#d1fae5">
+        <p><i class="fas fa-info-circle" style="color:#10b981"></i> <strong>Importante:</strong> <code>bbox_inches='tight'</code> ajusta el tamaño de la figura para que todo el contenido (títulos, etiquetas) quepa sin recortes. <code>dpi</code> (dots per inch) controla la resolución para formatos rasterizados como PNG.</p>
+    </div>
+</section>
+
+<section id="avanzado" class="card" style="border-left:6px solid #6366f1;background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);padding:25px 22px 30px">
+    <h2 class="section-title" style="color:#4338ca"><i class="fas fa-rocket"></i> 9. Sugerencias Avanzadas 🚀</h2>
+    <p style="font-size:1.05em;">Matplotlib es vasto. Aquí algunas áreas para explorar más a fondo:</p>
+    <ul style="font-size:1.0em;line-height:1.8;margin-left:22px; list-style-type: '⭐'; padding-left: 10px;">
+        <li><strong>Animaciones:</strong> Con <code>matplotlib.animation.FuncAnimation</code> para crear visualizaciones dinámicas.</li>
+        <li><strong>Interactividad en Jupyter:</strong> Usando backends como <code>%matplotlib widget</code> o <code>ipympl</code> para gráficos interactivos dentro de notebooks.</li>
+        <li><strong>Gráficos 3D:</strong> Con el toolkit <code>mpl_toolkits.mplot3d</code> para superficies, contornos y dispersiones tridimensionales.</li>
+        <li><strong>Estilos Personalizados:</strong> Crear tus propios archivos <code>.mplstyle</code> para consistencia visual en todos tus proyectos.</li>
+        <li><strong>Integración con otras librerías:</strong> Seaborn, Pandas plotting, y Xarray usan Matplotlib por debajo, ofreciendo interfaces de más alto nivel para tipos específicos de gráficos.</li>
+        <li><strong>Textos y Anotaciones:</strong> Uso avanzado de <code>ax.text()</code>, <code>ax.annotate()</code> con flechas y formato LaTeX para explicaciones detalladas directamente en el gráfico.</li>
+    </ul>
+</section>
+
+<section id="personalizacion-detallada" class="card" style="border-left:6px solid #d946ef;background:linear-gradient(135deg,#fdf4ff 0%,#fce7f3 100%);padding:28px 26px 34px; margin-top: 30px;">
+    <h2 class="section-title" style="color:#a21caf; font-size:2.0em;"><i class="fas fa-highlighter"></i> 10. Personalización Detallada: Dando Vida a tus Gráficos 🎨✨</h2>
+    <p style="font-size:1.05em; line-height:1.7; margin-bottom:22px;">
+        Crear un gráfico básico es solo el primer paso. El verdadero poder de Matplotlib radica en su increíble capacidad para personalizar cada detalle de tus visualizaciones. Una personalización cuidadosa no solo embellece tus gráficos, sino que los hace mucho más claros y efectivos para comunicar tus hallazgos científicos. ¡Vamos a explorar cómo convertir un gráfico simple en una obra de arte informativa!
+    </p>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-signature"></i> 10.1 <code>ax.plot()</code>: Dibujando Líneas con Estilo y Precisión</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            La función <code>ax.plot(x, y, ...)</code> es tu principal herramienta para gráficos de líneas. Además de los datos <code>x</code> e <code>y</code>, puedes controlar cada detalle visual:
+        </p>
+        <ul style="font-size:0.95em; line-height:1.7; margin-left:20px; list-style-type:'🎨'; padding-left:10px; margin-bottom:12px;">
+            <li><code>color</code> (o <code>c</code>): Define el color de la línea (ej: <code>'blue'</code>, <code>'red'</code>, <code>'green'</code>, códigos hexadecimales como <code>'#FF5733'</code>, o tuplas RGB/RGBA como <code>(0.1, 0.2, 0.5)</code>).</li>
+            <li><code>linewidth</code> (o <code>lw</code>): Controla el grosor de la línea (un número flotante, ej: <code>2.5</code>).</li>
+            <li><code>linestyle</code> (o <code>ls</code>): Define el estilo de la línea. Opciones comunes:
+                <ul style="margin-top:5px; margin-left:15px; font-size:0.9em;">
+                    <li><code>'-'</code> o <code>'solid'</code>: Línea sólida (por defecto).</li>
+                    <li><code>'--'</code> o <code>'dashed'</code>: Línea discontinua.</li>
+                    <li><code>'-.'</code> o <code>'dashdot'</code>: Línea de guion y punto.</li>
+                    <li><code>':'</code> o <code>'dotted'</code>: Línea punteada.</li>
+                </ul>
+            </li>
+            <li><code>marker</code>: Especifica el símbolo a usar para cada punto de datos (ej: <code>'o'</code>, <code>'s'</code>, <code>'^'</code>, <code>'x'</code>, <code>'+'</code>).</li>
+            <li><code>markersize</code> (o <code>ms</code>): Tamaño de los marcadores.</li>
+            <li><code>markerfacecolor</code> (o <code>mfc</code>), <code>markeredgecolor</code> (o <code>mec</code>): Colores del marcador.</li>
+            <li><code>label</code>: Etiqueta de la línea que se usará en la leyenda del gráfico.</li>
+        </ul>
+        <span class="code-caption">Código 10.1.1 — Personalizando una trayectoria de proyectil (Física)</span>
+        <div class="code-block-mpl" style="background:#7f1d1d; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python"><span style="color:#fca5a5;"># (Reutilizando parámetros de la sección 7.1)</span>
+g = 9.81; v0 = 30; angulo_grados = 45
+theta = np.radians(angulo_grados)
+t_vuelo = (2 * v0 * np.sin(theta)) / g
+t = np.linspace(0, t_vuelo, 200)
+x_proyectil = v0 * np.cos(theta) * t
+y_proyectil = v0 * np.sin(theta) * t - 0.5 * g * t**2
+
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.plot(x_proyectil, y_proyectil, 
+        color='orangered', linewidth=2.5, linestyle='-.', 
+        marker='^', markersize=7, markevery=15, 
+        markerfacecolor='gold', markeredgecolor='dimgray', 
+        label=f'Trayectoria (v0={v0}m/s, θ={angulo_grados}°)')
+
+ax.set_title('Lanzamiento de Proyectil Detallado 🎯', fontsize=16, color='#7f1d1d')
+ax.set_xlabel('Distancia Horizontal (m)', fontsize=12, color='#7f1d1d')
+ax.set_ylabel('Altura Vertical (m)', fontsize=12, color='#7f1d1d')
+ax.grid(True, linestyle=':', alpha=0.6)
+ax.legend(fontsize=10)
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-tags"></i> 10.2 <code>ax.legend()</code>: Identificando tus Datos con Leyendas</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Esencial cuando graficas múltiples conjuntos de datos. Recuerda usar el argumento <code>label</code> en tus llamadas a <code>plot()</code>.
+        </p>
+        <ul style="font-size:0.95em; line-height:1.7; margin-left:20px; list-style-type:'🏷️'; padding-left:10px; margin-bottom:12px;">
+            <li><code>loc</code>: Posición (<code>'upper right'</code>, <code>'best'</code>, <code>'center'</code>, o un código numérico).</li>
+            <li><code>frameon</code>: Booleano para mostrar/ocultar el marco.</li>
+            <li><code>facecolor</code>, <code>edgecolor</code>: Colores del cuadro de la leyenda.</li>
+            <li><code>fontsize</code>, <code>title</code>, <code>ncol</code>: Para tamaño, título y número de columnas.</li>
+        </ul>
+        <span class="code-caption">Código 10.2.1 — Leyenda para decaimiento exponencial (Física/Matemáticas)</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">t = np.linspace(0, 5, 100)
+N1 = 100 * np.exp(-0.8 * t)
+N2 = 100 * np.exp(-0.3 * t)
+
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.plot(t, N1, label='Sustancia A (τ ≈ 1.25s)', color='mediumvioletred', lw=2.5)
+ax.plot(t, N2, label='Sustancia B (τ ≈ 3.33s)', color='darkslateblue', lw=2.5, ls=':')
+
+ax.legend(loc='center right', fontsize='large', frameon=True, 
+          facecolor='#f0f0f0', edgecolor='black', shadow=True, 
+          title='Curvas de Decaimiento ⏳', ncol=1)
+ax.set_title('Comparación de Tasas de Decaimiento Radiactivo ☢️', fontsize=15, color='#7f1d1d')
+ax.set_xlabel('Tiempo (unidades arbitrarias)', fontsize=12, color='#7f1d1d')
+ax.set_ylabel('Cantidad de Sustancia (%)', fontsize=12, color='#7f1d1d')
+ax.grid(True, linestyle='--', alpha=0.5)
+plt.show()</code></pre>
+        </div>
+    </div>
+    
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-border-style"></i> 10.3 <code>ax.spines[]</code>: Personalizando los Bordes del Gráfico</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Los "spines" son las líneas que enmarcan el área del gráfico. Puedes ocultarlos o moverlos para que se crucen en el origen (0,0).
+        </p>
+        <span class="code-caption">Código 10.3.1 — Gráfico estilo "científico" con ejes en el origen</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">x = np.linspace(-2*np.pi, 2*np.pi, 200)
+y_sinc = np.sinc(x/np.pi) # Función Sinc normalizada
+
+fig, ax = plt.subplots(figsize=(7,4.5))
+ax.plot(x, y_sinc, color='darkcyan', lw=2.5)
+ax.set_title('Función Sinc(x/π) - Estilo Científico 📐', fontsize=14, color='#7f1d1d')
+
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_position('zero')
+ax.spines['bottom'].set_position('zero')
+
+ax.set_xlim(-2*np.pi - 0.5, 2*np.pi + 0.5)
+ax.set_ylim(-0.4, 1.2)
+
+ax.plot(1, 0, ">k", transform=ax.get_yaxis_transform(), clip_on=False, markersize=7) # Flecha eje X
+ax.plot(0, 1, "^k", transform=ax.get_xaxis_transform(), clip_on=False, markersize=7) # Flecha eje Y
+
+ax.set_xticks([-2*np.pi, -np.pi, np.pi, 2*np.pi])
+ax.set_xticklabels(['-2π', '-π', 'π', '2π'])
+ax.set_yticks([-0.2, 0.5, 1.0])
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-arrows-alt-h"></i> 10.4 <code>ax.set_xlim()</code> y <code>ax.set_ylim()</code>: Definiendo el Rango de los Ejes</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Te permiten fijar manualmente los límites inferior y superior para los ejes X e Y.
+        </p>
+        <span class="code-caption">Código 10.4.1 — Enfocando una sección de una parábola (Matemáticas)</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">x = np.linspace(-5, 5, 200)
+y = (x - 1)**2 # Parábola con vértice en (1,0)
+
+fig, ax = plt.subplots(figsize=(7,5))
+ax.plot(x, y, color='forestgreen', label='y = (x-1)²', lw=2)
+ax.set_title('Zoom en el Vértice de la Parábola 🔍', fontsize=15, color='#7f1d1d')
+
+ax.set_xlim(0, 2) # Rango de X: de 0 a 2
+ax.set_ylim(-0.5, 1.5) # Rango de Y: de -0.5 a 1.5
+
+ax.grid(True, linestyle=':', alpha=0.6)
+ax.legend()
+ax.axhline(0, color='black', lw=0.5) # Línea del eje X
+ax.axvline(1, color='grey', lw=0.5, ls='--') # Línea en el vértice
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-ruler-horizontal"></i> 10.5 <code>set_xticks()</code> y <code>set_xticklabels()</code>: Marcas y Etiquetas a Medida</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Controla exactamente dónde aparecen las marcas (ticks) en los ejes y qué texto muestran. Muy útil para representar unidades especiales como múltiplos de $\pi$.
+        </p>
+        <span class="code-caption">Código 10.5.1 — Gráfico de Coseno con etiquetas de $\pi$ (Matemáticas)</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">x_rad = np.linspace(0, 2 * np.pi, 200)
+y_cos = np.cos(x_rad)
+
+fig, ax = plt.subplots(figsize=(8,4))
+ax.plot(x_rad, y_cos, color='mediumpurple', lw=2.5)
+ax.set_title('Función Coseno con Eje X en Términos de π 📐', fontsize=15, color='#7f1d1d')
+
+ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi])
+ax.set_xticklabels(['0', r'$\frac{\pi}{2}$', r'$\pi$', r'$\frac{3\pi}{2}$', r'$2\pi$'], fontsize=12)
+
+ax.grid(True, linestyle=':', alpha=0.5)
+ax.axhline(0, color='black', lw=0.7)
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-vector-square"></i> 10.6 <code>ax.set_aspect()</code>: Controlando la Proporción Visual</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Controla la relación de aspecto entre las escalas de los ejes X e Y. <code>'equal'</code> es esencial para que los círculos se vean circulares.
+        </p>
+        <span class="code-caption">Código 10.6.1 — Círculo perfecto usando 'equal' (Matemáticas/Geometría)</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">theta_circ = np.linspace(0, 2 * np.pi, 150)
+radio_circ = 3
+x_circ = radio_circ * np.cos(theta_circ)
+y_circ = radio_circ * np.sin(theta_circ)
+
+fig, ax = plt.subplots(figsize=(6,6)) # Figura cuadrada para 'equal'
+ax.plot(x_circ, y_circ, color='dodgerblue', lw=3, label=f'Círculo r={radio_circ}')
+ax.set_title('Un Círculo Geométricamente Correcto ⭕', fontsize=15, color='#7f1d1d')
+
+ax.set_aspect('equal') # ¡La clave para un círculo perfecto!
+ax.grid(True, linestyle=':', alpha=0.5)
+ax.axhline(0, color='grey', lw=0.5); ax.axvline(0, color='grey', lw=0.5) # Ejes
+ax.legend()
+plt.show()</code></pre>
+        </div>
+    </div>
+    
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-eye"></i> 10.7 <code>plt.show()</code>: ¡Que se Muestre el Gráfico!</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Esta función renderiza y muestra todos los gráficos configurados. Esencial en scripts.
+        </p>
+        <span class="code-caption">Código 10.7.1 — Múltiples figuras y <code>plt.show()</code></span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python"># Gráfico 1
+plt.figure(1, figsize=(5,3)) 
+plt.plot([1,5,2,8], marker='x', color='slateblue')
+plt.title("Gráfico Sencillo 1")
+
+# Gráfico 2 (en una nueva figura)
+plt.figure(2, figsize=(5,3))
+x_exp = np.linspace(0,3,50)
+plt.plot(x_exp, np.exp(x_exp), color='teal', ls='--')
+plt.title("Función Exponencial (Gráfico 2)")
+
+plt.show() # Muestra ambas figuras configuradas</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-border-all"></i> 10.8 <code>ax.grid()</code>: Añadiendo una Rejilla de Referencia</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Mejora la legibilidad facilitando la estimación de valores.
+        </p>
+        <ul style="font-size:0.95em; line-height:1.7; margin-left:20px; list-style-type:'▦'; padding-left:10px; margin-bottom:12px;">
+            <li><code>ax.grid(True)</code>: Activa la rejilla principal.</li>
+            <li><code>which</code>: <code>'major'</code> (defecto), <code>'minor'</code>, o <code>'both'</code>.</li>
+            <li><code>axis</code>: <code>'x'</code>, <code>'y'</code>, o <code>'both'</code> (defecto).</li>
+            <li><code>alpha</code>: Transparencia (0.0 a 1.0).</li>
+        </ul>
+        <span class="code-caption">Código 10.8.1 — Gráfico de una función física con rejilla detallada</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">distancia_r = np.linspace(1, 10, 100)
+k_const = 8.9875e9; carga_Q = 1e-6 
+campo_E = (k_const * carga_Q) / (distancia_r**2)
+
+fig, ax = plt.subplots(figsize=(8,5))
+ax.plot(distancia_r, campo_E, color='firebrick', lw=2)
+ax.set_title('Intensidad del Campo Eléctrico vs. Distancia $E = kQ/r^2$ ⚡', fontsize=14, color='#7f1d1d')
+
+ax.grid(which='major', linestyle='-', linewidth='0.6', color='darkgrey', alpha=0.7)
+ax.minorticks_on() # Activar ticks menores para la rejilla menor
+ax.grid(which='minor', linestyle=':', linewidth='0.4', color='lightgrey', alpha=0.6)
+
+ax.set_yscale('log') # Escala logarítmica en Y
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:22px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-braille"></i> 10.9 <code>ax.scatter()</code>: Visualizando Puntos de Datos Individuales</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Ideal para mostrar la relación entre dos variables o datos experimentales.
+        </p>
+        <ul style="font-size:0.95em; line-height:1.7; margin-left:20px; list-style-type:' बिंदु'; padding-left:10px; margin-bottom:12px;">
+            <li><code>s</code>: Tamaño de los marcadores.</li>
+            <li><code>c</code>: Color (puede ser un array para colores variables, usando `cmap`).</li>
+            <li><code>alpha</code>: Transparencia.</li>
+            <li><code>cmap</code>: Mapa de colores si <code>c</code> es numérico (ej. <code>'viridis'</code>, <code>'plasma'</code>).</li>
+        </ul>
+        <span class="code-caption">Código 10.9.1 — Dispersión de datos experimentales (Física/Estadística)</span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">rng = np.random.default_rng(0)
+num_datos = 70
+voltaje_V = rng.uniform(1, 10, num_datos)
+corriente_A = 0.2 * voltaje_V + rng.normal(0, 0.3, num_datos) # Ley de Ohm con ruido
+resistencia_calculada = voltaje_V / corriente_A
+tamano_puntos = rng.uniform(15, 150, num_datos)
+
+fig, ax = plt.subplots(figsize=(9,6))
+dispersion = ax.scatter(voltaje_V, corriente_A, s=tamano_puntos, c=resistencia_calculada, 
+                        cmap='plasma', alpha=0.75, edgecolor='black', linewidth=0.6)
+
+ax.set_title('Relación Voltaje-Corriente (Datos Simulados) 💡', fontsize=14, color='#7f1d1d')
+cbar = fig.colorbar(dispersion, label='Resistencia Calculada (Ω)')
+ax.grid(True, linestyle=':', alpha=0.5)
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="feature-card" style="background:rgba(255,255,255,0.8); border-left:5px solid #e11d48; margin-bottom:20px; padding:18px; border-radius:10px;">
+        <h3 style="color:#c0392b; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-ruler-combined"></i> 10.10 <code>ax.axis()</code>: Atajos para el Control de Ejes</h3>
+        <p style="font-size:1.0em; line-height:1.65; margin-bottom:10px;">
+            Forma conveniente de controlar varios aspectos de los ejes a la vez.
+        </p>
+        <ul style="font-size:0.95em; line-height:1.7; margin-left:20px; list-style-type:'↔️'; padding-left:10px; margin-bottom:12px;">
+            <li><code>ax.axis('equal')</code>: Escalas iguales en X e Y.</li>
+            <li><code>ax.axis('tight')</code>: Ajusta límites a los datos.</li>
+            <li><code>ax.axis('off')</code>: Oculta ejes.</li>
+            <li><code>ax.axis([xmin, xmax, ymin, ymax])</code>: Establece límites.</li>
+        </ul>
+        <span class="code-caption">Código 10.10.1 — Demostrando <code>ax.axis()</code></span>
+        <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+            <button class="copy-btn">📋 Copiar</button>
+<pre><code class="language-python">fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.5))
+
+# Gráfico 1: Órbita elíptica
+a = 5; b = 3 # Semiejes
+t_orbita = np.linspace(0, 2*np.pi, 200)
+x_orbita = a * np.cos(t_orbita); y_orbita = b * np.sin(t_orbita)
+ax1.plot(x_orbita, y_orbita, color='navy', lw=2)
+ax1.scatter(0,0, color='gold', s=200, marker='o', label='Estrella', edgecolor='black')
+ax1.axis('equal') 
+ax1.set_title("Órbita Elíptica con ax.axis('equal') 🪐", color='#7f1d1d')
+ax1.legend()
+
+# Gráfico 2: Función matemática con ejes 'off'
+x_func = np.linspace(-3, 3, 100)
+y_func = x_func**3 - 2*x_func
+ax2.plot(x_func, y_func, color='darkgreen', lw=2.5)
+ax2.axis('off') # Ocultar los ejes y el marco
+ax2.set_title("Función Cúbica con ax.axis('off') 📈", color='#7f1d1d')
+
+plt.tight_layout()
+plt.show()</code></pre>
+        </div>
+    </div>
+
+    <div class="note" style="border-left-color:#e11d48;background:linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); margin-top:25px; padding:18px; border-radius:10px;">
+        <p style="font-size:1.05em; color:#7f1d1d; margin:0;"><i class="fas fa-paint-roller" style="color:#c0392b"></i> <strong>¡El Límite es tu Imaginación!</strong> Matplotlib ofrece muchísimas más opciones de personalización (anotaciones, flechas, formas, <code>GridSpec</code>, estilos <code>plt.style.use()</code>, etc.). Explora la <a href="https://matplotlib.org/stable/gallery/index.html" target="_blank" style="color:#991b1b; font-weight:bold;">galería oficial</a> y la <a href="https://matplotlib.org/stable/contents.html" target="_blank" style="color:#991b1b; font-weight:bold;">documentación</a>. 🌌</p>
+    </div>
+</section>
+
+
+
+<!-- =================================================== -->
+<!-- 11. Diagrama de Barras -->
+<!-- =================================================== -->
+<section id="barras" class="card" style="border-left:6px solid #f97316;background:linear-gradient(135deg,#fff7ed 0%,#ffe4c2 100%);padding:28px 26px 34px; margin-top: 30px;">
+  <h2 class="section-title" style="color:#c2410c; font-size:2.0em;"><i class="fas fa-chart-bar"></i> 11. Diagrama de Barras 📊</h2>
+  <p style="font-size:1.05em; line-height:1.7; margin-bottom:22px;">Los diagramas de barras son ideales para comparar magnitudes entre categorías o grupos.</p>
+
+  <!-- Ejemplo Matemático -->
+  <h3 style="color:#c2410c; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-square-root-alt"></i> Ejemplo Matemático: Notas por Materia</h3>
+  <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+    <button class="copy-btn">📋 Copiar</button>
+    <pre><code class="language-python"># Datos
+materias = ['Álgebra', 'Cálculo', 'Física', 'Química']
+notas = [85, 90, 78, 88]
+
+# Crear figura
+fig, ax = plt.subplots()
+
+# Graficar
+ax.bar(materias, notas, color='teal')
+
+# Personalizar
+ax.set_title('Promedio por Materia')
+ax.set_ylabel('Nota')
+ax.grid(True, axis='y', alpha=0.3)
+
+plt.show()</code></pre>
+  </div>
+
+  <!-- Ejemplo Físico -->
+  <h3 style="color:#c2410c; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-wave-square"></i> Ejemplo Físico: Velocidad por Objeto</h3>
+  <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+    <button class="copy-btn">📋 Copiar</button>
+    <pre><code class="language-python"># Datos físicos
+objetos = ['Coche', 'Moto', 'Bicicleta', 'Corredor']
+velocidades = [120, 100, 30, 12]
+
+# Graficar
+fig, ax = plt.subplots()
+ax.bar(objetos, velocidades, color='slateblue')
+
+# Etiquetas y título
+ax.set_title('Velocidad Máxima por Objeto')
+ax.set_ylabel('Velocidad (km/h)')
+ax.grid(True, axis='y', alpha=0.3)
+
+plt.show()</code></pre>
+  </div>
+</section>
+
+<!-- =================================================== -->
+<!-- 12. Histogramas -->
+<!-- =================================================== -->
+<section id="histogramas" class="card" style="border-left:6px solid #ec4899;background:linear-gradient(135deg,#fce7f3 0%,#f8a7c5 100%);padding:28px 26px 34px; margin-top: 30px;">
+  <h2 class="section-title" style="color:#be185d; font-size:2.0em;"><i class="fas fa-chart-histogram"></i> 12. Histogramas 📈</h2>
+  <p style="font-size:1.05em; line-height:1.7; margin-bottom:22px;">Los histogramas muestran cómo se distribuyen los valores de un conjunto de datos numéricos.</p>
+
+  <!-- Ejemplo Matemático -->
+  <h3 style="color:#be185d; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-square-root-alt"></i> Ejemplo Matemático: Distribución de Calificaciones</h3>
+  <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+    <button class="copy-btn">📋 Copiar</button>
+    <pre><code class="language-python"># Generar datos aleatorios
+import numpy as np
+calificaciones = np.random.normal(loc=70, scale=10, size=200)
+
+# Graficar
+fig, ax = plt.subplots()
+ax.hist(calificaciones, bins=15, color='mediumseagreen', edgecolor='black')
+
+# Personalizar
+ax.set_title('Distribución de Calificaciones')
+ax.set_xlabel('Calificación')
+ax.set_ylabel('Frecuencia')
+ax.grid(True, axis='y', alpha=0.3)
+
+plt.show()</code></pre>
+  </div>
+</section>
+
+<!-- =================================================== -->
+<!-- 13. Diagramas Circulares -->
+<!-- =================================================== -->
+<section id="torta" class="card" style="border-left:6px solid #10b981;background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);padding:28px 26px 34px; margin-top: 30px;">
+  <h2 class="section-title" style="color:#047857; font-size:2.0em;"><i class="fas fa-chart-pie"></i> 13. Diagramas Circulares 🧁</h2>
+  <p style="font-size:1.05em; line-height:1.7; margin-bottom:22px;">Los gráficos de torta son útiles para mostrar proporciones relativas de una categoría respecto al total.</p>
+
+  <!-- Ejemplo Matemático -->
+  <h3 style="color:#047857; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-square-root-alt"></i> Ejemplo Matemático: Gastos Mensuales</h3>
+  <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+    <button class="copy-btn">📋 Copiar</button>
+    <pre><code class="language-python"># Datos
+categorias = ['Alquiler', 'Comida', 'Transporte', 'Entretenimiento']
+gastos = [1200, 400, 150, 100]
+
+# Graficar
+fig, ax = plt.subplots()
+ax.pie(gastos, labels=categorias, autopct='%1.1f%%', startangle=90, colors=['#f97316', '#10b981', '#6366f1', '#ec4899'])
+
+# Título
+ax.set_title('Distribución de Gastos Mensuales')
+plt.axis('equal')  # Hacer que sea circular
+
+plt.show()</code></pre>
+  </div>
+</section>
+
+<!-- =================================================== -->
+<!-- 14. Gráficas 3D -->
+<!-- =================================================== -->
+<section id="graficas-3d" class="card" style="border-left:6px solid #6366f1;background:linear-gradient(135deg,#eef2ff 0%,#d6dfff 100%);padding:28px 26px 34px; margin-top: 30px;">
+  <h2 class="section-title" style="color:#4338ca; font-size:2.0em;"><i class="fas fa-cube"></i> 14. Gráficas 3D 📦</h2>
+  <p style="font-size:1.05em; line-height:1.7; margin-bottom:22px;">Con el módulo <code>mplot3d</code>, puedes graficar superficies, curvas espaciales y más.</p>
+
+  <!-- Ejemplo Matemático -->
+  <h3 style="color:#4338ca; margin-top:0; margin-bottom:12px; font-size:1.4em; display:flex; align-items:center; gap:10px;"><i class="fas fa-square-root-alt"></i> Ejemplo Matemático: Superficie 3D</h3>
+  <div class="code-block-mpl" style="background:#991b1b; color:#fee2e2;">
+    <button class="copy-btn">📋 Copiar</button>
+    <pre><code class="language-python">from mpl_toolkits.mplot3d import Axes3D
+
+# Datos
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(np.sqrt(X**2 + Y**2))
+
+# Graficar
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, cmap='viridis')
+
+# Títulos
+ax.set_title('Superficie 3D - Onda Senoidal')
+ax.set_xlabel('Eje X')
+ax.set_ylabel('Eje Y')
+ax.set_zlabel('Eje Z')
+
+plt.show()</code></pre>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.code-block-mpl .copy-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const pre = button.parentElement.querySelector('pre');
+            if (pre) {
+                // Reemplazar los non-breaking spaces (nbsp) con espacios normales antes de copiar
+                // También quitar el texto del prompt de Python si está presente al inicio de las líneas
+                let codeToCopy = pre.innerText;
+                codeToCopy = codeToCopy.replace(/\u00A0/g, ' '); // nbsp to space
+                // codeToCopy = codeToCopy.replace(/^(>>> |\.\.\. )/gm, ''); // Remover prompts de Python (opcional)
+
+                navigator.clipboard.writeText(codeToCopy).then(() => {
+                    const originalText = button.innerHTML;
+                    const originalBgColor = button.style.backgroundColor;
+                    button.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                    button.style.backgroundColor = '#28a745'; // Verde éxito
+
+                    // Efecto visual en el bloque de código (opcional)
+                    const codeBlock = button.closest('.code-block-mpl');
+                    let originalBlockBg;
+                    if (codeBlock) {
+                        originalBlockBg = codeBlock.style.backgroundColor;
+                        // codeBlock.style.backgroundColor = '#d4edda'; // Un verde más claro para el bloque
+                    }
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.backgroundColor = originalBgColor; 
+                        if (codeBlock && originalBlockBg) {
+                           // codeBlock.style.backgroundColor = originalBlockBg; 
+                        }
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Error al copiar el código: ', err);
+                    const originalText = button.innerHTML;
+                    const originalBgColor = button.style.backgroundColor;
+                    button.innerHTML = '<i class="fas fa-times"></i> Error';
+                    button.style.backgroundColor = '#dc3545'; // Rojo error
+                     setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.backgroundColor = originalBgColor; 
+                    }, 2500);
+                });
+            }
+        });
+    });
+});
+</script>
+
+</div> </body>
+</html>

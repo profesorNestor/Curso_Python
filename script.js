@@ -6,13 +6,18 @@
 const courseData = {
   sections: [
     {
-      title: "📁 BIENVENIDA Y FUNDAMENTOS", // Emoji añadido para consistencia visual con el HTML
-      icon: "fas fa-door-open", // Icono de la sección
+      title: "📁 BIENVENIDA Y FUNDAMENTOS",
+      icon: "fas fa-door-open",
       lessons: [
         { id: "introduccion", title: "Introducción al Curso", icon: "fas fa-info-circle", file: "temas/introduccion.html" },
         { id: "google-colab", title: "Uso de Google Colab", icon: "fab fa-google", file: "temas/google-colab.html" },
         { id: "markdown", title: "Sintaxis Markdown", icon: "fas fa-paragraph", file: "temas/markdown.html" },
         { id: "latex", title: "Introducción a LaTeX", icon: "fas fa-subscript", file: "temas/latex.html" },
+        // --- NUEVAS LECCIONES AÑADIDAS AQUÍ ---
+        { id: "html5", title: "HTML5 Esencial", icon: "fab fa-html5", file: "temas/html5_curso.html" },
+        { id: "css3", title: "CSS3 para Estilos Web", icon: "fab fa-css3-alt", file: "temas/css3_estilos.html" },
+        { id: "javascript", title: "JavaScript Básico", icon: "fab fa-js-square", file: "temas/javascript_intro.html" },
+        // --- FIN DE NUEVAS LECCIONES ---
         { id: "instalacion", title: "Instalación y Entornos", icon: "fas fa-laptop-code", file: "temas/instalacion.html" }
       ]
     },
@@ -20,13 +25,11 @@ const courseData = {
       title: "⚙️ PRIMEROS PASOS",
       icon: "fas fa-seedling",
       lessons: [
-        // NOTA: El archivo original 'temas/operadores.html' se dividirá o se crearán archivos individuales.
-        // Por ahora, asumimos archivos individuales según el nuevo menú.
-        { id: "hola-mundo", title: "Hola Mundo", icon: "fas fa-terminal", file: "temas/hola-mundo.html" }, // Archivo individual
-        { id: "comentarios-estilo", title: "Comentarios y Estilo de Código", icon: "fas fa-comment-dots", file: "temas/comentarios-estilo.html" }, // Archivo individual
-        { id: "variables-tipos", title: "Variables y Tipos de Datos", icon: "fas fa-font", file: "temas/variables-tipos.html" }, // Archivo individual
-        { id: "entrada-salida", title: "Entrada y Salida de Datos", icon: "fas fa-keyboard", file: "temas/entrada-salida.html" }, // Archivo individual
-        { id: "operadores", title: "Operadores en Python", icon: "fas fa-equals", file: "temas/operadores.html" } // Archivo general de operadores
+        { id: "hola-mundo", title: "Hola Mundo", icon: "fas fa-terminal", file: "temas/hola-mundo.html" },
+        { id: "comentarios-estilo", title: "Comentarios y Estilo de Código", icon: "fas fa-comment-dots", file: "temas/comentarios-estilo.html" },
+        { id: "variables-tipos", title: "Variables y Tipos de Datos", icon: "fas fa-font", file: "temas/variables-tipos.html" },
+        { id: "entrada-salida", title: "Entrada y Salida de Datos", icon: "fas fa-keyboard", file: "temas/entrada-salida.html" },
+        { id: "operadores", title: "Operadores en Python", icon: "fas fa-equals", file: "temas/operadores.html" }
       ]
     },
     {
@@ -34,8 +37,8 @@ const courseData = {
       icon: "fas fa-layer-group",
       lessons: [
         { id: "listas", title: "Listas", icon: "fas fa-list", file: "temas/listas.html" },
-        { id: "tuplas", title: "Tuplas", icon: "fas fa-stream", file: "temas/tuplas.html" }, // Icono cambiado para diferenciar
-        { id: "conjuntos", title: "Conjuntos (sets)", icon: "fas fa-object-ungroup", file: "temas/conjuntos.html" }, // Icono cambiado
+        { id: "tuplas", title: "Tuplas", icon: "fas fa-stream", file: "temas/tuplas.html" },
+        { id: "conjuntos", title: "Conjuntos (sets)", icon: "fas fa-object-ungroup", file: "temas/conjuntos.html" },
         { id: "diccionarios", title: "Diccionarios", icon: "fas fa-book", file: "temas/diccionarios.html" },
         { id: "deque", title: "Listas tipo deque", icon: "fas fa-warehouse", file: "temas/deque.html" }
       ]
@@ -110,9 +113,9 @@ const courseData = {
     },
     {
       title: "🌐 PÁGINAS WEB CON PYTHON",
-      icon: "fas fa-globe", // Icono general para la sección
+      icon: "fas fa-globe",
       lessons: [
-        { id: "flask", title: "Introducción a Flask", icon: "fab fa-python", file: "temas/flask.html" }, // Icono específico de Python/Flask
+        { id: "flask", title: "Introducción a Flask", icon: "fab fa-python", file: "temas/flask.html" },
         { id: "django", title: "Introducción a Django", icon: "fas fa-network-wired", file: "temas/django.html" }
       ]
     }
@@ -121,19 +124,16 @@ const courseData = {
 
 // ==========================================
 // ⚙️ ESTADO DE LA APLICACIÓN
-// Variables globales para mantener el estado.
 // ==========================================
-let currentLessonId = null; // ID de la lección actualmente cargada
-let sidebarOpen = window.innerWidth > 768; // Sidebar abierto por defecto en desktop
-let isDarkMode = false;   // Estado del tema (oscuro/claro)
+let currentLessonId = null;
+let sidebarOpen = window.innerWidth > 768;
+let isDarkMode = false;
 
 // ==========================================
 // 🎉 INICIALIZACIÓN DE LA APLICACIÓN
-// Se ejecuta cuando el DOM está completamente cargado.
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM completamente cargado y analizado.');
-  // Esperar un poco para que se vean las animaciones del loader y asegurar que otros recursos se carguen.
   setTimeout(() => {
     const loader = document.getElementById('loader');
     if (loader) {
@@ -141,43 +141,30 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('✅ Loader oculto.');
     }
     initializeApp();
-  }, 800); // 800ms de espera, puedes ajustarlo.
+  }, 800);
 });
 
-/**
- * Función principal para inicializar la aplicación.
- */
 function initializeApp() {
   console.log('🚀 Inicializando aplicación...');
-  loadTheme();             // Carga el tema guardado (oscuro/claro)
-  // generateSidebarMenu(); // Ya no se genera desde JS, el menú está en index.html
-  setupEventListeners();     // Configura todos los event listeners
+  loadTheme();
+  setupEventListeners();
   
-  // Cargar una lección inicial (por ejemplo, la introducción o la primera de courseData)
-  // O la lección guardada en localStorage, o a partir de la URL (hash)
   const initialLessonId = getInitialLessonId();
   if (initialLessonId) {
     loadLesson(initialLessonId);
   } else {
-    loadWelcomeContent(); // Muestra contenido de bienvenida si no hay lección inicial
+    loadWelcomeContent();
   }
 
   if (typeof hljs !== 'undefined') {
-    // hljs.highlightAll(); // Se llamará después de cargar cada lección
     console.log('✨ Highlight.js listo.');
   }
   console.log('👍 Aplicación inicializada.');
 }
 
-/**
- * Determina la lección inicial a cargar.
- * Puede ser por hash en la URL, localStorage, o la primera lección.
- */
 function getInitialLessonId() {
-  // Prioridad 1: Hash en la URL (ej. #google-colab)
   if (window.location.hash) {
-    const lessonIdFromHash = window.location.hash.substring(1); // Quita el #
-    // Validar que el lessonId exista en courseData
+    const lessonIdFromHash = window.location.hash.substring(1);
     for (const section of courseData.sections) {
       if (section.lessons.some(lesson => lesson.id === lessonIdFromHash)) {
         console.log(`📌 Lección inicial desde URL hash: ${lessonIdFromHash}`);
@@ -186,7 +173,6 @@ function getInitialLessonId() {
     }
   }
 
-  // Prioridad 2: Lección guardada en localStorage (si se implementa)
   const savedLessonId = localStorage.getItem('currentLessonId');
   if (savedLessonId) {
      for (const section of courseData.sections) {
@@ -197,41 +183,32 @@ function getInitialLessonId() {
     }
   }
 
-  // Prioridad 3: La primera lección del curso si existe
   if (courseData.sections.length > 0 && courseData.sections[0].lessons.length > 0) {
     const firstLessonId = courseData.sections[0].lessons[0].id;
     console.log(`📌 Lección inicial por defecto: ${firstLessonId}`);
     return firstLessonId;
   }
   
-  return null; // No hay lección inicial que cargar
+  return null;
 }
-
 
 // ==========================================
 // 🎨 GESTIÓN DEL TEMA (MODO OSCURO/CLARO)
 // ==========================================
-
-/**
- * Carga el tema guardado en localStorage o establece el tema claro por defecto en la primera visita.
- */
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
   
-  if (savedTheme) { // Si ya hay un tema guardado en localStorage
+  if (savedTheme) {
     isDarkMode = (savedTheme === 'dark');
     console.log(`🌓 Tema cargado desde localStorage: ${isDarkMode ? 'Oscuro' : 'Claro'}`);
-  } else { // No hay tema guardado: es la primera visita o se borró localStorage
-    // Establecer el tema claro por defecto para la primera visita
-    isDarkMode = false; // false para tema claro
-    localStorage.setItem('theme', 'light'); // Guardar este defecto para futuras visitas
-    console.log('💡 Primera visita o localStorage vacío. Estableciendo tema claro por defecto.');
+  } else {
+    isDarkMode = false;
+    localStorage.setItem('theme', 'light');
+    console.log('💡 Primera visita. Estableciendo tema claro por defecto.');
   }
   
-  applyTheme(); // Aplica el tema (actualiza el body y el texto/icono del botón)
+  applyTheme();
 }
-
-// La función toggleTheme y applyTheme que ya tienes permanecen igual:
 
 function toggleTheme() {
   isDarkMode = !isDarkMode;
@@ -248,7 +225,7 @@ function applyTheme() {
 
   body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
   
-  if (themeToggleButton) { // Asegurarse de que el botón exista
+  if (themeToggleButton) {
     if (themeIcon) {
       themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
     }
@@ -257,13 +234,10 @@ function applyTheme() {
     }
   }
 }
+
 // ==========================================
 // 📖 GESTIÓN DE CONTENIDO: CARGA DE LECCIONES
 // ==========================================
-/**
- * Carga el contenido de una lección en el área principal.
- * @param {string} lessonId - El ID de la lección a cargar (debe existir en courseData).
- */
 async function loadLesson(lessonId) {
   console.log(`🔄 Intentando cargar lección con ID: ${lessonId}`);
   const contentArea = document.getElementById('content-area');
@@ -287,18 +261,13 @@ async function loadLesson(lessonId) {
   if (!lessonToLoad) {
     console.error(`❌ Lección con ID "${lessonId}" no encontrada en courseData.`);
     contentArea.innerHTML = `<div class="content-section"><p style="color:red;">Error: Lección no encontrada.</p></div>`;
-    // Opcionalmente, cargar un mensaje de bienvenida o la introducción
-    // if (lessonId !== courseData.sections[0].lessons[0].id) { // Evitar bucle si la intro falla
-    //   loadLesson(courseData.sections[0].lessons[0].id); 
-    // }
     return;
   }
 
   currentLessonId = lessonId;
-  localStorage.setItem('currentLessonId', lessonId); // Guardar la lección actual
-  window.location.hash = lessonId; // Actualizar el hash de la URL
+  localStorage.setItem('currentLessonId', lessonId);
+  window.location.hash = lessonId;
 
-  // Mostrar un mensaje de carga temporal
   contentArea.innerHTML = `<div class="content-section"><p><i class="fas fa-spinner fa-spin"></i> Cargando "${lessonToLoad.title}"...</p></div>`;
 
   try {
@@ -308,8 +277,6 @@ async function loadLesson(lessonId) {
     }
     const htmlContent = await response.text();
     
-    // Crear un título para la lección dentro del área de contenido
-    // Usar el ícono de la lección y el título de la sección/lección
     const lessonTitleHTML = `
       <h2 class="content-title">
         <i class="${lessonToLoad.icon || sectionOfLesson.icon}"></i> 
@@ -323,24 +290,22 @@ async function loadLesson(lessonId) {
 
     contentArea.innerHTML = `<div class="content-section">${lessonTitleHTML}${htmlContent}</div>`;
 
-    // Scroll al inicio del área de contenido o al ancla específica
     const [filePathOnly, anchor] = lessonToLoad.file.split('#');
     if (anchor) {
-      setTimeout(() => { // Dar tiempo para que el DOM se actualice
+      setTimeout(() => {
         const targetElement = document.getElementById(anchor);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
           console.log(`🔗 Desplazado al ancla: #${anchor}`);
         } else {
-          console.warn(`⚠️ Ancla #${anchor} no encontrada en ${lessonToLoad.file}. Desplazando al inicio.`);
+          console.warn(`⚠️ Ancla #${anchor} no encontrada. Desplazando al inicio.`);
           contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100); // Pequeña demora
+      }, 100);
     } else {
       contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Re-inicializar resaltado de código y MathJax
     if (typeof hljs !== 'undefined') {
       document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightElement(block);
@@ -354,7 +319,6 @@ async function loadLesson(lessonId) {
     }
 
     updateActiveMenuItem(lessonId);
-    // Cerrar sidebar en móviles después de cargar la lección
     if (window.innerWidth <= 768 && sidebarOpen) {
       closeSidebar();
     }
@@ -371,15 +335,9 @@ async function loadLesson(lessonId) {
   }
 }
 
-
-/**
- * Marca el ítem del menú actual como activo.
- * @param {string} lessonId - El ID de la lección activa.
- */
 function updateActiveMenuItem(lessonId) {
   document.querySelectorAll('#sidebar-menu .menu-item').forEach(item => {
     item.classList.remove('active');
-    // Comparamos el data-lesson-id (que deberíamos añadir al HTML del menú) o parte del href
     const itemLessonId = item.getAttribute('data-lesson-id');
     if (itemLessonId === lessonId) {
       item.classList.add('active');
@@ -388,35 +346,11 @@ function updateActiveMenuItem(lessonId) {
   console.log(`🎯 Lección activa marcada en el menú: ${lessonId}`);
 }
 
-/**
- * Carga el contenido de bienvenida inicial en el área de contenido.
- */
 function loadWelcomeContent() {
   const contentArea = document.getElementById('content-area');
   if (!contentArea) return;
   
-  // El contenido de bienvenida ya está en el index.html, 
-  // solo nos aseguramos que no haya una lección específica cargada por defecto.
-  // Si quisiéramos cargarlo dinámicamente:
-  /*
-  contentArea.innerHTML = `
-    <div class="content-section welcome-message"> // Asegúrate que .welcome-message tenga estilos apropiados
-      <h2><i class="fas fa-home"></i> Bienvenido al Curso de Python</h2>
-      <p class="content-text">
-        Explora el menú de la izquierda y selecciona un tema para comenzar.
-      </p>
-      <div style="text-align: center; margin-top: var(--spacing-lg);">
-        <button class="btn btn-primary" onclick="loadLesson('introduccion')">
-          <i class="fas fa-play"></i>
-          Comenzar el Curso
-        </button>
-      </div>
-    </div>
-  `;
-  */
-  // Como el mensaje de bienvenida ya está en index.html, solo hacemos log.
-  console.log('🏠 Contenido de bienvenida ya presente o gestionado por getInitialLessonId.');
-  // Si `getInitialLessonId` no devuelve nada, el contenido de bienvenida del HTML se mostrará.
+  console.log('🏠 Contenido de bienvenida ya presente.');
 }
 
 // ==========================================
@@ -426,25 +360,23 @@ function toggleSidebar() {
   sidebarOpen = !sidebarOpen;
   const sidebar = document.getElementById('sidebar');
   const mainContent = document.getElementById('main-content');
-  const overlay = document.getElementById('sidebar-overlay'); // Para móviles
+  const overlay = document.getElementById('sidebar-overlay');
 
   if (!sidebar || !mainContent || !overlay) return;
 
-  if (window.innerWidth <= 768) { // Comportamiento móvil
+  if (window.innerWidth <= 768) {
     sidebar.classList.toggle('open', sidebarOpen);
     overlay.classList.toggle('active', sidebarOpen);
-    document.body.style.overflow = sidebarOpen ? 'hidden' : ''; // Evitar scroll del body
-  } else { // Comportamiento desktop
-    // En desktop, 'collapsed' significa que está OCULTO (translateX(-100%))
-    // Y 'sidebar-collapsed' en main-content significa que el margen izquierdo es 0.
+    document.body.style.overflow = sidebarOpen ? 'hidden' : '';
+  } else {
     sidebar.classList.toggle('collapsed', !sidebarOpen); 
     mainContent.classList.toggle('sidebar-collapsed', !sidebarOpen);
   }
-  console.log(` Sidebar ${sidebarOpen ? 'abierto' : 'cerrado'}.`);
+  console.log(`Sidebar ${sidebarOpen ? 'abierto' : 'cerrado'}.`);
 }
 
-function closeSidebar() { // Específicamente para cerrar, útil en móviles
-  if (!sidebarOpen && window.innerWidth <= 768) return; // Ya está cerrado en móvil
+function closeSidebar() {
+  if (!sidebarOpen && window.innerWidth <= 768) return;
   
   sidebarOpen = false;
   const sidebar = document.getElementById('sidebar');
@@ -452,11 +384,11 @@ function closeSidebar() { // Específicamente para cerrar, útil en móviles
   const overlay = document.getElementById('sidebar-overlay');
 
   if (sidebar) {
-    sidebar.classList.remove('open'); // Para móviles
-    if (window.innerWidth > 768) { // En desktop, asegurarse que no esté colapsado si debe estar visible
+    sidebar.classList.remove('open');
+    if (window.innerWidth > 768) {
         sidebar.classList.remove('collapsed');
     } else {
-        sidebar.classList.add('collapsed'); // Asegurar que esté colapsado en móvil
+        sidebar.classList.add('collapsed');
     }
   }
   if (mainContent && window.innerWidth > 768) {
@@ -466,7 +398,6 @@ function closeSidebar() { // Específicamente para cerrar, útil en móviles
   document.body.style.overflow = '';
   console.log('🚪 Sidebar cerrado.');
 }
-
 
 // ==========================================
 // 🎧 EVENT LISTENERS (ESCUCHADORES DE EVENTOS)
@@ -480,69 +411,82 @@ function setupEventListeners() {
   // Botón para cambiar tema
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
 
-  // --- Configurar listeners para los items del menú ---
-  // Esto es crucial si el menú es estático en index.html
+  // === CONFIGURACIÓN MEJORADA PARA ITEMS DEL MENÚ ===
   const menuItems = document.querySelectorAll('#sidebar-menu .menu-item');
-  menuItems.forEach(item => {
-    // El href contiene la ruta del archivo, que coincide con `lesson.file` en `courseData`
-    // O podemos añadir un atributo `data-lesson-id` a cada `<a>` tag en el HTML
-    // Ejemplo: <a href="temas/introduccion.html" class="menu-item" data-lesson-id="introduccion">...</a>
-    const lessonFile = item.getAttribute('href'); // ej: "temas/introduccion.html"
-    // Para usar loadLesson(lessonId), necesitamos encontrar el ID correspondiente a este archivo.
-    let lessonIdToLoad = null;
-    for (const section of courseData.sections) {
+  console.log(`🔍 Encontrados ${menuItems.length} items del menú`);
+  
+  menuItems.forEach((item, index) => {
+    // Primero, verificar si ya tiene data-lesson-id
+    let lessonIdToLoad = item.getAttribute('data-lesson-id');
+    
+    // Si no tiene data-lesson-id, intentar encontrarlo por el href
+    if (!lessonIdToLoad) {
+      const lessonFile = item.getAttribute('href');
+      console.log(`📁 Procesando item ${index}: ${lessonFile}`);
+      
+      for (const section of courseData.sections) {
         const lesson = section.lessons.find(l => l.file === lessonFile);
         if (lesson) {
-            lessonIdToLoad = lesson.id;
-            item.setAttribute('data-lesson-id', lessonIdToLoad); // Añadir para updateActiveMenuItem
-            break;
+          lessonIdToLoad = lesson.id;
+          item.setAttribute('data-lesson-id', lessonIdToLoad);
+          console.log(`✅ Asignado data-lesson-id="${lessonIdToLoad}" a ${lessonFile}`);
+          break;
         }
+      }
     }
 
+    // Configurar el event listener si encontramos un ID válido
     if (lessonIdToLoad) {
-        item.addEventListener('click', (event) => {
-            event.preventDefault(); // Evitar navegación normal del enlace
-            loadLesson(lessonIdToLoad);
-        });
+      // Remover cualquier listener previo (evitar duplicados)
+      item.removeEventListener('click', handleMenuClick);
+      
+      // Agregar el nuevo listener
+      item.addEventListener('click', handleMenuClick);
+      console.log(`🎧 Event listener agregado para: ${lessonIdToLoad}`);
     } else {
-        console.warn(`No se encontró ID para el archivo: ${lessonFile} en el menú.`);
+      console.warn(`⚠️ No se encontró ID para el archivo: ${item.getAttribute('href')}`);
     }
   });
-  // --- Fin configuración listeners para items del menú ---
 
   // Eventos de ventana
   window.addEventListener('resize', handleResize);
   document.addEventListener('keydown', handleKeyNavigation);
-  window.addEventListener('hashchange', handleHashChange); // Para navegar con botones de atrás/adelante del navegador
+  window.addEventListener('hashchange', handleHashChange);
 
   console.log('🎧 Event listeners configurados.');
 }
 
-/**
- * Maneja el cambio de hash en la URL para cargar la lección correspondiente.
- */
+// Función separada para manejar clics en el menú
+function handleMenuClick(event) {
+  event.preventDefault(); // ¡CRUCIAL! Evita la navegación normal
+  event.stopPropagation(); // Evita propagación del evento
+  
+  const lessonId = event.currentTarget.getAttribute('data-lesson-id');
+  console.log(`🖱️ Clic en menú detectado para: ${lessonId}`);
+  
+  if (lessonId) {
+    loadLesson(lessonId);
+  } else {
+    console.error('❌ No se encontró data-lesson-id en el elemento clickeado');
+  }
+}
+
 function handleHashChange() {
   console.log('🔄 Hash de URL cambiado.');
   const lessonIdFromHash = window.location.hash.substring(1);
   if (lessonIdFromHash && lessonIdFromHash !== currentLessonId) {
-    // Validar que el lessonId exista antes de cargar
      for (const section of courseData.sections) {
       if (section.lessons.some(lesson => lesson.id === lessonIdFromHash)) {
         loadLesson(lessonIdFromHash);
-        return; // Lección encontrada y cargada
+        return;
       }
     }
-    console.warn(`⚠️ ID de lección del hash "${lessonIdFromHash}" no es válido o ya está cargado.`);
+    console.warn(`⚠️ ID de lección del hash "${lessonIdFromHash}" no es válido.`);
   } else if (!lessonIdFromHash && currentLessonId) {
-    // Si el hash se elimina, cargar contenido de bienvenida o la primera lección
-    loadWelcomeContent(); // O la primera lección
+    loadWelcomeContent();
   }
 }
 
-
-/**
- * Maneja el redimensionamiento de la ventana para ajustar el sidebar.
- */
 function handleResize() {
   const sidebar = document.getElementById('sidebar');
   const mainContent = document.getElementById('main-content');
@@ -551,38 +495,30 @@ function handleResize() {
   if (!sidebar || !mainContent || !overlay) return;
 
   if (window.innerWidth > 768) {
-    // Escritorio
-    overlay.classList.remove('active'); // Ocultar overlay
-    document.body.style.overflow = '';   // Restaurar scroll del body
-    // Si el sidebar estaba pensado para estar abierto en desktop por defecto:
-    if (sidebarOpen) { // Si el estado global dice que debería estar abierto
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (sidebarOpen) {
         sidebar.classList.remove('collapsed');
         mainContent.classList.remove('sidebar-collapsed');
-    } else { // Si el estado global dice que debería estar cerrado
+    } else {
         sidebar.classList.add('collapsed');
         mainContent.classList.add('sidebar-collapsed');
     }
-    sidebar.classList.remove('open'); // 'open' es solo para la superposición móvil
+    sidebar.classList.remove('open');
   } else {
-    // Móvil: si estaba abierto con overlay, mantenerlo. Si no, asegurar que esté colapsado.
     if (!sidebarOpen) {
-        sidebar.classList.add('collapsed'); // Asegurar que esté listo para 'open'
+        sidebar.classList.add('collapsed');
         sidebar.classList.remove('open');
         overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
-    // El estado 'open' y 'active' del overlay se maneja en toggleSidebar/closeSidebar para móviles
   }
 }
 
-/**
- * Maneja la navegación por teclado (ej. Escape para cerrar sidebar).
- */
 function handleKeyNavigation(event) {
   if (event.key === 'Escape' && window.innerWidth <= 768 && sidebarOpen) {
     closeSidebar();
   }
-  // Atajo Ctrl+K o Cmd+K para toggle sidebar
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
     event.preventDefault();
     toggleSidebar();
@@ -590,15 +526,8 @@ function handleKeyNavigation(event) {
 }
 
 // ==========================================
-// 🌐 GLOBAL: Hacer funciones importantes accesibles desde HTML (si es necesario)
+// 🌐 GLOBAL: Hacer funciones accesibles desde HTML
 // ==========================================
-// La función loadLesson es llamada por el botón "Comenzar" en index.html
-// y por los items del menú generados dinámicamente.
-// Si el menú es estático en HTML, los event listeners se encargarán.
-// window.loadLesson = loadLesson; // No es estrictamente necesario si los listeners se añaden correctamente.
-// Lo mantendremos por si acaso el botón "Comenzar" en el HTML sigue usando onclick="loadLesson(...)" con un ID.
-// Actualización: El botón "Comenzar" en el HTML que te di llama a loadLesson('temas/introduccion.html').
-// Adaptaremos el botón o la función. Por ahora, hagamos que loadLesson acepte ID.
-window.loadLesson = loadLesson; // Necesario para el onclick del botón "Comenzar" si usa ID.
+window.loadLesson = loadLesson;
 
 console.log('🏁 Script del curso completamente evaluado.');

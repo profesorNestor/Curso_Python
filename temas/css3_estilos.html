@@ -1,0 +1,162 @@
+<!-- =============================================
+     CSS3 PARA ESTILOS WEB - CURSO DE PYTHON
+     Archivo: temas/css3_estilos.html
+     ============================================= -->
+
+<div class="lesson-content">
+    
+    <h2 class="content-subtitle">
+        <i class="fab fa-css3-alt"></i> ¿Qué es CSS3?
+    </h2>
+    
+    <p class="content-text">
+        CSS3 (Cascading Style Sheets 3) es el lenguaje utilizado para dar estilo y diseño 
+        a las páginas web. Es esencial cuando desarrollas aplicaciones web con Python, 
+        ya que te permite hacer que tus aplicaciones <strong>Flask</strong> y <strong>Django</strong> 
+        se vean profesionales y atractivas.
+    </p>
+
+    <h3 class="content-subtitle">🎨 Sintaxis Básica de CSS</h3>
+    
+    <pre><code class="language-css">/* Selector de elemento */
+h1 {
+    color: #3b82f6;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Selector de clase */
+.mi-clase {
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Selector de ID */
+#mi-id {
+    margin: 0 auto;
+    max-width: 1200px;
+}</code></pre>
+
+    <h3 class="content-subtitle">📦 Box Model (Modelo de Caja)</h3>
+    
+    <p class="content-text">
+        Todo elemento HTML es una "caja" con diferentes capas:
+    </p>
+    
+    <pre><code class="language-css">.caja-ejemplo {
+    /* Contenido */
+    width: 300px;
+    height: 200px;
+    
+    /* Padding (relleno interno) */
+    padding: 20px;
+    
+    /* Border (borde) */
+    border: 2px solid #3b82f6;
+    
+    /* Margin (margen externo) */
+    margin: 10px;
+}</code></pre>
+
+    <h3 class="content-subtitle">🎯 Selectores Importantes</h3>
+    
+    <ul class="content-list">
+        <li><code>elemento</code> - Selecciona todos los elementos de ese tipo</li>
+        <li><code>.clase</code> - Selecciona elementos con esa clase</li>
+        <li><code>#id</code> - Selecciona el elemento con ese ID</li>
+        <li><code>elemento.clase</code> - Selecciona elementos específicos con esa clase</li>
+        <li><code>elemento > hijo</code> - Selecciona hijos directos</li>
+        <li><code>:hover</code> - Aplica estilos al pasar el cursor</li>
+    </ul>
+
+    <h3 class="content-subtitle">📱 Diseño Responsive con Flexbox</h3>
+    
+    <pre><code class="language-css">/* Container flex */
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+}</code></pre>
+
+    <h3 class="content-subtitle">🌈 CSS3 Moderno: Variables y Gradientes</h3>
+    
+    <pre><code class="language-css">:root {
+    /* Variables CSS */
+    --color-primario: #3b82f6;
+    --color-secundario: #10b981;
+    --espaciado: 1rem;
+}
+
+.tarjeta-moderna {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    padding: var(--espaciado);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-moderna:hover {
+    transform: translateY(-5px);
+}</code></pre>
+
+    <h3 class="content-subtitle">🔗 Integración con Python/Flask</h3>
+    
+    <pre><code class="language-python"># Estructura de archivos Flask
+mi_app/
+├── app.py
+├── templates/
+│   └── base.html
+└── static/
+    ├── css/
+    │   └── styles.css
+    └── js/
+        └── script.js</code></pre>
+
+    <pre><code class="language-html">&lt;!-- En tu template base.html --&gt;
+&lt;link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"&gt;</code></pre>
+
+    <h3 class="content-subtitle">💡 Ejercicio Práctico</h3>
+    
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-palette"></i> Práctica: Estiliza tu página
+        </div>
+        <div class="card-description">
+            <p>Toma la página HTML del ejercicio anterior y agrega CSS para:</p>
+            <ul>
+                <li>Cambiar la tipografía y colores</li>
+                <li>Agregar un fondo degradado</li>
+                <li>Hacer la página responsive</li>
+                <li>Agregar efectos hover a los enlaces</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="content-subtitle">🚀 Frameworks CSS Populares</h3>
+    
+    <ul class="content-list">
+        <li><strong>Bootstrap</strong> - Framework completo y popular</li>
+        <li><strong>Tailwind CSS</strong> - Utility-first CSS framework</li>
+        <li><strong>Bulma</strong> - Framework moderno basado en Flexbox</li>
+        <li><strong>Foundation</strong> - Framework responsive profesional</li>
+    </ul>
+
+    <h3 class="content-subtitle">📚 Recursos Adicionales</h3>
+    
+    <ul class="content-list">
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank">MDN Web Docs - CSS</a></li>
+        <li><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></li>
+        <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy (Juego para aprender Flexbox)</a></li>
+    </ul>
+
+</div>

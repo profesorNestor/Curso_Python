@@ -1,0 +1,211 @@
+<!-- =============================================
+     JAVASCRIPT BÁSICO - CURSO DE PYTHON
+     Archivo: temas/javascript_intro.html
+     ============================================= -->
+
+<div class="lesson-content">
+    
+    <h2 class="content-subtitle">
+        <i class="fab fa-js-square"></i> ¿Qué es JavaScript?
+    </h2>
+    
+    <p class="content-text">
+        JavaScript es el lenguaje de programación que da vida a las páginas web. 
+        Mientras que Python maneja la lógica del servidor (backend), JavaScript 
+        se ejecuta en el navegador (frontend) para crear interactividad y dinamismo 
+        en tus aplicaciones web.
+    </p>
+
+    <h3 class="content-subtitle">⚡ Características de JavaScript</h3>
+    
+    <ul class="content-list">
+        <li><strong>Lenguaje interpretado</strong> - Se ejecuta directamente en el navegador</li>
+        <li><strong>Dinámico</strong> - Las variables pueden cambiar de tipo</li>
+        <li><strong>Orientado a eventos</strong> - Responde a acciones del usuario</li>
+        <li><strong>Multiplataforma</strong> - Funciona en navegadores y servidores (Node.js)</li>
+    </ul>
+
+    <h3 class="content-subtitle">📝 Sintaxis Básica</h3>
+    
+    <pre><code class="language-javascript">// Variables (similar a Python)
+let nombre = "Ana";
+const edad = 25;
+var activo = true;
+
+// Funciones
+function saludar(nombre) {
+    return `¡Hola, ${nombre}!`;
+}
+
+// Función flecha (equivalente a lambda en Python)
+const sumar = (a, b) => a + b;
+
+// Arrays (como listas en Python)
+let frutas = ["manzana", "banana", "naranja"];
+
+// Objetos (como diccionarios en Python)
+let persona = {
+    nombre: "Luis",
+    edad: 30,
+    saludar: function() {
+        return `Hola, soy ${this.nombre}`;
+    }
+};</code></pre>
+
+    <h3 class="content-subtitle">🎯 Manipulación del DOM</h3>
+    
+    <p class="content-text">
+        El DOM (Document Object Model) permite modificar elementos HTML desde JavaScript:
+    </p>
+    
+    <pre><code class="language-javascript">// Seleccionar elementos
+const titulo = document.getElementById("mi-titulo");
+const botones = document.querySelectorAll(".btn");
+
+// Modificar contenido
+titulo.textContent = "Nuevo título";
+titulo.style.color = "blue";
+
+// Agregar eventos
+document.getElementById("mi-boton").addEventListener("click", function() {
+    alert("¡Botón clickeado!");
+});
+
+// Crear elementos dinámicamente
+const nuevoDiv = document.createElement("div");
+nuevoDiv.innerHTML = "&lt;h3&gt;Contenido dinámico&lt;/h3&gt;";
+document.body.appendChild(nuevoDiv);</code></pre>
+
+    <h3 class="content-subtitle">🔄 Comparación Python vs JavaScript</h3>
+    
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-title">🐍 Python</div>
+            <div class="card-description">
+                <pre><code class="language-python"># Listas
+frutas = ["manzana", "banana"]
+frutas.append("naranja")
+
+# Diccionarios  
+persona = {
+    "nombre": "Ana",
+    "edad": 25
+}
+
+# Bucles
+for fruta in frutas:
+    print(fruta)</code></pre>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">🟨 JavaScript</div>
+            <div class="card-description">
+                <pre><code class="language-javascript">// Arrays
+let frutas = ["manzana", "banana"];
+frutas.push("naranja");
+
+// Objetos
+let persona = {
+    nombre: "Ana",
+    edad: 25
+};
+
+// Bucles
+frutas.forEach(fruta => {
+    console.log(fruta);
+});</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="content-subtitle">📡 AJAX y Fetch API</h3>
+    
+    <p class="content-text">
+        JavaScript puede comunicarse con tu backend de Python usando AJAX:
+    </p>
+    
+    <pre><code class="language-javascript">// Enviar datos a una API de Flask/Django
+async function enviarDatos() {
+    try {
+        const respuesta = await fetch('/api/datos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: 'Ana',
+                edad: 25
+            })
+        });
+        
+        const datos = await respuesta.json();
+        console.log('Respuesta del servidor:', datos);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+
+    <h3 class="content-subtitle">🔗 Integración con Flask</h3>
+    
+    <pre><code class="language-python"># Backend Python (Flask)
+from flask import Flask, jsonify, request
+
+@app.route('/api/datos', methods=['POST'])
+def procesar_datos():
+    datos = request.get_json()
+    nombre = datos.get('nombre')
+    edad = datos.get('edad')
+    
+    # Procesar datos...
+    resultado = {
+        'mensaje': f'Hola {nombre}, tienes {edad} años',
+        'status': 'success'
+    }
+    
+    return jsonify(resultado)</code></pre>
+
+    <h3 class="content-subtitle">💡 Ejercicio Práctico</h3>
+    
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-code"></i> Práctica: Calculadora Interactiva
+        </div>
+        <div class="card-description">
+            <p>Crea una calculadora simple que:</p>
+            <ul>
+                <li>Tenga botones para números y operaciones</li>
+                <li>Muestre el resultado en tiempo real</li>
+                <li>Use JavaScript para manejar los cálculos</li>
+                <li>Aplique estilos CSS atractivos</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="content-subtitle">🚀 Frameworks JavaScript Populares</h3>
+    
+    <ul class="content-list">
+        <li><strong>React</strong> - Biblioteca para interfaces de usuario</li>
+        <li><strong>Vue.js</strong> - Framework progresivo</li>
+        <li><strong>Angular</strong> - Framework completo de Google</li>
+        <li><strong>jQuery</strong> - Biblioteca para manipulación del DOM (clásica)</li>
+    </ul>
+
+    <h3 class="content-subtitle">🔧 Herramientas de Desarrollo</h3>
+    
+    <ul class="content-list">
+        <li><strong>DevTools del navegador</strong> - F12 para debugging</li>
+        <li><strong>Visual Studio Code</strong> - Editor con excelente soporte JS</li>
+        <li><strong>Node.js</strong> - JavaScript en el servidor</li>
+        <li><strong>npm/yarn</strong> - Gestores de paquetes</li>
+    </ul>
+
+    <h3 class="content-subtitle">📚 Recursos Adicionales</h3>
+    
+    <ul class="content-list">
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank">MDN Web Docs - JavaScript</a></li>
+        <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a></li>
+        <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank">freeCodeCamp JavaScript</a></li>
+    </ul>
+
+</div>
