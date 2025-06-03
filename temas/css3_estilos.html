@@ -1,162 +1,1405 @@
-<!-- =============================================
-     CSS3 PARA ESTILOS WEB - CURSO DE PYTHON
-     Archivo: temas/css3_estilos.html
-     ============================================= -->
-
-<div class="lesson-content">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Para Estilos Web - Curso de Python (Versión Mejorada)</title>
     
-    <h2 class="content-subtitle">
-        <i class="fab fa-css3-alt"></i> ¿Qué es CSS3?
-    </h2>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <p class="content-text">
-        CSS3 (Cascading Style Sheets 3) es el lenguaje utilizado para dar estilo y diseño 
-        a las páginas web. Es esencial cuando desarrollas aplicaciones web con Python, 
-        ya que te permite hacer que tus aplicaciones <strong>Flask</strong> y <strong>Django</strong> 
-        se vean profesionales y atractivas.
-    </p>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Courier+New&display=swap" rel="stylesheet">
 
-    <h3 class="content-subtitle">🎨 Sintaxis Básica de CSS</h3>
-    
-    <pre><code class="language-css">/* Selector de elemento */
-h1 {
-    color: #3b82f6;
-    font-size: 2rem;
-    text-align: center;
-}
+    <!-- ========================================
+         CSS3 PARA ESTILOS WEB - CURSO DE PYTHON
+         Archivo: temas/css3_estilos.html
+         Versión Completa y Mejorada
+         ======================================== -->
 
-/* Selector de clase */
-.mi-clase {
-    background-color: #f8fafc;
-    padding: 1rem;
-    border-radius: 8px;
-}
+    <!-- Nota: Estos estilos están embebidos en el <head> para este ejemplo. 
+         En proyectos más grandes, es recomendable moverlos a un archivo .css externo. -->
+    <style>
+        /* Estilo base para el cuerpo del documento */
+        body {
+            font-family: 'Inter', sans-serif; /* Fuente principal con fallback genérico */
+            line-height: 1.6; /* Altura de línea para mejor legibilidad */
+            margin: 0; /* Eliminar margen por defecto del navegador */
+            padding: 20px; /* Añadir un poco de padding alrededor del contenido */
+            background-color: #f4f7f6; /* Color de fondo suave para la página */
+            color: #333; /* Color de texto principal */
+        }
 
-/* Selector de ID */
-#mi-id {
-    margin: 0 auto;
-    max-width: 1200px;
-}</code></pre>
+        /* Estilo general para las tarjetas de contenido */
+        .card {
+            background-color: #ffffff; /* Fondo blanco para las tarjetas */
+            margin-bottom: 30px; /* Espacio debajo de cada tarjeta */
+            border-radius: 12px; /* Bordes redondeados para suavizar la apariencia */
+            padding: 25px 30px; /* Espaciado interno de las tarjetas */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Sombra sutil para dar profundidad */
+            border: 1px solid #e0e0e0; /* Borde ligero */
+        }
 
-    <h3 class="content-subtitle">📦 Box Model (Modelo de Caja)</h3>
-    
-    <p class="content-text">
-        Todo elemento HTML es una "caja" con diferentes capas:
-    </p>
-    
-    <pre><code class="language-css">.caja-ejemplo {
-    /* Contenido */
-    width: 300px;
-    height: 200px;
-    
-    /* Padding (relleno interno) */
-    padding: 20px;
-    
-    /* Border (borde) */
-    border: 2px solid #3b82f6;
-    
-    /* Margin (margen externo) */
-    margin: 10px;
-}</code></pre>
+        /* Animaciones del header */
+        @keyframes cssFloat { /* Animación para el fondo del header */
+            0% { background-position: 0 0; }
+            100% { background-position: 400px 400px; }
+        }
+        @keyframes pulse { /* Animación de pulso para el título del header */
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes slideInLeft { /* Animación de entrada desde la izquierda */
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeInUp { /* Animación de entrada desde abajo */
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Estilos para demostración visual del Box Model */
+        .box-model-demo {
+            margin: 30px auto; /* Margen superior/inferior y centrado horizontal */
+            max-width: 500px; /* Ancho máximo del contenedor de demostración */
+            font-family: 'Courier New', monospace; /* Fuente monoespaciada para un look técnico */
+            background: #f8f9fa; /* Fondo claro para la demo */
+            border-radius: 12px; /* Bordes redondeados */
+            padding: 20px; /* Espaciado interno */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Sombra para destacar */
+        }
+        
+        .box-visual { /* Contenedor visual del box model */
+            background: #e3f2fd; /* Fondo azul claro */
+            border: 3px solid #2196f3; /* Borde azul sólido */
+            margin: 20px; /* Margen (representa el 'margin' del box model) */
+            padding: 20px; /* Padding (representa el 'padding' del box model) */
+            text-align: center; /* Alineación del texto al centro */
+            position: relative; /* Necesario para posicionar los pseudo-elementos */
+            border-radius: 8px; /* Bordes redondeados */
+        }
+        
+        .box-visual::before { /* Pseudo-elemento para etiquetar 'MARGIN' */
+            content: 'MARGIN'; /* Texto de la etiqueta */
+            position: absolute; /* Posicionamiento absoluto respecto a .box-visual */
+            top: -25px; /* Posición arriba del borde */
+            left: 50%; /* Centrado horizontal */
+            transform: translateX(-50%); /* Ajuste fino del centrado */
+            background: #ff9800; /* Fondo naranja */
+            color: white; /* Texto blanco */
+            padding: 5px 10px; /* Espaciado interno de la etiqueta */
+            border-radius: 4px; /* Bordes redondeados de la etiqueta */
+            font-size: 0.8em; /* Tamaño de fuente pequeño */
+            font-weight: bold; /* Texto en negrita */
+        }
+        
+        .box-visual::after { /* Pseudo-elemento para etiquetar 'BORDER' */
+            content: 'BORDER';
+            position: absolute;
+            bottom: -25px; /* Posición debajo del borde */
+            right: 10px; /* Alineado a la derecha */
+            background: #4caf50; /* Fondo verde */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .box-content { /* Contenedor del contenido dentro del box model */
+            background: #fff3e0; /* Fondo crema */
+            border: 2px dashed #ff9800; /* Borde naranja discontinuo */
+            padding: 15px; /* Espaciado interno (representa el 'padding' del contenido) */
+            border-radius: 4px;
+            position: relative; /* Necesario para el pseudo-elemento 'PADDING' */
+        }
+        
+        .box-content::before { /* Pseudo-elemento para etiquetar 'PADDING' */
+            content: 'PADDING';
+            position: absolute;
+            top: -12px; /* Posición justo encima del contenido, dentro del padding visual */
+            left: 10px;
+            background: #9c27b0; /* Fondo púrpura */
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        /* Estilos para la demostración interactiva de selectores */
+        .selector-demo {
+            background: white;
+            border: 2px solid #e0e0e0; /* Borde gris claro */
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0; /* Margen vertical */
+            position: relative; /* Contexto de posicionamiento */
+            transition: all 0.3s ease; /* Transición suave para efectos hover */
+        }
+        
+        .selector-demo:hover { /* Efecto al pasar el ratón */
+            border-color: #3498db; /* Cambia color del borde */
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.2); /* Añade sombra */
+        }
+        
+        .selector-type { /* Etiqueta para el tipo de selector */
+            display: inline-block; /* Para que el padding y margin funcionen correctamente */
+            background: linear-gradient(135deg, #667eea, #764ba2); /* Fondo degradado */
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px; /* Bordes muy redondeados (forma de píldora) */
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px; /* Espacio debajo de la etiqueta */
+        }
+        
+        /* Estilos para mostrar propiedades CSS */
+        .css-property {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db; /* Línea azul a la izquierda */
+            padding: 15px 20px;
+            margin: 15px 0; /* Margen vertical */
+            border-radius: 0 8px 8px 0; /* Bordes redondeados solo a la derecha */
+            font-family: 'Courier New', monospace;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .css-property:hover { /* Efecto al pasar el ratón */
+            background: #e3f2fd; /* Fondo azul muy claro */
+            border-left-color: #1976d2; /* Borde izquierdo más oscuro */
+            transform: translateX(5px); /* Ligero desplazamiento a la derecha */
+        }
+        
+        .property-name { /* Nombre de la propiedad CSS */
+            color: #e91e63; /* Color rosa */
+            font-weight: bold;
+        }
+        
+        .property-value { /* Valor de la propiedad CSS */
+            color: #2e7d32; /* Color verde oscuro */
+        }
+        
+        .property-description { /* Descripción de la propiedad CSS */
+            color: #555; /* Color gris oscuro para el texto */
+            font-size: 0.9em;
+            font-family: 'Inter', sans-serif; /* Usar la fuente principal para descripciones */
+            margin-top: 8px; /* Espacio arriba de la descripción */
+            line-height: 1.5; /* Altura de línea mejorada */
+        }
+        
+        /* Grid de ejemplos visuales */
+        .examples-grid {
+            display: grid; /* Usar CSS Grid para el layout */
+            /* Columnas responsivas: se ajustan automáticamente al ancho disponible, 
+               con un mínimo de 250px y un máximo de 1 fracción del espacio. */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; /* Espacio entre los elementos del grid */
+            margin: 25px 0; /* Margen vertical */
+        }
+        
+        .example-card { /* Tarjeta individual dentro del grid de ejemplos */
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: default; /* Cambiado de pointer a default si no son clickeables */
+        }
+        
+        .example-card:hover { /* Efecto al pasar el ratón */
+            transform: translateY(-5px); /* Eleva la tarjeta ligeramente */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+            border-color: #3498db;
+        }
+        
+        .example-title { /* Título dentro de la tarjeta de ejemplo */
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50; /* Color azul oscuro */
+            margin-bottom: 10px;
+            display: flex; /* Para alinear el icono con el texto */
+            align-items: center; /* Alineación vertical */
+            gap: 8px; /* Espacio entre el icono y el texto */
+        }
+        
+        .example-demo { /* Área de demostración dentro de la tarjeta de ejemplo */
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            min-height: 60px; /* Altura mínima para la demo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Demos específicos para ilustrar propiedades */
+        .gradient-demo { /* Demo de gradientes */
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra de texto para legibilidad */
+        }
+        
+        .shadow-demo { /* Demo de sombras */
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra pronunciada */
+            border-radius: 10px;
+        }
+        
+        .transform-demo { /* Demo de transformaciones */
+            background: #e74c3c; /* Fondo rojo */
+            color: white;
+            transition: transform 0.3s ease; /* Transición suave para la transformación */
+        }
+        
+        .transform-demo:hover { /* Efecto al pasar el ratón */
+            transform: rotate(5deg) scale(1.1); /* Rota y escala el elemento */
+        }
+        
+        .flex-demo { /* Demo de Flexbox */
+            background: #9b59b6; /* Fondo púrpura */
+            color: white;
+            display: flex; /* Activa Flexbox */
+            justify-content: space-around; /* Distribuye el espacio alrededor de los ítems */
+            align-items: center; /* Centra los ítems verticalmente */
+        }
+        
+        .flex-demo div { /* Estilos para los ítems dentro de la demo Flexbox */
+            background: rgba(255,255,255,0.2); /* Fondo semitransparente */
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        
+        /* Estilos para bloques de código CSS con sintaxis destacada */
+        .css-code {
+            background: linear-gradient(135deg, #2c3e50, #34495e); /* Fondo oscuro degradado */
+            color: #ecf0f1; /* Color de texto claro */
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace; /* Fuente monoespaciada para código */
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 15px 0; /* Margen vertical */
+            overflow-x: auto; /* Scroll horizontal si el código es muy largo */
+            position: relative; /* Para la etiqueta 'CSS3' */
+            border: 1px solid #34495e; /* Borde sutil */
+        }
+        
+        .css-code::before { /* Etiqueta 'CSS3' en la esquina del bloque de código */
+            content: 'CSS3';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        /* Colores para la sintaxis destacada en bloques de código CSS */
+        .css-code .selector { color: #f39c12; font-weight: bold; } /* Naranja para selectores */
+        .css-code .property { color: #e74c3c; } /* Rojo para propiedades */
+        .css-code .value    { color: #2ecc71; } /* Verde para valores */
+        .css-code .comment  { color: #95a5a6; font-style: italic; } /* Gris para comentarios */
+        .css-code .unit     { color: #e67e22; } /* Naranja oscuro para unidades */
+        .css-code .string   { color: #f1c40f; } /* Amarillo para strings */
+        
+        /* Estilos responsivos para móviles */
+        @media (max-width: 768px) { /* Se aplica si el ancho de la pantalla es 768px o menos */
+            body {
+                padding: 10px; /* Reduce el padding del body en móviles */
+            }
+            .card {
+                padding: 20px 15px; /* Reduce el padding de las tarjetas */
+            }
+            .examples-grid { /* Grid de ejemplos a una sola columna en móviles */
+                grid-template-columns: 1fr;
+            }
+            
+            .box-model-demo { /* Ajustes para la demo del Box Model */
+                margin: 20px 10px;
+                padding: 15px;
+            }
+            
+            .box-visual {
+                margin: 15px 10px;
+                padding: 15px;
+            }
 
-    <h3 class="content-subtitle">🎯 Selectores Importantes</h3>
-    
-    <ul class="content-list">
-        <li><code>elemento</code> - Selecciona todos los elementos de ese tipo</li>
-        <li><code>.clase</code> - Selecciona elementos con esa clase</li>
-        <li><code>#id</code> - Selecciona el elemento con ese ID</li>
-        <li><code>elemento.clase</code> - Selecciona elementos específicos con esa clase</li>
-        <li><code>elemento > hijo</code> - Selecciona hijos directos</li>
-        <li><code>:hover</code> - Aplica estilos al pasar el cursor</li>
-    </ul>
+            /* Ajustes para el header en móviles */
+            #css3-header h1 {
+                font-size: 2.5em !important; /* Reduce el tamaño del título principal */
+            }
+            #css3-header p {
+                font-size: 1.1em !important; /* Reduce el tamaño del párrafo */
+            }
+        }
+    </style>
+</head>
+<body>
 
-    <h3 class="content-subtitle">📱 Diseño Responsive con Flexbox</h3>
-    
-    <pre><code class="language-css">/* Container flex */
-.contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .contenedor {
-        flex-direction: column;
-        text-align: center;
-    }
-}</code></pre>
-
-    <h3 class="content-subtitle">🌈 CSS3 Moderno: Variables y Gradientes</h3>
-    
-    <pre><code class="language-css">:root {
-    /* Variables CSS */
-    --color-primario: #3b82f6;
-    --color-secundario: #10b981;
-    --espaciado: 1rem;
-}
-
-.tarjeta-moderna {
-    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-    padding: var(--espaciado);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.tarjeta-moderna:hover {
-    transform: translateY(-5px);
-}</code></pre>
-
-    <h3 class="content-subtitle">🔗 Integración con Python/Flask</h3>
-    
-    <pre><code class="language-python"># Estructura de archivos Flask
-mi_app/
-├── app.py
-├── templates/
-│   └── base.html
-└── static/
-    ├── css/
-    │   └── styles.css
-    └── js/
-        └── script.js</code></pre>
-
-    <pre><code class="language-html">&lt;!-- En tu template base.html --&gt;
-&lt;link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"&gt;</code></pre>
-
-    <h3 class="content-subtitle">💡 Ejercicio Práctico</h3>
-    
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-palette"></i> Práctica: Estiliza tu página
-        </div>
-        <div class="card-description">
-            <p>Toma la página HTML del ejercicio anterior y agrega CSS para:</p>
-            <ul>
-                <li>Cambiar la tipografía y colores</li>
-                <li>Agregar un fondo degradado</li>
-                <li>Hacer la página responsive</li>
-                <li>Agregar efectos hover a los enlaces</li>
-            </ul>
-        </div>
+    <!-- Este header utiliza estilos en línea para algunas propiedades y clases CSS para otras.
+         La animación de fondo se define en el <style> del <head>. -->
+    <div id="css3-header" class="card" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3498db 100%); padding: 50px 30px; text-align: center; color: white; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(30, 60, 114, 0.4);">
+      <div style="position:absolute; top:0;left:0;right:0;bottom:0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 12px, transparent 12px, transparent 24px); animation: cssFloat 40s linear infinite;"></div>
+      
+      <div style="position:relative; z-index:1;"> <h1 style="font-size: 3.5em; margin-bottom: 15px; text-shadow: 2px 2px 6px rgba(0,0,0,0.3); animation: pulse 3s infinite;">
+          <i class="fab fa-css3-alt"></i> CSS3: El Arte de Estilizar la Web <span role="img" aria-label="palette">🎨</span>
+        </h1>
+        <p style="font-size: 1.4em; opacity: 0.95; line-height: 1.7; max-width: 900px; margin:auto; animation: fadeInUp 1s ease;">
+          Domina el lenguaje que convierte HTML simple en experiencias visuales extraordinarias.
+        </p>
+      </div>
     </div>
 
-    <h3 class="content-subtitle">🚀 Frameworks CSS Populares</h3>
-    
-    <ul class="content-list">
-        <li><strong>Bootstrap</strong> - Framework completo y popular</li>
-        <li><strong>Tailwind CSS</strong> - Utility-first CSS framework</li>
-        <li><strong>Bulma</strong> - Framework moderno basado en Flexbox</li>
-        <li><strong>Foundation</strong> - Framework responsive profesional</li>
-    </ul>
+    <div class="card" style="border-left: 6px solid #3498db; background: linear-gradient(135deg, #ebf8ff 0%, #dbeafe 100%);">
+      <h2 style="color: #1e40af; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-paint-brush"></i> 1. ¿Qué es CSS3? <span role="img" aria-label="target">🎯</span>
+      </h2>
+      
+      <div class="examples-grid">
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fas fa-layer-group"></i> Cascading Style Sheets
+          </div>
+          <div class="property-description">
+            <strong>Cascading (Cascada):</strong> Los estilos se aplican en cascada. Las reglas más específicas o posteriores anulan a las más generales o anteriores. La herencia también juega un papel importante.<br>
+            <strong>Style (Estilo):</strong> Define la apariencia visual de los elementos HTML: colores, fuentes, espaciado, layout, etc.<br>
+            <strong>Sheets (Hojas):</strong> Los estilos se escriben en "hojas de estilo" (archivos .css o bloques &lt;style&gt;), separando la presentación del contenido (HTML).
+          </div>
+        </div>
+        
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fas fa-magic"></i> CSS3 vs CSS2
+          </div>
+          <div class="property-description">
+            <span role="img" aria-label="sparkles">✨</span> <strong>Nuevas características y mejoras modulares:</strong><br>
+            • <strong>Selectores avanzados:</strong> Mayor precisión para seleccionar elementos.<br>
+            • <strong>Esquinas redondeadas (border-radius):</strong> Facilidad para crear bordes curvos.<br>
+            • <strong>Sombras (box-shadow, text-shadow):</strong> Efectos de profundidad para cajas y texto.<br>
+            • <strong>Gradientes (linear-gradient, radial-gradient):</strong> Fondos con transiciones de color.<br>
+            • <strong>Transformaciones 2D/3D (transform):</strong> Rotar, escalar, inclinar y mover elementos.<br>
+            • <strong>Animaciones (@keyframes, animation):</strong> Crear secuencias de movimiento complejas.<br>
+            • <strong>Transiciones (transition):</strong> Suavizar cambios de estado en propiedades.<br>
+            • <strong>Flexbox (Flexible Box Layout):</strong> Módulo para layouts unidimensionales robustos.<br>
+            • <strong>Grid Layout:</strong> Módulo para layouts bidimensionales complejos.<br>
+            • <strong>Fuentes personalizadas (@font-face):</strong> Usar cualquier fuente en la web.<br>
+            • <strong>Múltiples fondos:</strong> Aplicar varias imágenes de fondo a un elemento.<br>
+            • <strong>Media Queries:</strong> Clave para el diseño responsivo, adaptando estilos al dispositivo.
+          </div>
+        </div>
+        
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fab fa-python"></i> Conexión con Python (Web Frameworks)
+          </div>
+          <div class="property-description">
+            <span role="img" aria-label="snake">🐍</span> <strong>Flask/Django y otros frameworks:</strong><br>
+            • <strong>Templates HTML + CSS:</strong> Los frameworks Python sirven HTML que enlaza a archivos CSS (o incluye CSS interno/en línea) para estilizar las vistas generadas.<br>
+            • <strong>Archivos estáticos:</strong> CSS, JavaScript e imágenes se gestionan como archivos estáticos, servidos eficientemente.<br>
+            • <strong>Diseño Responsivo para Datos:</strong> Aplicar CSS para que las tablas, gráficos y visualizaciones de datos generadas por Python se vean bien en todos los dispositivos.<br>
+            • <strong>Dashboards Profesionales:</strong> Crear interfaces de usuario atractivas y funcionales para aplicaciones de análisis de datos, machine learning, etc.
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3 class="content-subtitle">📚 Recursos Adicionales</h3>
-    
-    <ul class="content-list">
-        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank">MDN Web Docs - CSS</a></li>
-        <li><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></li>
-        <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy (Juego para aprender Flexbox)</a></li>
-    </ul>
+    <div class="card" style="border-left: 6px solid #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #fee2e2 100%);">
+      <h2 style="color: #c53030; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-code"></i> 2. Formas de Aplicar CSS <span role="img" aria-label="memo">📝</span>
+      </h2>
+      
+      <h3 style="color: #c53030; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> 1. Estilos en Línea (Inline Styles)
+      </h3>
+      
+      <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-bottom: 20px;">
+        Se aplican directamente en el atributo <code>style</code> del elemento HTML. Tienen la <strong>máxima especificidad</strong> y anulan estilos de hojas internas o externas, a menos que estos usen <code>!important</code>.
+      </p>
+      
+      <div class="css-code">
+<pre><code class="language-html"><span class="comment">&lt;!-- Ejemplo de estilos en línea --&gt;</span>
+<span class="selector">&lt;h1</span> <span class="property">style=</span><span class="value">"color: #e74c3c; font-size: 2em; text-align: center;"</span><span class="selector">&gt;</span>
+    Mi Título con Estilo en Línea
+<span class="selector">&lt;/h1&gt;</span>
 
-</div>
+<span class="selector">&lt;div</span> <span class="property">style=</span><span class="value">"background: linear-gradient(45deg, #3498db, #2ecc71); 
+           padding: 20px; border-radius: 10px; color: white;"</span><span class="selector">&gt;</span>
+    Contenido con múltiples estilos en línea.
+<span class="selector">&lt;/div&gt;</span></code></pre>
+      </div>
+      
+      <div style="background: #e8f4fd; border-left: 4px solid #3498db; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #2980b9; margin-top: 0;"><i class="fas fa-info-circle"></i> Cuándo usar estilos en línea:</h4>
+        <ul style="color: #34495e; line-height: 1.6; padding-left: 20px;">
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Google Colab/Jupyter:</strong> Para prototipos rápidos, demos y cuando se genera HTML dinámicamente desde Python y se quiere un estilo específico para un elemento.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Emails HTML:</strong> Muchos clientes de correo tienen soporte limitado para CSS externo o interno, por lo que los estilos en línea son más fiables.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Sobrescribir estilos específicos:</strong> Cuando necesitas anular urgentemente un estilo definido en otro lugar (aunque <code>!important</code> en hojas de estilo es otra opción, a menudo menos recomendada).</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Aplicaciones JavaScript:</strong> A veces, al manipular el DOM, se aplican estilos directamente a los elementos.</li>
+          <li><span role="img" aria-label="cross mark">❌</span> <strong>Evitar en sitios web grandes:</strong> Dificultan el mantenimiento, la consistencia y la reutilización de estilos. Hacen el HTML menos legible.</li>
+        </ul>
+      </div>
+      
+      <h3 style="color: #c53030; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> 2. Estilos Internos (Internal Styles)
+      </h3>
+      
+      <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-bottom: 20px;">
+        Se definen dentro de la etiqueta <code>&lt;style&gt;</code>, usualmente colocada en la sección <code>&lt;head&gt;</code> del documento HTML. Afectan solo a la página donde se declaran.
+      </p>
+      
+      <div class="css-code">
+<pre><code class="language-html"><span class="selector">&lt;head&gt;</span>
+    <span class="comment">&lt;!-- Otros elementos del head como meta tags, title, etc. --&gt;</span>
+    <span class="selector">&lt;style&gt;</span>
+        <span class="comment">/* Estilos para toda la página actual */</span>
+        <span class="selector">body</span> {
+            <span class="property">font-family:</span> <span class="value">'Arial', sans-serif</span>;
+            <span class="property">background:</span> <span class="value">linear-gradient(135deg, #667eea, #764ba2)</span>;
+            <span class="property">color:</span> <span class="value">white</span>; <span class="comment">/* Asegurar contraste para el fondo oscuro */</span>
+            <span class="property">margin:</span> <span class="unit">0</span>;
+            <span class="property">padding:</span> <span class="unit">20px</span>;
+        }
+        
+        <span class="selector">.tarjeta-interna</span> { <span class="comment">/* Clase específica para esta página */</span>
+            <span class="property">background:</span> <span class="value">white</span>;
+            <span class="property">color:</span> <span class="value">#333</span>; <span class="comment">/* Color de texto para la tarjeta */</span>
+            <span class="property">border-radius:</span> <span class="unit">12px</span>;
+            <span class="property">padding:</span> <span class="unit">25px</span>;
+            <span class="property">box-shadow:</span> <span class="value">0 5px 20px rgba(0,0,0,0.1)</span>;
+            <span class="property">margin-top:</span> <span class="unit">20px</span>;
+        }
+        
+        <span class="selector">.tarjeta-interna:hover</span> {
+            <span class="property">transform:</span> <span class="value">translateY(-5px)</span>;
+            <span class="property">transition:</span> <span class="value">all 0.3s ease</span>; <span class="comment">/* Transición suave al pasar el ratón */</span>
+        }
+    <span class="selector">&lt;/style&gt;</span>
+<span class="selector">&lt;/head&gt;</span>
+
+<span class="comment">&lt;!-- En el body, se usaría la clase .tarjeta-interna --&gt;</span>
+<span class="selector">&lt;body&gt;</span>
+  <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"tarjeta-interna"</span><span class="selector">&gt;</span>Contenido de la tarjeta con estilo interno.<span class="selector">&lt;/div&gt;</span>
+<span class="selector">&lt;/body&gt;</span></code></pre>
+      </div>
+       <div style="background: #e8f4fd; border-left: 4px solid #3498db; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #2980b9; margin-top: 0;"><i class="fas fa-info-circle"></i> Cuándo usar estilos internos:</h4>
+        <ul style="color: #34495e; line-height: 1.6; padding-left: 20px;">
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Páginas únicas o landing pages:</strong> Si los estilos son específicos para una sola página y no se reutilizarán.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Prototipos rápidos:</strong> Para probar estilos en un solo archivo HTML.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Componentes específicos en Colab/Jupyter:</strong> Similar a los estilos en línea, pero permite agrupar más reglas CSS.</li>
+          <li><span role="img" aria-label="cross mark">❌</span> <strong>Sitios multipágina:</strong> No es eficiente, ya que habría que repetir los estilos en cada página.</li>
+        </ul>
+      </div>
+      
+      <h3 style="color: #c53030; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> 3. Estilos Externos (External Styles)
+      </h3>
+      
+      <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-bottom: 20px;">
+        Los estilos se guardan en archivos <code>.css</code> separados (ej: <code>styles.css</code>) y se vinculan al documento HTML usando la etiqueta <code>&lt;link&gt;</code> en el <code>&lt;head&gt;</code>. Es la <strong>forma más recomendada y profesional</strong> para la mayoría de los proyectos web.
+      </p>
+      
+      <div class="css-code">
+<pre><code class="language-html"><span class="comment">&lt;!-- En el archivo HTML (ej: index.html) --&gt;</span>
+<span class="selector">&lt;head&gt;</span>
+    <span class="comment">&lt;!-- Otros elementos del head --&gt;</span>
+    <span class="selector">&lt;link</span> <span class="property">rel=</span><span class="value">"stylesheet"</span> <span class="property">type=</span><span class="value">"text/css"</span> <span class="property">href=</span><span class="value">"styles.css"</span><span class="selector">&gt;</span>
+    <span class="comment">&lt;!-- El atributo type="text/css" es opcional en HTML5 --&gt;</span>
+<span class="selector">&lt;/head&gt;</span></code></pre>
+<hr style="border-color: #4a6a8a; margin: 15px 0;">
+<pre><code class="language-css"><span class="comment">/* En el archivo CSS (ej: styles.css) */</span>
+<span class="comment">/* :root se usa para definir variables CSS globales (custom properties) */</span>
+<span class="selector">:root</span> {
+    <span class="property">--color-primario:</span> <span class="value">#3498db</span>; <span class="comment">/* Azul */</span>
+    <span class="property">--color-secundario:</span> <span class="value">#2ecc71</span>; <span class="comment">/* Verde */</span>
+    <span class="property">--fuente-principal:</span> <span class="value">'Inter', sans-serif</span>;
+    <span class="property">--espaciado-base:</span> <span class="unit">1rem</span>; <span class="comment">/* 16px por defecto */</span>
+}
+
+<span class="selector">body</span> {
+    <span class="property">font-family:</span> <span class="value">var(--fuente-principal)</span>;
+    <span class="property">margin:</span> <span class="unit">0</span>;
+    <span class="property">background-color:</span> <span class="value">#f0f2f5</span>;
+}
+
+<span class="selector">.contenedor-principal</span> {
+    <span class="property">max-width:</span> <span class="unit">1200px</span>;
+    <span class="property">margin:</span> <span class="unit">0</span> <span class="value">auto</span>; <span class="comment">/* Centra el contenedor */</span>
+    <span class="property">padding:</span> <span class="value">calc(var(--espaciado-base) * 2)</span>; <span class="comment">/* Usa la variable para padding */</span>
+    <span class="property">background-color:</span> <span class="value">white</span>;
+}
+
+<span class="selector">.boton-primario</span> {
+    <span class="property">background-color:</span> <span class="value">var(--color-primario)</span>;
+    <span class="property">color:</span> <span class="value">white</span>;
+    <span class="property">padding:</span> <span class="value">var(--espaciado-base)</span> <span class="value">calc(var(--espaciado-base) * 1.5)</span>;
+    <span class="property">border:</span> <span class="value">none</span>;
+    <span class="property">border-radius:</span> <span class="unit">5px</span>;
+    <span class="property">cursor:</span> <span class="value">pointer</span>;
+}
+
+<span class="selector">.boton-primario:hover</span> {
+    <span class="property">background-color:</span> <span class="value">darken(var(--color-primario), 10%)</span>; <span class="comment">/* Nota: darken() no es CSS estándar, se usaría un preprocesador o un valor directo */</span>
+    <span class="comment">/* Alternativa directa: background-color: #2980b9; */</span>
+}</code></pre>
+      </div>
+      <div style="background: #e8f4fd; border-left: 4px solid #3498db; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #2980b9; margin-top: 0;"><i class="fas fa-info-circle"></i> Ventajas de los estilos externos:</h4>
+        <ul style="color: #34495e; line-height: 1.6; padding-left: 20px;">
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Mejor organización:</strong> Separa completamente la estructura (HTML) de la presentación (CSS).</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Reutilización:</strong> Un solo archivo CSS puede dar estilo a múltiples páginas HTML.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Mantenimiento más fácil:</strong> Los cambios de estilo se hacen en un solo lugar.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Caché del navegador:</strong> El archivo .css puede ser cacheado, mejorando los tiempos de carga en visitas subsecuentes.</li>
+          <li><span role="img" aria-label="check mark">✅</span> <strong>Colaboración:</strong> Diferentes personas pueden trabajar en el HTML y el CSS simultáneamente.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 6px solid #f39c12; background: linear-gradient(135deg, #fef5e7 0%, #fdf2e9 100%);">
+      <h2 style="color: #d68910; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-cube"></i> 3. El Box Model: Entendiendo las Cajas <span role="img" aria-label="package">📦</span>
+      </h2>
+      
+      <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+        Cada elemento HTML en una página web se representa como una "caja" rectangular. El Box Model de CSS describe cómo se dimensionan y se relacionan estas cajas. Consta de cuatro capas principales: contenido, padding, borde y margen. Entender esto es fundamental para el diseño y layout web.
+      </p>
+      
+      <div class="box-model-demo">
+        <div class="box-visual"> <div class="box-content"> <strong>CONTENT</strong><br>
+            El contenido real del elemento<br>
+            (texto, imágenes, videos, etc.)
+          </div>
+        </div>
+      </div>
+      
+      <div class="examples-grid">
+        <div class="css-property">
+          <div class="property-name">margin</div>
+          <div class="property-value">Ej: 10px | 10px 20px | 10px 15px 20px 25px</div>
+          <div class="property-description">
+            <strong>Margen:</strong> Es el espacio <em>exterior</em> transparente que rodea al borde. Separa el elemento de otros elementos adyacentes. No tiene color de fondo.
+            Orden de valores (si se especifican múltiples): arriba, derecha, abajo, izquierda (sentido horario).
+            <code>margin: auto;</code> en un bloque con ancho definido puede centrarlo horizontalmente.
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name">border</div>
+          <div class="property-value">Ej: 2px solid #3498db | 1px dashed black</div>
+          <div class="property-description">
+            <strong>Borde:</strong> Es la línea visible que rodea al padding (y por ende, al contenido). Se define con grosor (<code>border-width</code>), estilo (<code>border-style</code>: solid, dashed, dotted, double, groove, ridge, inset, outset) y color (<code>border-color</code>).
+            La propiedad abreviada <code>border</code> combina estos tres.
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name">padding</div>
+          <div class="property-value">Ej: 20px | 10px 5px | 5px 10px 15px 20px</div>
+          <div class="property-description">
+            <strong>Relleno (Padding):</strong> Es el espacio <em>interno</em> transparente entre el contenido del elemento y su borde. El padding toma el color de fondo del elemento. Aumenta el área visual y clickeable del elemento sin afectar la posición de otros elementos (solo "empuja" el contenido hacia adentro).
+            Orden de valores: igual que el margen.
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name">width / height</div>
+          <div class="property-value">Ej: 300px | 50% | auto</div>
+          <div class="property-description">
+            <strong>Ancho y Alto (Content):</strong> Estas propiedades definen las dimensiones del área de <em>contenido</em> del elemento. Por defecto (<code>box-sizing: content-box</code>), el padding y el borde se añaden *fuera* de estas dimensiones, incrementando el tamaño total de la caja.
+            Con <code>box-sizing: border-box;</code>, el padding y el borde se incluyen *dentro* del width/height especificado.
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="color: #d68910; border-bottom: 3px solid #f39c12; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> Ejemplo Práctico: Box Model Completo y <code>box-sizing</code>
+      </h3>
+      
+      <div class="css-code">
+<pre><code class="language-css"><span class="selector">.caja-completa</span> {
+    <span class="comment">/* Dimensiones del contenido por defecto (si box-sizing: content-box) */</span>
+    <span class="property">width:</span> <span class="unit">300px</span>;
+    <span class="property">height:</span> <span class="unit">150px</span>;
+    
+    <span class="comment">/* Padding (espacio interno) */</span>
+    <span class="property">padding:</span> <span class="unit">20px</span>;                    <span class="comment">/* 20px en todos los lados */</span>
+    <span class="comment">/* Alternativas de padding: */</span>
+    <span class="comment">/* padding: 10px 20px; */</span>              <span class="comment">/* 10px arriba/abajo, 20px izquierda/derecha */</span>
+    <span class="comment">/* padding: 10px 15px 20px 25px; */</span>   <span class="comment">/* Arriba | Derecha | Abajo | Izquierda */</span>
+    
+    <span class="comment">/* Border (borde) */</span>
+    <span class="property">border:</span> <span class="unit">5px</span> <span class="value">solid</span> <span class="value">#e74c3c</span>; <span class="comment">/* Borde rojo sólido de 5px */</span>
+    <span class="property">border-radius:</span> <span class="unit">12px</span>;             <span class="comment">/* Esquinas redondeadas */</span>
+    
+    <span class="comment">/* Margin (espacio exterior) */</span>
+    <span class="property">margin:</span> <span class="unit">25px</span> <span class="value">auto</span>;              <span class="comment">/* 25px arriba/abajo, centrado horizontalmente */</span>
+    
+    <span class="comment">/* Box-sizing: Controla cómo se calcula el tamaño total del elemento.
+       'border-box' es altamente recomendado para un manejo más intuitivo de las dimensiones. */</span>
+    <span class="property">box-sizing:</span> <span class="value">border-box</span>;        <span class="comment">/* Con border-box, el width (300px) y height (150px) 
+                                   INCLUYEN el padding y el border. 
+                                   El área de contenido real será:
+                                   width: 300px - (2*20px padding) - (2*5px border) = 250px
+                                   height: 150px - (2*20px padding) - (2*5px border) = 100px */</span>
+    
+    <span class="comment">/* Extras visuales para la demo */</span>
+    <span class="property">background:</span> <span class="value">linear-gradient(135deg, #3498db, #2ecc71)</span>; <span class="comment">/* Fondo degradado */</span>
+    <span class="property">color:</span> <span class="value">white</span>; <span class="comment">/* Color de texto */</span>
+    <span class="property">text-align:</span> <span class="value">center</span>; <span class="comment">/* Alineación del texto */</span>
+    <span class="property">box-shadow:</span> <span class="value">0 10px 30px rgba(0,0,0,0.2)</span>; <span class="comment">/* Sombra */</span>
+}
+
+<span class="comment">/* Uso común al inicio de un CSS para aplicar border-box a todo: */</span>
+<span class="comment">/*
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+*/</span></code></pre>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 6px solid #9b59b6; background: linear-gradient(135deg, #f8f4ff 0%, #f0e6ff 100%);">
+      <h2 style="color: #7d3c98; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-crosshairs"></i> 4. Selectores CSS: Apuntando a los Elementos <span role="img" aria-label="target">🎯</span>
+      </h2>
+      <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-bottom: 20px;">
+        Los selectores CSS son patrones que "seleccionan" los elementos HTML a los que se aplicarán los estilos. Dominarlos es clave para un CSS eficiente y preciso.
+      </p>
+
+      <h3 style="color: #7d3c98; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="memo">📝</span> Selectores Básicos
+      </h3>
+      
+      <div class="examples-grid">
+        <div class="selector-demo">
+          <div class="selector-type">Selector de Elemento (o Tipo)</div>
+          <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* Selecciona todos los elementos &lt;h1&gt; */</span>
+<span class="selector">h1</span> {
+    <span class="property">color:</span> <span class="value">#e74c3c</span>;
+    <span class="property">font-size:</span> <span class="unit">2.5em</span>;
+}</code></pre>
+          </div>
+          <div class="property-description">
+            Selecciona TODOS los elementos HTML del tipo especificado (ej: <code>p</code>, <code>div</code>, <code>a</code>, <code>img</code>). Es el selector más general.
+          </div>
+        </div>
+        
+        <div class="selector-demo">
+          <div class="selector-type">Selector de Clase</div>
+          <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* Selecciona todos los elementos con class="mi-clase" */</span>
+<span class="selector">.mi-clase</span> {
+    <span class="property">background:</span> <span class="value">#3498db</span>;
+    <span class="property">padding:</span> <span class="unit">15px</span>;
+    <span class="property">color:</span> <span class="value">white</span>;
+}</code></pre>
+          </div>
+          <div class="property-description">
+            Selecciona elementos que tienen el atributo <code>class</code> con el valor especificado (prefijado con un punto <code>.</code>). Un elemento puede tener múltiples clases. Es el más usado para reutilizar estilos en varios elementos.
+          </div>
+        </div>
+        
+        <div class="selector-demo">
+          <div class="selector-type">Selector de ID</div>
+          <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* Selecciona el elemento con id="mi-id-unico" */</span>
+<span class="selector">#mi-id-unico</span> {
+    <span class="property">position:</span> <span class="value">fixed</span>; <span class="comment">/* Posición fija en la pantalla */</span>
+    <span class="property">top:</span> <span class="unit">0</span>;
+    <span class="property">left:</span> <span class="unit">0</span>;
+    <span class="property">width:</span> <span class="unit">100%</span>;
+    <span class="property">background-color:</span> <span class="value">#333</span>;
+}</code></pre>
+          </div>
+          <div class="property-description">
+            Selecciona UN ÚNICO elemento que tiene el atributo <code>id</code> con el valor especificado (prefijado con una almohadilla <code>#</code>). El ID debe ser único en toda la página. Tiene alta especificidad.
+          </div>
+        </div>
+
+        <div class="selector-demo">
+          <div class="selector-type">Selector Universal</div>
+          <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* Selecciona TODOS los elementos de la página */</span>
+<span class="selector">*</span> {
+    <span class="property">box-sizing:</span> <span class="value">border-box</span>; <span class="comment">/* Ejemplo de uso común */</span>
+    <span class="property">margin:</span> <span class="unit">0</span>; <span class="comment">/* Resetear márgenes (con precaución) */</span>
+}</code></pre>
+          </div>
+          <div class="property-description">
+            Selecciona todos los elementos en el documento. Se representa con un asterisco <code>*</code>. Usar con precaución ya que puede afectar el rendimiento si se abusa.
+          </div>
+        </div>
+
+        <div class="selector-demo">
+          <div class="selector-type">Selector de Atributo</div>
+          <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* Selecciona todos los &lt;input&gt; de tipo "text" */</span>
+<span class="selector">input[type="text"]</span> {
+    <span class="property">border:</span> <span class="unit">1px</span> <span class="value">solid</span> <span class="value">#ccc</span>;
+}
+<span class="comment">/* Selecciona enlaces que apuntan a "https.example.com" */</span>
+<span class="selector">a[href="https.example.com"]</span> {
+    <span class="property">color:</span> <span class="value">green</span>;
+}</code></pre>
+          </div>
+          <div class="property-description">
+            Selecciona elementos basados en la presencia o valor de sus atributos. Ejemplos: <code>[target]</code>, <code>[type="submit"]</code>, <code>[href^="https"]</code> (comienza con), <code>[class*="icono-"]</code> (contiene).
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="color: #7d3c98; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="link">🔗</span> Selectores Combinados (Combinadores)
+      </h3>
+      
+      <div class="examples-grid">
+        <div class="css-property">
+          <div class="property-name"><code>div.especial p</code></div>
+          <div class="property-value">Combinador Descendiente (espacio)</div>
+          <div class="property-description">
+            Selecciona todos los elementos <code>&lt;p&gt;</code> que son descendientes (hijos, nietos, etc.) de un elemento <code>&lt;div&gt;</code> que tiene la clase "especial".
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name"><code>ul > li</code></div>
+          <div class="property-value">Combinador de Hijo Directo (<code>&gt;</code>)</div>
+          <div class="property-description">
+            Selecciona todos los elementos <code>&lt;li&gt;</code> que son hijos directos (primer nivel) de un elemento <code>&lt;ul&gt;</code>. No selecciona nietos.
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name"><code>h2 + p</code></div>
+          <div class="property-value">Combinador de Hermano Adyacente (<code>+</code>)</div>
+          <div class="property-description">
+            Selecciona el primer elemento <code>&lt;p&gt;</code> que aparece <em>inmediatamente después</em> de un elemento <code>&lt;h2&gt;</code> y comparte el mismo padre.
+          </div>
+        </div>
+        
+        <div class="css-property">
+          <div class="property-name"><code>h2 ~ p</code></div>
+          <div class="property-value">Combinador General de Hermanos (<code>~</code>)</div>
+          <div class="property-description">
+            Selecciona todos los elementos <code>&lt;p&gt;</code> que son hermanos de un elemento <code>&lt;h2&gt;</code> (aparecen después de él y comparten el mismo padre), no solo el adyacente.
+          </div>
+        </div>
+         <div class="css-property">
+          <div class="property-name"><code>article, section</code></div>
+          <div class="property-value">Agrupación de Selectores (<code>,</code>)</div>
+          <div class="property-description">
+            Aplica los mismos estilos a múltiples selectores. Selecciona todos los elementos <code>&lt;article&gt;</code> Y todos los elementos <code>&lt;section&gt;</code>.
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="color: #7d3c98; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="sparkles">✨</span> Pseudo-clases y Pseudo-elementos
+      </h3>
+      <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-bottom: 20px;">
+        Las <strong>pseudo-clases</strong> (<code>:hover</code>, <code>:focus</code>, <code>:nth-child()</code>) seleccionan elementos basados en un estado especial o posición.
+        Los <strong>pseudo-elementos</strong> (<code>::before</code>, <code>::after</code>, <code>::first-line</code>) permiten estilizar partes específicas de un elemento o insertar contenido.
+      </p>
+      <div class="css-code">
+<pre><code class="language-css"><span class="comment">/* --- Pseudo-clases --- */</span>
+
+<span class="comment">/* Estado interactivo: al pasar el ratón sobre un enlace */</span>
+<span class="selector">a:hover</span> {
+    <span class="property">color:</span> <span class="value">#e74c3c</span>;
+    <span class="property">text-decoration:</span> <span class="value">underline</span>;
+}
+
+<span class="comment">/* Estado interactivo: cuando un botón está siendo presionado */</span>
+<span class="selector">button:active</span> {
+    <span class="property">transform:</span> <span class="value">scale(0.95)</span>; <span class="comment">/* Efecto de "hundimiento" */</span>
+}
+
+<span class="comment">/* Estado interactivo: cuando un input tiene el foco */</span>
+<span class="selector">input:focus</span> {
+    <span class="property">border-color:</span> <span class="value">#3498db</span>;
+    <span class="property">box-shadow:</span> <span class="value">0 0 5px rgba(52, 152, 219, 0.5)</span>;
+}
+
+<span class="comment">/* Pseudo-clase estructural: primer elemento <li> de una lista */</span>
+<span class="selector">ul li:first-child</span> {
+    <span class="property">font-weight:</span> <span class="value">bold</span>;
+    <span class="property">color:</span> <span class="value">green</span>;
+}
+
+<span class="comment">/* Pseudo-clase estructural: último elemento <li> de una lista */</span>
+<span class="selector">ul li:last-child</span> {
+    <span class="property">font-style:</span> <span class="value">italic</span>;
+    <span class="property">color:</span> <span class="value">blue</span>;
+}
+
+<span class="comment">/* Pseudo-clase estructural: filas pares de una tabla (ej: para zebrado) */</span>
+<span class="selector">tr:nth-child(even)</span> { <span class="comment">/* o 2n */</span>
+    <span class="property">background-color:</span> <span class="value">#f8f9fa</span>;
+}
+<span class="selector">tr:nth-child(odd)</span> { <span class="comment">/* o 2n+1 */</span>
+    <span class="property">background-color:</span> <span class="value">#e9ecef</span>;
+}
+
+<span class="comment">/* Pseudo-clase de negación: todos los inputs excepto los de tipo "submit" */</span>
+<span class="selector">input:not([type="submit"])</span> {
+    <span class="property">margin-bottom:</span> <span class="unit">10px</span>;
+}
+
+<span class="comment">/* --- Pseudo-elementos --- */</span>
+<span class="comment">/* Nota: La sintaxis moderna recomienda doble dos puntos (::) para pseudo-elementos,
+   aunque ::before y ::after también funcionan con uno solo por retrocompatibilidad. */</span>
+
+<span class="comment">/* Estiliza la primera línea de cada párrafo */</span>
+<span class="selector">p::first-line</span> {
+    <span class="property">font-weight:</span> <span class="value">bold</span>;
+    <span class="property">color:</span> <span class="value">#2c3e50</span>;
+}
+
+<span class="comment">/* Estiliza la primera letra de cada párrafo */</span>
+<span class="selector">p::first-letter</span> {
+    <span class="property">font-size:</span> <span class="unit">2em</span>;
+    <span class="property">float:</span> <span class="value">left</span>; <span class="comment">/* Para efecto capitular */</span>
+    <span class="property">margin-right:</span> <span class="unit">5px</span>;
+}
+
+<span class="comment">/* Inserta contenido ANTES del contenido del elemento .cita */</span>
+<span class="selector">.cita::before</span> {
+    <span class="property">content:</span> <span class="string">"“"</span>; <span class="comment">/* Comillas de apertura */</span>
+    <span class="property">font-size:</span> <span class="unit">1.5em</span>;
+    <span class="property">color:</span> <span class="value">#95a5a6</span>;
+    <span class="property">margin-right:</span> <span class="unit">0.2em</span>;
+}
+
+<span class="comment">/* Inserta contenido DESPUÉS del contenido del elemento .cita */</span>
+<span class="selector">.cita::after</span> {
+    <span class="property">content:</span> <span class="string">"”"</span>; <span class="comment">/* Comillas de cierre */</span>
+    <span class="property">font-size:</span> <span class="unit">1.5em</span>;
+    <span class="property">color:</span> <span class="value">#95a5a6</span>;
+    <span class="property">margin-left:</span> <span class="unit">0.2em</span>;
+}
+
+<span class="comment">/* Estiliza el marcador de los elementos de lista */</span>
+<span class="selector">ul li::marker</span> {
+    <span class="property">color:</span> <span class="value">var(--color-primario, #3498db)</span>; <span class="comment">/* Usa variable CSS si está definida */</span>
+    <span class="property">font-size:</span> <span class="unit">1.2em</span>;
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 6px solid #e67e22; background: linear-gradient(135deg, #fdf6f0 0%, #fbeee6 100%);">
+      <h2 style="color: #d35400; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-cogs"></i> 5. Propiedades CSS Más Utilizadas <span role="img" aria-label="gear">⚙️</span>
+      </h2>
+      
+      <h3 style="color: #d35400; border-bottom: 3px solid #e67e22; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="artist palette">🎨</span> Texto y Tipografía
+      </h3>
+      <div class="examples-grid">
+        <div class="css-property">
+          <div class="property-name">font-family</div>
+          <div class="property-value">'Arial', 'Helvetica', sans-serif</div>
+          <div class="property-description">
+            Define la familia de fuentes para el texto. Se especifican varias fuentes (<i>font stack</i>) separadas por comas como alternativas (<i>fallbacks</i>) en caso de que la primera no esté disponible. La última suele ser una fuente genérica (<code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>cursive</code>, <code>fantasy</code>).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">font-size</div>
+          <div class="property-value">16px | 1rem | 1.2em | 120% | medium</div>
+          <div class="property-description">
+            Establece el tamaño del texto. Unidades comunes:
+            <code>px</code> (píxeles, absoluto), 
+            <code>rem</code> (relativo al tamaño de fuente del elemento raíz <code>&lt;html&gt;</code>), 
+            <code>em</code> (relativo al tamaño de fuente del elemento padre o del propio elemento),
+            <code>%</code> (porcentaje del tamaño de fuente del padre).
+            También palabras clave como <code>small</code>, <code>medium</code>, <code>large</code>.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">font-weight</div>
+          <div class="property-value">normal | bold | 100-900</div>
+          <div class="property-description">
+            Define el grosor (peso) del texto. Valores comunes: <code>normal</code> (equivale a <code>400</code>), <code>bold</code> (equivale a <code>700</code>). También se pueden usar valores numéricos de 100 a 900 (en incrementos de 100), si la fuente los soporta.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">line-height</div>
+          <div class="property-value">1.5 | 24px | 150% | normal</div>
+          <div class="property-description">
+            Establece la altura de la línea de texto. Un valor sin unidad (ej: <code>1.5</code>) se multiplica por el <code>font-size</code> actual del elemento para obtener la altura de línea. Mejora la legibilidad. <code>normal</code> es el valor por defecto del navegador.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">text-align</div>
+          <div class="property-value">left | center | right | justify | start | end</div>
+          <div class="property-description">
+            Alineación horizontal del texto dentro de su contenedor (elemento de bloque o celda de tabla). 
+            <code>justify</code> distribuye el texto para que ocupe todo el ancho. <code>start</code> y <code>end</code> dependen de la dirección del texto (LTR o RTL).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">text-decoration</div>
+          <div class="property-value">none | underline | line-through | overline</div>
+          <div class="property-description">
+            Añade o quita decoración al texto. Comúnmente usado con <code>text-decoration: none;</code> para quitar el subrayado de los enlaces (<code>&lt;a&gt;</code>). CSS3 permite más control con <code>text-decoration-line</code>, <code>text-decoration-color</code>, <code>text-decoration-style</code>.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">color</div>
+          <div class="property-value">#3498db | rgb(52,152,219) | blue | hsl(208,79%,55%)</div>
+          <div class="property-description">
+            Establece el color del texto. Se puede definir con nombres de color (<code>red</code>), códigos hexadecimales (<code>#FF0000</code>), RGB (<code>rgb(255,0,0)</code>), RGBA (con transparencia, <code>rgba(255,0,0,0.5)</code>), HSL, HSLA.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">text-transform</div>
+          <div class="property-value">none | capitalize | uppercase | lowercase</div>
+          <div class="property-description">
+            Controla la capitalización del texto. <code>capitalize</code> (primera letra de cada palabra en mayúscula), <code>uppercase</code> (todo en mayúsculas), <code>lowercase</code> (todo en minúsculas).
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="color: #d35400; border-bottom: 3px solid #e67e22; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="rainbow">🌈</span> Colores y Fondos
+      </h3>
+      <div class="examples-grid">
+        <div class="css-property">
+          <div class="property-name">background-color</div>
+          <div class="property-value">rgba(255, 255, 255, 0.8) | #f0f0f0 | transparent</div>
+          <div class="property-description">
+            Establece el color de fondo sólido de un elemento. <code>rgba</code> permite definir un color con un canal alfa para transparencia (0 = totalmente transparente, 1 = totalmente opaco). <code>transparent</code> es un valor válido.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">background-image</div>
+          <div class="property-value">url('imagen.jpg') | linear-gradient(...)</div>
+          <div class="property-description">
+            Establece una o más imágenes de fondo para un elemento. Puede ser una URL a una imagen (<code>url()</code>) o un gradiente generado por CSS (<code>linear-gradient()</code>, <code>radial-gradient()</code>, etc.).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">background-repeat</div>
+          <div class="property-value">repeat | no-repeat | repeat-x | repeat-y</div>
+          <div class="property-description">
+            Controla si la imagen de fondo se repite y cómo. <code>repeat</code> (por defecto, repite en ambas direcciones), <code>no-repeat</code> (no se repite), <code>repeat-x</code> (repite horizontalmente), <code>repeat-y</code> (repite verticalmente).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">background-position</div>
+          <div class="property-value">center top | 50% 0% | 10px 20px</div>
+          <div class="property-description">
+            Define la posición inicial de la imagen de fondo. Puede usar palabras clave (<code>left</code>, <code>center</code>, <code>right</code>, <code>top</code>, <code>bottom</code>), porcentajes o unidades de longitud.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">background-size</div>
+          <div class="property-value">auto | cover | contain | 100px 50px</div>
+          <div class="property-description">
+            Especifica el tamaño de las imágenes de fondo. <code>cover</code> (escala la imagen para cubrir todo el contenedor, puede recortar partes), <code>contain</code> (escala la imagen para que quepa completamente dentro del contenedor, puede dejar espacios vacíos).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">background</div>
+          <div class="property-value">#fff url('bg.png') no-repeat center center / cover</div>
+          <div class="property-description">
+            Propiedad abreviada (<i>shorthand</i>) para establecer múltiples propiedades de fondo a la vez (color, imagen, repetición, adjunto, posición, tamaño - este último con <code>/</code> antes). También para gradientes: <code>linear-gradient(45deg, #ff6b6b, #4ecdc4)</code>.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">opacity</div>
+          <div class="property-value">0.5 | 1 | 0</div>
+          <div class="property-description">
+            Define el nivel de opacidad de un elemento (y sus hijos). Un valor de <code>1</code> es completamente opaco (por defecto), <code>0</code> es completamente transparente (invisible), y <code>0.5</code> es 50% translúcido.
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="color: #d35400; border-bottom: 3px solid #e67e22; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> Posicionamiento y Layout (Básico)
+      </h3>
+      <div class="examples-grid">
+        <div class="css-property">
+          <div class="property-name">display</div>
+          <div class="property-value">block | inline | inline-block | flex | grid | none</div>
+          <div class="property-description">
+            Define cómo se comporta un elemento en el flujo del documento y cómo interactúa con otros.
+            <code>block</code> (ocupa todo el ancho disponible, nueva línea), 
+            <code>inline</code> (ocupa solo el ancho necesario, en la misma línea),
+            <code>inline-block</code> (como inline, pero permite width/height),
+            <code>flex</code> y <code>grid</code> (para layouts modernos y complejos),
+            <code>none</code> (oculta el elemento y lo saca del flujo).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">position</div>
+          <div class="property-value">static | relative | absolute | fixed | sticky</div>
+          <div class="property-description">
+            Establece el método de posicionamiento de un elemento.
+            <code>static</code> (por defecto, flujo normal),
+            <code>relative</code> (desplazado relativo a su posición normal, crea contexto de apilamiento),
+            <code>absolute</code> (posicionado relativo a su ancestro posicionado más cercano o al body),
+            <code>fixed</code> (posicionado relativo a la ventana del navegador, no se mueve con el scroll),
+            <code>sticky</code> (híbrido entre relative y fixed, "pega" cuando se alcanza cierto punto de scroll).
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">top, right, bottom, left</div>
+          <div class="property-value">10px | 50% | auto | -5px</div>
+          <div class="property-description">
+            Estas propiedades (<i>offset properties</i>) especifican el desplazamiento de un elemento posicionado (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>) desde los bordes de su bloque contenedor de referencia. No funcionan con <code>position: static</code>.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">z-index</div>
+          <div class="property-value">1 | 999 | -1 | auto</div>
+          <div class="property-description">
+            Controla el orden de apilamiento (profundidad) de los elementos posicionados. Un elemento con un <code>z-index</code> mayor se muestra encima de uno con un <code>z-index</code> menor. Solo afecta a elementos con <code>position</code> distinto de <code>static</code>. <code>auto</code> es el valor por defecto.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">float</div>
+          <div class="property-value">left | right | none</div>
+          <div class="property-description">
+            Históricamente usado para layouts (ej: imágenes flotando junto a texto). Hace que un elemento "flote" a la izquierda o derecha, permitiendo que otros contenidos fluyan a su alrededor. <strong>Para layouts complejos, Flexbox y Grid son preferibles hoy en día.</strong> Requiere manejo de <i>clearfix</i>.
+          </div>
+        </div>
+        <div class="css-property">
+          <div class="property-name">clear</div>
+          <div class="property-value">left | right | both | none</div>
+          <div class="property-description">
+            Se usa para controlar el comportamiento de los elementos que siguen a elementos flotantes. <code>clear: both;</code> es común para asegurar que un elemento comience debajo de cualquier elemento flotante anterior.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 6px solid #27ae60; background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);">
+      <h2 style="color: #196f3d; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fab fa-google"></i> 6. CSS3 en Google Colab: Ejemplos Prácticos <span role="img" aria-label="rocket">🚀</span>
+      </h2>
+      
+      <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+        En Google Colab (o Jupyter Notebooks), puedes usar la "celda mágica" <code>%%html</code> para renderizar HTML y CSS directamente. Esto es útil para crear visualizaciones de datos enriquecidas, dashboards simples o interfaces interactivas dentro de tu notebook. Los estilos CSS se pueden incluir en línea, internamente con <code>&lt;style&gt;</code>, o incluso enlazar a archivos externos si están alojados públicamente.
+      </p>
+      
+      <h3 style="color: #196f3d; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> Ejemplo 1: Dashboard de Métricas Sencillo con CSS3
+      </h3>
+      <p style="font-size: 1.0em; line-height: 1.7; color: #374151; margin-bottom: 15px;">
+        El siguiente código se puede pegar en una celda de Colab que comience con <code>%%html</code>.
+      </p>
+      <div class="css-code">
+<pre><code class="language-html"><span class="selector">%%html</span>
+<span class="comment">&lt;!-- Inicio del código para Colab --&gt;</span>
+<span class="selector">&lt;style&gt;</span>
+    <span class="comment">/* Estilos generales para el contenedor del dashboard */</span>
+    <span class="selector">.dashboard-colab</span> {
+        <span class="property">max-width:</span> <span class="unit">1000px</span>; <span class="comment">/* Ancho máximo del dashboard */</span>
+        <span class="property">margin:</span> <span class="unit">20px</span> <span class="value">auto</span>; <span class="comment">/* Centrado en la página del notebook */</span>
+        <span class="property">font-family:</span> <span class="string">'Segoe UI', Tahoma, Geneva, Verdana, sans-serif</span>; <span class="comment">/* Fuente legible */</span>
+        <span class="property">background:</span> <span class="value">linear-gradient(135deg, #667eea 0%, #764ba2 100%)</span>; <span class="comment">/* Fondo degradado atractivo */</span>
+        <span class="property">border-radius:</span> <span class="unit">15px</span>; <span class="comment">/* Bordes redondeados */</span>
+        <span class="property">padding:</span> <span class="unit">0</span>; <span class="comment">/* Sin padding extra en el contenedor principal */</span>
+        <span class="property">overflow:</span> <span class="value">hidden</span>; <span class="comment">/* Para que los bordes redondeados afecten al contenido */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 15px 35px rgba(0,0,0,0.15)</span>; <span class="comment">/* Sombra suave */</span>
+    }
+    
+    <span class="comment">/* Estilos para el encabezado del dashboard */</span>
+    <span class="selector">.dashboard-header-colab</span> {
+        <span class="property">background:</span> <span class="value">rgba(255,255,255,0.1)</span>; <span class="comment">/* Fondo semitransparente para el header */</span>
+        <span class="property">color:</span> <span class="value">white</span>; <span class="comment">/* Texto blanco */</span>
+        <span class="property">padding:</span> <span class="unit">25px</span>; <span class="comment">/* Espaciado interno */</span>
+        <span class="property">text-align:</span> <span class="value">center</span>; <span class="comment">/* Texto centrado */</span>
+        <span class="property">border-bottom:</span> <span class="unit">1px</span> <span class="value">solid</span> <span class="value">rgba(255,255,255,0.2)</span>; <span class="comment">/* Línea divisoria sutil */</span>
+    }
+    
+    <span class="comment">/* Grid para las tarjetas de métricas */</span>
+    <span class="selector">.metrics-grid-colab</span> {
+        <span class="property">display:</span> <span class="value">grid</span>; <span class="comment">/* Usar CSS Grid */</span>
+        <span class="property">grid-template-columns:</span> <span class="value">repeat(auto-fit, minmax(200px, 1fr))</span>; <span class="comment">/* Columnas responsivas */</span>
+        <span class="property">gap:</span> <span class="unit">20px</span>; <span class="comment">/* Espacio entre tarjetas */</span>
+        <span class="property">padding:</span> <span class="unit">25px</span>; <span class="comment">/* Espaciado alrededor del grid */</span>
+        <span class="property">background:</span> <span class="value">white</span>; <span class="comment">/* Fondo blanco para el área de métricas */</span>
+    }
+    
+    <span class="comment">/* Estilos para cada tarjeta de métrica */</span>
+    <span class="selector">.metric-card-colab</span> {
+        <span class="property">color:</span> <span class="value">white</span>;
+        <span class="property">padding:</span> <span class="unit">25px</span>;
+        <span class="property">border-radius:</span> <span class="unit">12px</span>;
+        <span class="property">text-align:</span> <span class="value">center</span>;
+        <span class="property">transform:</span> <span class="value">translateY(0)</span>; <span class="comment">/* Estado inicial para la transición */</span>
+        <span class="property">transition:</span> <span class="value">all 0.3s ease-in-out</span>; <span class="comment">/* Transición suave para hover */</span>
+        <span class="property">cursor:</span> <span class="value">pointer</span>; <span class="comment">/* Cursor de mano para indicar interactividad */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 5px 15px rgba(0,0,0,0.1)</span>;
+    }
+    
+    <span class="selector">.metric-card-colab:hover</span> {
+        <span class="property">transform:</span> <span class="value">translateY(-8px) scale(1.03)</span>; <span class="comment">/* Elevar y escalar ligeramente al pasar el ratón */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 12px 25px rgba(0,0,0,0.2)</span>; <span class="comment">/* Sombra más pronunciada */</span>
+    }
+    
+    <span class="comment">/* Colores de fondo específicos para cada tarjeta (usando :nth-child) */</span>
+    <span class="selector">.metric-card-colab:nth-child(1)</span> { <span class="property">background:</span> <span class="value">linear-gradient(135deg, #667eea, #764ba2)</span>; } <span class="comment">/* Púrpura */</span>
+    <span class="selector">.metric-card-colab:nth-child(2)</span> { <span class="property">background:</span> <span class="value">linear-gradient(135deg, #f093fb, #f5576c)</span>; } <span class="comment">/* Rosa/Rojo */</span>
+    <span class="selector">.metric-card-colab:nth-child(3)</span> { <span class="property">background:</span> <span class="value">linear-gradient(135deg, #4facfe, #00f2fe)</span>; } <span class="comment">/* Azul claro */</span>
+    <span class="selector">.metric-card-colab:nth-child(4)</span> { <span class="property">background:</span> <span class="value">linear-gradient(135deg, #43e97b, #38f9d7)</span>; } <span class="comment">/* Verde menta */</span>
+    
+    <span class="comment">/* Estilo para el valor numérico de la métrica */</span>
+    <span class="selector">.metric-value-colab</span> {
+        <span class="property">font-size:</span> <span class="unit">2.5em</span>;
+        <span class="property">font-weight:</span> <span class="value">bold</span>;
+        <span class="property">margin-bottom:</span> <span class="unit">10px</span>;
+        <span class="property">text-shadow:</span> <span class="value">1px 1px 3px rgba(0,0,0,0.2)</span>; <span class="comment">/* Sombra de texto sutil */</span>
+    }
+    
+    <span class="comment">/* Estilo para la etiqueta de la métrica */</span>
+    <span class="selector">.metric-label-colab</span> {
+        <span class="property">font-size:</span> <span class="unit">1em</span>;
+        <span class="property">opacity:</span> <span class="unit">0.9</span>; <span class="comment">/* Ligera transparencia */</span>
+        <span class="property">text-transform:</span> <span class="value">uppercase</span>; <span class="comment">/* Texto en mayúsculas */</span>
+        <span class="property">letter-spacing:</span> <span class="unit">1px</span>; <span class="comment">/* Espaciado entre letras */</span>
+    }
+    
+    <span class="comment">/* Media query para hacer el dashboard responsivo en pantallas pequeñas */</span>
+    <span class="selector">@media (max-width: 600px)</span> {
+        <span class="selector">.metrics-grid-colab</span> {
+            <span class="property">grid-template-columns:</span> <span class="value">1fr</span>; <span class="comment">/* Una columna en móviles */</span>
+            <span class="property">padding:</span> <span class="unit">15px</span>; <span class="comment">/* Menos padding */</span>
+        }
+        
+        <span class="selector">.metric-value-colab</span> {
+            <span class="property">font-size:</span> <span class="unit">2em</span>; <span class="comment">/* Tamaño de fuente más pequeño para valores */</span>
+        }
+        <span class="selector">.dashboard-colab</span> {
+             <span class="property">margin:</span> <span class="unit">10px</span>; /* Menor margen en móviles */
+        }
+    }
+<span class="selector">&lt;/style&gt;</span>
+
+<span class="comment">&lt;!-- Estructura HTML del Dashboard --&gt;</span>
+<span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"dashboard-colab"</span><span class="selector">&gt;</span>
+    <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"dashboard-header-colab"</span><span class="selector">&gt;</span>
+        <span class="selector">&lt;h2</span> <span class="property">style=</span><span class="value">"margin: 0; font-size: 1.8em;"</span><span class="selector">&gt;</span><span role="img" aria-label="chart increasing">📊</span> Analytics Dashboard (Colab)<span class="selector">&lt;/h2&gt;</span>
+        <span class="selector">&lt;p</span> <span class="property">style=</span><span class="value">"margin: 10px 0 0; opacity: 0.9;"</span><span class="selector">&gt;</span>Métricas clave en tiempo real<span class="selector">&lt;/p&gt;</span>
+    <span class="selector">&lt;/div&gt;</span>
+    
+    <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metrics-grid-colab"</span><span class="selector">&gt;</span>
+        <span class="comment">&lt;!-- Tarjeta de Métrica 1 --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-card-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-value-colab"</span><span class="selector">&gt;</span>1,247<span class="selector">&lt;/div&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-label-colab"</span><span class="selector">&gt;</span><span role="img" aria-label="busts in silhouette">👥</span> Usuarios Activos<span class="selector">&lt;/div&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Tarjeta de Métrica 2 --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-card-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-value-colab"</span><span class="selector">&gt;</span>$89,456<span class="selector">&lt;/div&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-label-colab"</span><span class="selector">&gt;</span><span role="img" aria-label="money bag">💰</span> Ingresos Totales<span class="selector">&lt;/div&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Tarjeta de Métrica 3 --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-card-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-value-colab"</span><span class="selector">&gt;</span>94.2%<span class="selector">&lt;/div&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-label-colab"</span><span class="selector">&gt;</span><span role="img" aria-label="chart increasing with yen">📈</span> Tasa de Conversión<span class="selector">&lt;/div&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Tarjeta de Métrica 4 --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-card-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-value-colab"</span><span class="selector">&gt;</span>2.8s<span class="selector">&lt;/div&gt;</span>
+            <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"metric-label-colab"</span><span class="selector">&gt;</span><span role="img" aria-label="zap">⚡</span> Tiempo de Carga<span class="selector">&lt;/div&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+    <span class="selector">&lt;/div&gt;</span>
+<span class="selector">&lt;/div&gt;</span>
+<span class="comment">&lt;!-- Fin del código para Colab --&gt;</span></code></pre>
+      </div>
+      
+      <h3 style="color: #196f3d; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="target">🎯</span> Ejemplo 2: Formulario Interactivo con Validación Visual (CSS)
+      </h3>
+      <p style="font-size: 1.0em; line-height: 1.7; color: #374151; margin-bottom: 15px;">
+        Este ejemplo muestra un formulario con estilos que reaccionan al foco y a clases de validación (<code>.valid</code>, <code>.invalid</code>). La lógica de validación real requeriría JavaScript, pero aquí nos centramos en el CSS.
+      </p>
+      <div class="css-code">
+<pre><code class="language-html"><span class="selector">%%html</span>
+<span class="comment">&lt;!-- Inicio del código para Colab --&gt;</span>
+<span class="selector">&lt;style&gt;</span>
+    <span class="comment">/* Contenedor principal del formulario */</span>
+    <span class="selector">.form-container-colab</span> {
+        <span class="property">max-width:</span> <span class="unit">500px</span>;
+        <span class="property">margin:</span> <span class="unit">20px</span> <span class="value">auto</span>;
+        <span class="property">background:</span> <span class="value">white</span>;
+        <span class="property">border-radius:</span> <span class="unit">16px</span>;
+        <span class="property">box-shadow:</span> <span class="value">0 15px 30px rgba(0,0,0,0.1)</span>;
+        <span class="property">overflow:</span> <span class="value">hidden</span>; <span class="comment">/* Para que el borde redondeado afecte al header */</span>
+        <span class="property">font-family:</span> <span class="string">'Arial', sans-serif</span>;
+    }
+    
+    <span class="comment">/* Encabezado del formulario */</span>
+    <span class="selector">.form-header-colab</span> {
+        <span class="property">background:</span> <span class="value">linear-gradient(135deg, #667eea, #764ba2)</span>;
+        <span class="property">color:</span> <span class="value">white</span>;
+        <span class="property">padding:</span> <span class="unit">25px 30px</span>;
+        <span class="property">text-align:</span> <span class="value">center</span>;
+    }
+     <span class="selector">.form-header-colab h2</span> {
+        <span class="property">margin:</span> <span class="unit">0</span>; 
+        <span class="property">font-size:</span> <span class="unit">1.8em</span>;
+    }
+    <span class="selector">.form-header-colab p</span> {
+        <span class="property">margin:</span> <span class="unit">10px 0 0</span>; 
+        <span class="property">opacity:</span> <span class="unit">0.9</span>;
+    }
+    
+    <span class="comment">/* Cuerpo del formulario donde van los inputs */</span>
+    <span class="selector">.form-body-colab</span> {
+        <span class="property">padding:</span> <span class="unit">30px</span>;
+    }
+    
+    <span class="comment">/* Grupo de cada label + input */</span>
+    <span class="selector">.form-group-colab</span> {
+        <span class="property">margin-bottom:</span> <span class="unit">25px</span>;
+        <span class="property">position:</span> <span class="value">relative</span>; <span class="comment">/* Para posibles iconos de validación */</span>
+    }
+    
+    <span class="comment">/* Etiqueta del campo */</span>
+    <span class="selector">.form-label-colab</span> {
+        <span class="property">display:</span> <span class="value">block</span>; <span class="comment">/* Ocupa todo el ancho */</span>
+        <span class="property">margin-bottom:</span> <span class="unit">8px</span>;
+        <span class="property">font-weight:</span> <span class="value">bold</span>;
+        <span class="property">color:</span> <span class="value">#2c3e50</span>; <span class="comment">/* Color oscuro para la etiqueta */</span>
+    }
+    
+    <span class="comment">/* Campo de entrada */</span>
+    <span class="selector">.form-input-colab</span> {
+        <span class="property">width:</span> <span class="unit">100%</span>; <span class="comment">/* Ocupa todo el ancho del .form-group */</span>
+        <span class="property">padding:</span> <span class="unit">12px 16px</span>;
+        <span class="property">border:</span> <span class="unit">2px</span> <span class="value">solid</span> <span class="value">#e0e0e0</span>; <span class="comment">/* Borde gris claro */</span>
+        <span class="property">border-radius:</span> <span class="unit">8px</span>;
+        <span class="property">font-size:</span> <span class="unit">16px</span>;
+        <span class="property">transition:</span> <span class="value">all 0.3s ease</span>; <span class="comment">/* Transición suave para foco y validación */</span>
+        <span class="property">box-sizing:</span> <span class="value">border-box</span>; <span class="comment">/* Importante para que el padding no aumente el ancho total */</span>
+    }
+    
+    <span class="selector">.form-input-colab:focus</span> {
+        <span class="property">outline:</span> <span class="value">none</span>; <span class="comment">/* Quitar el outline por defecto del navegador */</span>
+        <span class="property">border-color:</span> <span class="value">#3498db</span>; <span class="comment">/* Borde azul al enfocar */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 0 0 3px rgba(52, 152, 219, 0.2)</span>; <span class="comment">/* Sombra exterior suave */</span>
+    }
+    
+    <span class="comment">/* Estilos para campos válidos (se añadiría clase .valid con JS) */</span>
+    <span class="selector">.form-input-colab.valid</span> {
+        <span class="property">border-color:</span> <span class="value">#27ae60</span>; <span class="comment">/* Borde verde */</span>
+        <span class="property">background-color:</span> <span class="value">rgba(39, 174, 96, 0.05)</span>; <span class="comment">/* Fondo verde muy claro */</span>
+    }
+    
+    <span class="comment">/* Estilos para campos inválidos (se añadiría clase .invalid con JS) */</span>
+    <span class="selector">.form-input-colab.invalid</span> {
+        <span class="property">border-color:</span> <span class="value">#e74c3c</span>; <span class="comment">/* Borde rojo */</span>
+        <span class="property">background-color:</span> <span class="value">rgba(231, 76, 60, 0.05)</span>; <span class="comment">/* Fondo rojo muy claro */</span>
+        <span class="property">animation:</span> <span class="value">shakeInput 0.4s ease-in-out</span>; <span class="comment">/* Animación de "temblor" */</span>
+    }
+    
+    <span class="comment">/* Animación para campos inválidos */</span>
+    <span class="selector">@keyframes shakeInput</span> {
+        <span class="selector">0%, 100%</span> { <span class="property">transform:</span> <span class="value">translateX(0)</span>; }
+        <span class="selector">25%</span> { <span class="property">transform:</span> <span class="value">translateX(-6px)</span>; }
+        <span class="selector">75%</span> { <span class="property">transform:</span> <span class="value">translateX(6px)</span>; }
+    }
+    
+    <span class="comment">/* Botón de envío del formulario */</span>
+    <span class="selector">.form-button-colab</span> {
+        <span class="property">width:</span> <span class="unit">100%</span>;
+        <span class="property">padding:</span> <span class="unit">15px</span>;
+        <span class="property">background:</span> <span class="value">linear-gradient(135deg, #667eea, #764ba2)</span>; <span class="comment">/* Mismo gradiente que el header */</span>
+        <span class="property">color:</span> <span class="value">white</span>;
+        <span class="property">border:</span> <span class="value">none</span>;
+        <span class="property">border-radius:</span> <span class="unit">8px</span>;
+        <span class="property">font-size:</span> <span class="unit">16px</span>;
+        <span class="property">font-weight:</span> <span class="value">bold</span>;
+        <span class="property">cursor:</span> <span class="value">pointer</span>;
+        <span class="property">transition:</span> <span class="value">all 0.3s ease</span>;
+        <span class="property">text-transform:</span> <span class="value">uppercase</span>;
+        <span class="property">letter-spacing:</span> <span class="unit">1px</span>;
+    }
+    
+    <span class="selector">.form-button-colab:hover</span> {
+        <span class="property">transform:</span> <span class="value">translateY(-3px)</span>; <span class="comment">/* Elevar ligeramente */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 8px 15px rgba(102, 126, 234, 0.3)</span>; <span class="comment">/* Sombra más pronunciada */</span>
+    }
+    
+    <span class="selector">.form-button-colab:active</span> {
+        <span class="property">transform:</span> <span class="value">translateY(0)</span>; <span class="comment">/* Volver a la posición original al hacer clic */</span>
+        <span class="property">box-shadow:</span> <span class="value">0 5px 10px rgba(102, 126, 234, 0.2)</span>;
+    }
+<span class="selector">&lt;/style&gt;</span>
+
+<span class="comment">&lt;!-- Estructura HTML del Formulario --&gt;</span>
+<span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-container-colab"</span><span class="selector">&gt;</span>
+    <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-header-colab"</span><span class="selector">&gt;</span>
+        <span class="selector">&lt;h2&gt;</span><span role="img" aria-label="memo">📝</span> Registro de Usuario (Colab)<span class="selector">&lt;/h2&gt;</span>
+        <span class="selector">&lt;p&gt;</span>Completa tus datos para unirte.<span class="selector">&lt;/p&gt;</span>
+    <span class="selector">&lt;/div&gt;</span>
+    
+    <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-body-colab"</span><span class="selector">&gt;</span>
+        <span class="comment">&lt;!-- Campo Nombre --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-group-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;label</span> <span class="property">for=</span><span class="value">"nombre"</span> <span class="property">class=</span><span class="value">"form-label-colab"</span><span class="selector">&gt;</span>Nombre Completo:<span class="selector">&lt;/label&gt;</span>
+            <span class="selector">&lt;input</span> <span class="property">type=</span><span class="value">"text"</span> <span class="property">id=</span><span class="value">"nombre"</span> <span class="property">class=</span><span class="value">"form-input-colab"</span> <span class="property">placeholder=</span><span class="value">"Ej: Ada Lovelace"</span> <span class="property">required</span><span class="selector">&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Campo Email --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-group-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;label</span> <span class="property">for=</span><span class="value">"email"</span> <span class="property">class=</span><span class="value">"form-label-colab"</span><span class="selector">&gt;</span>Correo Electrónico:<span class="selector">&lt;/label&gt;</span>
+            <span class="selector">&lt;input</span> <span class="property">type=</span><span class="value">"email"</span> <span class="property">id=</span><span class="value">"email"</span> <span class="property">class=</span><span class="value">"form-input-colab invalid"</span> <span class="property">placeholder=</span><span class="value">"tu@email.com"</span> <span class="property">required</span><span class="selector">&gt;</span> <span class="comment">&lt;!-- Clase 'invalid' de ejemplo --&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Campo Contraseña --&gt;</span>
+        <span class="selector">&lt;div</span> <span class="property">class=</span><span class="value">"form-group-colab"</span><span class="selector">&gt;</span>
+            <span class="selector">&lt;label</span> <span class="property">for=</span><span class="value">"password"</span> <span class="property">class=</span><span class="value">"form-label-colab"</span><span class="selector">&gt;</span>Contraseña:<span class="selector">&lt;/label&gt;</span>
+            <span class="selector">&lt;input</span> <span class="property">type=</span><span class="value">"password"</span> <span class="property">id=</span><span class="value">"password"</span> <span class="property">class=</span><span class="value">"form-input-colab valid"</span> <span class="property">placeholder=</span><span class="value">"Mínimo 8 caracteres"</span> <span class="property">required</span><span class="selector">&gt;</span> <span class="comment">&lt;!-- Clase 'valid' de ejemplo --&gt;</span>
+        <span class="selector">&lt;/div&gt;</span>
+        
+        <span class="comment">&lt;!-- Botón de Envío --&gt;</span>
+        <span class="selector">&lt;button</span> <span class="property">type=</span><span class="value">"submit"</span> <span class="property">class=</span><span class="value">"form-button-colab"</span><span class="selector">&gt;</span>Crear Cuenta<span class="selector">&lt;/button&gt;</span>
+    <span class="selector">&lt;/div&gt;</span> <span class="comment">&lt;!-- Cierre de .form-body-colab --&gt;</span>
+<span class="selector">&lt;/div&gt;</span> <span class="comment">&lt;!-- Cierre de .form-container-colab --&gt;</span>
+
+<span class="comment">&lt;!-- Script opcional para demostración de validación (requiere habilitar JS en Colab si es necesario) --&gt;</span>
+<span class="selector">&lt;script&gt;</span>
+  <span class="comment">// Este es un ejemplo muy básico, la validación real sería más robusta.</span>
+  <span class="selector">const</span> inputs <span class="operator">=</span> document<span class="operator">.</span><span class="function">querySelectorAll</span><span class="punctuation">(</span><span class="string">'.form-input-colab'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+  inputs<span class="operator">.</span><span class="function">forEach</span><span class="punctuation">(</span>input <span class="operator">=></span> <span class="punctuation">{</span>
+    input<span class="operator">.</span><span class="function">addEventListener</span><span class="punctuation">(</span><span class="string">'blur'</span><span class="punctuation">,</span> <span class="function">() =></span> <span class="punctuation">{</span> <span class="comment">// Al perder el foco</span>
+      <span class="keyword">if</span> <span class="punctuation">(</span>input<span class="operator">.</span>checkValidity<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+        input<span class="operator">.</span>classList<span class="operator">.</span><span class="function">remove</span><span class="punctuation">(</span><span class="string">'invalid'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+        input<span class="operator">.</span>classList<span class="operator">.</span><span class="function">add</span><span class="punctuation">(</span><span class="string">'valid'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+      <span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+        input<span class="operator">.</span>classList<span class="operator">.</span><span class="function">remove</span><span class="punctuation">(</span><span class="string">'valid'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+        input<span class="operator">.</span>classList<span class="operator">.</span><span class="function">add</span><span class="punctuation">(</span><span class="string">'invalid'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+      <span class="punctuation">}</span>
+    <span class="punctuation">}</span><span class="punctuation">)</span><span class="punctuation">;</span>
+  <span class="punctuation">}</span><span class="punctuation">)</span><span class="punctuation">;</span>
+<span class="selector">&lt;/script&gt;</span>
+<span class="comment">&lt;!-- Fin del código para Colab --&gt;</span></code></pre>
+      </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; background-color: #333; color: white; border-radius: 8px;">
+        <p>&copy; 2024 Curso de Python - Módulo CSS3. Todos los derechos reservados.</p>
+        <p>Contenido mejorado y ampliado para fines educativos.</p>
+    </footer>
+
+</body>
+</html>
