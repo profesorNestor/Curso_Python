@@ -157,7 +157,7 @@
             margin: 0; 
             border-radius: 8px; 
             font-family: 'Courier New', monospace;
-            font-size: 0.95em; 
+            font-size: 1em; /* Ligeramente aumentado para mejor visibilidad */
             font-weight: bold;
             cursor: pointer;
             transition: all 0.25s ease-out;
@@ -175,23 +175,21 @@
         .html-tag.structure:hover { background: linear-gradient(135deg, #3395ff, #0069d9); border-color: #0056b3;}
         .html-tag.text { background: linear-gradient(135deg, #17a2b8, #117a8b); border-color: #0f6674;}
         .html-tag.text:hover { background: linear-gradient(135deg, #3fd0e0, #138496); border-color: #117a8b;}
-        .html-tag.list { background: linear-gradient(135deg, #fd7e14, #d96a0b); border-color: #b05604;}
-        .html-tag.list:hover { background: linear-gradient(135deg, #ff913a, #fd7e14); border-color: #d96a0b;}
-        .html-tag.table { background: linear-gradient(135deg, #6610f2, #530cd1); border-color: #430aab;}
-        .html-tag.table:hover { background: linear-gradient(135deg, #7f3ff3, #6610f2); border-color: #530cd1;}
-        .html-tag.link { background: linear-gradient(135deg, #d63384, #b82b72); border-color: #9a235f;}
-        .html-tag.link:hover { background: linear-gradient(135deg, #e660a3, #d63384); border-color: #b82b72;}
+        .html-tag.list-table { background: linear-gradient(135deg, #fd7e14, #d96a0b); border-color: #b05604;} /* Combinado Listas y Tablas */
+        .html-tag.list-table:hover { background: linear-gradient(135deg, #ff913a, #fd7e14); border-color: #d96a0b;}
+        .html-tag.link-media { background: linear-gradient(135deg, #d63384, #b82b72); border-color: #9a235f;} /* Combinado Enlaces y Multimedia */
+        .html-tag.link-media:hover { background: linear-gradient(135deg, #e660a3, #d63384); border-color: #b82b72;}
         .html-tag.semantic { background: linear-gradient(135deg, #198754, #157347); border-color: #105a36;}
         .html-tag.semantic:hover { background: linear-gradient(135deg, #20c997, #198754); border-color: #157347;}
         .html-tag.form { background: linear-gradient(135deg, #0d6efd, #0b5ed7); border-color: #0a50b0;}
         .html-tag.form:hover { background: linear-gradient(135deg, #3da0fd, #0d6efd); border-color: #0b5ed7;}
-        .html-tag.media { background: linear-gradient(135deg, #6f42c1, #6038a8); border-color: #512e8e;}
+        .html-tag.media { background: linear-gradient(135deg, #6f42c1, #6038a8); border-color: #512e8e;} /* Mantenido por si se usa solo para media */
         .html-tag.media:hover { background: linear-gradient(135deg, #8a63d2, #6f42c1); border-color: #6038a8;}
         
         /* Tooltips para etiquetas HTML */
         .html-tag .tooltip {
             visibility: hidden;
-            width: 300px; /* Más ancho para descripciones detalladas */
+            width: 320px; /* Ajustado para descripciones más largas */
             background-color: #212529; 
             color: #f8f9fa;
             text-align: left;
@@ -201,11 +199,11 @@
             z-index: 1000;
             bottom: 130%; 
             left: 50%;
-            margin-left: -150px; /* (width / 2) */
+            margin-left: -160px; /* (width / 2) */
             opacity: 0;
             transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9em; /* Ajustado para más texto */
+            font-size: 0.9em; 
             font-weight: normal;
             line-height: 1.5;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -229,17 +227,17 @@
         
         /* Estilos para bloques de código HTML (simulando editor) */
         .html-code-container { 
-            margin: 20px 0; /* Reducido margen para ejemplos más cortos */
-            border-radius: 8px; /* Bordes más suaves */
+            margin: 20px 0; 
+            border-radius: 8px; 
             overflow: hidden; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08); /* Sombra más sutil */
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08); 
         }
         .html-code-title {
             background: #343a40; 
             color: #f8f9fa;
-            padding: 8px 12px; /* Más pequeño */
+            padding: 8px 12px; 
             font-family: 'Inter', sans-serif;
-            font-size: 0.85em; /* Más pequeño */
+            font-size: 0.85em; 
             font-weight: 600;
             border-bottom: 1px solid #495057;
         }
@@ -248,11 +246,11 @@
         .html-code { 
             background: #282c34; 
             color: #abb2bf; 
-            padding: 15px; /* Reducido para ejemplos cortos */
+            padding: 15px; 
             border-radius: 0 0 8px 8px; 
             font-family: 'Courier New', monospace;
-            font-size: 0.95em; /* AUMENTADO para mejor legibilidad */
-            line-height: 1.6; /* Ajustado */
+            font-size: 1em; /* AUMENTADO SIGNIFICATIVAMENTE para mejor legibilidad */
+            line-height: 1.65; /* Ajustado para la nueva fuente */
             margin: 0; 
             overflow-x: auto;
             border: none; 
@@ -262,11 +260,11 @@
         
         /* Colores de sintaxis para HTML (estilo editor) */
         .html-code .hc-comment { color: #5c6370; font-style: italic; } 
-        .html-code .hc-doctype { color: #5c6370; } 
+        .html-code .hc-doctype { color: #c678dd; } /* Morado para DOCTYPE */
         .html-code .hc-tag { color: #e06c75; } 
         .html-code .hc-bracket { color: #e06c75; } 
         .html-code .hc-attr-name { color: #d19a66; } 
-        .html-code .hc-attr-equals { color: #abb2bf; } 
+        .html-code .hc-attr-equals { color: #56b6c2; } /* Cian para = */
         .html-code .hc-attr-value { color: #98c379; } 
         .html-code .hc-text { color: #abb2bf; } 
         
@@ -385,8 +383,8 @@
         .feature-card.responsive { border-left-color: #3498db; } 
         .feature-card.accessibility { border-left-color: #9b59b6; } 
         .feature-card.colab { border-left-color: #ff6b35; } 
-        .feature-card.basic-tags { border-left-color: #007bff; } /* Nuevo color para sección de etiquetas básicas */
-        .feature-card.common-tasks { border-left-color: #fd7e14; } /* Nuevo color para tareas comunes */
+        .feature-card.basic-tags { border-left-color: #007bff; } 
+        .feature-card.common-tasks { border-left-color: #fd7e14; } 
 
 
         .feature-icon {
@@ -448,14 +446,14 @@
             .webpage-main-container { flex-direction: column; }
             .webpage-content { border-right: none; border-bottom: 1px solid #ced4da; }
             .cards-grid { grid-template-columns: 1fr; } 
-            .html-code { font-size: 0.9em; } /* Ajuste para móviles */
+            .html-code { font-size: 0.9em; } 
         }
         @media (max-width: 480px) {
             #html5-header h1 { font-size: 2.2em !important; }
             #html5-header p { font-size: 1.1em !important; }
             .html-tag { padding: 8px 12px; font-size: 0.9em; }
             .interactive-btn { padding: 12px 22px; font-size: 0.9em; }
-            .html-code { font-size: 0.85em; } /* Aún más pequeño si es necesario */
+            .html-code { font-size: 0.85em; } 
         }
     </style>
 </head>
@@ -469,7 +467,7 @@
           <i class="fab fa-html5"></i> HTML5: El Lenguaje de la Web Moderna <span role="img" aria-label="globe">🌐</span>
         </h1>
         <p style="font-size: 1.4em; opacity: 0.95; line-height: 1.7; max-width: 900px; margin:auto;">
-          Descubre la evolución, estructura y poder del lenguaje que define la World Wide Web. Esta guía completa te llevará a través de los conceptos esenciales de HTML5.
+          Descubre la evolución, estructura y poder del lenguaje que define la World Wide Web. Esta guía completa te llevará a través de los conceptos esenciales de HTML5, pensada para ser práctica y didáctica.
         </p>
       </div>
     </div>
@@ -487,9 +485,9 @@
           <div class="feature-icon"><span role="img" aria-label="document with text">📝</span></div>
           <div class="feature-title">HyperText Markup Language</div>
           <div class="feature-description">
-            <strong>HyperText:</strong> Permite crear enlaces (hipervínculos) que conectan diferentes documentos o recursos en la web, formando una red interconectada.<br>
-            <strong>Markup (Marcado):</strong> Utiliza "etiquetas" (tags) para anotar o "marcar" diferentes partes del contenido, dándoles un significado estructural (ej: esto es un título, esto es un párrafo, esto es una imagen).<br>
-            <strong>Language (Lenguaje):</strong> Proporciona un vocabulario (conjunto de etiquetas y atributos) y una sintaxis estándar para crear documentos web que los navegadores pueden interpretar y mostrar.
+            <strong>HyperText:</strong> Permite crear enlaces (hipervínculos) que conectan diferentes documentos o recursos en la web.<br>
+            <strong>Markup (Marcado):</strong> Utiliza "etiquetas" (tags) para anotar o "marcar" diferentes partes del contenido, dándoles un significado estructural.<br>
+            <strong>Language (Lenguaje):</strong> Proporciona un vocabulario y una sintaxis estándar para crear documentos web.
           </div>
         </div>
         
@@ -497,7 +495,7 @@
           <div class="feature-icon"><span role="img" aria-label="building construction">🏗️</span></div>
           <div class="feature-title">Quinta Evolución Mayor</div>
           <div class="feature-description">
-            HTML5 representa una mejora significativa sobre sus predecesores. Fue diseñado para ser más semántico, soportar aplicaciones web complejas, integrar multimedia de forma nativa y mejorar la interoperabilidad entre navegadores. Es un estándar "vivo", lo que significa que se actualiza continuamente por el WHATWG.
+            HTML5 representa una mejora significativa, diseñado para ser más semántico, soportar aplicaciones web complejas, integrar multimedia nativa y mejorar la interoperabilidad. Es un estándar "vivo", actualizado continuamente por el WHATWG.
           </div>
         </div>
         
@@ -505,7 +503,7 @@
           <div class="feature-icon"><span role="img" aria-label="globe showing americas">🌍</span></div>
           <div class="feature-title">Estándar Universal de la Web</div>
           <div class="feature-description">
-            Desarrollado y mantenido principalmente por el WHATWG (Web Hypertext Application Technology Working Group) y con recomendaciones del W3C (World Wide Web Consortium), HTML5 es el lenguaje estándar para crear y estructurar páginas web, asegurando que sean accesibles y funcionales en una amplia gama de dispositivos y navegadores.
+            Mantenido por el WHATWG y con recomendaciones del W3C, HTML5 es el lenguaje estándar para crear páginas web accesibles y funcionales en diversos dispositivos y navegadores.
           </div>
         </div>
         
@@ -513,22 +511,10 @@
           <div class="feature-icon"><span role="img" aria-label="person in wheelchair">♿</span></div>
           <div class="feature-title">Enfoque en Accesibilidad (A11y)</div>
           <div class="feature-description">
-            HTML5 introduce elementos y atributos (como los roles ARIA implícitos en etiquetas semánticas) que ayudan a crear contenido web más accesible para personas con diversas discapacidades, permitiendo que tecnologías de asistencia (como lectores de pantalla) interpreten mejor la estructura y el propósito del contenido.
+            HTML5 introduce elementos y atributos que ayudan a crear contenido web más accesible para personas con diversas discapacidades, permitiendo que tecnologías de asistencia interpreten mejor la estructura.
           </div>
         </div>
       </div>
-      
-      <h3 style="color: #c0392b; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="target">🎯</span> Principales Innovaciones y Características de HTML5
-      </h3>
-      
-      <ul style="font-size: 1.1em; line-height: 1.8; color: #2c3e50; list-style: none; padding-left: 0;">
-        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 12px; margin-top: 5px; flex-shrink: 0;"></i><div><strong>Elementos Semánticos Mejorados:</strong> Etiquetas como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, y <code>&lt;footer&gt;</code> que describen mejor la estructura y el propósito del contenido, mejorando el SEO y la accesibilidad.</div></li>
-        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 12px; margin-top: 5px; flex-shrink: 0;"></i><div><strong>Multimedia Nativa:</strong> Incorporación de las etiquetas <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code> para reproducir contenido multimedia directamente en el navegador sin necesidad de plugins externos como Flash.</div></li>
-        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 12px; margin-top: 5px; flex-shrink: 0;"></i><div><strong>Gráficos Dinámicos:</strong> Introducción de <code>&lt;canvas&gt;</code> para dibujar gráficos 2D (y 3D con WebGL) mediante JavaScript, y soporte mejorado para <code>&lt;svg&gt;</code> (Scalable Vector Graphics) para gráficos vectoriales.</div></li>
-        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 12px; margin-top: 5px; flex-shrink: 0;"></i><div><strong>Formularios Avanzados:</strong> Nuevos tipos de campos de entrada (<code>date</code>, <code>email</code>, <code>url</code>, <code>number</code>, <code>range</code>, <code>color</code>), atributos para validación (<code>required</code>, <code>pattern</code>) y elementos como <code>&lt;datalist&gt;</code>, <code>&lt;progress&gt;</code>, y <code>&lt;meter&gt;</code>.</div></li>
-        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;"><i class="fas fa-check-circle" style="color: #27ae60; margin-right: 12px; margin-top: 5px; flex-shrink: 0;"></i><div><strong>APIs para Aplicaciones Web:</strong> Un conjunto de Interfaces de Programación de Aplicaciones (APIs) que permiten funcionalidades avanzadas como Geolocalización, Almacenamiento Web (Local Storage y Session Storage), Web Workers (para hilos en segundo plano), Web Sockets (comunicación bidireccional), Drag and Drop, y más.</div></li>
-      </ul>
     </div>
 
     <div class="card" style="border-left: 6px solid #3498db;">
@@ -536,590 +522,377 @@
         <i class="fas fa-history"></i> 2. Breve Historia y Evolución de HTML <span role="img" aria-label="scroll">📜</span>
       </h2>
       <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 30px; text-align: center;">
-        Desde sus inicios en el CERN, HTML ha recorrido un largo camino, adaptándose y evolucionando para convertirse en el lenguaje fundamental que estructura la vasta red de información que es la World Wide Web.
+        Desde sus inicios en el CERN, HTML ha recorrido un largo camino para estructurar la World Wide Web.
       </p>
-      
       <div class="timeline">
-        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1989-1991</div> <div class="timeline-title"><span role="img" aria-label="star">🌟</span> El Amanecer de la Web</div> <div class="timeline-description"> Tim Berners-Lee, trabajando en el CERN, inventa la World Wide Web. Crea el primer navegador (WorldWideWeb), el primer servidor web y las primeras páginas HTML, que eran muy simples, con solo 18 etiquetas iniciales. El objetivo era compartir información fácilmente entre científicos. </div> </div> </div>
-        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1993</div> <div class="timeline-title"><span role="img" aria-label="page facing up">📄</span> HTML (No versionado oficialmente)</div> <div class="timeline-description"> Se publica el primer borrador informal de HTML por Berners-Lee y Dan Connolly. Este incluía elementos básicos como <code>&lt;title&gt;</code>, encabezados (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>), párrafos (<code>&lt;p&gt;</code>), anclas (<code>&lt;a&gt;</code> para hipervínculos), y listas (<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>). </div> </div> </div>
-        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1995</div> <div class="timeline-title"><span role="img" aria-label="frame with picture">🖼️</span> HTML 2.0 (RFC 1866)</div> <div class="timeline-description"> Publicado como el primer estándar oficial de HTML por el IETF. Formalizó características ya en uso e introdujo nuevas como formularios (<code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>), imágenes (<code>&lt;img&gt;</code>), y tablas básicas. La web comenzó a ser más interactiva y visual. </div> </div> </div>
-        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1997</div> <div class="timeline-title"><span role="img" aria-label="artist palette">🎨</span> HTML 3.2 (Recomendación W3C)</div> <div class="timeline-description"> El W3C, recién formado, publica HTML 3.2. Incorporó características populares como tablas complejas, applets de Java (<code>&lt;applet&gt;</code>), y elementos de presentación (que luego se desaconsejarían en favor de CSS). Las "Guerras de Navegadores" entre Netscape Navigator e Internet Explorer impulsaron la innovación (y la fragmentación). </div> </div> </div>
-        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1999</div> <div class="timeline-title"><span role="img" aria-label="triangular ruler">📐</span> HTML 4.01 (Recomendación W3C)</div> <div class="timeline-description"> Una revisión crucial de HTML 4.0. Enfatizó la separación entre estructura (HTML) y presentación (CSS). Introdujo soporte para hojas de estilo, scripts, marcos (frames), y mejoró la internacionalización y accesibilidad. Sirvió como base estable para la web durante muchos años. </div> </div> </div>
-        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2000-2009</div> <div class="timeline-title"><span role="img" aria-label="snowflake">❄️</span> La Era de XHTML</div> <div class="timeline-description"> XHTML 1.0 (2000) y 1.1 (2001) buscaron reformular HTML como una aplicación XML, imponiendo una sintaxis más estricta (ej: etiquetas en minúsculas, cierre obligatorio de todas las etiquetas). Aunque promovía documentos bien formados, su adopción fue mixta y el desarrollo de nuevas características se estancó. </div> </div> </div>
-        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2004-2008</div> <div class="timeline-title"><span role="img" aria-label="rocket">🚀</span> El Renacimiento: Nace HTML5</div> <div class="timeline-description"> Ante la lentitud del W3C con XHTML2, individuos de Apple, Mozilla y Opera forman el WHATWG en 2004 para trabajar en una evolución de HTML4, enfocada en aplicaciones web y no solo documentos. En 2008, el WHATWG publica el primer borrador público de "HTML5". </div> </div> </div>
-        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2014</div> <div class="timeline-title"><span role="img" aria-label="party popper">🎉</span> HTML5 se convierte en Recomendación W3C</div> <div class="timeline-description"> Después de años de desarrollo y colaboración entre el W3C y el WHATWG, HTML5 alcanza el estado de Recomendación oficial. Trajo consigo elementos semánticos, multimedia nativa, Canvas, SVG, APIs para geolocalización, almacenamiento local, y mucho más, transformando la web. </div> </div> </div>
-        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2017-Presente</div> <div class="timeline-title"><span role="img" aria-label="recycling symbol">🔄</span> HTML como "Living Standard"</div> <div class="timeline-description"> El WHATWG mantiene HTML como un "Living Standard" (Estándar Vivo), lo que significa que evoluciona continuamente con pequeñas adiciones y correcciones, en lugar de grandes versiones monolíticas. Esto permite una adaptación más rápida a las nuevas necesidades de la web. El W3C ahora publica "snapshots" de este estándar vivo. </div> </div> </div>
+        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1989-1991</div> <div class="timeline-title"><span role="img" aria-label="star">🌟</span> El Amanecer de la Web</div> <div class="timeline-description"> Tim Berners-Lee en el CERN crea la World Wide Web, el primer navegador, servidor y páginas HTML simples (18 etiquetas). </div> </div> </div>
+        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1995</div> <div class="timeline-title"><span role="img" aria-label="frame with picture">🖼️</span> HTML 2.0 (RFC 1866)</div> <div class="timeline-description"> Primer estándar oficial. Añadió formularios (<code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>), imágenes (<code>&lt;img&gt;</code>) y tablas básicas. </div> </div> </div>
+        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">1999</div> <div class="timeline-title"><span role="img" aria-label="triangular ruler">📐</span> HTML 4.01</div> <div class="timeline-description"> Separación de contenido y presentación (CSS). Soporte para scripts, marcos y mejor internacionalización. </div> </div> </div>
+        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2000-2009</div> <div class="timeline-title"><span role="img" aria-label="snowflake">❄️</span> La Era de XHTML</div> <div class="timeline-description"> XHTML reformuló HTML como XML, con sintaxis más estricta. El desarrollo de nuevas características se ralentizó. </div> </div> </div>
+        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2008</div> <div class="timeline-title"><span role="img" aria-label="rocket">🚀</span> HTML5 (Primer Borrador)</div> <div class="timeline-description"> WHATWG publica el primer borrador de HTML5, enfocado en aplicaciones web ricas, no solo documentos. </div> </div> </div>
+        <div class="timeline-item right" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2014</div> <div class="timeline-title"><span role="img" aria-label="party popper">🎉</span> HTML5 (Recomendación W3C)</div> <div class="timeline-description"> HTML5 se convierte en recomendación oficial. Introduce elementos semánticos, multimedia nativa, Canvas, y APIs avanzadas. </div> </div> </div>
+        <div class="timeline-item left" onclick="showTimelineDetail(this)"> <div class="timeline-content"> <div class="timeline-year">2017-Hoy</div> <div class="timeline-title"><span role="img" aria-label="recycling symbol">🔄</span> HTML Living Standard</div> <div class="timeline-description"> WHATWG mantiene HTML como un "Estándar Vivo", evolucionando continuamente para adaptarse a las nuevas necesidades de la web. </div> </div> </div>
       </div>
     </div>
 
     <div class="card" style="border-left: 6px solid #007bff;">
         <h2 style="color: #0056b3; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
-            <i class="fas fa-layer-group"></i> 3. Fundamentos de HTML: Etiquetas Básicas <span role="img" aria-label="abc block">🧱</span>
+            <i class="fas fa-layer-group"></i> 3. Fundamentos de HTML: Etiquetas Esenciales <span role="img" aria-label="abc block">🧱</span>
         </h2>
         <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-            Toda página web se construye sobre un conjunto de etiquetas HTML fundamentales. Conocerlas es el primer paso para crear contenido web. A continuación, exploraremos las más esenciales.
+            Toda página web se construye sobre un conjunto de etiquetas HTML fundamentales. Conocerlas es el primer paso para crear contenido web. Estas etiquetas son los "ladrillos" con los que edificamos la estructura y el contenido de nuestros sitios.
         </p>
 
         <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-file-code"></i> Estructura del Documento HTML
+            <i class="fas fa-file-code"></i> A. Estructura Básica del Documento
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Estas etiquetas definen la estructura global de cualquier documento HTML.</p>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Estas son las etiquetas que forman el esqueleto de cualquier página HTML.</p>
         <div class="html-tags-container">
-            <div class="html-tag structure">
-                &lt;html&gt;
-                <span class="tooltip"><strong>&lt;html&gt;</strong>: Es el elemento raíz de toda página HTML. Todas las demás etiquetas deben estar contenidas dentro de esta. El atributo <code>lang</code> (ej: <code>lang="es"</code>) especifica el idioma del documento.</span>
-            </div>
-            <div class="html-tag structure">
-                &lt;head&gt;
-                <span class="tooltip"><strong>&lt;head&gt;</strong>: Contiene metainformación sobre el documento HTML que no se muestra directamente en la página visible. Incluye el título, enlaces a CSS, scripts, metadatos, etc.</span>
-            </div>
-            <div class="html-tag structure">
-                &lt;body&gt;
-                <span class="tooltip"><strong>&lt;body&gt;</strong>: Contiene todo el contenido visible de la página web: texto, imágenes, enlaces, videos, etc. Solo puede haber un elemento <code>&lt;body&gt;</code> por documento.</span>
-            </div>
+            <div class="html-tag structure">&lt;!DOCTYPE html&gt;<span class="tooltip"><strong>&lt;!DOCTYPE html&gt;</strong>: Declaración que define que el documento es HTML5. Es la primera línea, crucial para que los navegadores interpreten la página correctamente en modo estándar.</span></div>
+            <div class="html-tag structure">&lt;html&gt;<span class="tooltip"><strong>&lt;html&gt;</strong>: Elemento raíz de una página HTML. Todo el contenido de la página se anida dentro de esta etiqueta. El atributo <code>lang</code> (ej: <code>lang="es"</code>) especifica el idioma principal del documento.</span></div>
+            <div class="html-tag structure">&lt;head&gt;<span class="tooltip"><strong>&lt;head&gt;</strong>: Contiene metainformación sobre el documento HTML que no es visible directamente en la página. Aquí se define el título, se enlazan hojas de estilo (CSS), scripts (JavaScript) y otros metadatos.</span></div>
+            <div class="html-tag structure">&lt;body&gt;<span class="tooltip"><strong>&lt;body&gt;</strong>: Contiene todo el contenido visible de la página web, como texto, imágenes, enlaces, videos, tablas, etc. Solo puede haber un elemento <code>&lt;body&gt;</code> por documento.</span></div>
         </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> estructura_base.html</div>
+            <div class="html-code-title"><i class="fab fa-html5"></i> esqueleto_pagina.html</div>
             <pre class="html-code"><code><span class="hc-doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">html</span> <span class="hc-attr-name">lang</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"es"</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-comment">&lt;!-- Metainformación aquí --&gt;</span>
+    <span class="hc-comment">&lt;!-- Aquí va la metainformación --&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Título de mi Página</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;/</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-comment">&lt;!-- Contenido visible aquí --&gt;</span>
+    <span class="hc-comment">&lt;!-- Aquí va el contenido visible --&gt;</span>
   <span class="hc-bracket">&lt;/</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">html</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
 
         <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-info-circle"></i> Metainformación en &lt;head&gt;
+            <i class="fas fa-info-circle"></i> B. Metainformación en &lt;head&gt;
         </h3>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">El <code>&lt;head&gt;</code> es vital para configurar tu página y proporcionar información a navegadores y motores de búsqueda.</p>
         <div class="html-tags-container">
-            <div class="html-tag structure">
-                &lt;meta&gt;
-                <span class="tooltip"><strong>&lt;meta&gt;</strong>: Proporciona metadatos sobre el documento HTML. No se muestra en la página pero es usado por navegadores (cómo mostrar contenido o recargar página), motores de búsqueda (palabras clave), u otros servicios web. Ejemplos: <code>charset</code>, <code>viewport</code>, <code>description</code>, <code>keywords</code>, <code>author</code>.</span>
-            </div>
-            <div class="html-tag structure">
-                &lt;title&gt;
-                <span class="tooltip"><strong>&lt;title&gt;</strong>: Define el título del documento, que se muestra en la barra de título del navegador o en la pestaña de la página. Es obligatorio y crucial para el SEO y la usabilidad.</span>
-            </div>
+            <div class="html-tag structure">&lt;meta&gt;<span class="tooltip"><strong>&lt;meta&gt;</strong>: Proporciona metadatos. Comunes son <code>charset="UTF-8"</code> (codificación de caracteres), <code>name="viewport" content="width=device-width, initial-scale=1.0"</code> (para diseño responsivo), <code>name="description"</code> (descripción para SEO), <code>name="keywords"</code> (palabras clave).</span></div>
+            <div class="html-tag structure">&lt;title&gt;<span class="tooltip"><strong>&lt;title&gt;</strong>: Define el título del documento, mostrado en la pestaña del navegador y usado por motores de búsqueda.</span></div>
+            <div class="html-tag structure">&lt;link&gt;<span class="tooltip"><strong>&lt;link&gt;</strong>: Se usa para enlazar recursos externos, principalmente hojas de estilo CSS (ej: <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>) o favicons.</span></div>
+            <div class="html-tag structure">&lt;style&gt;<span class="tooltip"><strong>&lt;style&gt;</strong>: Permite incluir código CSS directamente en el documento HTML (CSS interno o embebido).</span></div>
+            <div class="html-tag structure">&lt;script&gt;<span class="tooltip"><strong>&lt;script&gt;</strong>: Se usa para incluir código JavaScript, ya sea directamente o enlazando un archivo externo (ej: <code>&lt;script src="mi_script.js"&gt;&lt;/script&gt;</code>).</span></div>
         </div>
-        <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> head_ejemplo.html</div>
+         <div class="html-code-container">
+            <div class="html-code-title"><i class="fab fa-html5"></i> head_completo.html</div>
             <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">meta</span> <span class="hc-attr-name">charset</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"UTF-8"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">meta</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"description"</span> <span class="hc-attr-name">content</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"Tutorial sobre HTML5"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Página de HTML5</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">meta</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"viewport"</span> <span class="hc-attr-name">content</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"width=device-width, initial-scale=1.0"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Título Impactante</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">link</span> <span class="hc-attr-name">rel</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"stylesheet"</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"mis_estilos.css"</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
 
         <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-heading"></i> Encabezados y Párrafos
+            <i class="fas fa-paragraph"></i> C. Texto: Encabezados, Párrafos y Formato
         </h3>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Dar estructura y énfasis al texto es fundamental.</p>
         <div class="html-tags-container">
-            <div class="html-tag text">
-                &lt;h1&gt; - &lt;h6&gt;
-                <span class="tooltip"><strong>&lt;h1&gt; a &lt;h6&gt;</strong>: Definen seis niveles de encabezados. <code>&lt;h1&gt;</code> es el más importante (título principal de la página o sección) y <code>&lt;h6&gt;</code> el menos. Son cruciales para la estructura del documento y el SEO.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;p&gt;
-                <span class="tooltip"><strong>&lt;p&gt;</strong>: Define un párrafo de texto. Los navegadores automáticamente añaden espacio antes y después de cada párrafo.</span>
-            </div>
+            <div class="html-tag text">&lt;h1&gt;...&lt;h6&gt;<span class="tooltip"><strong>&lt;h1&gt; a &lt;h6&gt;</strong>: Encabezados de sección. <code>&lt;h1&gt;</code> es el más importante, <code>&lt;h6&gt;</code> el menos. Usar jerárquicamente.</span></div>
+            <div class="html-tag text">&lt;p&gt;<span class="tooltip"><strong>&lt;p&gt;</strong>: Párrafo. Agrupa bloques de texto.</span></div>
+            <div class="html-tag text">&lt;br&gt;<span class="tooltip"><strong>&lt;br&gt;</strong>: Salto de línea simple (etiqueta vacía).</span></div>
+            <div class="html-tag text">&lt;hr&gt;<span class="tooltip"><strong>&lt;hr&gt;</strong>: Línea horizontal, representa una ruptura temática (etiqueta vacía).</span></div>
+            <div class="html-tag text">&lt;strong&gt;<span class="tooltip"><strong>&lt;strong&gt;</strong>: Indica importancia, seriedad o urgencia (semántico). Suele verse en negrita.</span></div>
+            <div class="html-tag text">&lt;em&gt;<span class="tooltip"><strong>&lt;em&gt;</strong>: Indica énfasis (semántico). Suele verse en cursiva.</span></div>
+            <div class="html-tag text">&lt;b&gt;<span class="tooltip"><strong>&lt;b&gt;</strong>: Texto en negrita sin implicación semántica adicional. Preferir <code>&lt;strong&gt;</code> para importancia.</span></div>
+            <div class="html-tag text">&lt;i&gt;<span class="tooltip"><strong>&lt;i&gt;</strong>: Texto en cursiva sin implicación semántica adicional (ej: término técnico, nombre de barco). Preferir <code>&lt;em&gt;</code> para énfasis.</span></div>
+            <div class="html-tag text">&lt;u&gt;<span class="tooltip"><strong>&lt;u&gt;</strong>: Texto subrayado. Su uso es desaconsejado ya que puede confundirse con enlaces.</span></div>
+            <div class="html-tag text">&lt;sub&gt;<span class="tooltip"><strong>&lt;sub&gt;</strong>: Subíndice. Ej: H₂O (<code>H&lt;sub&gt;2&lt;/sub&gt;O</code>).</span></div>
+            <div class="html-tag text">&lt;sup&gt;<span class="tooltip"><strong>&lt;sup&gt;</strong>: Superíndice. Ej: E=mc² (<code>E=mc&lt;sup&gt;2&lt;/sup&gt;</code>).</span></div>
+            <div class="html-tag text">&lt;small&gt;<span class="tooltip"><strong>&lt;small&gt;</strong>: Texto secundario o "letra pequeña" (comentarios, copyright).</span></div>
+            <div class="html-tag text">&lt;mark&gt;<span class="tooltip"><strong>&lt;mark&gt;</strong>: Resalta texto por su relevancia en un contexto particular.</span></div>
+            <div class="html-tag text">&lt;code&gt;<span class="tooltip"><strong>&lt;code&gt;</strong>: Fragmento de código de computadora.</span></div>
+            <div class="html-tag text">&lt;pre&gt;<span class="tooltip"><strong>&lt;pre&gt;</strong>: Texto preformateado, respeta espacios y saltos de línea. Ideal para bloques de código.</span></div>
+            <div class="html-tag text">&lt;blockquote&gt;<span class="tooltip"><strong>&lt;blockquote&gt;</strong>: Cita extensa de otra fuente.</span></div>
+            <div class="html-tag text">&lt;q&gt;<span class="tooltip"><strong>&lt;q&gt;</strong>: Cita corta en línea.</span></div>
+            <div class="html-tag text">&lt;cite&gt;<span class="tooltip"><strong>&lt;cite&gt;</strong>: Título de una obra (libro, película, etc.).</span></div>
         </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> texto_basico.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">Título Principal</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Este es un párrafo introductorio.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">Subtítulo</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Otro párrafo con más detalles.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span></code></pre>
-        </div>
-        
-        <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-ellipsis-h"></i> Saltos de Línea y Líneas Horizontales
-        </h3>
-        <div class="html-tags-container">
-            <div class="html-tag text">
-                &lt;br&gt;
-                <span class="tooltip"><strong>&lt;br&gt;</strong> (Break): Inserta un único salto de línea. Es una etiqueta vacía (no tiene etiqueta de cierre). Úsese con moderación; para separar bloques de contenido, usa párrafos u otros elementos de bloque.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;hr&gt;
-                <span class="tooltip"><strong>&lt;hr&gt;</strong> (Horizontal Rule): Representa una ruptura temática entre elementos a nivel de párrafo, por ejemplo, un cambio de tema en una sección, o una separación visual. Se muestra como una línea horizontal. También es una etiqueta vacía.</span>
-            </div>
-        </div>
-        <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> saltos_lineas.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esta es la primera línea.</span><span class="hc-bracket">&lt;</span><span class="hc-tag">br</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esta es la segunda línea, después de un &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+            <div class="html-code-title"><i class="fab fa-html5"></i> parrafos_formato.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-text">.parrafo-derecha { text-align: right; color: blue; }
+  .parrafo-centro { text-align: center; color: green; }
+  .caja-div { 
+    border: 2px solid orange; 
+    background-color: #fff3e0; 
+    padding: 15px; 
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">Teorema de Pitágoras</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">En un triángulo rectángulo, el cuadrado de la hipotenusa (</span><span class="hc-bracket">&lt;</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">c</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">) es igual a la suma de los cuadrados de los catetos (</span><span class="hc-bracket">&lt;</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">a</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text"> y </span><span class="hc-bracket">&lt;</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">b</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">).</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span> <span class="hc-attr-name">class</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"parrafo-centro"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Fórmula: </span><span class="hc-bracket">&lt;</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text">a</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text"> + b</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text"> = c</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text">. </span><span class="hc-bracket">&lt;</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text">¡Fundamental!</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span> <span class="hc-attr-name">class</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"parrafo-derecha"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Unidades de agua: H</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sub</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sub</span><span class="hc-bracket">&gt;</span><span class="hc-text">O.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">hr</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Este párrafo está después de una línea horizontal (&lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;).</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span></code></pre>
-        </div>
-
-        <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-font"></i> Formato y Semántica de Texto
-        </h3>
-        <div class="html-tags-container">
-            <div class="html-tag text">
-                &lt;strong&gt;
-                <span class="tooltip"><strong>&lt;strong&gt;</strong>: Define texto con gran importancia, seriedad o urgencia. Los navegadores suelen mostrarlo en negrita.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;em&gt;
-                <span class="tooltip"><strong>&lt;em&gt;</strong> (Emphasis): Define texto con énfasis. Los navegadores suelen mostrarlo en cursiva.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;sup&gt;
-                <span class="tooltip"><strong>&lt;sup&gt;</strong> (Superscript): Define texto en superíndice (más pequeño y elevado). Ej: X<sup>2</sup>.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;sub&gt;
-                <span class="tooltip"><strong>&lt;sub&gt;</strong> (Subscript): Define texto en subíndice (más pequeño y rebajado). Ej: H<sub>2</sub>O.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;code&gt;
-                <span class="tooltip"><strong>&lt;code&gt;</strong>: Define un fragmento de código de computadora. Se muestra típicamente en una fuente monoespaciada.</span>
-            </div>
-             <div class="html-tag text">
-                &lt;pre&gt;
-                <span class="tooltip"><strong>&lt;pre&gt;</strong> (Preformatted): Define texto preformateado. Los espacios y saltos de línea dentro del elemento <code>&lt;pre&gt;</code> son respetados por el navegador. Ideal para mostrar bloques de código.</span>
-            </div>
-            <div class="html-tag text">
-                &lt;blockquote&gt;
-                <span class="tooltip"><strong>&lt;blockquote&gt;</strong>: Define una sección que es citada de otra fuente. Los navegadores suelen indentar este elemento. El atributo <code>cite</code> puede usarse para indicar la URL de la fuente.</span>
-            </div>
-        </div>
-         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> formato_texto.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Este texto es </span><span class="hc-bracket">&lt;</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text">importante</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text"> y este tiene </span><span class="hc-bracket">&lt;</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">énfasis</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">em</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Fórmula: E = mc</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sup</span><span class="hc-bracket">&gt;</span><span class="hc-text">. Agua: H</span><span class="hc-bracket">&lt;</span><span class="hc-tag">sub</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">sub</span><span class="hc-bracket">&gt;</span><span class="hc-text">O.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Para ejecutar, usa: </span><span class="hc-bracket">&lt;</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text">python script.py</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">blockquote</span> <span class="hc-attr-name">cite</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"fuente.url"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esta es una cita famosa.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;/</span><span class="hc-tag">blockquote</span><span class="hc-bracket">&gt;</span></code></pre>
-        </div>
-
-        <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-box-open"></i> Contenedores Genéricos
-        </h3>
-        <div class="html-tags-container">
-            <div class="html-tag structure">
-                &lt;div&gt;
-                <span class="tooltip"><strong>&lt;div&gt;</strong> (Division): Es un contenedor genérico de bloque. Se usa para agrupar otros elementos HTML y aplicarles estilos con CSS o manipularlos con JavaScript. No tiene ningún significado semántico por sí mismo.</span>
-            </div>
-            <div class="html-tag structure">
-                &lt;span&gt;
-                <span class="tooltip"><strong>&lt;span&gt;</strong>: Es un contenedor genérico en línea. Se usa para agrupar elementos en línea o partes de un texto para aplicarles estilos o manipularlos con JavaScript, sin afectar el flujo del contenido. No tiene significado semántico.</span>
-            </div>
-        </div>
-        <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> contenedores.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">div</span> <span class="hc-attr-name">style</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"background-color: lightblue; padding: 10px;"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">Título dentro de un Div</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Un párrafo con una </span><span class="hc-bracket">&lt;</span><span class="hc-tag">span</span> <span class="hc-attr-name">style</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"color: red; font-weight: bold;"</span><span class="hc-bracket">&gt;</span><span class="hc-text">palabra</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">span</span><span class="hc-bracket">&gt;</span><span class="hc-text"> destacada.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">div</span> <span class="hc-attr-name">class</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"caja-div"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esto es una caja creada con un </span><span class="hc-bracket">&lt;</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text">&amp;lt;div&amp;gt;</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">code</span><span class="hc-bracket">&gt;</span><span class="hc-text"> y estilos.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">div</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
         
         <h3 style="color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-sitemap"></i> Etiquetas Estructurales Principales (Introducción)
+            <i class="fas fa-puzzle-piece"></i> D. Elementos Estructurales Semánticos
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">HTML5 introdujo etiquetas para dar un significado más claro a las diferentes secciones de una página. Estas se exploran con más detalle en la sección de "Etiquetas HTML5 Esenciales", pero aquí una breve introducción:</p>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Estas etiquetas dan un significado claro a las diferentes secciones de una página.</p>
         <div class="html-tags-container">
-            <div class="html-tag semantic">&lt;header&gt;<span class="tooltip">Encabezado de página o sección.</span></div>
-            <div class="html-tag semantic">&lt;nav&gt;<span class="tooltip">Sección de navegación principal.</span></div>
-            <div class="html-tag semantic">&lt;main&gt;<span class="tooltip">Contenido principal y único de la página.</span></div>
-            <div class="html-tag semantic">&lt;section&gt;<span class="tooltip">Sección temática del documento.</span></div>
-            <div class="html-tag semantic">&lt;article&gt;<span class="tooltip">Contenido independiente y auto-contenido.</span></div>
-            <div class="html-tag semantic">&lt;aside&gt;<span class="tooltip">Contenido lateral o complementario.</span></div>
-            <div class="html-tag semantic">&lt;footer&gt;<span class="tooltip">Pie de página o sección.</span></div>
+            <div class="html-tag semantic">&lt;header&gt;<span class="tooltip">Define el encabezado de una página o una sección.</span></div>
+            <div class="html-tag semantic">&lt;nav&gt;<span class="tooltip">Contiene los enlaces de navegación principales.</span></div>
+            <div class="html-tag semantic">&lt;main&gt;<span class="tooltip">Especifica el contenido principal y único del documento.</span></div>
+            <div class="html-tag semantic">&lt;section&gt;<span class="tooltip">Define una sección temática dentro del documento.</span></div>
+            <div class="html-tag semantic">&lt;article&gt;<span class="tooltip">Representa contenido independiente y auto-contenido (ej: un post de blog).</span></div>
+            <div class="html-tag semantic">&lt;aside&gt;<span class="tooltip">Contenido complementario o lateral (ej: una barra lateral).</span></div>
+            <div class="html-tag semantic">&lt;footer&gt;<span class="tooltip">Define el pie de página de un documento o una sección.</span></div>
         </div>
          <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> estructura_semantica_simple.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span><span class="hc-text">Logo y Título del Sitio</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span><span class="hc-text">Menú Principal</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span><span class="hc-text">Contenido del Artículo</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;/</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span><span class="hc-text">Copyright &copy; 2025</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;/</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span></code></pre>
+            <div class="html-code-title"><i class="fab fa-html5"></i> estructura_blog_simple.html</div>
+            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">Blog de Ciencia</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;/</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-comment">&lt;!-- Enlaces de navegación aquí --&gt;</span>
+<span class="hc-bracket">&lt;/</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">La Gravedad</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Explicación sobre la gravedad...</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;/</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;/</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">© 2025 Blog de Ciencia</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;/</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
     </div>
-
+    
     <div class="card" style="border-left: 6px solid #fd7e14;">
         <h2 style="color: #d96a0b; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
             <i class="fas fa-tools"></i> 4. Construyendo con HTML: Tareas Comunes <span role="img" aria-label="toolbox">🛠️</span>
         </h2>
         <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-            Además de la estructura básica, HTML nos permite realizar tareas comunes como crear listas, tablas, enlaces e insertar contenido multimedia.
+            Ahora que conoces las etiquetas básicas, veamos cómo combinarlas para crear elementos comunes en cualquier página web, con ejemplos orientados a la ciencia.
         </p>
 
         <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-list-ul"></i> Creando Listas
+            <i class="fas fa-list-ul"></i> A. Creando Listas
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 10px;">HTML ofrece dos tipos principales de listas:</p>
-        <ul style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">
-            <li><strong>Listas Desordenadas (<code>&lt;ul&gt;</code>):</strong> Para ítems donde el orden no importa. Se muestran con viñetas.</li>
-            <li><strong>Listas Ordenadas (<code>&lt;ol&gt;</code>):</strong> Para ítems donde el orden es secuencial o importante. Se muestran con números o letras.</li>
-        </ul>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Ambos tipos de listas usan la etiqueta <code>&lt;li&gt;</code> (List Item) para cada elemento de la lista.</p>
-        
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Las listas son perfectas para organizar información.</p>
+        <div class="html-tags-container">
+            <div class="html-tag list-table">&lt;ul&gt;<span class="tooltip"><strong>&lt;ul&gt;</strong> (Unordered List): Crea una lista desordenada (con viñetas).</span></div>
+            <div class="html-tag list-table">&lt;ol&gt;<span class="tooltip"><strong>&lt;ol&gt;</strong> (Ordered List): Crea una lista ordenada (numerada o con letras).</span></div>
+            <div class="html-tag list-table">&lt;li&gt;<span class="tooltip"><strong>&lt;li&gt;</strong> (List Item): Define cada elemento dentro de una lista <code>&lt;ul&gt;</code> o <code>&lt;ol&gt;</code>.</span></div>
+        </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> listas.html</div>
-            <pre class="html-code"><code><span class="hc-comment">&lt;!-- Lista Desordenada --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mis Frutas Favoritas:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
+            <div class="html-code-title"><i class="fab fa-html5"></i> listas_ciencia.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Componentes del Átomo (Desordenada):</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">ul</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Manzana</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Banana</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mango</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Protones</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Neutrones</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Electrones</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">ul</span><span class="hc-bracket">&gt;</span>
 
-<span class="hc-comment">&lt;!-- Lista Ordenada --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Pasos para hacer café:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Pasos Método Científico (Ordenada):</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">ol</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Hervir agua</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Añadir café molido</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Verter agua y esperar</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Servir y disfrutar</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Observación</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Hipótesis</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Experimentación</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span><span class="hc-text">Conclusión</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">li</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">ol</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
 
         <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-table"></i> Creando Tablas
+            <i class="fas fa-table"></i> B. Creando Tablas
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Las tablas se usan para mostrar datos tabulares (en filas y columnas).</p>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Las tablas son ideales para mostrar datos estructurados en filas y columnas.</p>
         <div class="html-tags-container">
-            <div class="html-tag table">&lt;table&gt;<span class="tooltip">Elemento principal que define una tabla.</span></div>
-            <div class="html-tag table">&lt;tr&gt;<span class="tooltip">(Table Row): Define una fila en la tabla.</span></div>
-            <div class="html-tag table">&lt;th&gt;<span class="tooltip">(Table Header): Define una celda de encabezado. Por defecto, el texto es en negrita y centrado.</span></div>
-            <div class="html-tag table">&lt;td&gt;<span class="tooltip">(Table Data): Define una celda de datos estándar.</span></div>
-            <div class="html-tag table">&lt;caption&gt;<span class="tooltip">Proporciona un título o leyenda para la tabla. Debe ser el primer hijo de <code>&lt;table&gt;</code>.</span></div>
-            <div class="html-tag table">&lt;thead&gt;<span class="tooltip">Agrupa el contenido del encabezado de la tabla.</span></div>
-            <div class="html-tag table">&lt;tbody&gt;<span class="tooltip">Agrupa el contenido del cuerpo principal de la tabla.</span></div>
-            <div class="html-tag table">&lt;tfoot&gt;<span class="tooltip">Agrupa el contenido del pie de la tabla.</span></div>
+            <div class="html-tag table">&lt;table&gt;<span class="tooltip">Define la tabla.</span></div>
+            <div class="html-tag table">&lt;tr&gt;<span class="tooltip">Define una fila (Table Row).</span></div>
+            <div class="html-tag table">&lt;th&gt;<span class="tooltip">Define una celda de encabezado (Table Header).</span></div>
+            <div class="html-tag table">&lt;td&gt;<span class="tooltip">Define una celda de datos (Table Data).</span></div>
+            <div class="html-tag table">&lt;caption&gt;<span class="tooltip">Título de la tabla.</span></div>
         </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> tabla_simple.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">table</span> <span class="hc-attr-name">border</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"1"</span><span class="hc-bracket">&gt;</span> <span class="hc-comment">&lt;!-- El atributo border es por simplicidad, usa CSS para estilos --&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">caption</span><span class="hc-bracket">&gt;</span><span class="hc-text">Información de Contacto</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">caption</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">thead</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-text">Nombre</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-text">Email</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;/</span><span class="hc-tag">thead</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">tbody</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">Ana Pérez</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">ana@example.com</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">Luis Gómez</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">luis@example.com</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;/</span><span class="hc-tag">tbody</span><span class="hc-bracket">&gt;</span>
+            <div class="html-code-title"><i class="fab fa-html5"></i> tabla_elementos_quimicos.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-text">table.elementos, table.elementos th, table.elementos td {
+    border: 1px solid black;
+    border-collapse: collapse; /* Une los bordes */
+    padding: 5px;
+    text-align: left;
+  }
+  table.elementos th { background-color: #f2f2f2; }
+</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">table</span> <span class="hc-attr-name">class</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"elementos"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">caption</span><span class="hc-bracket">&gt;</span><span class="hc-text">Primeros Elementos Químicos</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">caption</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-text">N° Atómico</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-text">Símbolo</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span><span class="hc-text">Nombre</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">th</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">1</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">H</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">Hidrógeno</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">2</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">He</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span><span class="hc-text">Helio</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">td</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;/</span><span class="hc-tag">tr</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">table</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
 
         <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-link"></i> Creando Enlaces (Hipervínculos)
+            <i class="fas fa-link"></i> C. Creando Enlaces (Hipervínculos)
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Los enlaces se crean con la etiqueta <code>&lt;a&gt;</code> (ancla). El atributo más importante es <code>href</code> (Hypertext Reference), que especifica la URL de destino.</p>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Los enlaces conectan tus páginas con el resto de la web o con otras secciones de tu propio sitio.</p>
         <div class="html-tags-container">
-            <div class="html-tag link">&lt;a href="url"&gt;<span class="tooltip"><strong>&lt;a&gt;</strong>: Crea un enlace. <code>href</code> especifica el destino. Otros atributos útiles: <code>target="_blank"</code> (abrir en nueva pestaña), <code>title</code> (información adicional al pasar el cursor).</span></div>
+            <div class="html-tag link-media">&lt;a href="url"&gt;<span class="tooltip"><strong>&lt;a&gt;</strong> (Anchor): Crea un hipervínculo. El atributo <code>href</code> especifica la URL de destino. <code>target="_blank"</code> abre el enlace en una nueva pestaña.</span></div>
         </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> enlaces.html</div>
-            <pre class="html-code"><code><span class="hc-comment">&lt;!-- Enlace a un sitio externo --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Visita </span><span class="hc-bracket">&lt;</span><span class="hc-tag">a</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"https://www.google.com"</span> <span class="hc-attr-name">target</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"_blank"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Google</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">a</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-
-<span class="hc-comment">&lt;!-- Enlace a otra página del mismo sitio --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Ve a nuestra </span><span class="hc-bracket">&lt;</span><span class="hc-tag">a</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"contacto.html"</span><span class="hc-bracket">&gt;</span><span class="hc-text">página de contacto</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">a</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
-
-<span class="hc-comment">&lt;!-- Enlace a una sección de la misma página (ancla interna) --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Ir a la </span><span class="hc-bracket">&lt;</span><span class="hc-tag">a</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"#seccion-importante"</span><span class="hc-bracket">&gt;</span><span class="hc-text">sección importante</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">a</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+            <div class="html-code-title"><i class="fab fa-html5"></i> enlaces_ejemplos.html</div>
+            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Visita </span><span class="hc-bracket">&lt;</span><span class="hc-tag">a</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"https://www.wikipedia.org"</span> <span class="hc-attr-name">target</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"_blank"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Wikipedia</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">a</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Ir a la </span><span class="hc-bracket">&lt;</span><span class="hc-tag">a</span> <span class="hc-attr-name">href</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"#seccion_formulas"</span><span class="hc-bracket">&gt;</span><span class="hc-text">sección de fórmulas</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">a</span><span class="hc-bracket">&gt;</span><span class="hc-text">.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
 <span class="hc-comment">&lt;!-- ... más contenido ... --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span> <span class="hc-attr-name">id</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"seccion-importante"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esta es la Sección Importante</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span></code></pre>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h3</span> <span class="hc-attr-name">id</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"seccion_formulas"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Fórmulas Matemáticas</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h3</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
 
         <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-image"></i> Insertando Imágenes
+            <i class="fas fa-image"></i> D. Insertando Imágenes
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Las imágenes se insertan con la etiqueta <code>&lt;img&gt;</code>, que es una etiqueta vacía.</p>
         <div class="html-tags-container">
-            <div class="html-tag media">&lt;img src="" alt=""&gt;<span class="tooltip"><strong>&lt;img&gt;</strong>: Incrusta una imagen. Atributos cruciales: <code>src</code> (source/fuente de la imagen, URL o ruta local) y <code>alt</code> (texto alternativo, describe la imagen para accesibilidad y si la imagen no carga). Otros atributos comunes: <code>width</code> y <code>height</code> (aunque es mejor controlarlos con CSS).</span></div>
+            <div class="html-tag link-media">&lt;img&gt;<span class="tooltip"><strong>&lt;img&gt;</strong>: Inserta una imagen. Atributos clave: <code>src</code> (ruta o URL de la imagen) y <code>alt</code> (texto alternativo para accesibilidad). <code>width</code> y <code>height</code> pueden definir el tamaño.</span></div>
         </div>
         <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> imagenes.html</div>
-            <pre class="html-code"><code><span class="hc-comment">&lt;!-- Imagen desde una URL externa --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">img</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"https://placehold.co/200x100/E74C3C/FFF?text=HTML+Imagen"</span> 
-     <span class="hc-attr-name">alt</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"Placeholder de una imagen HTML"</span><span class="hc-bracket">&gt;</span>
-
-<span class="hc-comment">&lt;!-- Imagen local (asumiendo que 'logo.png' está en la misma carpeta) --&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">img</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"logo.png"</span> <span class="hc-attr-name">alt</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"Logo de mi empresa"</span> <span class="hc-attr-name">width</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"150"</span><span class="hc-bracket">&gt;</span></code></pre>
+            <div class="html-code-title"><i class="fab fa-html5"></i> imagen_planeta.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Planeta Tierra:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">img</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"https://placehold.co/300x300/007bff/ffffff?text=Tierra"</span> 
+     <span class="hc-attr-name">alt</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"Imagen del Planeta Tierra"</span> <span class="hc-attr-name">width</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"150"</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
-
+        
         <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
-            <i class="fas fa-video"></i> Insertando Videos
+            <i class="fas fa-film"></i> E. Insertando Video y Audio
         </h3>
-        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">HTML5 facilita la inserción de videos con la etiqueta <code>&lt;video&gt;</code>.</p>
         <div class="html-tags-container">
-            <div class="html-tag media">&lt;video&gt;<span class="tooltip"><strong>&lt;video&gt;</strong>: Incrusta contenido de video. Atributos comunes: <code>src</code> (fuente del video), <code>controls</code> (muestra controles de reproducción), <code>width</code>, <code>height</code>, <code>autoplay</code>, <code>loop</code>, <code>muted</code>, <code>poster</code> (imagen a mostrar antes de cargar el video).</span></div>
-            <div class="html-tag media">&lt;source&gt;<span class="tooltip"><strong>&lt;source&gt;</strong>: Usada dentro de <code>&lt;video&gt;</code> para especificar múltiples formatos de video. El navegador elegirá el primero que pueda reproducir. Atributos: <code>src</code> y <code>type</code> (ej: "video/mp4", "video/webm").</span></div>
+            <div class="html-tag link-media">&lt;video&gt;<span class="tooltip"><strong>&lt;video&gt;</strong>: Incrusta un video. Usa <code>&lt;source&gt;</code> para múltiples formatos. Atributo <code>controls</code> para mostrar controles de reproducción.</span></div>
+            <div class="html-tag link-media">&lt;audio&gt;<span class="tooltip"><strong>&lt;audio&gt;</strong>: Incrusta audio. Similar a <code>&lt;video&gt;</code>.</span></div>
         </div>
-        <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> video.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">video</span> <span class="hc-attr-name">width</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"320"</span> <span class="hc-attr-name">height</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"240"</span> <span class="hc-attr-name">controls</span> <span class="hc-attr-name">poster</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"poster_video.jpg"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">source</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"mi_video.mp4"</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"video/mp4"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">source</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"mi_video.webm"</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"video/webm"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-text">Tu navegador no soporta la etiqueta de video HTML5.</span>
+         <div class="html-code-container">
+            <div class="html-code-title"><i class="fab fa-html5"></i> video_ejemplo.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span><span class="hc-text">Video Demostrativo (requiere URL válida):</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h4</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">video</span> <span class="hc-attr-name">width</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"320"</span> <span class="hc-attr-name">height</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"240"</span> <span class="hc-attr-name">controls</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">source</span> <span class="hc-attr-name">src</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"ruta_al_video.mp4"</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"video/mp4"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-text">Tu navegador no soporta la etiqueta video.</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">video</span><span class="hc-bracket">&gt;</span></code></pre>
+        </div>
+
+        <h3 style="color: #d96a0b; border-bottom: 2px solid #fd7e14; padding-bottom: 8px; margin: 30px 0 20px;">
+            <i class="fas fa-ellipsis-h"></i> F. Creando Marquesinas (Efecto de Desplazamiento)
+        </h3>
+        <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">
+            La etiqueta <code>&lt;marquee&gt;</code> permite crear texto o imágenes que se desplazan horizontal o verticalmente. Aunque está **obsoleta** en HTML5 y no se recomienda para sitios web profesionales (CSS Animations es la alternativa moderna), puede ser una forma rápida y sencilla de añadir un efecto dinámico simple en entornos como Google Colab para destacar información.
+        </p>
+        <div class="html-tags-container">
+            <div class="html-tag text">&lt;marquee&gt;<span class="tooltip"><strong>&lt;marquee&gt;</strong>: Crea texto o contenido con desplazamiento. Atributos comunes: <code>behavior</code> (scroll, slide, alternate), <code>direction</code> (left, right, up, down), <code>scrollamount</code> (velocidad). ¡Usar con precaución y moderación!</span></div>
+        </div>
+        <div class="html-code-container">
+            <div class="html-code-title"><i class="fab fa-html5"></i> marquesina_formulas.html (Ejemplo para Colab)</div>
+            <pre class="html-code"><code><span class="hc-tag">%%html</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">marquee</span> <span class="hc-attr-name">behavior</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"scroll"</span> <span class="hc-attr-name">direction</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"left"</span> <span class="hc-attr-name">scrollamount</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"5"</span> 
+         <span class="hc-attr-name">style</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"background-color: #e0f7fa; color: #00796b; padding: 10px; border-radius: 5px; font-weight: bold;"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-text">Fórmulas importantes: E=mc² (Einstein) | F=ma (Newton) | PV=nRT (Gases Ideales)</span>
+<span class="hc-bracket">&lt;/</span><span class="hc-tag">marquee</span><span class="hc-bracket">&gt;</span></code></pre>
         </div>
     </div>
     
-    <div class="card" style="border-left: 6px solid #27ae60;">
-      <h2 style="color: #1e8449; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
-        <i class="fas fa-tags"></i> 5. Etiquetas HTML5 Esenciales Avanzadas <span role="img" aria-label="sparkles">✨</span>
-      </h2>
-      <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-        Además de las etiquetas fundamentales, HTML5 introdujo elementos más específicos que enriquecen la semántica, la multimedia y la interactividad de las páginas web.
-      </p>
-      
-      <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="building construction">🏗️</span> Profundizando en Elementos Semánticos
-      </h3>
-      <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Estas etiquetas, ya introducidas, son clave para una estructura clara. Su correcto uso mejora la accesibilidad y el SEO al permitir que las máquinas entiendan mejor el propósito de cada parte de tu contenido.</p>
-      <div class="html-tags-container">
-        <div class="html-tag semantic"> &lt;header&gt;<span class="tooltip"><strong>&lt;header&gt;</strong>: Contenido introductorio o de navegación para su sección contenedora (página, artículo, sección).</span></div>
-        <div class="html-tag semantic"> &lt;nav&gt;<span class="tooltip"><strong>&lt;nav&gt;</strong>: Bloque de enlaces de navegación principales.</span></div>
-        <div class="html-tag semantic"> &lt;main&gt;<span class="tooltip"><strong>&lt;main&gt;</strong>: Contenido principal y único del documento.</span></div>
-        <div class="html-tag semantic"> &lt;section&gt;<span class="tooltip"><strong>&lt;section&gt;</strong>: Agrupación temática de contenido, usualmente con un encabezado.</span></div>
-        <div class="html-tag semantic"> &lt;article&gt;<span class="tooltip"><strong>&lt;article&gt;</strong>: Contenido auto-contenido y distribuible (post de blog, noticia).</span></div>
-        <div class="html-tag semantic"> &lt;aside&gt;<span class="tooltip"><strong>&lt;aside&gt;</strong>: Contenido tangencialmente relacionado (barra lateral, anuncios).</span></div>
-        <div class="html-tag semantic"> &lt;footer&gt;<span class="tooltip"><strong>&lt;footer&gt;</strong>: Pie de la sección contenedora (página, artículo).</span></div>
-        <div class="html-tag semantic"> &lt;address&gt;<span class="tooltip"><strong>&lt;address&gt;</strong>: Información de contacto para el artículo o cuerpo más cercano.</span></div>
-      </div>
-      
-      <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="movie camera">🎥</span> Multimedia Avanzada y Gráficos
-      </h3>
-       <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">Más allá de la inserción básica, HTML5 ofrece herramientas potentes para gráficos y control multimedia.</p>
-      <div class="html-tags-container">
-        <!-- Las etiquetas <video>, <audio>, <img>, <source>, <figure>, <figcaption> ya se cubrieron en la sección de Tareas Comunes.
-             Aquí nos enfocaremos en las restantes y más avanzadas. -->
-        <div class="html-tag media">
-          &lt;track&gt;
-          <span class="tooltip">
-            <strong>&lt;track&gt;</strong>: Usado dentro de <code>&lt;audio&gt;</code> o <code>&lt;video&gt;</code> para añadir pistas de texto temporizadas (subtítulos, descripciones, capítulos). Mejora la accesibilidad.
-          </span>
-        </div>
-        <div class="html-tag media">
-          &lt;canvas&gt;
-          <span class="tooltip">
-            <strong>&lt;canvas&gt;</strong>: Crea un lienzo de dibujo bitmap que se manipula con JavaScript. Ideal para gráficos 2D/3D dinámicos, juegos, visualizaciones de datos y procesamiento de imágenes.
-          </span>
-        </div>
-        <div class="html-tag media">
-          &lt;svg&gt;
-          <span class="tooltip">
-            <strong>&lt;svg&gt;</strong>: Define gráficos vectoriales escalables en formato XML. Perfecto para iconos, logos, ilustraciones y animaciones que no pierden calidad al cambiar de tamaño.
-          </span>
-        </div>
-        <div class="html-tag media">
-          &lt;picture&gt;
-          <span class="tooltip">
-            <strong>&lt;picture&gt;</strong>: Permite ofrecer múltiples fuentes de imagen para diferentes contextos (art direction), como distintos tamaños de viewport, resoluciones de pantalla o soporte de formatos (ej: WebP con fallback a JPG). Usa elementos <code>&lt;source&gt;</code> y un <code>&lt;img&gt;</code> final.
-          </span>
-        </div>
-      </div>
-
-      <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="ballot box with check">📝</span> Formularios HTML5 Avanzados
-      </h3>
-      <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">HTML5 enriqueció los formularios con nuevos tipos de input, atributos de validación y elementos para una mejor experiencia de usuario.</p>
-      <div class="html-tags-container">
-        <!-- Las etiquetas <form>, <input>, <textarea>, <button>, <select>, <option>, <label>, <fieldset>, <legend>
-             se cubrieron en la sección de Fundamentos. Aquí nos enfocaremos en las adiciones de HTML5. -->
-        <div class="html-tag form">
-          &lt;input type="email"&gt;
-          <span class="tooltip">
-            <strong>Input Email</strong>: Campo específico para direcciones de correo electrónico. Ofrece validación de formato básica en navegadores modernos y teclados optimizados en móviles.
-          </span>
-        </div>
-        <div class="html-tag form">
-          &lt;input type="date"&gt;
-          <span class="tooltip">
-            <strong>Input Date</strong>: Proporciona un selector de fecha nativo del navegador, mejorando la usabilidad y consistencia.
-          </span>
-        </div>
-        <div class="html-tag form">
-          &lt;input type="range"&gt;
-          <span class="tooltip">
-            <strong>Input Range</strong>: Crea un control deslizante para seleccionar un valor numérico dentro de un rango definido (con atributos <code>min</code>, <code>max</code>, <code>step</code>).
-          </span>
-        </div>
-        <div class="html-tag form">
-          &lt;input type="color"&gt;
-          <span class="tooltip">
-            <strong>Input Color</strong>: Ofrece un selector de color nativo del navegador.
-          </span>
-        </div>
-         <div class="html-tag form">
-          &lt;input type="tel"&gt;
-          <span class="tooltip">
-            <strong>Input Tel</strong>: Campo para números de teléfono. No impone validación de formato, pero puede activar teclados numéricos en móviles. Usar atributo <code>pattern</code> para validación.
-          </span>
-        </div>
-         <div class="html-tag form">
-          &lt;input type="url"&gt;
-          <span class="tooltip">
-            <strong>Input URL</strong>: Campo para direcciones web. Validación de formato básica.
-          </span>
-        </div>
-         <div class="html-tag form">
-          &lt;input type="number"&gt;
-          <span class="tooltip">
-            <strong>Input Number</strong>: Campo para valores numéricos, con controles de incremento/decremento. Atributos <code>min</code>, <code>max</code>, <code>step</code>.
-          </span>
-        </div>
-        <div class="html-tag form">
-          &lt;datalist&gt;
-          <span class="tooltip">
-            <strong>&lt;datalist&gt;</strong>: Proporciona una lista de opciones predefinidas para un campo <code>&lt;input&gt;</code> (conectado mediante el atributo <code>list</code> del input y el <code>id</code> del datalist). Ofrece sugerencias de autocompletado.
-          </span>
-        </div>
-        <div class="html-tag form">
-          &lt;progress&gt;
-          <span class="tooltip">
-            <strong>&lt;progress&gt;</strong>: Representa el progreso de una tarea. Atributos <code>value</code> (progreso actual) y <code>max</code> (valor total).
-          </span>
-        </div>
-         <div class="html-tag form">
-          &lt;meter&gt;
-          <span class="tooltip">
-            <strong>&lt;meter&gt;</strong>: Mide un valor escalar dentro de un rango conocido (ej: uso de disco, fuerza de contraseña). Atributos: <code>value</code>, <code>min</code>, <code>max</code>, <code>low</code>, <code>high</code>, <code>optimum</code>.
-          </span>
-        </div>
-      </div>
-      <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> formulario_avanzado.html</div>
-            <pre class="html-code"><code><span class="hc-bracket">&lt;</span><span class="hc-tag">form</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">label</span> <span class="hc-attr-name">for</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"email_usuario"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Email:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">label</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">input</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"email"</span> <span class="hc-attr-name">id</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"email_usuario"</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"email"</span> <span class="hc-attr-name">required</span><span class="hc-bracket">&gt;</span><span class="hc-tag">&lt;br&gt;&lt;br&gt;</span>
-
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">label</span> <span class="hc-attr-name">for</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"fecha_nac"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Fecha de Nacimiento:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">label</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">input</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"date"</span> <span class="hc-attr-name">id</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"fecha_nac"</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"fecha_nac"</span><span class="hc-bracket">&gt;</span><span class="hc-tag">&lt;br&gt;&lt;br&gt;</span>
-
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">label</span> <span class="hc-attr-name">for</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"satisfaccion"</span><span class="hc-bracket">&gt;</span><span class="hc-text">Nivel de Satisfacción (1-10):</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">label</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">input</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"range"</span> <span class="hc-attr-name">id</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"satisfaccion"</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"satisfaccion"</span> <span class="hc-attr-name">min</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"1"</span> <span class="hc-attr-name">max</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"10"</span><span class="hc-bracket">&gt;</span><span class="hc-tag">&lt;br&gt;&lt;br&gt;</span>
-  
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">input</span> <span class="hc-attr-name">type</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"submit"</span> <span class="hc-attr-name">value</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"Enviar"</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;/</span><span class="hc-tag">form</span><span class="hc-bracket">&gt;</span></code></pre>
-      </div>
-    </div>
-
     <div class="card" style="border-left: 6px solid #9b59b6;">
       <h2 style="color: #7d3c98; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
-        <i class="fas fa-file-alt"></i> 6. Cómo Crear tu Primera Página Web Sencilla <span role="img" aria-label="house with garden">🏡</span>
+        <i class="fas fa-file-alt"></i> 5. Cómo Crear tu Primera Página Web Sencilla <span role="img" aria-label="house with garden">🏡</span>
       </h2>
       <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-        Crear una página web básica es más fácil de lo que piensas. Solo necesitas un editor de texto simple (como el Bloc de Notas en Windows, TextEdit en Mac, o editores más avanzados como VS Code, Sublime Text, o Atom) y un navegador web.
+        Crear una página web básica es más fácil de lo que piensas. Solo necesitas un editor de texto simple y un navegador web.
       </p>
-
       <div class="step-by-step-container">
-        <div class="step">
-          <h4><i class="fas fa-mouse-pointer"></i> Paso 1: Abre tu Editor de Texto</h4>
-          <p>Abre cualquier editor de texto. No necesitas software especializado para empezar.</p>
-        </div>
-
-        <div class="step">
-          <h4><i class="fas fa-keyboard"></i> Paso 2: Escribe el Código HTML Básico (Boilerplate)</h4>
-          <p>Copia y pega la siguiente estructura fundamental en tu editor. Este es el esqueleto de casi todas las páginas HTML5:</p>
-          <div class="html-code-container">
-            <div class="html-code-title"><i class="fab fa-html5"></i> mi_primera_pagina.html</div>
+        <div class="step"><h4><i class="fas fa-mouse-pointer"></i> Paso 1: Abre tu Editor de Texto</h4><p>Usa cualquier editor de texto (Bloc de Notas, VS Code, etc.).</p></div>
+        <div class="step"><h4><i class="fas fa-keyboard"></i> Paso 2: Escribe el Código HTML Básico</h4><p>Copia este esqueleto HTML5:</p>
+          <div class="html-code-container"><div class="html-code-title"><i class="fab fa-html5"></i> mi_primera_pagina.html</div>
             <pre class="html-code"><code><span class="hc-doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">html</span> <span class="hc-attr-name">lang</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"es"</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
     <span class="hc-bracket">&lt;</span><span class="hc-tag">meta</span> <span class="hc-attr-name">charset</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"UTF-8"</span><span class="hc-bracket">&gt;</span>
     <span class="hc-bracket">&lt;</span><span class="hc-tag">meta</span> <span class="hc-attr-name">name</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"viewport"</span> <span class="hc-attr-name">content</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"width=device-width, initial-scale=1.0"</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Primera Página Web</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Primera Página</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;/</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">¡Hola, Mundo!</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Esta es mi primera página web.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">¡Hola, HTML!</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
+    <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Aprendiendo a crear mi primera página web.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;/</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">html</span><span class="hc-bracket">&gt;</span></code></pre>
           </div>
-          <p style="margin-top:10px;"><strong>Explicación rápida del boilerplate:</strong></p>
-          <ul style="font-size:0.95em;">
-              <li><code>&lt;!DOCTYPE html&gt;</code>: Declara el tipo de documento (HTML5).</li>
-              <li><code>&lt;html lang="es"&gt;</code>: Elemento raíz, <code>lang="es"</code> indica que el idioma es español.</li>
-              <li><code>&lt;head&gt;</code>: Contiene metainformación sobre el HTML.</li>
-              <li><code>&lt;meta charset="UTF-8"&gt;</code>: Especifica la codificación de caracteres.</li>
-              <li><code>&lt;meta name="viewport" ...&gt;</code>: Esencial para diseño responsivo.</li>
-              <li><code>&lt;title&gt;</code>: Título en la pestaña del navegador.</li>
-              <li><code>&lt;body&gt;</code>: Contenido visible de la página.</li>
-          </ul>
         </div>
-
-        <div class="step">
-          <h4><i class="fas fa-save"></i> Paso 3: Guarda el Archivo</h4>
-          <p>Guarda el archivo con extensión <code>.html</code> (ej: <code>index.html</code>).</p>
-        </div>
-
-        <div class="step">
-          <h4><i class="fas fa-eye"></i> Paso 4: Abre en el Navegador</h4>
-          <p>Haz doble clic en el archivo guardado para abrirlo en tu navegador.</p>
-        </div>
-        
-        <div class="step">
-          <h4><i class="fas fa-lightbulb"></i> Paso 5: ¡Experimenta!</h4>
-          <p>Modifica el archivo, guarda y actualiza el navegador para ver los cambios. ¡Añade más etiquetas!</p>
-        </div>
+        <div class="step"><h4><i class="fas fa-save"></i> Paso 3: Guarda el Archivo</h4><p>Guarda como <code>index.html</code> (o similar) con extensión <code>.html</code>.</p></div>
+        <div class="step"><h4><i class="fas fa-eye"></i> Paso 4: Abre en el Navegador</h4><p>Haz doble clic en el archivo para verlo en tu navegador.</p></div>
       </div>
     </div>
     
     <div class="card" style="border-left: 6px solid #f39c12;">
       <h2 style="color: #d68910; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
-        <i class="fas fa-sitemap"></i> 7. Estructura Semántica Detallada <span role="img" aria-label="blueprint">📐</span>
+        <i class="fas fa-sitemap"></i> 6. Estructura Semántica Detallada <span role="img" aria-label="blueprint">📐</span>
       </h2>
       <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-        Usar etiquetas semánticas es crucial para la accesibilidad y el SEO.
+        Usar etiquetas semánticas da significado a las secciones de tu página, mejorando accesibilidad y SEO.
       </p>
-      
-      <h3 style="color: #d68910; border-bottom: 3px solid #f39c12; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="magnifying glass">🔍</span> Visualización de Estructura Típica
-      </h3>
       <div class="webpage-structure-container">
-        <div class="webpage-structure"> <div class="webpage-header"> <i class="fas fa-flag"></i> &lt;header&gt; - Encabezado del Sitio <div style="font-size:0.8em; font-weight:normal; margin-top:5px;">(Logo, Título Principal, Lema)</div> </div> <div class="webpage-nav"> <i class="fas fa-bars"></i> &lt;nav&gt; - Navegación Principal <ul><li><a href="#">Inicio</a></li><li><a href="#">Servicios</a></li><li><a href="#">Blog</a></li><li><a href="#">Contacto</a></li></ul> </div> <div class="webpage-main-container"> <div class="webpage-content"> <h4><i class="fas fa-file-alt"></i> &lt;main&gt; - Contenido Principal</h4> <p>Esta área contiene el contenido único y central de la página.</p> <div style="border:1px dashed #ccc; padding:10px; margin-top:10px; border-radius:5px;"> <strong>&lt;section&gt; / &lt;article&gt;</strong> <p style="font-size:0.9em;">Aquí irían artículos, secciones temáticas, etc., cada uno con sus propios encabezados (h2, h3...) y párrafos.</p> </div> </div> <div class="webpage-aside"> <h4><i class="fas fa-columns"></i> &lt;aside&gt; - Contenido Lateral</h4> <p>Información complementaria:</p> <ul style="font-size: 0.9em; margin: 10px 0; padding-left:15px;"> <li>Enlaces relacionados</li> <li>Publicidad (si aplica)</li> <li>Biografía del autor</li> </ul> </div> </div> <div class="webpage-footer"> <i class="fas fa-shoe-prints"></i> &lt;footer&gt; - Pie de Página <div style="font-size:0.8em; margin-top:5px;">(Copyright, Enlaces secundarios, Información de contacto)</div> </div> </div>
+        <div class="webpage-structure"> <div class="webpage-header"> <i class="fas fa-flag"></i> &lt;header&gt; - Encabezado del Sitio </div> <div class="webpage-nav"> <i class="fas fa-bars"></i> &lt;nav&gt; - Navegación Principal <ul><li><a href="#">Inicio</a></li><li><a href="#">Blog</a></li></ul> </div> <div class="webpage-main-container"> <div class="webpage-content"> <h4><i class="fas fa-file-alt"></i> &lt;main&gt; - Contenido Principal</h4> <div style="border:1px dashed #ccc; padding:10px; margin-top:10px; border-radius:5px;"> <strong>&lt;article&gt;</strong> <p style="font-size:0.9em;">Post de blog...</p> </div> </div> <div class="webpage-aside"> <h4><i class="fas fa-columns"></i> &lt;aside&gt; - Contenido Lateral</h4> <p>Info relacionada...</p> </div> </div> <div class="webpage-footer"> <i class="fas fa-shoe-prints"></i> &lt;footer&gt; - Pie de Página </div> </div>
       </div>
-      
-      <h3 style="color: #d68910; border-bottom: 3px solid #f39c12; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="laptop code">💻</span> Ejemplo de Código HTML5 Semántico
-      </h3>
-      <p style="font-size: 1.05em; color: #374151; margin-bottom: 15px;">
-        Un ejemplo más conciso de una página semántica.
-      </p>
       <div class="html-code-container">
-        <div class="html-code-title"><i class="fab fa-html5"></i> pagina_semantica_corta.html</div>
+        <div class="html-code-title"><i class="fab fa-html5"></i> pagina_semantica_ejemplo.html</div>
         <pre class="html-code"><code><span class="hc-doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">html</span> <span class="hc-attr-name">lang</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"es"</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Blog Semántico</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span>
-<span class="hc-bracket">&lt;/</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-text">Blog Científico</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">title</span><span class="hc-bracket">&gt;</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">head</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Blog</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span>
-    <span class="hc-bracket">&lt;</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span><span class="hc-comment">&lt;!-- Menú --&gt;</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;/</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;&lt;</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;</span><span class="hc-text">Mi Blog de Ciencia</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h1</span><span class="hc-bracket">&gt;&lt;/</span><span class="hc-tag">header</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span> <span class="hc-comment">&lt;!-- Enlaces de navegación --&gt;</span> <span class="hc-bracket">&lt;/</span><span class="hc-tag">nav</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
     <span class="hc-bracket">&lt;</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">Título del Post</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
-      <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Contenido...</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+      <span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">Descubrimientos en Física Cuántica</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
+      <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Un resumen de los últimos avances...</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
     <span class="hc-bracket">&lt;/</span><span class="hc-tag">article</span><span class="hc-bracket">&gt;</span>
   <span class="hc-bracket">&lt;/</span><span class="hc-tag">main</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">aside</span><span class="hc-bracket">&gt;</span><span class="hc-text">Barra lateral</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">aside</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span><span class="hc-text">Copyright</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Copyright &copy; 2025</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;&lt;/</span><span class="hc-tag">footer</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">body</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">html</span><span class="hc-bracket">&gt;</span></code></pre>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 6px solid #27ae60;">
+      <h2 style="color: #1e8449; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+        <i class="fas fa-tags"></i> 7. Etiquetas HTML5 Esenciales Avanzadas <span role="img" aria-label="sparkles">✨</span>
+      </h2>
+      <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+        HTML5 va más allá de la estructura básica, ofreciendo etiquetas para multimedia, gráficos y formularios interactivos.
+      </p>
+      <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="movie camera">🎥</span> Multimedia y Gráficos
+      </h3>
+      <div class="html-tags-container">
+        <div class="html-tag media">&lt;track&gt;<span class="tooltip">Pistas de texto (subtítulos, etc.) para <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code>.</span></div>
+        <div class="html-tag media">&lt;canvas&gt;<span class="tooltip">Lienzo para dibujar gráficos 2D/3D con JavaScript.</span></div>
+        <div class="html-tag media">&lt;svg&gt;<span class="tooltip">Gráficos vectoriales escalables (iconos, ilustraciones).</span></div>
+        <div class="html-tag media">&lt;picture&gt;<span class="tooltip">Imágenes responsivas con múltiples fuentes (art direction).</span></div>
+      </div>
+      <h3 style="color: #1e8449; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin: 30px 0 20px;">
+        <span role="img" aria-label="ballot box with check">📝</span> Formularios HTML5 Avanzados
+      </h3>
+      <div class="html-tags-container">
+        <div class="html-tag form">&lt;input type="date"&gt;<span class="tooltip">Selector de fecha nativo.</span></div>
+        <div class="html-tag form">&lt;input type="range"&gt;<span class="tooltip">Control deslizante para rangos numéricos.</span></div>
+        <div class="html-tag form">&lt;datalist&gt;<span class="tooltip">Lista de opciones predefinidas para un input.</span></div>
+        <div class="html-tag form">&lt;progress&gt;<span class="tooltip">Barra de progreso para tareas.</span></div>
+        <div class="html-tag form">&lt;meter&gt;<span class="tooltip">Medidor de un valor escalar en un rango.</span></div>
       </div>
     </div>
 
@@ -1128,45 +901,83 @@
         <i class="fab fa-google"></i> 8. HTML5 en Google Colab con %%html <span role="img" aria-label="rocket">🚀</span>
       </h2>
       <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
-        Google Colab permite renderizar HTML, CSS e incluso JavaScript directamente en celdas usando <code>%%html</code>.
+        En Google Colab, puedes renderizar HTML, CSS y JavaScript directamente en celdas usando <code>%%html</code>. Esto es ideal para enriquecer tus notebooks de Python.
       </p>
-      
-      <h3 style="color: #d84315; border-bottom: 3px solid #ff6b35; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="target">🎯</span> Usos de HTML en Colab
-      </h3>
-      <div class="cards-grid">
-        <div class="feature-card colab"> <div class="feature-icon"><span role="img" aria-label="bar chart">📊</span></div> <div class="feature-title">Visualizaciones Enriquecidas</div> <div class="feature-description"> Crea dashboards interactivos, tablas con estilos, o integra librerías JS como D3.js. </div> </div>
-        <div class="feature-card colab"> <div class="feature-icon"><span role="img" aria-label="graduation cap">🎓</span></div> <div class="feature-title">Material Educativo Dinámico</div> <div class="feature-description"> Diseña tutoriales interactivos, explicaciones visuales, o presentaciones en el notebook. </div> </div>
-        <div class="feature-card colab"> <div class="feature-icon"><span role="img" aria-label="test tube">🔬</span></div> <div class="feature-title">Prototipos de Interfaces</div> <div class="feature-description"> Construye formularios para entrada de parámetros, controles para simulaciones, o UI sencillas. </div> </div>
-        <div class="feature-card colab"> <div class="feature-icon"><span role="img" aria-label="scroll">📜</span></div> <div class="feature-title">Reportes Personalizados</div> <div class="feature-description"> Genera reportes con formato y estilo pulido, documentación rica y presentaciones de resultados. </div> </div>
-      </div>
-      
-      <h3 style="color: #d84315; border-bottom: 3px solid #ff6b35; padding-bottom: 10px; margin: 30px 0 20px;">
-        <span role="img" aria-label="laptop code">💻</span> Ejemplos Prácticos en Colab (Concisos)
-      </h3>
-      
-      <h4 style="color: #d84315; margin: 25px 0 15px;"><span role="img" aria-label="memo">📝</span> Ejemplo Básico: Título y Párrafo</h4>
+      <h4 style="color: #d84315; margin: 25px 0 15px;"><span role="img" aria-label="chart increasing">📊</span> Ejemplo: Mostrar Datos de Simulación Física</h4>
       <div class="html-code-container">
-        <div class="html-code-title"><i class="fab fa-python"></i> Colab Cell Output</div>
+        <div class="html-code-title"><i class="fab fa-python"></i> Colab Cell Output (Simulación)</div>
         <pre class="html-code"><code><span class="hc-tag">%%html</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">div</span> <span class="hc-attr-name">style</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"padding:15px; border:1px solid #ccc; border-radius:8px; background:#f0f8ff;"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span><span class="hc-text">Resultado del Análisis</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h2</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span><span class="hc-text">Los datos muestran una tendencia positiva.</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-text">.simulacion-data { 
+    border: 1px solid #ff6b35; padding: 10px; margin-top: 5px; 
+    background-color: #fff0e9; border-radius: 5px;
+  }
+</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">style</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">h3</span><span class="hc-bracket">&gt;</span><span class="hc-text">Resultados de Simulación de Proyectil</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">h3</span><span class="hc-bracket">&gt;</span>
+<span class="hc-bracket">&lt;</span><span class="hc-tag">div</span> <span class="hc-attr-name">class</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"simulacion-data"</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;&lt;</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text">Ángulo de lanzamiento:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text"> 45°</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;&lt;</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text">Velocidad inicial:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text"> 20 m/s</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
+  <span class="hc-bracket">&lt;</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;&lt;</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text">Alcance máximo:</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">strong</span><span class="hc-bracket">&gt;</span><span class="hc-text"> 40.82 m</span><span class="hc-bracket">&lt;/</span><span class="hc-tag">p</span><span class="hc-bracket">&gt;</span>
 <span class="hc-bracket">&lt;/</span><span class="hc-tag">div</span><span class="hc-bracket">&gt;</span></code></pre>
       </div>
-      
-      <h4 style="color: #d84315; margin: 25px 0 15px;"><span role="img" aria-label="abacus">🧮</span> Ejemplo Interactivo: Botón Simple</h4>
-      <div class="html-code-container">
-        <div class="html-code-title"><i class="fab fa-python"></i> Colab Cell Output (Botón)</div>
-        <pre class="html-code"><code><span class="hc-tag">%%html</span>
-<span class="hc-bracket">&lt;</span><span class="hc-tag">button</span> <span class="hc-attr-name">onclick</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"alert('¡Botón presionado!')"</span> 
-        <span class="hc-attr-name">style</span><span class="hc-attr-equals">=</span><span class="hc-attr-value">"padding:10px 15px; background-color:#007bff; color:white; border:none; border-radius:5px; cursor:pointer;"</span><span class="hc-bracket">&gt;</span>
-  <span class="hc-text">Presióname</span>
-<span class="hc-bracket">&lt;/</span><span class="hc-tag">button</span><span class="hc-bracket">&gt;</span></code></pre>
-      </div>
-      <p style="font-size: 1.0em; color: #374151; margin-top: 15px;">
-          <em>Nota: La calculadora de IMC anterior es un ejemplo más complejo de interactividad con JavaScript, CSS y HTML combinados.</em>
-      </p>
+    </div>
+    
+    <div class="card" style="border-left: 6px solid #6f42c1;">
+        <h2 style="color: #512e8e; display: flex; align-items: center; gap: 15px; font-size: 2.2em; margin-bottom: 25px;">
+            <i class="fas fa-graduation-cap"></i> 9. Sugerencias para tu Curso de Python <span role="img" aria-label="teacher">🧑‍🏫</span>
+        </h2>
+        <p style="font-size: 1.15em; line-height: 1.8; color: #374151; margin-bottom: 25px;">
+            Dado que tu curso se enfoca en Python aplicado a matemáticas y física, y deseas que tus estudiantes aprendan HTML, CSS y JavaScript, aquí tienes algunas ideas para integrar estos conocimientos de forma efectiva:
+        </p>
+        <ul style="font-size: 1.05em; line-height: 1.8; color: #374151; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                <i class="fas fa-cogs" style="position: absolute; left: 0; top: 7px; color: #6f42c1;"></i>
+                <strong>Integración Python-HTML:</strong> Enseña cómo Python puede generar HTML dinámicamente.
+                <ul style="margin-top: 8px; padding-left: 20px; list-style-type: disc;">
+                    <li>Usa `IPython.display.HTML` en Colab/Jupyter para renderizar strings HTML generadas por Python.</li>
+                    <li>Muestra cómo crear reportes de resultados de cálculos matemáticos o simulaciones físicas en formato HTML.</li>
+                    <li>Introduce frameworks web ligeros como Flask o FastAPI (más adelante) para crear pequeñas aplicaciones web que muestren resultados de scripts de Python.</li>
+                </ul>
+            </li>
+            <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                <i class="fas fa-palette" style="position: absolute; left: 0; top: 7px; color: #6f42c1;"></i>
+                <strong>Visualización de Datos Mejorada:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px; list-style-type: disc;">
+                    <li>Una vez que los estudiantes generen datos o gráficos con Python (ej: Matplotlib, Seaborn), enséñales a incrustar esos gráficos (exportados como imágenes o SVG) en una página HTML simple para crear un "dashboard" o reporte visual.</li>
+                    <li>Introduce librerías de Python como `Bokeh` o `Plotly` que generan visualizaciones interactivas directamente en HTML/JavaScript.</li>
+                </ul>
+            </li>
+            <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                <i class="fas fa-laptop-code" style="position: absolute; left: 0; top: 7px; color: #6f42c1;"></i>
+                <strong>Proyectos Prácticos Temáticos:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px; list-style-type: disc;">
+                    <li>**Calculadora de Fórmulas:** Pide a los estudiantes que creen una página HTML con un formulario (usando inputs de HTML5) donde puedan ingresar variables para una fórmula física o matemática (ej: ley de Ohm, ecuación cuadrática) y que (inicialmente con JavaScript, luego quizás con Python en el backend) se muestre el resultado.</li>
+                    <li>**Tabla Periódica Interactiva (Simplificada):** Crea una tabla HTML con algunos elementos y usa CSS para darle estilo. Más adelante, con JavaScript, podrían hacerla interactiva para mostrar más detalles al hacer clic.</li>
+                    <li>**Simulador Básico:** Una página HTML que describa un concepto físico (ej: caída libre) y use elementos HTML para mostrar parámetros y resultados (que podrían ser calculados con Python y luego mostrados).</li>
+                </ul>
+            </li>
+            <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                <i class="fas fa-shoe-prints" style="position: absolute; left: 0; top: 7px; color: #6f42c1;"></i>
+                <strong>Progresión Lógica:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px; list-style-type: disc;">
+                    <li>Comienza con HTML para la estructura.</li>
+                    <li>Introduce CSS para el estilo y la presentación.</li>
+                    <li>Finalmente, JavaScript para la interactividad del lado del cliente.</li>
+                    <li>LaTeX y Markdown pueden enseñarse como herramientas para documentar y presentar contenido científico dentro o fuera del contexto web.</li>
+                </ul>
+            </li>
+             <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                <i class="fas fa-book-reader" style="position: absolute; left: 0; top: 7px; color: #6f42c1;"></i>
+                <strong>Foco en Fundamentos Sólidos:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px; list-style-type: disc;">
+                    <li>Asegúrate de que comprendan bien la semántica de HTML5, el Box Model de CSS y los conceptos básicos del DOM y eventos en JavaScript. Estos son los cimientos para resolver problemas más complejos.</li>
+                    <li>Enfatiza la separación de intereses: HTML para estructura, CSS para presentación, JavaScript para comportamiento.</li>
+                </ul>
+            </li>
+        </ul>
+        <p style="font-size: 1.1em; line-height: 1.8; color: #374151; margin-top: 20px;">
+            Al conectar estos aprendizajes con los temas de matemáticas y física que ya están explorando con Python, harás que la relevancia de estas tecnologías web sea mucho más evidente y motivadora para ellos. ¡Mucha suerte con tu curso!
+        </p>
     </div>
 
     <footer style="text-align: center; margin-top: 50px; padding: 25px; background-color: #343a40; color: #ced4da; border-radius: 12px 12px 0 0;">
@@ -1175,12 +986,14 @@
     </footer>
 
     <script>
+        // Script para la línea de tiempo (opcional, para más interactividad)
         function showTimelineDetail(item) {
+            // Podrías, por ejemplo, mostrar un modal con más información
+            // o simplemente loguear a la consola para demostrar el click.
             const title = item.querySelector('.timeline-title').innerText;
             console.log("Clickeado en el evento de la línea de tiempo:", title);
-            // Aquí se podría implementar una lógica para mostrar más detalles,
-            // por ejemplo, en un modal o expandiendo el propio item.
-            // Por ahora, solo se muestra en consola para la demostración.
+            // Para una demo real, aquí se podría cargar contenido dinámico o mostrar un modal.
+            // alert("Detalle: " + title); // Descomentar para un alert simple
         }
     </script>
 
