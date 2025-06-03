@@ -1802,3 +1802,123 @@ console.print(tabla)
 </div>
 
 
+<!-- =============================================================== -->
+<!-- SECCIÓN: MANEJO DE FECHAS Y CALENDARIOS EN PYTHON CON CALENDAR -->
+<!-- =============================================================== -->
+
+<div id="calendar-header" class="card" style="background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%); padding: 30px 25px; text-align: center; color: white; margin-bottom: 30px; border-radius: 12px;">
+  <h1 style="font-size: 2.3em; margin-bottom: 12px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">
+    <i class="fas fa-calendar-alt"></i> Fechas y Calendarios en Python 📆
+  </h1>
+  <p style="font-size: 1.17em; opacity: 0.97; line-height: 1.6;">
+    Aprende a trabajar con fechas y generar calendarios usando la librería <b>calendar</b> de Python. Muy útil para programar eventos, llevar registros académicos, planificar experimentos y mucho más.
+  </p>
+</div>
+
+<!-- ====== Qué es la librería calendar ====== -->
+<div class="card" style="background: #ede9fe; border-left: 6px solid #7c3aed; margin-bottom: 22px;">
+  <h2 style="color: #6d28d9;"><i class="fas fa-info-circle"></i> ¿Qué es <code>calendar</code>?</h2>
+  <p>
+    <strong>calendar</strong> es una librería estándar de Python que te permite:
+    <ul>
+      <li>Generar calendarios mensuales y anuales en texto o HTML.</li>
+      <li>Consultar días de la semana para cualquier fecha.</li>
+      <li>Calcular días laborables y fines de semana.</li>
+      <li>Organizar horarios y programar actividades.</li>
+    </ul>
+    También facilita la creación de herramientas para <b>planificación de clases, exámenes, experimentos y proyectos</b>.
+  </p>
+</div>
+
+<!-- ====== Ejemplo básico: Mostrar el calendario de un mes ====== -->
+<div class="card code-block-func" style="background: #f1f5f9; border-left: 6px solid #818cf8; margin-bottom: 22px;">
+  <h3 style="color: #2563eb;"><i class="fas fa-code"></i> Ejemplo Básico: Mostrar un mes</h3>
+  <pre style="background: #e0e7ff; padding: 15px; border-radius: 10px; font-size: 1.09em; overflow-x: auto;">
+import calendar
+
+# Mostrar el calendario de junio de 2024
+print(calendar.month(2024, 6))
+  </pre>
+  <p style="margin-top: 10px; color: #334155;">
+    <strong>Salida:</strong><br>
+    <code>
+      June 2024<br>
+      Mo Tu We Th Fr Sa Su<br>
+                      1  2<br>
+       3  4  5  6  7  8  9<br>
+      10 11 12 13 14 15 16<br>
+      ...<br>
+    </code>
+  </p>
+</div>
+
+<!-- ====== Ejemplo avanzado: Calendario anual ====== -->
+<div class="card code-block-func" style="background: #f1f5f9; border-left: 6px solid #6366f1; margin-bottom: 22px;">
+  <h3 style="color: #a21caf;"><i class="fas fa-code"></i> Generar un Calendario Anual</h3>
+  <pre style="background: #e0e7ff; padding: 15px; border-radius: 10px; font-size: 1.09em; overflow-x: auto;">
+import calendar
+
+# Mostrar todo el calendario del año 2025
+print(calendar.calendar(2025))
+  </pre>
+</div>
+
+<!-- ====== Días de la semana y fechas útiles ====== -->
+<div class="card" style="background: #f0fdfa; border-left: 6px solid #14b8a6; margin-bottom: 22px;">
+  <h3 style="color: #0e7490;"><i class="fas fa-calendar-day"></i> Saber qué día de la semana es una fecha</h3>
+  <pre style="background: #ccfbf1; padding: 15px; border-radius: 10px; font-size: 1.09em; overflow-x: auto;">
+import calendar
+
+# ¿Qué día de la semana fue el 20 de julio de 1969?
+dia = calendar.weekday(1969, 7, 20)
+dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+print(dias[dia])  # Salida: 'Domingo'
+  </pre>
+  <p><b>Aplicación:</b> Perfecto para planificar experimentos, recordatorios de eventos históricos, o saber si una fecha cae fin de semana.</p>
+</div>
+
+<!-- ====== Programar tareas: días laborables y fines de semana ====== -->
+<div class="card" style="background: #fff7ed; border-left: 6px solid #fb923c; margin-bottom: 22px;">
+  <h3 style="color: #ea580c;"><i class="fas fa-calendar-check"></i> Encontrar todos los lunes de un mes</h3>
+  <pre style="background: #fef9c3; padding: 15px; border-radius: 10px; font-size: 1.09em; overflow-x: auto;">
+import calendar
+
+# Todos los lunes de junio de 2024
+año = 2024
+mes = 6
+cal = calendar.monthcalendar(año, mes)
+lunes = [semana[0] for semana in cal if semana[0] != 0]
+print(lunes)  # Ejemplo de salida: [3, 10, 17, 24]
+  </pre>
+  <p>Útil para <b>planificar clases, reuniones semanales o rutinas de estudio.</b></p>
+</div>
+
+<!-- ====== Uso combinado: Fechas y tiempos con datetime ====== -->
+<div class="card" style="background: #e0f2fe; border-left: 6px solid #0284c7;">
+  <h3 style="color: #0369a1;"><i class="fas fa-clock"></i> Combina <code>calendar</code> y <code>datetime</code> para manipular fechas</h3>
+  <pre style="background: #bae6fd; padding: 15px; border-radius: 10px; font-size: 1.09em; overflow-x: auto;">
+import calendar
+from datetime import datetime, timedelta
+
+# Fecha actual
+hoy = datetime.now()
+print("Hoy es:", hoy.strftime("%d/%m/%Y"))
+
+# ¿Cuántos días faltan para el próximo examen el 15 de junio?
+proximo_examen = datetime(2024, 6, 15)
+dias_faltan = (proximo_examen - hoy).days
+print("Días para el examen:", dias_faltan)
+  </pre>
+  <p><b>Aplicación:</b> Llevar un contador de días para exámenes, entregas o eventos importantes.</p>
+</div>
+
+<!-- ====== Tip académico ====== -->
+<div class="card" style="background: #f0fdf4; border-left: 6px solid #22c55e; margin-top: 26px;">
+  <h3 style="color: #15803d;"><i class="fas fa-lightbulb"></i> TIP: ¿Para qué usar <code>calendar</code> en matemáticas y física?</h3>
+  <ul>
+    <li>Programar prácticas de laboratorio o simulaciones en fechas exactas.</li>
+    <li>Registrar la periodicidad de eventos (por ejemplo, experimentos cada 15 días).</li>
+    <li>Automatizar la generación de horarios de clase o cronogramas de estudio.</li>
+    <li>Analizar series temporales o datos que dependen del día de la semana.</li>
+  </ul>
+</div>
